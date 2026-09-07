@@ -168,6 +168,41 @@ Each activity type can be linked to a workflow template that fires when you save
 
 Your academy admin can change which template fires for each type — or add a new type and pick its workflow template — under **Configuration → Activity Types**. The seeded types can't be deleted because the post-game evaluation rule depends on the **Game** type existing.
 
+## Which week of the cycle a training is in
+
+When the team has a [VCT cycle](configuration-vct.md), each training
+records the week of that cycle it was planned as, and the detail page
+shows it: **Week 3**, or **Neutral — game this week**.
+
+A neutral week always says why. "Neutral" on its own reads as a bug, and
+nobody who thinks the planner is buggy keeps using it.
+
+The week is written when the training is saved, and it is a **record of
+what the training was**, not a live calculation. Add a game in October
+and every training after it shifts back a week — but the trainings
+*before* it keep the week they were planned as. That is deliberate: a
+player's training history from three months ago should still say what it
+said at the time, rather than quietly rewriting itself every time the
+season is rearranged.
+
+### Changing it for one training
+
+The edit form's **Cycle week** field takes one of three answers:
+
+- **Follow the cycle** — the default. The week is worked out for you and
+  kept up to date.
+- **Neutral** — this one training runs at neutral intensity.
+- **A specific week** — pin it to a week of the cycle you choose.
+
+Choosing anything other than "Follow the cycle" fixes the training's week
+for good: it stops shifting when fixtures move. Setting it back to
+"Follow the cycle" hands it straight back and recalculates it on the spot.
+
+This changes **one training**. To move the whole team's week — and
+everything after it — use the cycle calendar under VCT configuration
+instead. The two are easy to confuse, and only one of them is what you
+want when a squad's whole rhythm is off.
+
 ## Status and source
 
 Every activity carries two extra fields beyond the headline type:

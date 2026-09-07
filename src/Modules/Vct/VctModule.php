@@ -9,6 +9,7 @@ use TT\Modules\Vct\Repositories\VctSessionsRepository;
 use TT\Modules\Vct\Rest\VctAgeProfilesRestController;
 use TT\Modules\Vct\Rest\VctExercisesRestController;
 use TT\Modules\Vct\Rest\VctMacroBlocksRestController;
+use TT\Modules\Vct\Services\VctActivityStamper;
 use TT\Modules\Vct\Rest\VctCycleWeeksRestController;
 use TT\Modules\Vct\Rest\VctTeamCyclesRestController;
 use TT\Modules\Vct\Rest\VctPhvFlagsRestController;
@@ -78,6 +79,11 @@ class VctModule implements ModuleInterface {
         VctAgeProfilesRestController::init();
         VctWorkloadRestController::init();
         VctPhvFlagsRestController::init();
+
+        // #3362 — stamp the cycle week onto a training as it is saved,
+        // and re-stamp future trainings when a fixture moves. One hook
+        // rather than four write sites.
+        VctActivityStamper::init();
 
         // #911 — When an Activity is deleted, null out the bound
         // session's activity_id and revert it to draft. Per spec

@@ -1185,6 +1185,11 @@ class FrontendActivitiesManageView extends FrontendViewBase {
             if ( $type_label !== '' ) $cells[] = [ __( 'Type', 'talenttrack' ), $type_label ];
             $status_label = \TT\Infrastructure\Query\LookupTranslator::byTypeAndName( 'activity_status', $status_key );
             if ( $status_label !== '' ) $cells[] = [ __( 'Status', 'talenttrack' ), $status_label ];
+
+            // #3362 — where this training sits in the team's cycle. Absent
+            // for a team with no cycle, which is a normal state.
+            $cycle = self::cycleFactFor( $session );
+            if ( $cycle !== '' ) $cells[] = [ __( 'Cycle', 'talenttrack' ), $cycle ];
         }
         if ( $cells === [] ) return;
 
@@ -1196,6 +1201,84 @@ class FrontendActivitiesManageView extends FrontendViewBase {
             echo '</div>';
         }
         echo '</div>';
+    }
+
+    /**
+     * #3362 (epic #3354) — the per-training cycle override.
+     *
+     * Renders nothing unless the training already carries a stamp, i.e.
+     * unless the team has a cycle: an override control on a form with no
+     * cycle behind it would offer a choice that means nothing.
+     *
+     * This is deliberately NOT the same control as the cycle calendar's.
+     * That one changes the week for the whole team and everything after
+     * it; this one changes one training and nothing else. The help text
+     * says so, because a coach will otherwise reach for the wrong one.
+     */
+    private static function renderCycleOverrideField( ?object $session ): void {
+        if ( $session === null ) return;
+
+        $state = (string) ( $session->vct_cycle_state ?? '' );
+        if ( $state === '' ) return;
+        if ( (string) ( $session->activity_type_key ?? '' ) !== \TT\Domain\Vocabularies\Lookups\ActivityTypeKey::TRAINING ) return;
+
+        $manual  = (int) ( $session->vct_cycle_manual ?? 0 ) === 1;
+        $week    = (int) ( $session->vct_cycle_week ?? 0 );
+        $current = ! $manual ? 'auto' : ( $state === 'neutral' ? 'neutral' : 'week' );
+
+        echo '<div class="tt-field">';
+        echo '<label class="tt-field-label" for="tt-activity-cycle">' . esc_html__( 'Cycle week', 'talenttrack' ) . '</label>';
+        echo '<select id="tt-activity-cycle" class="tt-input" name="vct_cycle_choice">';
+        echo '<option value="auto"' . selected( $current, 'auto', false ) . '>'
+            . esc_html__( 'Follow the cycle', 'talenttrack' ) . '</option>';
+        echo '<option value="neutral"' . selected( $current, 'neutral', false ) . '>'
+            . esc_html_x( 'Neutral', 'cycle week that is paused because the team plays', 'talenttrack' ) . '</option>';
+        echo '<option value="week"' . selected( $current, 'week', false ) . '>'
+            . esc_html__( 'A specific week', 'talenttrack' ) . '</option>';
+        echo '</select>';
+
+        echo '<label class="tt-field-label" for="tt-activity-cycle-week">'
+            . esc_html__( 'Which week', 'talenttrack' ) . '</label>';
+        echo '<input type="number" inputmode="numeric" id="tt-activity-cycle-week" class="tt-input"'
+            . ' name="vct_cycle_week" min="1" max="12" value="' . esc_attr( $week > 0 ? (string) $week : '' ) . '">';
+
+        echo '<p class="tt-field-hint">'
+            . esc_html__( 'Changes this training only. To move the whole team\'s week, use the cycle calendar under VCT configuration.', 'talenttrack' )
+            . '</p>';
+        echo '</div>';
+    }
+
+    /**
+     * #3362 (epic #3354) — where this training sits in the team's cycle.
+     *
+     * A neutral week says so *and why*: "Neutral — game this week". A bare
+     * "Neutral" reads as a bug, and a coach who thinks the planner is buggy
+     * stops trusting it. Returns '' when the team has no cycle, which is a
+     * normal state rather than a missing value.
+     */
+    private static function cycleFactFor( object $session ): string {
+        $state = (string) ( $session->vct_cycle_state ?? '' );
+        if ( $state === '' ) return '';
+
+        $manual = (int) ( $session->vct_cycle_manual ?? 0 ) === 1;
+
+        if ( $state === 'neutral' ) {
+            $label = _x( 'Neutral', 'cycle week that is paused because the team plays', 'talenttrack' );
+            if ( $manual ) {
+                return $label . ' — ' . __( 'set by hand', 'talenttrack' );
+            }
+            return $label . ' — ' . __( 'game this week', 'talenttrack' );
+        }
+
+        $week = (int) ( $session->vct_cycle_week ?? 0 );
+        if ( $week <= 0 ) return '';
+
+        $label = sprintf(
+            /* translators: %d = the week's position within the team's cycle. */
+            __( 'Week %d', 'talenttrack' ),
+            $week
+        );
+        return $manual ? $label . ' — ' . __( 'set by hand', 'talenttrack' ) : $label;
     }
 
     /**
@@ -3068,6 +3151,8 @@ class FrontendActivitiesManageView extends FrontendViewBase {
                 <textarea id="tt-activity-notes" class="tt-input" name="notes" rows="2"><?php echo esc_textarea( (string) ( $session->notes ?? '' ) ); ?></textarea>
             </div>
 
+            <?php self::renderCycleOverrideField( $session ); ?>
+
             <?php
             // #0077 M2 — Principles practiced multiselect. Mirrors the
             // wp-admin ActivitiesPage form (lines ~331-352) so the
@@ -3348,7 +3433,7 @@ class FrontendActivitiesManageView extends FrontendViewBase {
             $is_match_type    = \TT\Modules\Activities\Services\ActivityCompletionResolver::isMatchType( (string) ( $session->activity_type_key ?? '' ) );
             $show_edit_roster = $is_edit && $attendance_visible && ! $is_match_type && current_user_can( 'tt_edit_activities' );
 
-            if ( $is_edit && ( current_user_can( 'tt_edit_evaluations' ) || $show_edit_roster ) ) :
+            if ( $session !== null && $is_edit && ( current_user_can( 'tt_edit_evaluations' ) || $show_edit_roster ) ) :
                 \TT\Modules\Activities\Services\ActivityGridLink::primeAnchor(
                     (int) $session->id,
                     (int) ( $session->team_id ?? 0 ),
@@ -3464,7 +3549,7 @@ class FrontendActivitiesManageView extends FrontendViewBase {
             // click auto-saves the activity first (see guest-add.js),
             // redirects to the edit URL with `&open_guest=1`, and the
             // modal re-opens so the coach picks a guest in one motion.
-            self::renderGuestSection( $is_edit ? (int) $session->id : 0, $guests );
+            self::renderGuestSection( $is_edit && $session !== null ? (int) $session->id : 0, $guests );
             ?>
 
             <?php
@@ -3487,7 +3572,9 @@ class FrontendActivitiesManageView extends FrontendViewBase {
             // v3.110.58 — CLAUDE.md § 6.
             $dash_url   = \TT\Shared\Frontend\Components\RecordLink::dashboardUrl();
             $list_url   = add_query_arg( [ 'tt_view' => 'activities' ], $dash_url );
-            $detail_url = $is_edit ? add_query_arg( [ 'tt_view' => 'activities', 'id' => (int) $session->id ], $dash_url ) : $list_url;
+            // Same-view link (this IS the activities view), so no cross-view
+            // gate applies. Only flagged because the line was touched.
+            $detail_url = ( $is_edit && $session !== null ) ? add_query_arg( [ 'tt_view' => 'activities', 'id' => (int) $session->id ], $dash_url ) : $list_url; /* tt-xview-ok */
             $back       = \TT\Shared\Frontend\Components\BackLink::resolve();
             $cancel_url = $back !== null ? $back['url'] : ( $is_edit ? $detail_url : $list_url );
             echo FormSaveButton::render( [
