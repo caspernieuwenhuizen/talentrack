@@ -25,30 +25,30 @@ class VctTeamCyclesRepository {
 
     public const DEFAULT_WEEKS = 6;
 
-    private \wpdb $wpdb;
-    private string $table;
-
-    public function __construct() {
+    private function table(): string {
         global $wpdb;
-        $this->wpdb  = $wpdb;
-        $this->table = $wpdb->prefix . 'tt_vct_team_cycles';
+        return $wpdb->prefix . 'tt_vct_team_cycles';
     }
 
     /**
-     * @return array{id:int, uuid:string, team_id:int, season_id:int, cycle_weeks:int, anchor_date:string, template_id:?int}|null
+     * @return array{id:int, uuid:string, team_id:int, season_id:int, cycle_weeks:int, anchor_date:string, template_id:int|null}|null
      */
     public function findForTeamSeason( int $team_id, int $season_id ): ?array {
         if ( $team_id <= 0 || $season_id <= 0 ) return null;
 
-        $row = $this->wpdb->get_row( $this->wpdb->prepare(
+        global $wpdb;
+        $table = $this->table();
+
+        $row = $wpdb->get_row( $wpdb->prepare(
             "SELECT id, uuid, team_id, season_id, cycle_weeks, anchor_date, template_id
-               FROM {$this->table}
+               FROM {$table}
               WHERE club_id = %d AND team_id = %d AND season_id = %d
                 AND archived_at IS NULL
               LIMIT 1",
             CurrentClub::id(), $team_id, $season_id
-        ) );
-        if ( ! $row ) return null;
+        ), ARRAY_A );
+        if ( ! is_array( $row ) ) return null;
+
         return self::hydrate( $row );
     }
 
@@ -56,23 +56,27 @@ class VctTeamCyclesRepository {
      * Every team's cycle for one season, keyed by team_id — one query for
      * the configuration screen rather than one per team.
      *
-     * @return array<int, array{id:int, uuid:string, team_id:int, season_id:int, cycle_weeks:int, anchor_date:string, template_id:?int}>
+     * @return array<int, array{id:int, uuid:string, team_id:int, season_id:int, cycle_weeks:int, anchor_date:string, template_id:int|null}>
      */
     public function listForSeason( int $season_id ): array {
         if ( $season_id <= 0 ) return [];
 
-        $rows = $this->wpdb->get_results( $this->wpdb->prepare(
+        global $wpdb;
+        $table = $this->table();
+
+        $rows = $wpdb->get_results( $wpdb->prepare(
             "SELECT id, uuid, team_id, season_id, cycle_weeks, anchor_date, template_id
-               FROM {$this->table}
+               FROM {$table}
               WHERE club_id = %d AND season_id = %d
                 AND archived_at IS NULL
            ORDER BY team_id ASC",
             CurrentClub::id(), $season_id
-        ) );
+        ), ARRAY_A );
         if ( ! is_array( $rows ) ) return [];
 
         $out = [];
         foreach ( $rows as $row ) {
+            if ( ! is_array( $row ) ) continue;
             $cycle = self::hydrate( $row );
             $out[ $cycle['team_id'] ] = $cycle;
         }
@@ -92,10 +96,13 @@ class VctTeamCyclesRepository {
         $anchor = self::normaliseToMonday( $anchor_date );
         if ( $anchor === null ) return false;
 
+        global $wpdb;
+        $table = $this->table();
+
         $existing = $this->findForTeamSeason( $team_id, $season_id );
         if ( $existing !== null ) {
-            $ok = $this->wpdb->update(
-                $this->table,
+            $ok = $wpdb->update(
+                $table,
                 [
                     'cycle_weeks' => $cycle_weeks,
                     'anchor_date' => $anchor,
@@ -106,7 +113,7 @@ class VctTeamCyclesRepository {
             return $ok !== false;
         }
 
-        $ok = $this->wpdb->insert( $this->table, [
+        $ok = $wpdb->insert( $table, [
             'club_id'     => CurrentClub::id(),
             'uuid'        => wp_generate_uuid4(),
             'team_id'     => $team_id,
@@ -120,15 +127,16 @@ class VctTeamCyclesRepository {
 
     /**
      * Remove the team's cycle, returning them to macro-block planning.
-     * A hard delete: the row is two numbers and a date, there is no
-     * history in it worth keeping, and leaving an archived row behind
-     * would collide with the (club, team, season) UNIQUE index the next
-     * time somebody set one up.
+     * A hard delete: the row is two numbers and a date, there is no history
+     * in it worth keeping, and an archived row left behind would collide
+     * with the (club, team, season) UNIQUE index the next time somebody set
+     * a cycle up.
      */
     public function delete( int $team_id, int $season_id ): bool {
         if ( $team_id <= 0 || $season_id <= 0 ) return false;
 
-        $ok = $this->wpdb->delete( $this->table, [
+        global $wpdb;
+        $ok = $wpdb->delete( $this->table(), [
             'club_id'   => CurrentClub::id(),
             'team_id'   => $team_id,
             'season_id' => $season_id,
@@ -141,8 +149,8 @@ class VctTeamCyclesRepository {
     }
 
     /**
-     * Snap a date back to the Monday of its ISO week. Returns null when
-     * the input is not a `Y-m-d` date.
+     * Snap a date back to the Monday of its ISO week. Returns null when the
+     * input is not a `Y-m-d` date.
      */
     public static function normaliseToMonday( string $date ): ?string {
         if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ) return null;
@@ -155,18 +163,18 @@ class VctTeamCyclesRepository {
     }
 
     /**
-     * @param object $row
-     * @return array{id:int, uuid:string, team_id:int, season_id:int, cycle_weeks:int, anchor_date:string, template_id:?int}
+     * @param array<string,mixed> $row
+     * @return array{id:int, uuid:string, team_id:int, season_id:int, cycle_weeks:int, anchor_date:string, template_id:int|null}
      */
-    private static function hydrate( object $row ): array {
-        $template_id = isset( $row->template_id ) ? (int) $row->template_id : 0;
+    private static function hydrate( array $row ): array {
+        $template_id = isset( $row['template_id'] ) ? (int) $row['template_id'] : 0;
         return [
-            'id'          => (int) $row->id,
-            'uuid'        => (string) $row->uuid,
-            'team_id'     => (int) $row->team_id,
-            'season_id'   => (int) $row->season_id,
-            'cycle_weeks' => (int) $row->cycle_weeks,
-            'anchor_date' => (string) $row->anchor_date,
+            'id'          => (int) ( $row['id'] ?? 0 ),
+            'uuid'        => (string) ( $row['uuid'] ?? '' ),
+            'team_id'     => (int) ( $row['team_id'] ?? 0 ),
+            'season_id'   => (int) ( $row['season_id'] ?? 0 ),
+            'cycle_weeks' => (int) ( $row['cycle_weeks'] ?? self::DEFAULT_WEEKS ),
+            'anchor_date' => (string) ( $row['anchor_date'] ?? '' ),
             'template_id' => $template_id > 0 ? $template_id : null,
         ];
     }

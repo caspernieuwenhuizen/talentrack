@@ -13,8 +13,8 @@ use TT\Infrastructure\Tenancy\CurrentClub;
  * season's week list from the cycle anchor, its length and the team's
  * fixture dates, and reads this table only for the weeks a human has
  * overruled. Setting a week back to `auto` deletes its row rather than
- * storing an `auto` state — "no row means no exception" is what keeps
- * the resolver's reading of this table honest.
+ * storing an `auto` state — "no row means no exception" is what keeps the
+ * resolver's reading of this table honest.
  *
  * Two override directions, both load-bearing:
  *
@@ -29,41 +29,42 @@ class VctCycleWeekOverridesRepository {
     public const STATE_NEUTRAL = 'neutral';
     public const STATE_ACTIVE  = 'active';
 
-    private \wpdb $wpdb;
-    private string $table;
-
-    public function __construct() {
+    private function table(): string {
         global $wpdb;
-        $this->wpdb  = $wpdb;
-        $this->table = $wpdb->prefix . 'tt_vct_cycle_weeks';
+        return $wpdb->prefix . 'tt_vct_cycle_weeks';
     }
 
     /**
      * Every override for one (team, season), keyed by the week's Monday so
      * the resolver can look each week up as it walks.
      *
-     * @return array<string, array{state:string, note:?string, set_by:?int, set_at:string}>
+     * @return array<string, array{state:string, note:string|null, set_by:int|null, set_at:string}>
      */
     public function listForSeason( int $team_id, int $season_id ): array {
         if ( $team_id <= 0 || $season_id <= 0 ) return [];
 
-        $rows = $this->wpdb->get_results( $this->wpdb->prepare(
+        global $wpdb;
+        $table = $this->table();
+
+        $rows = $wpdb->get_results( $wpdb->prepare(
             "SELECT week_starts_on, state, note, set_by, set_at
-               FROM {$this->table}
+               FROM {$table}
               WHERE club_id = %d AND team_id = %d AND season_id = %d
            ORDER BY week_starts_on ASC",
             CurrentClub::id(), $team_id, $season_id
-        ) );
+        ), ARRAY_A );
         if ( ! is_array( $rows ) ) return [];
 
         $out = [];
         foreach ( $rows as $row ) {
-            $set_by = isset( $row->set_by ) ? (int) $row->set_by : 0;
-            $out[ (string) $row->week_starts_on ] = [
-                'state'  => (string) $row->state,
-                'note'   => isset( $row->note ) && $row->note !== '' ? (string) $row->note : null,
+            if ( ! is_array( $row ) ) continue;
+            $set_by = isset( $row['set_by'] ) ? (int) $row['set_by'] : 0;
+            $note   = isset( $row['note'] ) ? (string) $row['note'] : '';
+            $out[ (string) ( $row['week_starts_on'] ?? '' ) ] = [
+                'state'  => (string) ( $row['state'] ?? '' ),
+                'note'   => $note !== '' ? $note : null,
                 'set_by' => $set_by > 0 ? $set_by : null,
-                'set_at' => (string) $row->set_at,
+                'set_at' => (string) ( $row['set_at'] ?? '' ),
             ];
         }
         return $out;
@@ -81,16 +82,19 @@ class VctCycleWeekOverridesRepository {
         $week = VctTeamCyclesRepository::normaliseToMonday( $week_starts_on );
         if ( $week === null ) return false;
 
-        $existing = (int) $this->wpdb->get_var( $this->wpdb->prepare(
-            "SELECT id FROM {$this->table}
+        global $wpdb;
+        $table = $this->table();
+
+        $existing = (int) $wpdb->get_var( $wpdb->prepare(
+            "SELECT id FROM {$table}
               WHERE club_id = %d AND team_id = %d AND week_starts_on = %s
               LIMIT 1",
             CurrentClub::id(), $team_id, $week
         ) );
 
         if ( $existing > 0 ) {
-            $ok = $this->wpdb->update(
-                $this->table,
+            $ok = $wpdb->update(
+                $table,
                 [
                     'season_id' => $season_id,
                     'state'     => $state,
@@ -103,7 +107,7 @@ class VctCycleWeekOverridesRepository {
             return $ok !== false;
         }
 
-        $ok = $this->wpdb->insert( $this->table, [
+        $ok = $wpdb->insert( $table, [
             'club_id'        => CurrentClub::id(),
             'team_id'        => $team_id,
             'season_id'      => $season_id,
@@ -123,7 +127,8 @@ class VctCycleWeekOverridesRepository {
         $week = VctTeamCyclesRepository::normaliseToMonday( $week_starts_on );
         if ( $week === null ) return false;
 
-        $ok = $this->wpdb->delete( $this->table, [
+        global $wpdb;
+        $ok = $wpdb->delete( $this->table(), [
             'club_id'        => CurrentClub::id(),
             'team_id'        => $team_id,
             'week_starts_on' => $week,
@@ -135,7 +140,8 @@ class VctCycleWeekOverridesRepository {
     public function clearSeason( int $team_id, int $season_id ): bool {
         if ( $team_id <= 0 || $season_id <= 0 ) return false;
 
-        $ok = $this->wpdb->delete( $this->table, [
+        global $wpdb;
+        $ok = $wpdb->delete( $this->table(), [
             'club_id'   => CurrentClub::id(),
             'team_id'   => $team_id,
             'season_id' => $season_id,
