@@ -159,7 +159,7 @@ class PdpGenerator implements DependentGeneratorInterface {
         global $wpdb;
 
         $rows = $wpdb->get_results( $wpdb->prepare(
-            "SELECT id, scheduled_at FROM {$wpdb->prefix}tt_pdp_conversations
+            "SELECT id, scheduled_at, template_key FROM {$wpdb->prefix}tt_pdp_conversations
               WHERE pdp_file_id = %d AND club_id = %d ORDER BY sequence",
             $file_id, CurrentClub::id()
         ) );
@@ -170,6 +170,11 @@ class PdpGenerator implements DependentGeneratorInterface {
             $scheduled_ts    = strtotime( (string) $row->scheduled_at ) ?: time();
             $this->registry->tag( 'pdp_conversation', $conversation_id, [ 'pdp_file_id' => $file_id ] );
             $total++;
+
+            // #3305 — the coach's preparation. Seeded for every conversation
+            // in the cycle, conducted or not: a demo where only past talks
+            // are prepared hides the surface a coach actually opens.
+            $total += $this->seedPrep( $conversation_id, (string) ( $row->template_key ?? '' ), $copy );
 
             if ( $scheduled_ts < time() ) {
                 $conducted = gmdate( 'Y-m-d H:i:s', $scheduled_ts );
@@ -204,6 +209,52 @@ class PdpGenerator implements DependentGeneratorInterface {
             }
         }
         return $total;
+    }
+
+    /**
+     * #3305 (epic #3301) — a coach's answers to this conversation's prep
+     * questions.
+     *
+     * Written straight through `$wpdb` rather than through
+     * `PdpPrepAnswersRepository`: that repository gates every write on the
+     * current user being the coach who owns the file, and a generation run
+     * from WP-CLI has no user at all. The gate is right; going round it here
+     * is the same choice the calendar-link insert above makes.
+     *
+     * @param array{agenda:string, notes:string, actions:string, reflection:string, summary:string} $copy
+     * @return int Rows written.
+     */
+    private function seedPrep( int $conversation_id, string $template_key, array $copy ): int {
+        global $wpdb;
+
+        $questions = ( new \TT\Modules\Pdp\Prep\PdpPrepQuestionsRepository() )
+            ->listForTemplate( $template_key );
+        if ( $questions === [] ) return 0;
+
+        $written = 0;
+        foreach ( $questions as $index => $question ) {
+            // The last question is the free-text catch-all; leaving it empty
+            // is what a real prep looks like more often than not.
+            if ( $index === count( $questions ) - 1 ) continue;
+
+            $text = $index === 0 ? $copy['notes'] : $copy['actions'];
+
+            $ok = $wpdb->insert( "{$wpdb->prefix}tt_pdp_prep_answers", [
+                'uuid'             => wp_generate_uuid4(),
+                'club_id'          => CurrentClub::id(),
+                'conversation_id'  => $conversation_id,
+                'question_id'      => (int) $question['id'],
+                'question_version' => (int) $question['version'],
+                'answer_text'      => $text,
+            ] );
+            if ( ! $ok ) continue;
+
+            $this->registry->tag( 'pdp_prep_answer', (int) $wpdb->insert_id, [
+                'conversation_id' => $conversation_id,
+            ] );
+            $written++;
+        }
+        return $written;
     }
 
     /**

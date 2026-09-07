@@ -11,6 +11,7 @@ use TT\Modules\Pdp\Print\PdpPrintRouter;
 use TT\Modules\Pdp\Rest\PdpBlocksRestController;
 use TT\Modules\Pdp\Rest\PdpConversationsRestController;
 use TT\Modules\Pdp\Rest\PdpFilesRestController;
+use TT\Modules\Pdp\Rest\PdpPrepRestController;
 use TT\Modules\Pdp\Rest\PdpVerdictsRestController;
 use TT\Modules\Pdp\Rest\SeasonsRestController;
 use TT\Modules\Pdp\Workflow\PdpConversationDueTemplate;
@@ -52,6 +53,7 @@ class PdpModule implements ModuleInterface {
         PdpFilesRestController::init();
         PdpConversationsRestController::init();
         PdpVerdictsRestController::init();
+        PdpPrepRestController::init();
 
         // Sprint 2 — wp-admin Seasons page + carryover hook + print route.
         if ( is_admin() ) SeasonsPage::init();

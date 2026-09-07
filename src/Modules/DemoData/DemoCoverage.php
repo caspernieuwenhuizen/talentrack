@@ -320,6 +320,16 @@ class DemoCoverage {
             'written_by'  => PdpGenerator::class,
             'depends_on'  => [ 'pdp_conversation' ],
         ],
+        // #3305 (epic #3301) — a coach's preparation for one conversation.
+        // The questions themselves are configuration (see the exempt list);
+        // the answers are a coach's own words about a demo player, so they
+        // are demo content and the cleaner has to reach them.
+        'tt_pdp_prep_answers' => [
+            'entity_type' => 'pdp_prep_answer',
+            'category'    => 'pdp',
+            'written_by'  => PdpGenerator::class,
+            'depends_on'  => [ 'pdp_conversation' ],
+        ],
 
         // ===== Activity content =====
 
@@ -795,6 +805,7 @@ class DemoCoverage {
         // ===== Exempt — reference data seeded by migrations =====
 
         'tt_player_attribute_defs' => [ 'exempt' => 'The 23 chemistry attribute definitions are seeded by migration 0178; #2463 fills values against them rather than inventing more.' ],
+        'tt_pdp_prep_questions'   => [ 'exempt' => 'The prompts a coach prepares a PDP conversation against (#3305), seeded by migration 0256 and admin-editable. Configuration rather than content — every install gets the set, demo or not, and a demo wipe must not take an academy\'s own questions with it.' ],
         'tt_eval_categories'      => [ 'exempt' => 'Evaluation category tree, seeded by migrations and admin-editable. The Excel path documents it as a reference sheet.' ],
         'tt_eval_type_categories' => [ 'exempt' => 'Evaluation-type to category mapping, seeded by migrations.' ],
         'tt_category_weights'     => [ 'exempt' => 'Per-age-group category weights, seeded by migrations and admin-editable.' ],
@@ -885,7 +896,7 @@ class DemoCoverage {
                 'player_event', 'trial_case', 'player_report', 'player_attribute_value',
                 'player_team_history', 'player_injury', 'player_parent_visibility',
                 'custom_value', 'player_parent',
-                'measurement_result', 'pdp_calendar_link', 'pdp_verdict',
+                'measurement_result', 'pdp_prep_answer', 'pdp_calendar_link', 'pdp_verdict',
                 'pdp_conversation', 'pdp_file',
                 'player',
             ],
@@ -947,7 +958,7 @@ class DemoCoverage {
         'pdp' => [
             'tier'      => 'dependent',
             'run_order' => 90,
-            'cascade'   => [ 'pdp_calendar_link', 'pdp_verdict', 'pdp_conversation', 'pdp_file', 'season' ],
+            'cascade'   => [ 'pdp_prep_answer', 'pdp_calendar_link', 'pdp_verdict', 'pdp_conversation', 'pdp_file', 'season' ],
         ],
         'activity_content' => [
             'tier'      => 'dependent',

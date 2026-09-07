@@ -59769,6 +59769,215 @@ msgstr "Het veld \"%s\" moet een geldig telefoonnummer zijn."
 msgid "Unknown field type: %s"
 msgstr "Onbekend veldtype: %s"
 
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "Where is this player now?"
+msgstr "Waar staat deze speler nu?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid ""
+"The honest starting point, in your words — not a summary of the evidence "
+"panel next to you."
+msgstr ""
+"Het eerlijke vertrekpunt, in jouw woorden — geen samenvatting van het "
+"bewijspaneel hiernaast."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "What are we asking of them this season?"
+msgstr "Wat vragen we dit seizoen van deze speler?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "The one or two things that would make this a good season for this player."
+msgstr "De één of twee dingen die dit een goed seizoen maken voor deze speler."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "What in the evidence do you want to raise?"
+msgstr "Wat uit het bewijs wil je aankaarten?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid ""
+"A rating, an attendance pattern, a run of minutes — name it here so you do "
+"not improvise it in the room."
+msgstr ""
+"Een beoordeling, een aanwezigheidspatroon, een reeks speelminuten — benoem "
+"het hier, dan hoef je het straks niet ter plekke te bedenken."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "What has changed since the last conversation?"
+msgstr "Wat is er veranderd sinds het vorige gesprek?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid ""
+"What you have seen, not what the numbers show — the numbers are already on "
+"the Evidence tab."
+msgstr ""
+"Wat jij hebt gezien, niet wat de cijfers zeggen — die staan al op het "
+"tabblad Bewijs."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "Which goals have moved, and which have not?"
+msgstr "Welke doelen zijn opgeschoven en welke niet?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "A goal that has not moved since October is worth saying out loud."
+msgstr "Een doel dat sinds oktober stilstaat, is het benoemen waard."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "What does this player need next?"
+msgstr "Wat heeft deze speler nu nodig?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "What you want to be able to agree on before the talk ends."
+msgstr "Wat je aan het eind van het gesprek afgesproken wilt hebben."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "What did this player achieve this season?"
+msgstr "Wat heeft deze speler dit seizoen bereikt?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "The season as they will remember it, not as a scoreline."
+msgstr "Het seizoen zoals de speler het zich herinnert, niet als een uitslag."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "Where are they heading next season?"
+msgstr "Waar gaat deze speler volgend seizoen naartoe?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "Age group, position, minutes — whatever the next step actually is."
+msgstr "Leeftijdsgroep, positie, speelminuten — wat de volgende stap ook is."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "What will you recommend to the head of academy?"
+msgstr "Wat ga je het hoofd opleiding adviseren?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid ""
+"Your view before the verdict is recorded. Private to you and the head of "
+"academy."
+msgstr ""
+"Jouw beeld voordat het eindoordeel wordt vastgelegd. Alleen zichtbaar voor "
+"jou en het hoofd opleiding."
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "Anything else to prepare?"
+msgstr "Nog iets anders voor te bereiden?"
+
+#: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
+msgid "Whatever does not fit the questions above."
+msgstr "Alles wat niet bij de vragen hierboven past."
+
+#: src/Modules/Pdp/Rest/PdpPrepRestController.php
+msgid "Unknown conversation template."
+msgstr "Onbekend gesprekstype."
+
+#: src/Modules/Pdp/Rest/PdpPrepRestController.php
+msgid "A question needs a label."
+msgstr "Een vraag heeft een omschrijving nodig."
+
+#: src/Modules/Pdp/Rest/PdpPrepRestController.php
+msgid "That question no longer exists."
+msgstr "Die vraag bestaat niet meer."
+
+#: src/Modules/Pdp/Rest/PdpPrepRestController.php
+msgid "Send the question ids in the order you want them."
+msgstr "Stuur de vraag-id's in de volgorde die je wilt."
+
+#: src/Modules/Pdp/Rest/PdpPrepRestController.php
+msgid "Send the answers to save."
+msgstr "Stuur de antwoorden die je wilt opslaan."
+
+#: src/Shared/Configuration/ConfigurationSurfaces.php
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "PDP preparation questions"
+msgstr "POP-voorbereidingsvragen"
+
+#: src/Shared/Configuration/ConfigurationSurfaces.php
+msgid ""
+"What a coach thinks about before each conversation in the cycle. A different "
+"set per conversation, private to the coach and the head of academy."
+msgstr ""
+"Waar een trainer over nadenkt voor elk gesprek in de cyclus. Per gesprek een "
+"eigen set, alleen zichtbaar voor de trainer en het hoofd opleiding."
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid ""
+"What a coach is asked to think about before each PDP conversation. The start "
+"of a season asks different things than the end, so each conversation in the "
+"cycle has its own set."
+msgstr ""
+"Waar een trainer over nadenkt voor elk POP-gesprek. Aan het begin van het "
+"seizoen vraag je andere dingen dan aan het eind, dus elk gesprek in de "
+"cyclus heeft een eigen set."
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid ""
+"A coach's answers are private to them and the head of academy — never shown "
+"to the player or their parents. Rewording a question that has already been "
+"answered keeps the old wording on those answers, so a prep from last season "
+"still reads the way it was written."
+msgstr ""
+"De antwoorden van een trainer zijn alleen zichtbaar voor de trainer en het "
+"hoofd opleiding — nooit voor de speler of de ouders. Herformuleer je een "
+"vraag die al beantwoord is, dan houden die antwoorden de oude formulering, "
+"zodat een voorbereiding van vorig seizoen leest zoals hij geschreven is."
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Add question"
+msgstr "Vraag toevoegen"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Question"
+msgstr "Vraag"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Help text"
+msgstr "Hulptekst"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Answer type"
+msgstr "Soort antwoord"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Choices (one per line)"
+msgstr "Keuzes (één per regel)"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Answer required"
+msgstr "Antwoord verplicht"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Save question"
+msgstr "Vraag opslaan"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "No questions yet for this conversation."
+msgstr "Nog geen vragen voor dit gesprek."
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid ""
+"Remove this question? Answers already given to it stay readable on the preps "
+"that hold them."
+msgstr ""
+"Deze vraag verwijderen? Antwoorden die er al op gegeven zijn, blijven "
+"leesbaar in de voorbereidingen waar ze in staan."
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Saved as a new version — preps already answered keep the old wording."
+msgstr ""
+"Opgeslagen als nieuwe versie — al beantwoorde voorbereidingen houden de oude "
+"formulering."
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Short text"
+msgstr "Korte tekst"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Choose several"
+msgstr "Kies meerdere"
+
+#: src/Shared/Frontend/FrontendConfigurationView.php
+msgid "Yes / no"
+msgstr "Ja / nee"
+
 #~ msgid ""
 #~ "This team has no attendance recorded in the selected window. Try widening "
 #~ "the date range or picking another period."
