@@ -1133,6 +1133,16 @@ class ActivitiesRestController {
             );
         }
 
+        // #3362 — the per-training cycle override. Applied AFTER the
+        // repository write, because that write fires `tt_activity_saved`
+        // and the stamper re-derives the cycle from it; applying the
+        // override first would have it immediately overwritten.
+        //
+        // Absent from the payload means "leave it alone", never "clear
+        // it" — a PATCH that omits the field must not discard a coach's
+        // override.
+        self::applyCycleOverride( $r, $activity_id );
+
         // #0025 — re-detect source language on update; idempotent on
         // unchanged content via the source_hash check inside.
         \TT\Modules\Translations\TranslationLayer::detectAndCache( 'activity', $activity_id, 'title',    (string) $data['title'] );
@@ -1211,6 +1221,41 @@ class ActivitiesRestController {
      * create_session and update_session so the frontend form has parity
      * with the wp-admin page.
      */
+    /**
+     * #3362 (epic #3354) — the per-training cycle override.
+     *
+     * `vct_cycle_choice` is `auto` | `neutral` | `week`. Anything else,
+     * including its absence, leaves the training alone — an omitted field
+     * must never discard a coach's override, which is the partial-update
+     * contract every autosaving and PATCH-ing caller relies on.
+     */
+    private static function applyCycleOverride( \WP_REST_Request $r, int $activity_id ): void {
+        if ( ! class_exists( '\\TT\\Modules\\Vct\\Services\\VctActivityStamper' ) ) return;
+
+        $choice = $r['vct_cycle_choice'] ?? null;
+        if ( ! is_string( $choice ) || $choice === '' ) return;
+
+        $activity = self::repo()->findById( $activity_id );
+        if ( $activity === null ) return;
+
+        $team_id = (int) ( $activity->team_id ?? 0 );
+        $date    = (string) ( $activity->session_date ?? '' );
+
+        switch ( $choice ) {
+            case 'auto':
+                \TT\Modules\Vct\Services\VctActivityStamper::setOverride( $activity_id, $team_id, $date, null, null );
+                return;
+            case 'neutral':
+                \TT\Modules\Vct\Services\VctActivityStamper::setOverride( $activity_id, $team_id, $date, 'neutral', null );
+                return;
+            case 'week':
+                $week = absint( $r['vct_cycle_week'] ?? 0 );
+                if ( $week <= 0 ) return;
+                \TT\Modules\Vct\Services\VctActivityStamper::setOverride( $activity_id, $team_id, $date, 'active', $week );
+                return;
+        }
+    }
+
     private static function persistPrincipleLinks( \WP_REST_Request $r, int $activity_id ): void {
         if ( ! class_exists( '\\TT\\Modules\\Methodology\\Repositories\\PrincipleLinksRepository' ) ) return;
         $raw = $r['activity_principle_ids'] ?? null;
