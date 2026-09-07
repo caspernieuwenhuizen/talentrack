@@ -52,7 +52,9 @@ Elk gesprek heeft twee fases:
 - **VÃ³Ã³r het gesprek** â€” agenda + de zelfreflectie van de speler.
 - **Na het gesprek** â€” notities, afgesproken acties en ondertekening.
 
-De **bewijszijbalk** in het formulier toont elke evaluatie, activiteit en doelenÂ­wijziging voor de speler sinds het vorige gesprek â€” alleen-lezen, puur ter verankering van het gesprek.
+Het tabblad **Bewijs** in het formulier verzamelt wat de academie al weet over de speler sinds het vorige gesprek — alleen-lezen, zodat de trainer het gesprek opent op basis van het dossier en niet op basis van zijn geheugen: evaluaties met beoordeling, beoordelaar en notities; aanwezigheid met de verdeling aanwezig / afwezig / afgemeld, gespeelde wedstrijden en speelminuten, met de opbouw per wedstrijd; doelen, en of ze bewogen zijn; de zelfreflectie van de speler; notities van de staf, blessures en gebeurtenissen op de tijdlijn; en de potentieel- en gedragsbeoordelingen uit die periode.
+
+Een onderdeel zonder inhoud zegt dat ook, in plaats van te verdwijnen — “Geen evaluaties in deze periode” is zelf iets om te weten voor een gesprek.
 
 De gesprekken verlopen op volgorde: alleen het **actieve** gesprek — het eerste dat nog niet is afgetekend — is volledig bewerkbaar. Latere gesprekken in de cyclus zijn alleen-lezen, behalve hun **geplande datum**, zodat een coach het hele seizoen vooruit kan plannen zonder een gesprek buiten de beurt in te vullen. Een later gesprek komt vrij voor volledige bewerking zodra het voorgaande gesprek is afgetekend.
 

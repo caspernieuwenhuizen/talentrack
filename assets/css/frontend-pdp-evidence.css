@@ -1,0 +1,247 @@
+/*
+ * frontend-pdp-evidence.css (#3303, epic #3301)
+ *
+ * The shared evidence panel — the Evidence tab on a PDP conversation, the
+ * printed file, and the verdict screen all render this markup.
+ *
+ * Authoring rule (CLAUDE.md § 2): mobile-first. Base is the 360px
+ * viewport; breakpoints scale UP via `min-width`. Colours read the
+ * `tokens.css` custom properties, never raw hex — the panel this replaces
+ * was a hardcoded `#fafbfc` box with inline 12px type, which is why it
+ * ignored every theme the plugin ships.
+ *
+ * Class contract — owned by \TT\Shared\Frontend\Components\EvidencePanel:
+ *
+ *   .tt-evidence               panel wrapper
+ *   .tt-evidence__window       which window the reader is looking at
+ *   .tt-evidence__section      one group (evaluations, goals, …)
+ *   .tt-evidence__heading      its <h3>
+ *   .tt-evidence__empty        "nothing here" line — a finding, not a gap
+ *   .tt-evidence__scroll       horizontal scroll container for a table
+ *   .tt-evidence__table        tt-list-table-table variant
+ *   .tt-evidence__subrow       per-category scores under an evaluation
+ *   .tt-evidence__chips        those scores
+ *   .tt-evidence__stats        attendance / minutes definition list
+ *   .tt-evidence__stat         one label + value pair
+ *   .tt-evidence__cards        goals, notes, injuries, journey, trend
+ *   .tt-evidence__card         one of them
+ *   .tt-evidence__quote        the player's self-reflection
+ */
+
+.tt-evidence {
+    display: grid;
+    gap: var(--tt-sp-5, 20px);
+}
+
+.tt-evidence__window {
+    margin: 0;
+    color: var(--tt-ink-soft, #6a6d66);
+    font-size: var(--tt-fs-sm, 0.85rem);
+}
+
+.tt-evidence__section {
+    display: grid;
+    gap: var(--tt-sp-2, 8px);
+}
+
+.tt-evidence__heading {
+    margin: 0;
+    font-size: var(--tt-fs-lg, 1.125rem);
+}
+
+.tt-evidence__empty {
+    margin: 0;
+    color: var(--tt-ink-soft, #6a6d66);
+}
+
+/* A wide table scrolls inside its own container; the page body never
+   scrolls sideways at 360px. Below the reflow breakpoint the table
+   becomes labelled cards and the container has nothing to scroll. */
+.tt-evidence__scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Base (360px): a table is not a table yet. Each row is a labelled card,
+   the header row is gone, and `data-label` on every cell stands in for the
+   column heading — the same reflow the shared list tables use, written the
+   other way round because this sheet is mobile-first (CLAUDE.md § 2). The
+   table layout is restored at 640px below. */
+.tt-evidence__table {
+    width: 100%;
+    border-collapse: collapse;
+    display: block;
+}
+
+.tt-evidence__table thead { display: none; }
+
+.tt-evidence__table tbody,
+.tt-evidence__table tr,
+.tt-evidence__table td { display: block; width: 100%; }
+
+.tt-evidence__table tr {
+    border: 1px solid var(--tt-line, #e3e6e1);
+    border-radius: var(--tt-radius, 8px);
+    background: var(--tt-paper, #fff);
+    margin-bottom: var(--tt-sp-2, 8px);
+    padding: var(--tt-sp-3, 12px);
+}
+
+.tt-evidence__table td {
+    padding: 2px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: var(--tt-sp-3, 12px);
+    text-align: left;
+}
+
+.tt-evidence__table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: var(--tt-fs-sm, 0.85rem);
+    color: var(--tt-muted, #6a6d66);
+    flex: 0 0 auto;
+}
+
+.tt-evidence__table td[data-label=""]::before { content: none; }
+
+/* The per-category scores belong with the evaluation above them, so the
+   card layout keeps them attached rather than making a second card. */
+.tt-evidence__table tr.tt-evidence__subrow {
+    margin-top: calc(var(--tt-sp-2, 8px) * -1 - 1px);
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.tt-evidence__chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tt-sp-1, 4px);
+}
+
+.tt-evidence__chip {
+    background: var(--tt-bg-soft, #f4f6f3);
+    border-radius: var(--tt-radius, 8px);
+    padding: 2px var(--tt-sp-2, 8px);
+    font-size: var(--tt-fs-sm, 0.85rem);
+}
+
+.tt-evidence__stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--tt-sp-2, 8px);
+    margin: 0;
+}
+
+.tt-evidence__stat {
+    background: var(--tt-bg-soft, #f4f6f3);
+    border-radius: var(--tt-radius, 8px);
+    padding: var(--tt-sp-2, 8px) var(--tt-sp-3, 12px);
+}
+
+.tt-evidence__stat dt {
+    margin: 0;
+    color: var(--tt-ink-soft, #6a6d66);
+    font-size: var(--tt-fs-sm, 0.85rem);
+}
+
+.tt-evidence__stat dd {
+    margin: 0;
+    font-weight: 600;
+    font-size: var(--tt-fs-lg, 1.125rem);
+}
+
+.tt-evidence__cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--tt-sp-2, 8px);
+}
+
+.tt-evidence__card {
+    display: grid;
+    gap: 2px;
+    padding: var(--tt-sp-3, 12px);
+    border: 1px solid var(--tt-line-soft, #eef0ec);
+    border-left: 3px solid var(--tt-line, #e3e6e1);
+    border-radius: var(--tt-radius, 8px);
+    background: var(--tt-paper, #fff);
+}
+
+.tt-evidence__card--injury { border-left-color: var(--tt-warning, #e8902b); }
+.tt-evidence__card--note   { border-left-color: var(--tt-info, #2d6fb3); }
+
+.tt-evidence__card-title { font-weight: 600; overflow-wrap: anywhere; }
+
+.tt-evidence__card-meta {
+    color: var(--tt-ink-soft, #6a6d66);
+    font-size: var(--tt-fs-sm, 0.85rem);
+}
+
+.tt-evidence__card-body { overflow-wrap: anywhere; }
+
+.tt-evidence__quote {
+    margin: 0;
+    padding: var(--tt-sp-3, 12px);
+    border-left: 3px solid var(--tt-info, #2d6fb3);
+    background: var(--tt-bg-soft, #f4f6f3);
+    border-radius: var(--tt-radius, 8px);
+}
+
+@media (min-width: 480px) {
+    .tt-evidence__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Wide enough for columns: back to a real table. */
+@media (min-width: 640px) {
+    .tt-evidence__table { display: table; }
+    .tt-evidence__table thead { display: table-header-group; }
+    .tt-evidence__table tbody { display: table-row-group; }
+
+    .tt-evidence__table tr {
+        display: table-row;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .tt-evidence__table th,
+    .tt-evidence__table td {
+        display: table-cell;
+        width: auto;
+        text-align: left;
+        vertical-align: top;
+        padding: var(--tt-sp-2, 8px);
+        border-bottom: 1px solid var(--tt-line-soft, #eef0ec);
+    }
+
+    .tt-evidence__table td::before { content: none; }
+
+    .tt-evidence__table tr.tt-evidence__subrow { margin-top: 0; }
+
+    .tt-evidence__table tr.tt-evidence__subrow td {
+        border-bottom: 1px solid var(--tt-line-soft, #eef0ec);
+        padding-top: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .tt-evidence__stats { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+
+/* Print: the evidence page is a second sheet of a document somebody hands
+   to a parent. Links have nowhere to go on paper, and a section must not
+   break across a page fold mid-table. */
+@media print {
+    .tt-evidence__scroll { overflow-x: visible; }
+    .tt-evidence__section { break-inside: avoid; }
+    .tt-evidence__card { break-inside: avoid; }
+    .tt-evidence a { text-decoration: none; color: inherit; }
+}

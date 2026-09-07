@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 use TT\Domain\Vocabularies\Lookups\PdpStatus;
 use TT\Domain\Vocabularies\Lookups\PdpVerdictDecision;
-use TT\Infrastructure\Query\LookupTranslator;
 use TT\Infrastructure\Query\QueryHelpers;
 use TT\Modules\Pdp\Repositories\PdpConversationsRepository;
 use TT\Modules\Pdp\Repositories\PdpFilesRepository;
@@ -46,6 +45,15 @@ class FrontendPdpManageView extends FrontendViewBase {
         wp_enqueue_style(
             'tt-frontend-pop',
             TT_PLUGIN_URL . 'assets/css/frontend-pop.css',
+            [ 'tt-frontend-app-chrome' ],
+            TT_VERSION
+        );
+
+        // #3303 — the conversation surface's own chrome (panes, lock banner,
+        // self-reflection card). Was an inline attribute on each element.
+        wp_enqueue_style(
+            'tt-frontend-pdp-conversation',
+            TT_PLUGIN_URL . 'assets/css/frontend-pdp-conversation.css',
             [ 'tt-frontend-app-chrome' ],
             TT_VERSION
         );
@@ -1086,53 +1094,38 @@ class FrontendPdpManageView extends FrontendViewBase {
         // toast before navigating.
         $back_to_file_url = add_query_arg( [ 'tt_view' => 'pdp', 'id' => (int) $file->id ], $base_url );
 
-        // #0063 — switch from a cramped 1fr / 280px sidebar layout to a
-        // simple tab strip: Conversation | Evidence. CSS-only toggle
-        // via the :target pseudo-class fallback works without JS,
-        // and a small handler upgrades to ARIA-correct tabs when JS is
-        // present. Closes the "evidence is a format mess next to the
-        // conversation" complaint.
-        ?>
-        <div class="tt-pdp-conv-tabs" data-tt-pdp-conv-tabs>
-            <div role="tablist" aria-label="<?php esc_attr_e( 'Conversation sections', 'talenttrack' ); ?>" style="display:flex; gap:4px; border-bottom:1px solid #e5e7ea; margin-bottom:12px;">
-                <button type="button" role="tab" aria-selected="true" data-tt-pdp-tab="conversation"
-                        style="padding:8px 14px; border:0; background:transparent; border-bottom:2px solid transparent; cursor:pointer;"
-                        class="is-active">
-                    <?php esc_html_e( 'Conversation', 'talenttrack' ); ?>
-                </button>
-                <button type="button" role="tab" aria-selected="false" data-tt-pdp-tab="evidence"
-                        style="padding:8px 14px; border:0; background:transparent; border-bottom:2px solid transparent; cursor:pointer;">
-                    <?php esc_html_e( 'Evidence', 'talenttrack' ); ?>
-                </button>
-            </div>
-        </div>
-        <style>
-            .tt-pdp-conv-tabs button.is-active { border-bottom-color: var(--tt-primary, #0b3d2e) !important; font-weight: 600; }
-            .tt-pdp-conv-pane[hidden] { display: none; }
-        </style>
-        <script>
-        (function(){
-            if (window.__ttPdpConvTabsBound) return;
-            window.__ttPdpConvTabsBound = true;
-            document.addEventListener('click', function(e){
-                var btn = e.target && e.target.closest ? e.target.closest('[data-tt-pdp-tab]') : null;
-                if (!btn) return;
-                var key = btn.getAttribute('data-tt-pdp-tab');
-                document.querySelectorAll('[data-tt-pdp-tab]').forEach(function(b){
-                    var on = b.getAttribute('data-tt-pdp-tab') === key;
-                    b.classList.toggle('is-active', on);
-                    b.setAttribute('aria-selected', on ? 'true' : 'false');
-                });
-                document.querySelectorAll('.tt-pdp-conv-pane').forEach(function(p){
-                    p.hidden = ( p.getAttribute('data-tt-pdp-pane') !== key );
-                });
-            });
-        })();
-        </script>
-        <?php
+        // #0063 introduced the Conversation | Evidence tab strip, hand-rolled:
+        // an inline style attribute on every button, a page-level style
+        // block, and an inline script binding a global document listener —
+        // all three forbidden by CLAUDE.md § 2, and a fourth tab strip
+        // diverging from the shared one. #3303 replaces it with
+        // `RecordSpine`, which is where
+        // record-scoped tabs come from (§ 5c). These tabs stay within one
+        // conversation, so they are content rather than navigation and do not
+        // count against the two-affordance budget.
+        //
+        // The spine is passed no identity: the view's own header already
+        // names the conversation, and a second name strip above it would say
+        // the same thing twice. `tabs_always` keeps the strip under the
+        // `classic` shell, where it is the only route to the Evidence pane.
+        \TT\Shared\Frontend\Components\RecordSpine::render( [
+            'tabs_always' => true,
+            'tabs'        => [
+                [
+                    'label'  => __( 'Conversation', 'talenttrack' ),
+                    'panel'  => 'tt-pdp-pane-conversation',
+                    'active' => true,
+                ],
+                [
+                    'label' => __( 'Evidence', 'talenttrack' ),
+                    'panel' => 'tt-pdp-pane-evidence',
+                ],
+            ],
+        ] );
 
         // Main form column (Conversation pane).
-        echo '<div class="tt-pdp-conv-pane" data-tt-pdp-pane="conversation" role="tabpanel">';
+        echo '<div class="tt-pdp-conv-pane" id="tt-pdp-pane-conversation" role="tabpanel"'
+            . ' aria-labelledby="' . esc_attr( \TT\Shared\Frontend\Components\RecordSpine::tabId( 'tt-pdp-pane-conversation' ) ) . '">';
 
         // v3.110.197 (#809) — locked banner. Names the signatory chain so
         // the coach knows why edits are blocked.
@@ -1159,7 +1152,7 @@ class FrontendPdpManageView extends FrontendViewBase {
                     esc_html( (string) $conv->player_ack_at )
                 );
             }
-            echo '<div class="tt-notice tt-pdp-conv-locked" role="status" style="background:#fffbe6; border:1px solid #c9962a; border-radius:6px; padding:10px 12px; margin-bottom:12px;">';
+            echo '<div class="tt-notice tt-pdp-conv-locked" role="status">';
             echo '<strong>' . esc_html__( 'Read only.', 'talenttrack' ) . '</strong> ';
             echo esc_html__( 'This conversation is locked because it carries a signature — ', 'talenttrack' );
             // Reasons array contains escaped HTML (timestamps); join with comma.
@@ -1217,7 +1210,7 @@ class FrontendPdpManageView extends FrontendViewBase {
                 <label class="tt-field-label" for="tt-conv-conducted"><?php esc_html_e( 'Conducted at', 'talenttrack' ); ?></label>
                 <input type="datetime-local" id="tt-conv-conducted" name="conducted_at" class="tt-input"
                     value="<?php echo esc_attr( self::toDatetimeLocal( $conv->conducted_at ) ); ?>"<?php echo $lock_attr; ?> />
-                <small style="color:#5b6e75;"><?php esc_html_e( 'Fill in once the conversation has happened.', 'talenttrack' ); ?></small>
+                <small class="tt-help-text"><?php esc_html_e( 'Fill in once the conversation has happened.', 'talenttrack' ); ?></small>
             </div>
             <div class="tt-field">
                 <label class="tt-field-label" for="tt-conv-agenda"><?php esc_html_e( 'Agenda (pre-meeting)', 'talenttrack' ); ?></label>
@@ -1261,8 +1254,8 @@ class FrontendPdpManageView extends FrontendViewBase {
             <?php endif; ?>
 
             <?php if ( ! empty( $conv->player_reflection ) ) : ?>
-                <div class="tt-card" style="background:#fafbfc; border:1px solid #e5e7ea; border-radius:6px; padding:12px; margin:12px 0;">
-                    <p style="margin:0 0 4px; font-weight:600;"><?php esc_html_e( 'Player self-reflection', 'talenttrack' ); ?></p>
+                <div class="tt-pdp-conv-reflection">
+                    <p class="tt-pdp-conv-reflection__title"><?php esc_html_e( 'Player self-reflection', 'talenttrack' ); ?></p>
                     <div><?php echo wp_kses_post( (string) $conv->player_reflection ); ?></div>
                 </div>
             <?php endif; ?>
@@ -1349,10 +1342,14 @@ class FrontendPdpManageView extends FrontendViewBase {
         }
         echo '</div>'; // /conversation pane
 
-        // Evidence pane — same content as the old sidebar, hidden by
-        // default; the tab toggle reveals it.
-        echo '<div class="tt-pdp-conv-pane" data-tt-pdp-pane="evidence" role="tabpanel" hidden>';
-        self::renderEvidenceSidebar( (int) $file->player_id, $conv );
+        // Evidence pane — the shared panel over the one packet (#3303).
+        // Hidden by default; the tab strip above reveals it.
+        echo '<div class="tt-pdp-conv-pane" id="tt-pdp-pane-evidence" role="tabpanel"'
+            . ' aria-labelledby="' . esc_attr( \TT\Shared\Frontend\Components\RecordSpine::tabId( 'tt-pdp-pane-evidence' ) ) . '" hidden>';
+        \TT\Shared\Frontend\Components\EvidencePanel::enqueue();
+        \TT\Shared\Frontend\Components\EvidencePanel::render(
+            \TT\Modules\Pdp\EvidencePacket::forConversation( $conv_id )
+        );
         echo '</div>';
     }
 
@@ -1418,102 +1415,6 @@ class FrontendPdpManageView extends FrontendViewBase {
             <div class="tt-form-msg"></div>
         </form>
         <?php
-    }
-
-    /**
-     * Evidence sidebar: every evaluation, activity, and goal change for
-     * the player since the previous conversation. Read-only.
-     */
-    private static function renderEvidenceSidebar( int $player_id, object $conv ): void {
-        $since = self::previousConversationDate( $conv );
-
-        global $wpdb; $p = $wpdb->prefix;
-
-        // #1668 — was `tt-card`, whose global rule is display:flex (a
-        // media-object built for list cards), which laid the evidence
-        // sections out as a horizontal run-on and added a stray accent
-        // border + hover-lift. A plain block wrapper stacks them vertically.
-        echo '<aside class="tt-pdp-evidence" style="display:block; background:#fafbfc; border:1px solid #e5e7ea; border-radius:6px; padding:12px;">';
-        echo '<h3 style="margin:0 0 8px; font-size:14px;">' . esc_html__( 'Evidence', 'talenttrack' ) . '</h3>';
-        if ( $since !== null ) {
-            echo '<p style="margin:0 0 8px; color:#5b6e75; font-size:12px;">' . esc_html(
-                sprintf(
-                    /* translators: %s = date */
-                    __( 'Since %s', 'talenttrack' ),
-                    $since
-                )
-            ) . '</p>';
-        }
-
-        $evals = $wpdb->get_results( $wpdb->prepare(
-            "SELECT id, eval_date FROM {$p}tt_evaluations
-              WHERE player_id = %d AND archived_at IS NULL" . ( $since ? " AND eval_date >= %s" : '' ) .
-              " ORDER BY eval_date DESC LIMIT 10",
-            ...( $since ? [ $player_id, $since ] : [ $player_id ] )
-        ) );
-        echo '<p style="margin:8px 0 4px; font-weight:600; font-size:13px;">' . esc_html__( 'Evaluations', 'talenttrack' ) . '</p>';
-        if ( $evals ) {
-            echo '<ul style="margin:0 0 8px; padding-left:18px; font-size:12px;">';
-            foreach ( $evals as $e ) {
-                echo '<li>' . esc_html( \TT\Shared\Dates\TTDate::date( (string) $e->eval_date ) ) . '</li>';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p style="margin:0 0 8px; font-size:12px; color:#5b6e75;"><em>' . esc_html__( 'No evaluations in this window.', 'talenttrack' ) . '</em></p>';
-        }
-
-        $acts = $wpdb->get_results( $wpdb->prepare(
-            // v4.20.44 (#1222) — added `a.archived_at IS NULL` so the
-            // PDP timeline panel hides soft-archived activities the
-            // coach-review surface should treat as never-having-happened.
-            // v4.20.49 (#1228) — added `att.is_guest = 0` + `att.record_type = 'actual'`
-            // so the PDP panel mirrors the canonical attendance scope used by
-            // the player-profile attendance KPI (per #788 ship 2 / #1148).
-            // Audit 7 (#1181).
-            "SELECT a.id, a.session_date, a.title, att.status
-               FROM {$p}tt_attendance att
-               JOIN {$p}tt_activities a ON a.id = att.activity_id
-              WHERE att.player_id = %d
-                AND att.is_guest = 0
-                AND att.record_type = 'actual'
-                AND a.archived_at IS NULL" . ( $since ? " AND a.session_date >= %s" : '' ) .
-              " ORDER BY a.session_date DESC LIMIT 10",
-            ...( $since ? [ $player_id, $since ] : [ $player_id ] )
-        ) );
-        echo '<p style="margin:8px 0 4px; font-weight:600; font-size:13px;">' . esc_html__( 'Activities', 'talenttrack' ) . '</p>';
-        if ( $acts ) {
-            echo '<ul style="margin:0 0 8px; padding-left:18px; font-size:12px;">';
-            foreach ( $acts as $a ) {
-                echo '<li>' . esc_html( \TT\Shared\Dates\TTDate::date( (string) $a->session_date ) ) . ' — '
-                    . esc_html( (string) $a->title ) . ' ('
-                    . esc_html( LookupTranslator::byTypeAndName( 'activity_status', (string) ( $a->status ?? '' ) ) ) . ')</li>';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p style="margin:0 0 8px; font-size:12px; color:#5b6e75;"><em>' . esc_html__( 'No activities in this window.', 'talenttrack' ) . '</em></p>';
-        }
-
-        $goals = $wpdb->get_results( $wpdb->prepare(
-            "SELECT id, title, status, created_at
-               FROM {$p}tt_goals
-              WHERE player_id = %d" . ( $since ? " AND created_at >= %s" : '' ) . "
-                AND archived_at IS NULL
-              ORDER BY created_at DESC LIMIT 10",
-            ...( $since ? [ $player_id, $since ] : [ $player_id ] )
-        ) );
-        echo '<p style="margin:8px 0 4px; font-weight:600; font-size:13px;">' . esc_html__( 'Goal changes', 'talenttrack' ) . '</p>';
-        if ( $goals ) {
-            echo '<ul style="margin:0; padding-left:18px; font-size:12px;">';
-            foreach ( $goals as $g ) {
-                echo '<li>' . esc_html( (string) $g->title ) . ' — '
-                    . esc_html( LookupTranslator::byTypeAndName( 'goal_status', (string) ( $g->status ?? '' ) ) ) . '</li>';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p style="margin:0; font-size:12px; color:#5b6e75;"><em>' . esc_html__( 'No goal changes in this window.', 'talenttrack' ) . '</em></p>';
-        }
-
-        echo '</aside>';
     }
 
     /**
@@ -1865,17 +1766,6 @@ class FrontendPdpManageView extends FrontendViewBase {
         // hasGlobalPdpAccess() branch.
         unset( $is_admin );
         return \TT\Modules\Pdp\PdpAccess::canSeeFile( $user_id, (int) $file->player_id );
-    }
-
-    private static function previousConversationDate( object $conv ): ?string {
-        if ( (int) $conv->sequence <= 1 ) return null;
-        global $wpdb; $p = $wpdb->prefix;
-        $prev = $wpdb->get_var( $wpdb->prepare(
-            "SELECT COALESCE(conducted_at, scheduled_at) FROM {$p}tt_pdp_conversations
-              WHERE pdp_file_id = %d AND sequence = %d",
-            (int) $conv->pdp_file_id, (int) $conv->sequence - 1
-        ) );
-        return $prev ? substr( (string) $prev, 0, 10 ) : null;
     }
 
     private static function statusLabel( string $status ): string {

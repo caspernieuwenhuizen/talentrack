@@ -60040,6 +60040,105 @@ msgstr "Het veld \"%s\" moet een geldig telefoonnummer zijn."
 msgid "Unknown field type: %s"
 msgstr "Onbekend veldtype: %s"
 
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "No evidence could be assembled for this player."
+msgstr "Er kon geen bewijs worden verzameld voor deze speler."
+
+#. translators: 1: window start date, 2: window end date
+#: src/Shared/Frontend/Components/EvidencePanel.php
+#, php-format
+msgid "Since the previous conversation — %1$s to %2$s"
+msgstr "Sinds het vorige gesprek — %1$s tot %2$s"
+
+#. translators: 1: season start date, 2: season end date
+#: src/Shared/Frontend/Components/EvidencePanel.php
+#, php-format
+msgid "This season — %1$s to %2$s"
+msgstr "Dit seizoen — %1$s tot %2$s"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Assessor"
+msgstr "Beoordelaar"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Undated"
+msgstr "Zonder datum"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Attendance and minutes"
+msgstr "Aanwezigheid en speelminuten"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "No training or matches recorded in this window."
+msgstr "Geen trainingen of wedstrijden vastgelegd in deze periode."
+
+#. translators: 1: present count, 2: attendance percentage
+#: src/Shared/Frontend/Components/EvidencePanel.php
+#, php-format
+msgid "%1$d (%2$d%%)"
+msgstr "%1$d (%2$d%%)"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "No goals open or closed in this window."
+msgstr "Geen doelen open of afgerond in deze periode."
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Set in this window"
+msgstr "Opgesteld in deze periode"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Moved in this window"
+msgstr "Verschoven in deze periode"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "No movement in this window"
+msgstr "Geen beweging in deze periode"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "The player has not written a self-reflection for this conversation yet."
+msgstr "De speler heeft nog geen zelfreflectie geschreven voor dit gesprek."
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Notes, injuries and journey"
+msgstr "Notities, blessures en tijdlijn"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Nothing recorded about this player in this window."
+msgstr "Niets vastgelegd over deze speler in deze periode."
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Still out"
+msgstr "Nog niet terug"
+
+#. translators: %s = return-to-play date
+#: src/Shared/Frontend/Components/EvidencePanel.php
+#, php-format
+msgid "Back on %s"
+msgstr "Terug op %s"
+
+#. translators: %s = injury start date
+#: src/Shared/Frontend/Components/EvidencePanel.php
+#, php-format
+msgid "Injury from %s"
+msgstr "Blessure vanaf %s"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Staff note"
+msgstr "Notitie van de staf"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "Potential and behaviour"
+msgstr "Potentieel en gedrag"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgctxt "evidence panel — a potential band set in the window"
+msgid "Potential"
+msgstr "Potentieel"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
+msgid "No potential or behaviour ratings set in this window."
+msgstr "Geen potentieel- of gedragsbeoordelingen vastgelegd in deze periode."
+
 #~ msgid ""
 #~ "This team has no attendance recorded in the selected window. Try widening "
 #~ "the date range or picking another period."
