@@ -125,6 +125,15 @@ final class ProposalStep implements WizardStepInterface {
                 return __( 'One part of the training has no matching exercise in your library yet. It is left blank for you to fill in.', 'talenttrack' );
             case 'no_macro_block_configured':
                 return __( 'No periodisation calendar is set up, so the training is not adjusted for where you are in the season.', 'talenttrack' );
+            // #3359 — say WHY the week is flat. A neutral week with no
+            // explanation reads as a bug, and a coach who thinks the
+            // planner is buggy stops using it.
+            case 'cycle_week_neutral':
+                return ( $warning['fixture_week'] ?? false )
+                    ? __( 'There is a game this week, so the cycle is paused. This training is planned at neutral intensity, and the cycle picks up where it left off next week.', 'talenttrack' )
+                    : __( 'This week is set to neutral, so the cycle is paused. This training is planned at neutral intensity, and the cycle picks up where it left off next week.', 'talenttrack' );
+            case 'phase_profile_shorter_than_block':
+                return __( 'This block runs longer than its weekly profile, so the later weeks are planned at neutral intensity. Add weeks to the profile to keep the progression going.', 'talenttrack' );
             case 'unrecognised_age_group_for_selection':
                 return __( 'This team has no usable age group, so exercises cannot be checked as age-safe.', 'talenttrack' );
             case 'missing_age_profile':

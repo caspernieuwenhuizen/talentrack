@@ -55,6 +55,17 @@ class SessionPlanContext {
 
     public float $progression_multiplier = 1.0;
 
+    /**
+     * Where this training sits in the team's cycle (#3359, epic #3354).
+     * Both stay null when the team has no cycle configured — that is a
+     * normal state, not an error, and the activity stamper writes nothing
+     * rather than inventing a week.
+     */
+    public ?int $cycle_week = null;
+
+    /** `active` | `neutral`, or null when there is no cycle. */
+    public ?string $cycle_state = null;
+
     // 3. Result
     /** @var list<array<string,mixed>> Filled blocks — set by ExerciseSelectionPass. */
     public array $blocks = [];
