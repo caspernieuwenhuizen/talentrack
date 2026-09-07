@@ -119,16 +119,54 @@ final class VctCycleWeeksRestTest extends WP_UnitTestCase {
         $this->assertSame( 400, VctCycleWeeksRestController::resolve( new WP_REST_Request( 'GET', self::ROUTE ) )->get_status() );
     }
 
-    /** A coach may read the rhythm they plan to. */
-    public function test_a_coach_may_read(): void {
-        wp_set_current_user( self::factory()->user->create( [ 'role' => 'tt_coach' ] ) );
+    /**
+     * A coach with a team may read the rhythm they plan to.
+     *
+     * `tt_vct_plan` is matrix-only at team scope by design, so the grant
+     * has to come from a scope row — a bare `tt_coach` role holds nothing.
+     */
+    public function test_a_coach_with_a_team_may_read(): void {
+        $uid = self::factory()->user->create( [ 'role' => 'tt_coach' ] );
+        $this->grantTeamScope( $uid, $this->teamId );
+        wp_set_current_user( $uid );
+
         $this->assertTrue( VctCycleWeeksRestController::can_read() );
+    }
+
+    /** And a coach with no team scope holds nothing at all. */
+    public function test_a_coach_without_a_team_may_not_read(): void {
+        wp_set_current_user( self::factory()->user->create( [ 'role' => 'tt_coach' ] ) );
+        $this->assertFalse( VctCycleWeeksRestController::can_read() );
     }
 
     /** Moving a week shifts the rest of the season — that is not a coach's call. */
     public function test_a_coach_may_not_write(): void {
-        wp_set_current_user( self::factory()->user->create( [ 'role' => 'tt_coach' ] ) );
+        $uid = self::factory()->user->create( [ 'role' => 'tt_coach' ] );
+        $this->grantTeamScope( $uid, $this->teamId );
+        wp_set_current_user( $uid );
+
         $this->assertFalse( VctCycleWeeksRestController::can_write() );
+    }
+
+    private function grantTeamScope( int $user_id, int $team_id ): void {
+        global $wpdb;
+        $wpdb->insert( $wpdb->prefix . 'tt_people', [
+            'club_id'    => 1,
+            'first_name' => 'Cycle',
+            'last_name'  => 'Coach',
+            'role_type'  => 'head_coach',
+            'wp_user_id' => $user_id,
+            'status'     => 'active',
+        ] );
+
+        $wpdb->insert( $wpdb->prefix . 'tt_user_role_scopes', [
+            'person_id'  => (int) $wpdb->insert_id,
+            'role_id'    => 1,
+            'scope_type' => 'team',
+            'scope_id'   => $team_id,
+        ] );
+
+        \TT\Modules\Authorization\Matrix\MatrixRepository::clearCache();
     }
 
     public function test_a_logged_out_visitor_may_do_neither(): void {
