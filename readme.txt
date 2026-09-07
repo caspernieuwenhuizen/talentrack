@@ -4,13 +4,17 @@ Tags: soccer, academy, player development, evaluations, coaching, football
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 4.115.4
+Stable tag: 4.115.5
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Frontend-first, modular youth football talent management system for a single club.
 
 == Changelog ==
+
+= 4.115.5 — The match sheet is one landscape page again (#3297) The exported match-prep PDF was readable but ran to two pages — a touchline sheet you have to turn over is a sheet you lose. It is one page now, laid out for paper rather than for the screen: selection with the roles underneath it on the left, the two half-pitches and the match goals down the middle, and Doen per speler filling the right-hand column.  That block now always reserves fifteen rows — the players who already carry a note, then ruled lines to the count — so the room you write in during the warm-up is there whether or not you filled it in beforehand. Empty goal boxes print as writing lines too, and a full 22-player squad still fits the page.  The Print match sheet route prints the same layout, so the page you print and the PDF you export are finally the same document. =
+
+= 4.115.5 — You can save a view you built from the dropdowns (#3327) Narrowing a list with its Team, Position or Archive dropdowns gave you no way to save that view — the bookmark control simply was not there. Typing something into the search box made it appear, which made the whole feature look intermittent.  The control now appears whenever anything is filtered, however you filtered it, and a list you open on a saved view says so again. =
 
 = 4.115.4 — Saved views moved into the filter bar (#3296) Saved views used to sit in their own band above the filter bar. On a phone that meant a list opened with a saved-views strip, then a filter bar, and only then your rows — two rows of chrome before any content.  They are now part of the bar itself. Your views appear as chips at its right-hand end and still apply in one tap.  **It tells you which view you are on.** The view matching the filters on screen is highlighted; before, only the starred default was marked, so applying any other view left nothing on screen to say so.  **Saving lives behind a bookmark icon** beside the chips, along with rename, replace, set-as-default and delete. The icon only appears when there is something to do with it — on an untouched list, for someone who has never saved a view, it is not there at all.  **Several views no longer crowd the bar.** Three chips show on a wide screen and one on a phone; the rest collapse behind a **+N** you can tap to see them all.  Saving now offers a **Cancel** beside it, so opening the name field by mistake is one tap to back out of. =
 
