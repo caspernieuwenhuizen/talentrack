@@ -3572,7 +3572,9 @@ class FrontendActivitiesManageView extends FrontendViewBase {
             // v3.110.58 — CLAUDE.md § 6.
             $dash_url   = \TT\Shared\Frontend\Components\RecordLink::dashboardUrl();
             $list_url   = add_query_arg( [ 'tt_view' => 'activities' ], $dash_url );
-            $detail_url = ( $is_edit && $session !== null ) ? add_query_arg( [ 'tt_view' => 'activities', 'id' => (int) $session->id ], $dash_url ) : $list_url;
+            // Same-view link (this IS the activities view), so no cross-view
+            // gate applies. Only flagged because the line was touched.
+            $detail_url = ( $is_edit && $session !== null ) ? add_query_arg( [ 'tt_view' => 'activities', 'id' => (int) $session->id ], $dash_url ) : $list_url; /* tt-xview-ok */
             $back       = \TT\Shared\Frontend\Components\BackLink::resolve();
             $cancel_url = $back !== null ? $back['url'] : ( $is_edit ? $detail_url : $list_url );
             echo FormSaveButton::render( [
