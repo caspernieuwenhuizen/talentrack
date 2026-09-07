@@ -1108,24 +1108,54 @@ class FrontendPdpManageView extends FrontendViewBase {
         // names the conversation, and a second name strip above it would say
         // the same thing twice. `tabs_always` keeps the strip under the
         // `classic` shell, where it is the only route to the Evidence pane.
+        // #3306 (epic #3301) — Preparation joins the strip, and leads it
+        // while the talk is still ahead. A coach opening a scheduled
+        // conversation is preparing it; one opening a conducted talk is
+        // writing it up. Whichever pane they need is the one they land on.
+        //
+        // Preparation is coach + head-of-academy only. `PdpPrepAccess`
+        // decides that, not this view, and the pane simply does not exist
+        // for a reader it says no to.
+        $can_prepare  = \TT\Modules\Pdp\Prep\PdpPrepAccess::canAccess( $user_id, $conv_id );
+        $prep_is_open = $can_prepare && empty( $conv->conducted_at );
+
+        $tabs = [];
+        if ( $can_prepare ) {
+            $tabs[] = [
+                // _x() — a one-word tab label, and "preparation" already
+                // means the match-prep surface elsewhere in the product.
+                'label'  => _x( 'Preparation', 'PDP conversation tab — the coach\'s own prep', 'talenttrack' ),
+                'panel'  => 'tt-pdp-pane-prep',
+                'active' => $prep_is_open,
+            ];
+        }
+        $tabs[] = [
+            'label'  => __( 'Conversation', 'talenttrack' ),
+            'panel'  => 'tt-pdp-pane-conversation',
+            'active' => ! $prep_is_open,
+        ];
+        $tabs[] = [
+            'label' => __( 'Evidence', 'talenttrack' ),
+            'panel' => 'tt-pdp-pane-evidence',
+        ];
+
         \TT\Shared\Frontend\Components\RecordSpine::render( [
             'tabs_always' => true,
-            'tabs'        => [
-                [
-                    'label'  => __( 'Conversation', 'talenttrack' ),
-                    'panel'  => 'tt-pdp-pane-conversation',
-                    'active' => true,
-                ],
-                [
-                    'label' => __( 'Evidence', 'talenttrack' ),
-                    'panel' => 'tt-pdp-pane-evidence',
-                ],
-            ],
+            'tabs'        => $tabs,
         ] );
+
+        if ( $can_prepare ) {
+            // Only the signature lock closes preparation. The content lock
+            // exists so a coach does not write up a talk out of order —
+            // preparing one ahead of its turn is the opposite of that, and
+            // is exactly what a coach with a busy April does in March.
+            self::renderPrepPane( $conv, $conv_id, $is_locked, $prep_is_open );
+        }
 
         // Main form column (Conversation pane).
         echo '<div class="tt-pdp-conv-pane" id="tt-pdp-pane-conversation" role="tabpanel"'
-            . ' aria-labelledby="' . esc_attr( \TT\Shared\Frontend\Components\RecordSpine::tabId( 'tt-pdp-pane-conversation' ) ) . '">';
+            . ' aria-labelledby="' . esc_attr( \TT\Shared\Frontend\Components\RecordSpine::tabId( 'tt-pdp-pane-conversation' ) ) . '"'
+            . ( $prep_is_open ? ' hidden' : '' ) . '>';
 
         // v3.110.197 (#809) — locked banner. Names the signatory chain so
         // the coach knows why edits are blocked.
@@ -1212,10 +1242,13 @@ class FrontendPdpManageView extends FrontendViewBase {
                     value="<?php echo esc_attr( self::toDatetimeLocal( $conv->conducted_at ) ); ?>"<?php echo $lock_attr; ?> />
                 <small class="tt-help-text"><?php esc_html_e( 'Fill in once the conversation has happened.', 'talenttrack' ); ?></small>
             </div>
-            <div class="tt-field">
-                <label class="tt-field-label" for="tt-conv-agenda"><?php esc_html_e( 'Agenda (pre-meeting)', 'talenttrack' ); ?></label>
-                <textarea id="tt-conv-agenda" name="agenda" class="tt-input" rows="3"<?php echo $lock_attr; ?>><?php echo esc_textarea( (string) ( $conv->agenda ?? '' ) ); ?></textarea>
-            </div>
+            <?php
+            // #3306 — the free-text "Agenda (pre-meeting)" box lived here.
+            // It is now the Preparation pane: a question set per
+            // conversation template, private to the coach and the head of
+            // academy. Migration 0257 moved whatever coaches had written
+            // into the free-text catch-all question.
+            ?>
             <div class="tt-field">
                 <label class="tt-field-label" for="tt-conv-notes"><?php esc_html_e( 'Notes (post-meeting)', 'talenttrack' ); ?></label>
                 <textarea id="tt-conv-notes" name="notes" class="tt-input" rows="5"<?php echo $lock_attr; ?>><?php echo esc_textarea( (string) ( $conv->notes ?? '' ) ); ?></textarea>
@@ -1261,7 +1294,7 @@ class FrontendPdpManageView extends FrontendViewBase {
             <?php endif; ?>
 
             <?php if ( $is_signed ) : ?>
-                <p class="tt-pdp-signed-off"><strong><?php esc_html_e( 'Signed off', 'talenttrack' ); ?></strong> — <?php echo esc_html( \TT\Shared\Dates\TTDate::dateTime( (string) $conv->coach_signoff_at ) ); ?></p>
+                <p class="tt-pdp-signed-off"><strong><?php esc_html_e( 'Signed off', 'talenttrack' ); ?></strong> — <?php echo esc_html( \TT\Shared\Dates\TTDate::dateTime( (string) ( $conv->coach_signoff_at ?? '' ) ) ); ?></p>
             <?php endif; ?>
 
             <?php if ( $autosaves ) : ?>
@@ -1351,6 +1384,211 @@ class FrontendPdpManageView extends FrontendViewBase {
             \TT\Modules\Pdp\EvidencePacket::forConversation( $conv_id )
         );
         echo '</div>';
+    }
+
+    /**
+     * #3306 (epic #3301) — the coach's preparation for this conversation.
+     *
+     * ## Save model: autosave (CLAUDE.md §6 model A)
+     *
+     * This is composing. A coach writes these the night before, often on a
+     * phone, in sentences they rework — the same shape as match prep and
+     * the conversation form beside it. It uses `FormAutosave` + `SaveState`
+     * rather than a hand-rolled debounce, and the endpoint behind it
+     * accepts partial updates: `PdpPrepAnswersRepository::saveMany()` only
+     * ever touches the question ids in the payload, with a test that an
+     * omitted answer is left alone. Nothing irreversible lives on this form
+     * — sign-off is still its own confirmed button on the Conversation pane.
+     *
+     * ## What is rendered
+     *
+     * The question set for this conversation's template, at the version
+     * pinned for this conversation — a prep started in September keeps the
+     * wording it was answered against even if an admin rewords the question
+     * in November. That resolution lives in
+     * `PdpPrepQuestionsRepository::listForConversation()`, not here.
+     *
+     * A signature-locked or content-locked conversation renders the answers
+     * read-only, matching the conversation form beside it.
+     */
+    private static function renderPrepPane( object $conv, int $conv_id, bool $locked, bool $active ): void {
+        $questions = ( new \TT\Modules\Pdp\Prep\PdpPrepQuestionsRepository() )
+            ->listForConversation( $conv_id, (string) ( $conv->template_key ?? '' ) );
+        $answers = ( new \TT\Modules\Pdp\Prep\PdpPrepAnswersRepository() )
+            ->forConversation( $conv_id );
+
+        $tab_id = \TT\Shared\Frontend\Components\RecordSpine::tabId( 'tt-pdp-pane-prep' );
+
+        echo '<div class="tt-pdp-conv-pane" id="tt-pdp-pane-prep" role="tabpanel"'
+            . ' aria-labelledby="' . esc_attr( $tab_id ) . '"'
+            . ( $active ? '' : ' hidden' ) . '>';
+
+        echo '<p class="tt-pdp-prep__private">'
+            . esc_html__( 'Only you and the head of academy can read this. It is never shown to the player or their parents, on any screen or in any export.', 'talenttrack' )
+            . '</p>';
+
+        if ( $questions === [] ) {
+            \TT\Shared\Frontend\Components\EmptyStateCard::render( [
+                'headline'  => __( 'No preparation questions for this conversation yet', 'talenttrack' ),
+                'explainer' => __( 'An academy admin sets these under Configuration → PDP preparation questions, with a different set for each conversation in the cycle.', 'talenttrack' ),
+            ] );
+            echo '</div>';
+            return;
+        }
+
+        $autosaves = ! $locked;
+        if ( $autosaves ) {
+            \TT\Shared\Frontend\Components\FormAutosave::enqueue();
+        }
+
+        $rest_path = 'pdp-conversations/' . $conv_id . '/prep';
+        ?>
+        <form class="<?php echo $autosaves ? 'tt-autosave-form' : 'tt-ajax-form'; ?> tt-pdp-prep"
+              <?php if ( $autosaves ) {
+                  echo \TT\Shared\Frontend\Components\FormAutosave::formAttrs( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — the component escapes each attribute
+                      $rest_path,
+                      'PATCH',
+                      'pdp-prep:' . $rest_path
+                  );
+              } else {
+                  printf( 'data-rest-path="%s" data-rest-method="PATCH"', esc_attr( $rest_path ) );
+              } ?>>
+            <?php foreach ( $questions as $question ) :
+                $qid    = (int) $question['id'];
+                $value  = (string) ( $answers[ $qid ]['answer_text'] ?? '' );
+                $field  = 'tt-prep-q-' . $qid;
+                $name   = 'answers[' . $qid . ']';
+                $help   = (string) $question['help_text'];
+                ?>
+                <div class="tt-field">
+                    <label class="tt-field-label<?php echo ! empty( $question['required'] ) ? ' tt-field-required' : ''; ?>"
+                           for="<?php echo esc_attr( $field ); ?>">
+                        <?php echo esc_html( (string) $question['label'] ); ?>
+                    </label>
+                    <?php self::renderPrepInput( $question, $field, $name, $value, $locked ); ?>
+                    <?php if ( $help !== '' ) : ?>
+                        <small class="tt-help-text"><?php echo esc_html( $help ); ?></small>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+
+            <?php if ( $autosaves ) : ?>
+                <div class="tt-form-actions">
+                    <?php \TT\Shared\Frontend\Components\SaveState::render(); ?>
+                </div>
+            <?php endif; ?>
+            <div class="tt-form-msg"></div>
+        </form>
+        <?php
+        echo '</div>';
+    }
+
+    /**
+     * One prep answer's input, by the question's field type.
+     *
+     * The bracketed `answers[<id>]` name is what `TT.formToJSON` expands
+     * into the `{ answers: { <id>: … } }` the endpoint reads — the same
+     * expansion the submit path uses, so an autosave and a submit cannot
+     * reach the endpoint with two different shapes.
+     *
+     * @param array<string,mixed> $question
+     */
+    private static function renderPrepInput( array $question, string $field, string $name, string $value, bool $locked ): void {
+        $attr    = $locked ? ' readonly disabled' : '';
+        $options = is_array( $question['options'] ?? null ) ? $question['options'] : [];
+
+        switch ( (string) $question['field_type'] ) {
+            case 'text':
+                printf(
+                    '<input type="text" id="%s" name="%s" class="tt-input" value="%s"%s />',
+                    esc_attr( $field ),
+                    esc_attr( $name ),
+                    esc_attr( $value ),
+                    $attr // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — a literal built above.
+                );
+                return;
+
+            case 'number':
+                // inputmode per CLAUDE.md §2 so the phone keyboard is right.
+                printf(
+                    '<input type="number" inputmode="decimal" id="%s" name="%s" class="tt-input" value="%s"%s />',
+                    esc_attr( $field ),
+                    esc_attr( $name ),
+                    esc_attr( $value ),
+                    $attr // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — a literal built above.
+                );
+                return;
+
+            case 'date':
+                printf(
+                    '<input type="date" id="%s" name="%s" class="tt-input" value="%s"%s />',
+                    esc_attr( $field ),
+                    esc_attr( $name ),
+                    esc_attr( $value ),
+                    $attr // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — a literal built above.
+                );
+                return;
+
+            case 'checkbox':
+                // The hidden sibling carries the unticked state, so
+                // clearing a box saves as "no" rather than not saving.
+                printf(
+                    '<input type="hidden" name="%s" value="" /><label class="tt-checkbox"><input type="checkbox" id="%s" name="%s" value="1"%s%s /><span>%s</span></label>',
+                    esc_attr( $name ),
+                    esc_attr( $field ),
+                    esc_attr( $name ),
+                    checked( $value, '1', false ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — checked() returns a literal.
+                    $attr, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — a literal built above.
+                    esc_html__( 'Yes', 'talenttrack' )
+                );
+                return;
+
+            case 'select':
+                printf(
+                    '<select id="%s" name="%s" class="tt-input"%s>',
+                    esc_attr( $field ),
+                    esc_attr( $name ),
+                    $attr // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — a literal built above.
+                );
+                echo '<option value="">' . esc_html__( '— Select —', 'talenttrack' ) . '</option>';
+                foreach ( $options as $option ) {
+                    printf(
+                        '<option value="%s"%s>%s</option>',
+                        esc_attr( (string) $option ),
+                        selected( $value, (string) $option, false ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — selected() returns a literal.
+                        esc_html( (string) $option )
+                    );
+                }
+                echo '</select>';
+                return;
+
+            case 'multi_select':
+                // Indexed names, not `[]`: the shared serialiser turns
+                // `answers[7][2]` into a keyed array the repository joins,
+                // where a bare `answers[7][]` would collapse to one value.
+                $chosen = array_map( 'trim', explode( ',', $value ) );
+                echo '<div class="tt-pdp-prep__choices">';
+                foreach ( $options as $index => $option ) {
+                    printf(
+                        '<label class="tt-checkbox"><input type="checkbox" name="%s" value="%s"%s%s /><span>%s</span></label>',
+                        esc_attr( $name . '[' . (int) $index . ']' ),
+                        esc_attr( (string) $option ),
+                        checked( in_array( (string) $option, $chosen, true ), true, false ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — checked() returns a literal.
+                        $attr, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — a literal built above.
+                        esc_html( (string) $option )
+                    );
+                }
+                echo '</div>';
+                return;
+        }
+
+        printf(
+            '<textarea id="%s" name="%s" class="tt-input" rows="4"%s>%s</textarea>',
+            esc_attr( $field ),
+            esc_attr( $name ),
+            $attr, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — a literal built above.
+            esc_textarea( $value )
+        );
     }
 
     /**

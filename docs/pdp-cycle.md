@@ -47,10 +47,21 @@ A native calendar entry is written for every conversation.
 
 ### 2. Run the conversations
 
-Each conversation has two halves:
+A conversation opens on three tabs — **Preparation**, **Conversation**, **Evidence** — and lands on the one you need: Preparation while the talk is still ahead, Conversation once it has been conducted.
 
-- **Pre-meeting** — agenda + the player's self-reflection.
-- **Post-meeting** — notes, agreed actions, and a sign-off.
+- **Preparation** — the coach's own answers to this conversation's question set. Coach and head of academy only.
+- **Conversation** — the player's self-reflection, then the notes, agreed actions and sign-off from the talk itself.
+- **Evidence** — what the academy already knows, read-only.
+
+#### Preparation
+
+The **Preparation** tab asks what a coach should have thought about before the talk. The questions differ per conversation in the cycle — the start of a season asks what we are asking of this player, the end asks what you will recommend to the head of academy — and an academy sets its own under *Configuration → PDP preparation questions*.
+
+It saves as you write, like the conversation form beside it. Sign-off is unaffected: it stays its own button on the Conversation tab.
+
+**Nobody but you and the head of academy reads this.** Not the player, not their parents, on any screen, in the print, or in any export. It is where you can write that a family situation is difficult, or that you are not yet sure about a recommendation. What gets shared is what you agree in the talk itself — the notes and the agreed actions.
+
+> **Upgrading from the agenda box.** The single free-text *Agenda (pre-meeting)* field is retired. Whatever was written in it moved into the *"Anything else to prepare?"* question on the same conversation, so nothing is lost. One consequence worth knowing: the agenda used to be shown to the player on their own PDP view, and preparation is not. Text that moved became less visible, never more.
 
 The form's **Evidence** tab collects what the academy already knows about the player since the previous conversation, read-only, so the coach opens the talk on the record rather than on memory: evaluations with their rating, assessor and notes; attendance with the present / absent / excused split, matches played and minutes, with the per-match breakdown; goals, and whether each one has moved; the player's own self-reflection; staff notes, injuries and journey events; and the potential and behaviour ratings set in the window.
 

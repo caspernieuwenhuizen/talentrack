@@ -46,6 +46,42 @@
     font-weight: 600;
 }
 
+/* #3306 — the coach's preparation pane.
+ *
+ * The privacy line leads the pane rather than sitting under it: a coach
+ * about to write candidly about a minor should know who can read it before
+ * they start, not after. */
+.tt-pdp-prep__private {
+    margin: 0 0 var(--tt-sp-4, 16px);
+    padding: var(--tt-sp-3, 12px);
+    border-left: 3px solid var(--tt-info, #2d6fb3);
+    background: var(--tt-info-subtle, #e6f0fa);
+    border-radius: var(--tt-radius, 8px);
+    color: var(--tt-ink, #0e1a14);
+}
+
+.tt-pdp-prep .tt-help-text {
+    display: block;
+    margin-top: var(--tt-sp-1, 4px);
+    color: var(--tt-ink-soft, #6a6d66);
+    font-size: var(--tt-fs-sm, 0.85rem);
+}
+
+.tt-pdp-prep__choices {
+    display: grid;
+    gap: var(--tt-sp-2, 8px);
+}
+
+/* 48px targets on every choice, per CLAUDE.md § 2. */
+.tt-pdp-prep__choices .tt-checkbox,
+.tt-pdp-prep .tt-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--tt-sp-2, 8px);
+    min-height: 48px;
+    touch-action: manipulation;
+}
+
 /* #3304 — the evidence, above the verdict decision. Collapsed by default:
    a head of academy who already knows the player should not have to scroll
    a season's worth of record to reach the four buttons, and one who does

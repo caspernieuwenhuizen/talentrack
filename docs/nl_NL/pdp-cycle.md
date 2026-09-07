@@ -47,10 +47,21 @@ Voor elk gesprek wordt automatisch een native agenda-item bijgehouden.
 
 ### 2. Voer de gesprekken
 
-Elk gesprek heeft twee fases:
+Een gesprek opent op drie tabbladen — **Voorbereiding**, **Gesprek**, **Bewijs** — en start op het tabblad dat je nodig hebt: Voorbereiding zolang het gesprek nog voor je ligt, Gesprek zodra het gevoerd is.
 
-- **VÃ³Ã³r het gesprek** â€” agenda + de zelfreflectie van de speler.
-- **Na het gesprek** â€” notities, afgesproken acties en ondertekening.
+- **Voorbereiding** — de eigen antwoorden van de trainer op de vragenset van dit gesprek. Alleen voor de trainer en het hoofd opleiding.
+- **Gesprek** — de zelfreflectie van de speler, en daarna de notities, afgesproken acties en ondertekening uit het gesprek zelf.
+- **Bewijs** — wat de academie al weet, alleen-lezen.
+
+#### Voorbereiding
+
+Het tabblad **Voorbereiding** vraagt waar je vóór het gesprek over nagedacht moet hebben. De vragen verschillen per gesprek in de cyclus — aan het begin van het seizoen vraag je wat we van deze speler vragen, aan het eind wat je het hoofd opleiding gaat adviseren — en een academie stelt ze zelf in onder *Configuratie → POP-voorbereidingsvragen*.
+
+Het formulier slaat zichzelf op, net als het gespreksformulier ernaast. Ondertekenen verandert niet: dat blijft een eigen knop op het tabblad Gesprek.
+
+**Niemand behalve jij en het hoofd opleiding leest dit.** Niet de speler, niet de ouders, op geen enkel scherm, niet in de print en niet in een export. Hier kun je opschrijven dat een thuissituatie moeilijk is, of dat je nog twijfelt over een advies. Wat gedeeld wordt, is wat je in het gesprek afspreekt — de notities en de afgesproken acties.
+
+> **Overstappen van het agendaveld.** Het losse vrije-tekstveld *Agenda (voor het gesprek)* vervalt. Wat erin stond is verplaatst naar de vraag *“Nog iets anders voor te bereiden?”* bij hetzelfde gesprek, dus er gaat niets verloren. Eén gevolg is het benoemen waard: de agenda was zichtbaar voor de speler op zijn eigen POP-scherm, en de voorbereiding is dat niet. Tekst die is verplaatst werd dus minder zichtbaar, nooit meer.
 
 Het tabblad **Bewijs** in het formulier verzamelt wat de academie al weet over de speler sinds het vorige gesprek — alleen-lezen, zodat de trainer het gesprek opent op basis van het dossier en niet op basis van zijn geheugen: evaluaties met beoordeling, beoordelaar en notities; aanwezigheid met de verdeling aanwezig / afwezig / afgemeld, gespeelde wedstrijden en speelminuten, met de opbouw per wedstrijd; doelen, en of ze bewogen zijn; de zelfreflectie van de speler; notities van de staf, blessures en gebeurtenissen op de tijdlijn; en de potentieel- en gedragsbeoordelingen uit die periode.
 

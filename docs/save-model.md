@@ -31,6 +31,7 @@ not. Beside it, **Undo** and **Revert changes**.
 | [Evaluations](evaluations.md) | Editing an existing one |
 | [Player goals](goals.md) | Editing an existing one |
 | [PDP conversation](pdp-cycle.md) | Until it is signed off |
+| [PDP preparation](pdp-cycle.md) | The coach's answers, until the conversation is signed off |
 | [PDP self-reflection](pdp-cycle.md) | While the reflection window is open |
 
 **Why these.** They are all places where you *compose* — you write sentences
