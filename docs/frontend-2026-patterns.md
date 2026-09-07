@@ -87,10 +87,80 @@ Group `type`s:
 | `select` | chevron box | auto-submits on change (opt out with `auto_submit => false`) |
 | `text` | free-text / search box | on Apply / live-filtered by a hydrator |
 | `date_range` | paired from/to date inputs | on Apply / live-filtered |
-| `period` | pill-dropdown (inline) → segmented track (sheet); link-based | navigation (no JS needed) |
+| `period` | pill-dropdown (inline) → segmented track (sheet), with an optional **Custom range…** branch owning the from/to dates; presets are link-based | navigation for a preset, Apply for a custom window |
 | `status` | one-tap status pills; link-based | navigation |
 | `menu` | icon-only `⋯` overflow menu; link-based | navigation (no JS needed) |
 | `toggle` | boolean switch (checkbox) | auto-submits on change |
+| `player` | type-to-filter player picker | auto-submits on change |
+
+**A surface shows one time control, not two** (#3331). Nine surfaces used to
+render a `period` group *and* a standalone `date_range` for the same question,
+so the two could disagree — which is what #3293 had to teach the pill to stop
+doing. Build it with `ReportFilters::periodGroup()`, which takes the
+**effective** period (`ReportFilters::effectivePeriod()`, never the raw
+`?period=`) and puts the from/to inside the group's `custom` branch. The
+trigger then reads the window the query actually ran on: a preset's label, or
+the range. Don't add a `date_range` group beside a `period` one.
+
+### How a filtered surface behaves
+
+**One behaviour, and it is in-place.** A filter change updates the result
+without a page load. Two things used to be true at once — `FrontendListTable`
+surfaces hydrated over REST while nine bare-FilterBar surfaces called
+`form.requestSubmit()` — and a new surface's author copied whichever neighbour
+they happened to read. Epic #3335 settled it.
+
+A surface opts in with two markers:
+
+```php
+FilterBar::render( [
+    'refresh' => true,      // marks the bar's form
+    …
+] );
+
+// …then wrap everything the filters govern, and nothing else:
+printf( '<div data-tt-filter-region data-tt-filter-count="%d">', $total );
+self::renderSummary( … );
+self::renderTable( … );
+self::renderPagination( … );
+echo '</div>';
+```
+
+`filter-refresh.js` refetches the surface's own URL with the new query and
+swaps the region out of the response. It is a document fetch rather than a JSON
+endpoint on purpose: these surfaces render aggregates in PHP, and re-rendering
+the region they already produce keeps **the server as the single renderer** —
+there is no second template in JS to drift from the first.
+
+Four rules that are part of the contract, not polish:
+
+- **The region holds everything the filters govern, including the empty
+  state.** A swap that updates the rows and leaves "1–50 of 4 812" behind, or
+  leaves the previous window's tables under a filter that no longer describes
+  them, is worse than the reload it replaced.
+- **The bar is outside the region.** Swapping it destroys the control the
+  reader just used.
+- **`refresh => true` and a region always go together.** The flag also switches
+  off `data-tt-filter-submit`, so a surface that opts in without marking a
+  region loses auto-submit and gains nothing — filtering silently stops
+  working.
+- **A surface holding unsaved work registers a guard.** Push a
+  `function (): boolean|Promise<boolean>` onto `TT.filterRefreshGuards`;
+  returning false aborts the refresh and puts the control back. The two grids
+  do this (#3337) because an in-place swap is not a navigation and never
+  reaches `beforeunload`. Warn and let the reader choose — don't save on their
+  behalf, and don't block the filter.
+
+The pending state, the request supersession and the `aria-live` announcement
+come from the module; a surface does not implement them. Without JS the
+link-based groups still navigate and the form still submits, so this stays
+progressive enhancement.
+
+**Not yet migrated**, both for stated reasons rather than oversight:
+`FrontendStandardReportsView` (eight sub-reports through one bar, each needing
+its body extracted first) and `FrontendComparisonView` (its FilterBar form is
+nested inside the view's own, so the marker lands on a form the browser
+discards — #3352).
 
 **`FrontendListTable` renders its filter chrome through FilterBar** (#2082) —
 every list adopter inherits the mobile-first treatment with no per-view change.
