@@ -45281,6 +45281,38 @@ msgstr "Leeftijdsprofiel verwijderd."
 msgid "Team schedule saved."
 msgstr "Teamschema opgeslagen."
 
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:1181
+msgid "Cycle week"
+msgstr "Cyclusweek"
+
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:1186
+msgid "Follow the cycle"
+msgstr "De cyclus volgen"
+
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:1190
+msgid "A specific week"
+msgstr "Een specifieke week"
+
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:1194
+msgid "Which week"
+msgstr "Welke week"
+
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:1200
+msgid ""
+"Changes this training only. To move the whole team's week, use the cycle "
+"calendar under VCT configuration."
+msgstr ""
+"Verandert alleen deze training. Wil je de week van het hele team "
+"verschuiven, gebruik dan de cycluskalender onder VCT-configuratie."
+
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:1222
+msgid "set by hand"
+msgstr "met de hand gezet"
+
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:1224
+msgid "game this week"
+msgstr "wedstrijd deze week"
+
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1046
 msgid "Cycle saved."
 msgstr "Cyclus opgeslagen."

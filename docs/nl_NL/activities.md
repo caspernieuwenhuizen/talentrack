@@ -168,6 +168,43 @@ Elk activiteittype kan gekoppeld worden aan een workflow-sjabloon dat afgaat zod
 
 Je beheerder kan via **Configuratie → Activiteittypes** wijzigen welk sjabloon bij welk type hoort, of een nieuw type toevoegen en daar een sjabloon aan koppelen. De standaardtypes kunnen niet verwijderd worden omdat de evaluatietaak afhankelijk is van het bestaan van **Wedstrijd**.
 
+## In welke week van de cyclus een training valt
+
+Heeft het team een [VCT-cyclus](configuration-vct.md), dan legt elke
+training vast als welke week van die cyclus hij is gepland, en de
+detailpagina toont dat: **Week 3**, of **Neutraal — wedstrijd deze week**.
+
+Bij een neutrale week staat er altijd waarom. Alleen "Neutraal" leest als
+een bug, en wie denkt dat de planner rammelt, blijft hem niet gebruiken.
+
+De week wordt vastgelegd bij het opslaan van de training en is een
+**vastlegging van wat de training was**, geen live berekening. Voeg in
+oktober een wedstrijd toe en elke training erna schuift een week terug —
+maar de trainingen *ervoor* houden de week waarvoor ze gepland waren. Dat
+is bewust: de trainingsgeschiedenis van een speler van drie maanden
+geleden hoort nog steeds te zeggen wat hij toen zei, in plaats van
+zichzelf stilletjes te herschrijven bij elke wijziging in het seizoen.
+
+### Het voor één training aanpassen
+
+Het veld **Cyclusweek** op het bewerkformulier kent drie antwoorden:
+
+- **De cyclus volgen** — de standaard. De week wordt voor je bepaald en
+  bijgehouden.
+- **Neutraal** — deze ene training draait op neutrale intensiteit.
+- **Een specifieke week** — zet hem vast op een week van de cyclus die
+  je zelf kiest.
+
+Kies je iets anders dan "De cyclus volgen", dan ligt de week van die
+training definitief vast: hij schuift niet meer mee als wedstrijden
+verplaatsen. Zet je hem terug op "De cyclus volgen", dan gaat hij meteen
+terug naar de cyclus en wordt hij ter plekke opnieuw berekend.
+
+Dit verandert **één training**. Wil je de week van het hele team
+verschuiven — en alles wat erna komt — gebruik dan de cycluskalender
+onder VCT-configuratie. De twee zijn makkelijk te verwarren, en maar één
+ervan is wat je wilt als het ritme van een hele selectie niet klopt.
+
 ## Status en bron
 
 Naast het type heeft elke activiteit twee extra velden:
