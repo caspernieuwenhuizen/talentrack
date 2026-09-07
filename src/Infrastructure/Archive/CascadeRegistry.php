@@ -244,6 +244,8 @@ final class CascadeRegistry {
                 [ 'tt_vct_macro_blocks', 'team_id' ],
                 [ 'tt_vct_sessions', 'team_id' ],
                 [ 'tt_vct_microcycles', 'team_id' ],
+                [ 'tt_vct_team_cycles', 'team_id' ],
+                [ 'tt_vct_cycle_weeks', 'team_id' ],
             ],
             // #2571 — the team's scope rows. Polymorphic: `scope_id` is a
             // team id only when `scope_type = 'team'`, so it can't go in
