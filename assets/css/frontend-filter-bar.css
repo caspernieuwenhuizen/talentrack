@@ -228,6 +228,61 @@
 	box-shadow: var(--tt-shadow-md, 0 8px 24px -8px rgba(0, 0, 0, 0.12));
 	padding: var(--tt-sp-1, 4px);
 }
+/* -------------------------------------------------------------------
+ * #3331 — the "Custom range…" branch of a period control.
+ *
+ * Nine surfaces carried a period dropdown AND a separate date range for
+ * one question, so the two could disagree — which is what #3293 had to
+ * teach the pill to stop doing. The dates live inside the period control
+ * now, behind a <details> that only opens when someone wants them.
+ *
+ * Styled to read as one more option in the menu until it is opened, so
+ * the common case (pick a preset) is not made to look more complicated
+ * than it is.
+ * ------------------------------------------------------------------- */
+.tt-dashboard .tt-percustom {
+	border-top: 1px solid var(--tt-line-soft, #eef0ec);
+	margin-top: 4px;
+	padding-top: 4px;
+}
+.tt-dashboard .tt-percustom__toggle {
+	display: flex;
+	align-items: center;
+	min-height: 48px;
+	padding: 0 12px;
+	border-radius: var(--tt-radius, 8px);
+	font-size: 0.875rem;
+	color: var(--tt-ink, #0e1a14);
+	cursor: pointer;
+	white-space: nowrap;
+	list-style: none;
+	touch-action: manipulation;
+}
+.tt-dashboard .tt-percustom__toggle::-webkit-details-marker { display: none; }
+.tt-dashboard .tt-percustom__toggle:hover {
+	background: var(--tt-bg-soft, #f4f6f3);
+}
+.tt-dashboard .tt-percustom__toggle:focus-visible {
+	outline: 2px solid var(--tt-primary, #0b3d2e);
+	outline-offset: -2px;
+}
+.tt-dashboard .tt-percustom[open] .tt-percustom__toggle {
+	font-weight: 700;
+	color: var(--tt-primary, #0b3d2e);
+}
+.tt-dashboard .tt-percustom__body {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: var(--tt-sp-2, 8px);
+	padding: 8px 12px 4px;
+}
+/* The pill says a custom window is what the query ran on, so the reader
+   can see it without opening the menu. */
+.tt-dashboard .tt-perdrop--custom {
+	border-color: var(--tt-primary, #0b3d2e);
+}
+
 .tt-dashboard .tt-perdrop__opt {
 	display: flex;
 	align-items: center;

@@ -443,13 +443,10 @@ final class FrontendMinutesTeamReportView extends FrontendViewBase {
                     'selected' => (string) $team_id,
                     'options'  => $team_options,
                 ],
-                [
-                    'type'         => 'period',
-                    'key'          => 'period',
-                    'label'        => __( 'Period', 'talenttrack' ),
-                    'active_label' => (string) ( $period_labels[ $period ] ?? $period_labels[''] ),
-                    'options'      => $period_options,
-                ],
+                // #3331 — one time control: the presets and the custom
+                // From/To answer the same question, so they are one
+                // control. The standalone date_range group is gone.
+                ReportFilters::periodGroup( $period_options, $period, $from, $to ),
                 [
                     'type'        => 'select',
                     'key'         => 'type',
@@ -458,15 +455,6 @@ final class FrontendMinutesTeamReportView extends FrontendViewBase {
                     'selected'    => $type_filter === 'all' ? '' : $type_filter,
                     'placeholder' => __( 'All types', 'talenttrack' ),
                     'options'     => $type_options,
-                ],
-                [
-                    'type'       => 'date_range',
-                    'key'        => 'range',
-                    'label'      => __( 'Date range', 'talenttrack' ),
-                    'label_from' => __( 'From', 'talenttrack' ),
-                    'label_to'   => __( 'To', 'talenttrack' ),
-                    'from'       => [ 'name' => 'from', 'value' => $from ],
-                    'to'         => [ 'name' => 'to', 'value' => $to ],
                 ],
             ],
         ] );

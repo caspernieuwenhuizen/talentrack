@@ -480,22 +480,10 @@ final class FrontendStandardReportsView extends FrontendViewBase {
                 'extra_keys'  => array_keys( $extra_hidden ),
             ],
             'groups'       => [
-                [
-                    'type'         => 'period',
-                    'key'          => 'period',
-                    'label'        => __( 'Period', 'talenttrack' ),
-                    'active_label' => (string) ( $period_labels[ $period ] ?? $period_labels[''] ),
-                    'options'      => $period_options,
-                ],
-                [
-                    'type'       => 'date_range',
-                    'key'        => 'range',
-                    'label'      => __( 'Date range', 'talenttrack' ),
-                    'label_from' => __( 'From', 'talenttrack' ),
-                    'label_to'   => __( 'To', 'talenttrack' ),
-                    'from'       => [ 'name' => 'from', 'value' => $from ],
-                    'to'         => [ 'name' => 'to', 'value' => $to ],
-                ],
+                // #3331 — one time control: the presets and the custom
+                // From/To answer the same question, so they are one
+                // control. The standalone date_range group is gone.
+                \TT\Modules\Analytics\Reports\ReportFilters::periodGroup( $period_options, $period, $from, $to ),
             ],
         ] );
     }

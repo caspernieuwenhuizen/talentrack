@@ -9192,6 +9192,13 @@ msgstr "Dit schema archiveren? Het stopt dan met uitvoeren."
 msgid "Custom range"
 msgstr "Aangepast bereik"
 
+#. #3331 — the branch of the period control that opens the From/To dates.
+#. The ellipsis says it reveals something rather than applying a window,
+#. which is why it is not the bare "Custom range" above.
+#: src/Shared/Frontend/Components/FilterBar.php
+msgid "Custom range…"
+msgstr "Aangepast bereik…"
+
 #: src/Modules/Analytics/Reports/ReportFilters.php:35
 msgid "Last week"
 msgstr "Vorige week"

@@ -175,6 +175,16 @@ final class FilterBar {
 				case 'status':
 				case 'menu':
 					$add( $group['param'] ?? ( $group['key'] ?? $type ) );
+					// #3331 — a period group can own the custom From/To now.
+					// They are real form fields, so a saved view has to
+					// capture them or a view saved on a custom window would
+					// restore the preset and silently show a different one.
+					if ( $type === 'period' && isset( $group['custom'] ) && is_array( $group['custom'] ) ) {
+						$cf = isset( $group['custom']['from'] ) && is_array( $group['custom']['from'] ) ? $group['custom']['from'] : [];
+						$ct = isset( $group['custom']['to'] )   && is_array( $group['custom']['to'] )   ? $group['custom']['to']   : [];
+						$add( $cf['name'] ?? '' );
+						$add( $ct['name'] ?? '' );
+					}
 					break;
 			}
 		}
@@ -942,6 +952,25 @@ final class FilterBar {
 		$options      = isset( $group['options'] ) && is_array( $group['options'] ) ? $group['options'] : [];
 		$active_label = (string) ( $group['active_label'] ?? '' );
 
+		// #3331 — the optional custom-range branch.
+		//
+		// Nine surfaces rendered a `period` pill-dropdown AND a standalone
+		// `date_range` for the same question, which is why #3293 had to teach
+		// the pill not to lie about which of the two the query used. One
+		// control cannot contradict itself.
+		//
+		// The dates live inside this group now. The presets stay link-based
+		// so they work with JS off, and the custom branch is a <details> that
+		// reveals the two inputs — also JS-free. `custom` carries
+		// `['from' => [name, value], 'to' => [...]]`, the same shape the
+		// `date_range` group took, so a surface migrates by moving that array
+		// rather than rewriting it.
+		$custom     = isset( $group['custom'] ) && is_array( $group['custom'] ) ? $group['custom'] : [];
+		$custom_on  = ! empty( $group['custom_active'] );
+		$from       = isset( $custom['from'] ) && is_array( $custom['from'] ) ? $custom['from'] : [];
+		$to         = isset( $custom['to'] )   && is_array( $custom['to'] )   ? $custom['to']   : [];
+		$custom_lbl = (string) ( $custom['label'] ?? __( 'Custom range…', 'talenttrack' ) );
+
 		if ( $in_sheet ) {
 			$out = '<div class="tt-segtrack" role="group">';
 			foreach ( $options as $opt ) {
@@ -952,6 +981,9 @@ final class FilterBar {
 					. ( $is_on ? ' aria-current="true"' : '' ) . '>' . esc_html( $lbl ) . '</a>';
 			}
 			$out .= '</div>';
+			if ( $custom !== [] ) {
+				$out .= self::renderPeriodCustom( $from, $to, $custom_lbl, $custom_on, true );
+			}
 			return $out;
 		}
 
@@ -959,7 +991,7 @@ final class FilterBar {
 		// fully functional with JS off. The script (data-tt-perdrop) only
 		// adds outside-click-to-close as an enhancement.
 		$out  = '<details class="tt-perdrop-wrap" data-tt-perdrop>';
-		$out .= '<summary class="tt-perdrop">'
+		$out .= '<summary class="tt-perdrop' . ( $custom_on ? ' tt-perdrop--custom' : '' ) . '">'
 			. '<span class="tt-perdrop__label">' . esc_html( $active_label ) . '</span>'
 			. '<span class="tt-perdrop__chev" aria-hidden="true"></span></summary>';
 		$out .= '<div class="tt-perdrop__menu" role="menu">';
@@ -971,6 +1003,52 @@ final class FilterBar {
 				. ' role="menuitem" href="' . esc_url( $url ) . '"'
 				. ( $is_on ? ' aria-current="true"' : '' ) . '>'
 				. esc_html( $lbl ) . '</a>';
+		}
+		if ( $custom !== [] ) {
+			$out .= self::renderPeriodCustom( $from, $to, $custom_lbl, $custom_on, false );
+		}
+		$out .= '</div>';
+		$out .= '</details>';
+		return $out;
+	}
+
+	/**
+	 * The "Custom range…" branch of a `period` group (#3331).
+	 *
+	 * A `<details>` holding the two date inputs, open when a custom window is
+	 * what the query ran on. Inside the inline pill-dropdown it is one more
+	 * menu item that expands; in the sheet it sits under the segmented track.
+	 *
+	 * The Apply button is here rather than on the group, because this is the
+	 * only part of a `period` control that does not navigate on click: the
+	 * presets are links and commit themselves, a typed date does not.
+	 * `$in_sheet` suppresses it — the sheet has one footer Apply and a second
+	 * would be a duplicate, which is the trap #3288 fixed.
+	 *
+	 * @param array<string,mixed> $from
+	 * @param array<string,mixed> $to
+	 */
+	private static function renderPeriodCustom( array $from, array $to, string $label, bool $open, bool $in_sheet ): string {
+		$field = static function ( array $cfg, string $sublabel ): string {
+			$o  = '<label class="tt-fildate">';
+			if ( $sublabel !== '' ) {
+				$o .= '<span class="tt-fildate__label">' . esc_html( $sublabel ) . '</span>';
+			}
+			$o .= '<input type="date" class="tt-fildate__input"'
+				. ' name="' . esc_attr( (string) ( $cfg['name'] ?? '' ) ) . '"'
+				. ' value="' . esc_attr( (string) ( $cfg['value'] ?? '' ) ) . '" />';
+			$o .= '</label>';
+			return $o;
+		};
+
+		$out  = '<details class="tt-percustom"' . ( $open ? ' open' : '' ) . '>';
+		$out .= '<summary class="tt-percustom__toggle">' . esc_html( $label ) . '</summary>';
+		$out .= '<div class="tt-percustom__body">';
+		$out .= $field( $from, __( 'From', 'talenttrack' ) );
+		$out .= $field( $to, __( 'To', 'talenttrack' ) );
+		if ( ! $in_sheet ) {
+			$out .= '<button type="submit" class="tt-btn tt-btn-primary tt-fildate__apply">'
+				. esc_html__( 'Apply', 'talenttrack' ) . '</button>';
 		}
 		$out .= '</div>';
 		$out .= '</details>';
