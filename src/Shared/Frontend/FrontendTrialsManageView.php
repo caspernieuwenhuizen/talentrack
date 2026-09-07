@@ -199,7 +199,7 @@ class FrontendTrialsManageView extends FrontendViewBase {
         // #2005 — read-only coaches see only cases for players on their
         // own teams. The matrix grants head_coach `trial_cases [rc]` at
         // TEAM scope, so the list must honour that boundary (matching the
-        // team-scoping in CoachDashboardView / FrontendEvaluationsView).
+        // team-scoping in FrontendEvaluationsView).
         // Managers (`tt_manage_trials` → academy-wide create_delete) and
         // admins keep the unscoped, full view they had before. An empty
         // allow-list yields zero rows — a coach with no team sees nothing.

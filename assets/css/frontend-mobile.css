@@ -1,33 +1,18 @@
 /*
  * TalentTrack — Frontend mobile responsive rules (v2.16.0).
  *
- * Scoped rules for the player/coach front-end dashboards. Targets
- * 640px and 480px breakpoints. Tables collapse to card/stack layouts
- * on narrow viewports; grids stack; forms become touch-friendly.
+ * Scoped rules for the front-end dashboards. Targets 640px and 480px
+ * breakpoints. Tables collapse to card/stack layouts on narrow viewports;
+ * grids stack; forms become touch-friendly.
  *
- * Loaded by PlayerDashboardView and CoachDashboardView alongside the
- * existing frontend.css.
+ * Enqueued by `FrontendViewBase`, so every routable frontend view gets it.
+ * It was originally written for `PlayerDashboardView` and
+ * `CoachDashboardView`; both were removed in #3341 and the sheet outlived
+ * them.
  */
 
-/* Tabs: horizontal scroll on narrow */
-@media (max-width: 480px) {
-    .tt-tabs {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        white-space: nowrap;
-        padding-bottom: 4px;
-        scrollbar-width: thin;
-    }
-    .tt-tabs::-webkit-scrollbar { height: 4px; }
-    .tt-tabs::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
-
-    .tt-tab {
-        flex: 0 0 auto;
-        min-height: 40px;
-        padding: 8px 14px;
-        font-size: 14px;
-    }
-}
+/* #3341 — the tab rules that lived here went with the two dashboard views
+   that emitted them. */
 
 /* Card grid: roster */
 @media (max-width: 480px) {

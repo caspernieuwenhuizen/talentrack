@@ -214,31 +214,23 @@
 
     document.addEventListener('DOMContentLoaded', function() {
 
-        // Tab switching — legacy `data-tab` pattern (tabs share a page,
-        // each one matched to a `.tt-tab-content[data-tab="..."]` pane).
-        // Modern surfaces (CustomCss editor, Trial-case detail) use real
-        // <a href> links that should navigate — they don't carry
-        // `data-tab`, so we let those through unmolested. Without this
-        // guard the delegated handler would `preventDefault` every
-        // `.tt-tab` click and then fail silently because no content pane
-        // matches.
-        on('.tt-dashboard .tt-tab', 'click', function(e) {
-            var tab = this.getAttribute('data-tab');
-            if (!tab) return; // real <a href> link — let the browser navigate
-            e.preventDefault();
-            var root = this.closest('.tt-dashboard');
-            if (!root) return;
-            root.querySelectorAll('.tt-tab').forEach(function(t) { t.classList.remove('tt-tab-active'); });
-            this.classList.add('tt-tab-active');
-            root.querySelectorAll('.tt-tab-content').forEach(function(c) { c.classList.remove('tt-tab-content-active'); });
-            var active = root.querySelector('.tt-tab-content[data-tab="' + tab + '"]');
-            if (active) active.classList.add('tt-tab-content-active');
-            if (history.replaceState) {
-                var url = new URL(window.location.href);
-                url.searchParams.set('tt_view', tab);
-                history.replaceState({}, '', url);
-            }
-        });
+        // #3341 — the legacy `.tt-dashboard .tt-tab[data-tab]` switcher was
+        // removed here along with `CoachDashboardView` and
+        // `PlayerDashboardView`, the only two surfaces that emitted the
+        // markup it bound to. Both had been unreachable for some time —
+        // neither appeared in the dispatcher, and `PlayerDashboardView` had
+        // no reference anywhere in `src/` at all.
+        //
+        // Worth knowing why it is called out rather than quietly deleted:
+        // it rewrote `tt_view` with `history.replaceState`, which REPLACES
+        // the current history entry instead of adding one. On a surface
+        // with a goals tab that is an exact mechanism for #3048 ("back from
+        // a goal screen lands on the domain's front page"), so two separate
+        // investigations found it, believed it, and had to do the
+        // reachability work to rule it out. It is gone now, so #3048's
+        // cause is elsewhere.
+        //
+        // Record-scoped tabs come from `RecordSpine` (CLAUDE.md §5c).
 
         // REST form submission
         on('.tt-ajax-form', 'submit', function(e) {
