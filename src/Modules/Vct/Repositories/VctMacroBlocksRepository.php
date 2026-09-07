@@ -117,7 +117,7 @@ class VctMacroBlocksRepository {
         return true;
     }
 
-    /** @return list<array<string,mixed>> The two reference templates. */
+    /** @return list<array<string,mixed>> The seeded reference templates. */
     public function listReferenceTemplates(): array {
         $rows = $this->wpdb->get_results( $this->wpdb->prepare(
             "SELECT id, sequence, label, start_date, end_date, phase_profile_json
