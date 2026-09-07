@@ -87,9 +87,15 @@ final class DimensionValueResolver {
 
             case 'tt_activities':
                 // Activities don't have a `name`; surface "{type} on {date}"
-                // so a coach can identify the session at a glance.
+                // so a coach can identify the activity at a glance.
+                //
+                // The date column is `session_date` and is aliased here.
+                // Selecting `activity_date` (#3356) made the query fail
+                // outright, so every activity dimension fell through to
+                // the missing-id label and the report rendered wrong
+                // rather than erroring.
                 $row = $wpdb->get_row( $wpdb->prepare(
-                    "SELECT activity_type_key, activity_date FROM {$wpdb->prefix}tt_activities
+                    "SELECT activity_type_key, session_date AS activity_date FROM {$wpdb->prefix}tt_activities
                      WHERE id = %d AND club_id = %d LIMIT 1",
                     $id, CurrentClub::id()
                 ) );
