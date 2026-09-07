@@ -96,6 +96,14 @@ eerst in de tabvolgorde en Opslaan rechts, waar de duim hem vindt.
 - Korte recordformulieren: speler, team, persoon, activiteit en de rest.
 - Een evaluatie of doel **aanmaken** — in tegenstelling tot bewerken.
 - Configuratieschermen en keuzelijsten.
+- De [VCT-cycluskalender](configuration-vct.md), waar weken op neutraal
+  worden gezet of juist gewoon doorlopen.
+
+**Waarom de cycluskalender.** Eén week wijzigen verschuift elke week erna
+voor de rest van het seizoen. Elke schakelaar opslaan op het moment dat hij
+wordt aangetikt, zou een reeks half doordachte verschuivingen één voor één
+doorvoeren, zonder één punt om ze vanaf terug te draaien — één keer opslaan
+voor de hele set maakt het doorwerkende effect leesbaar.
 
 **Waarom deze — de rasters eerst, want dat is het interessante geval.** De
 rasters staan niet in de wachtrij tot automatisch opslaan hen bereikt.

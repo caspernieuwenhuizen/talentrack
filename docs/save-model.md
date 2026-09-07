@@ -93,6 +93,13 @@ first in tab order and Save on the right where the thumb finds it.
 - Short record forms: player, team, person, activity, and the rest.
 - Creating an evaluation or a goal — as opposed to editing one.
 - Configuration screens and lookup lists.
+- The [VCT cycle calendar](configuration-vct.md), where weeks are set to
+  neutral or made to run anyway.
+
+**Why the cycle calendar.** Changing one week shifts every week after it for
+the rest of the season. Saving each toggle as it was tapped would apply a run
+of half-considered shifts one at a time, and there would be no single point to
+undo them from — one commit for the set is what makes the knock-on legible.
 
 **Why these — the grids first, because they are the interesting case.** The
 grids are not waiting for autosave to reach them. Explicit Save is the right

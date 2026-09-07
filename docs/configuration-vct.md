@@ -51,6 +51,43 @@ on Saturday is still in week 3 the following week. Macro-blocks have no
 such notion — their weeks run straight through whatever else is in the
 calendar.
 
+## The cycle, week by week
+
+The **Cycle** tab shows one team's season a week at a time: which week of
+the cycle it is, the phase and theme, the intensity, and — the column
+that matters most — **why** the week is what it is.
+
+A neutral week says either "There is a game this week" or who set it by
+hand and when. Without that line a neutral week reads as a bug, and the
+first thing anyone does about a bug is stop trusting the planner.
+
+Read the list and you can see the pause rule working: cycle week 3 turns
+up **after** a neutral week rather than being spent on it. That is the
+part of the rule people find surprising, and this is the only screen
+where it is visible.
+
+### Correcting a week
+
+Each week offers three choices, not a checkbox:
+
+- **Automatic** — resolve it from the fixture list. The default.
+- **Force neutral** — pause a week that has no game in it.
+- **Run anyway** — run the week normally *despite* a game. This is the
+  one that comes up: a friendly you never meant to interrupt anything.
+
+"Automatic" removes the correction entirely rather than storing a third
+state, so a week you set back to automatic behaves as though it had never
+been touched.
+
+One **Save weeks** button commits the lot. Changing one week shifts every
+week after it, so saving each toggle as you tapped it would apply a run
+of half-considered shifts with no single point to undo them from. The
+list re-renders after saving, so the knock-on is visible immediately.
+
+Correcting a week needs the VCT configuration permission. Coaches can see
+the calendar — you should be able to read the rhythm you are planning to
+— but moving a week changes the rest of the season for the whole squad.
+
 ## Setting a team's cycle
 
 Each team's accordion on the **Team schedules** tab carries a cycle

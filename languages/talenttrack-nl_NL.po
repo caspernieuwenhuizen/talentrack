@@ -45194,6 +45194,100 @@ msgstr "Leeftijdsprofiel verwijderd."
 msgid "Team schedule saved."
 msgstr "Teamschema opgeslagen."
 
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:87
+msgid "Cycle"
+msgstr "Cyclus"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:672
+msgid ""
+"The team's cycle, week by week. A week with a game pauses the cycle and is "
+"not spent — the week after it picks up where the cycle left off. Correct any "
+"week here."
+msgstr ""
+"De cyclus van het team, week voor week. Een week met een wedstrijd zet de "
+"cyclus stil en gaat er niet aan op — de week erna pakt op waar de cyclus "
+"gebleven was. Corrigeer hier elke week."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:685
+msgid "No teams yet. Create your teams under Teams first."
+msgstr "Nog geen teams. Maak je teams eerst aan onder Teams."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:723
+msgid ""
+"This team has no cycle for this season, so it is planned from the season's "
+"macro-blocks."
+msgstr ""
+"Dit team heeft geen cyclus voor dit seizoen en wordt dus gepland vanuit de "
+"macro-blokken van het seizoen."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:724
+msgid "Set a cycle"
+msgstr "Een cyclus instellen"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:748
+msgid "Save weeks"
+msgstr "Weken opslaan"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:783
+msgctxt "cycle week that is paused because the team plays"
+msgid "Neutral"
+msgstr "Neutraal"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:796
+msgctxt "VCT conditioning phase of a cycle week"
+msgid "Phase"
+msgstr "Conditiefase"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:839
+msgid "Automatic"
+msgstr "Automatisch"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:840
+msgctxt "pause the cycle for this week"
+msgid "Force neutral"
+msgstr "Neutraal forceren"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:841
+msgctxt "run this week normally despite a game"
+msgid "Run anyway"
+msgstr "Toch doorlopen"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:863
+msgid "Set by %1$s on %2$s"
+msgstr "Gezet door %1$s op %2$s"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:868
+msgid "Set by hand"
+msgstr "Met de hand gezet"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:872
+msgid "There is a game this week"
+msgstr "Er is deze week een wedstrijd"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:762
+msgid "Some weeks could not be saved. Reload and check them."
+msgstr "Sommige weken konden niet worden opgeslagen. Herlaad en controleer ze."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:764
+msgid "Weeks saved. Later weeks have shifted to match."
+msgstr "Weken opgeslagen. Latere weken zijn meeverschoven."
+
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:66
+msgid "team_id and season_id are required."
+msgstr "team_id en season_id zijn verplicht."
+
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:86
+msgid "weeks must be a map of week start date to state."
+msgstr "weeks moet een lijst van weekstartdatum naar toestand zijn."
+
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:105
+msgid "A week is either automatic, neutral or active."
+msgstr "Een week is automatisch, neutraal of actief."
+
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:115
+msgid "Some weeks could not be saved."
+msgstr "Sommige weken konden niet worden opgeslagen."
+
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:834
 msgid "Cycle saved."
 msgstr "Cyclus opgeslagen."
@@ -61152,9 +61246,6 @@ msgstr "Onbekend veldtype: %s"
 # #1293 — PDP archive / restore inline buttons + Show archived toggle.
 #~ msgid "Hide archived"
 #~ msgstr "Verberg gearchiveerd"
-
-#~ msgid "Cycle"
-#~ msgstr "Cyclus"
 
 #~ msgid "No PDP files match your filters."
 #~ msgstr "Geen POP-bestanden komen overeen met je filters."
