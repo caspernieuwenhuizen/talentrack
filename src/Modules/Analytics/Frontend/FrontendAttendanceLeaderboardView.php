@@ -155,7 +155,11 @@ final class FrontendAttendanceLeaderboardView extends FrontendViewBase {
      * The filtered output: KPI strip and the two ranked tables, or the
      * empty state (#3338).
      *
-     * @param array<string,mixed> $board
+     * The shape is spelled out rather than `array<string,mixed>` so it still
+     * satisfies `renderKpiStrip()`, which is typed on the board the ranking
+     * query returns.
+     *
+     * @param array{bottom: array<int, array<string, mixed>>, top: array<int, array<string, mixed>>, total: int} $board
      */
     private static function renderBody( array $board ): void {
         if ( ( $board['total'] ?? 0 ) === 0 ) {
