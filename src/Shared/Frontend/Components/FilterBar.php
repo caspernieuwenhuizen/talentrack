@@ -3,6 +3,8 @@ namespace TT\Shared\Frontend\Components;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+use TT\Infrastructure\Filters\FilterParam;
+
 /**
  * FilterBar — reusable, data-driven filter bar (#2026, epic #2017 Phase 1).
  *
@@ -233,7 +235,7 @@ final class FilterBar {
 					$olabel  = (string) ( $options[ $value ] ?? $value );
 					$chips[] = [
 						'label'     => self::chipLabel( $glabel, $olabel ),
-						'clear_url' => remove_query_arg( (string) ( $group['name'] ?? '' ) ),
+						'clear_url' => FilterParam::removeFromUrl( (string) ( $group['name'] ?? '' ) ),
 					];
 					break;
 
@@ -242,7 +244,7 @@ final class FilterBar {
 					if ( $value === '' ) break;
 					$chips[] = [
 						'label'     => self::chipLabel( $glabel, $value ),
-						'clear_url' => remove_query_arg( (string) ( $group['name'] ?? '' ) ),
+						'clear_url' => FilterParam::removeFromUrl( (string) ( $group['name'] ?? '' ) ),
 					];
 					break;
 
@@ -255,7 +257,7 @@ final class FilterBar {
 						// A toggle's label already reads as a statement
 						// ("Show cancelled"), so it needs no "Label: value".
 						'label'     => $glabel !== '' ? $glabel : (string) ( $group['name'] ?? '' ),
-						'clear_url' => remove_query_arg( (string) ( $group['name'] ?? '' ) ),
+						'clear_url' => FilterParam::removeFromUrl( (string) ( $group['name'] ?? '' ) ),
 					];
 					break;
 

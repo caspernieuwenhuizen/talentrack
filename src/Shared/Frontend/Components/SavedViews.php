@@ -366,19 +366,9 @@ final class SavedViews {
      *                     casting it would print "Array" plus a notice.
      */
     private static function requestValue( string $name ): ?string {
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
-        if ( preg_match( '/^([^\[\]]+)\[([^\[\]]+)\]$/', $name, $m ) ) {
-            $parent = $_GET[ $m[1] ] ?? null;
-            $raw    = is_array( $parent ) ? ( $parent[ $m[2] ] ?? null ) : null;
-        } else {
-            $raw = $_GET[ $name ] ?? null;
-        }
-        // phpcs:enable WordPress.Security.NonceVerification.Recommended
-
-        if ( ! is_scalar( $raw ) ) return null;
-
-        $value = sanitize_text_field( wp_unslash( (string) $raw ) );
-        return $value === '' ? null : $value;
+        // #3333 — lifted into `FilterParam` so the bar's chip-clearing side
+        // reads the same shape. Same defect, two layers; one implementation.
+        return \TT\Infrastructure\Filters\FilterParam::requestValue( $name );
     }
 
     /**
