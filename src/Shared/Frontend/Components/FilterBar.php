@@ -160,6 +160,7 @@ final class FilterBar {
 				case 'select':
 				case 'text':
 				case 'toggle':
+				case 'player':
 					$add( $group['name'] ?? '' );
 					break;
 
@@ -757,10 +758,56 @@ final class FilterBar {
 			case 'toggle':
 				$out .= self::renderToggle( $group );
 				break;
+			case 'player':
+				$out .= self::renderPlayer( $group );
+				break;
 		}
 
 		$out .= '</div>';
 		return $out;
+	}
+
+	/**
+	 * `player` — a type-to-filter player picker (#3332).
+	 *
+	 * Three surfaces filtered by player with a `<select>` listing every
+	 * player the reader could see — the whole academy for an admin. A
+	 * dropdown of several hundred names in stored order, with no way to type
+	 * toward one, and on a phone a native picker the length of the squad
+	 * list.
+	 *
+	 * Renders the existing `PlayerSearchPickerComponent` in its `search`
+	 * style, which writes the chosen id into a hidden input and dispatches a
+	 * bubbling `change` on it (#1157). That is what makes it work as a
+	 * filter without new JS: `FrontendListTable`'s hydrator and
+	 * `filter-bar.js`'s auto-submit both listen for `change` on a named
+	 * control, so a pick applies exactly as a select's would.
+	 *
+	 * The picker still resolves its candidate list server-side and embeds
+	 * it, so this does not remove the per-player query the surfaces already
+	 * paid — it makes the control usable. A REST-backed search is a separate
+	 * change to the component, and every one of its ~6 existing callers
+	 * would inherit it.
+	 *
+	 * @param array<string,mixed> $group
+	 */
+	private static function renderPlayer( array $group ): string {
+		return PlayerSearchPickerComponent::render( [
+			'name'     => (string) ( $group['name'] ?? 'player_id' ),
+			// The group label is already printed above the control by
+			// renderGroup(), so the picker prints none of its own.
+			'label'    => '',
+			'selected' => (int) ( $group['selected'] ?? 0 ),
+			'team_id'  => (int) ( $group['team_id'] ?? 0 ),
+			'user_id'  => (int) ( $group['user_id'] ?? get_current_user_id() ),
+			'is_admin' => ! empty( $group['is_admin'] ),
+		] + ( isset( $group['placeholder'] )
+			// No default of our own: the picker's own "Type a name to
+			// search…" is already in the catalogue and already translated.
+			// A near-duplicate string here would buy nothing and cost a
+			// translation on every locale.
+			? [ 'placeholder' => (string) $group['placeholder'] ]
+			: [] ) );
 	}
 
 	/**

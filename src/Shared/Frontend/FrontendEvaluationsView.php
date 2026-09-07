@@ -133,22 +133,9 @@ class FrontendEvaluationsView extends FrontendViewBase {
      * component, REST shape served by EvaluationsRestController.
      */
     private static function renderList( int $user_id, bool $is_admin ): void {
-        // Player options — admins see everyone, coaches see players on
-        // their own teams. Same scoping as the goals page.
-        $player_options = [];
-        if ( $is_admin ) {
-            foreach ( QueryHelpers::get_players() as $pl ) {
-                $player_options[ (int) $pl->id ] = QueryHelpers::player_display_name( $pl );
-            }
-        } else {
-            $team_ids = array_map(
-                static fn( $t ) => (int) $t->id,
-                QueryHelpers::get_teams_for_coach( $user_id )
-            );
-            foreach ( QueryHelpers::get_players_for_teams( $team_ids ) as $pl ) {
-                $player_options[ (int) $pl->id ] = QueryHelpers::player_display_name( $pl );
-            }
-        }
+        // #3332 — the hand-built player map is gone; the picker resolves and
+        // scopes its own candidates from `user_id` / `is_admin`, which is the
+        // same rule this loop applied.
 
         // Evaluation-type options from the eval_type lookup vocabulary,
         // resolved through LookupTranslator so the label honours locale.
@@ -196,10 +183,12 @@ class FrontendEvaluationsView extends FrontendViewBase {
                     'label'   => __( 'Team', 'talenttrack' ),
                     'options' => TeamPickerComponent::filterOptions( $user_id, $is_admin ),
                 ],
+                // #3332 — a typeahead, not every player in the academy.
                 'player_id' => [
-                    'type'    => 'select',
-                    'label'   => __( 'Player', 'talenttrack' ),
-                    'options' => $player_options,
+                    'type'     => 'player',
+                    'label'    => __( 'Player', 'talenttrack' ),
+                    'user_id'  => $user_id,
+                    'is_admin' => $is_admin,
                 ],
                 'eval_type_id' => [
                     'type'    => 'select',

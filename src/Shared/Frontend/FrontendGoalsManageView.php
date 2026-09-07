@@ -324,19 +324,10 @@ class FrontendGoalsManageView extends FrontendViewBase {
             $priority_options[ $value ] = LabelTranslator::goalPriority( $value );
         }
 
-        // Player filter — admin sees all players, coach sees own teams.
-        $player_options = [];
-        if ( $is_admin ) {
-            foreach ( QueryHelpers::get_players() as $pl ) {
-                $player_options[ (int) $pl->id ] = QueryHelpers::player_display_name( $pl );
-            }
-        } else {
-            foreach ( QueryHelpers::get_teams_for_coach( $user_id ) as $t ) {
-                foreach ( QueryHelpers::get_players( (int) $t->id ) as $pl ) {
-                    $player_options[ (int) $pl->id ] = QueryHelpers::player_display_name( $pl );
-                }
-            }
-        }
+        // #3332 — the hand-built `$player_options` map is gone. The picker
+        // resolves and scopes its own candidates from `user_id` / `is_admin`,
+        // which is the same rule this loop applied (admin sees all, a coach
+        // sees their teams') expressed once instead of per surface.
 
         // v3.110.53 — Edit / Delete moved to the goal detail page; the
         // clickable goal title is the only active-row affordance.
@@ -374,10 +365,14 @@ class FrontendGoalsManageView extends FrontendViewBase {
                     'label'   => __( 'Team', 'talenttrack' ),
                     'options' => TeamPickerComponent::filterOptions( $user_id, $is_admin ),
                 ],
+                // #3332 — a typeahead, not a dropdown of every player the
+                // reader can see. An admin's list was the whole academy, in
+                // stored order, with no way to type toward a name.
                 'player_id' => [
-                    'type'    => 'select',
-                    'label'   => __( 'Player', 'talenttrack' ),
-                    'options' => $player_options,
+                    'type'     => 'player',
+                    'label'    => __( 'Player', 'talenttrack' ),
+                    'user_id'  => $user_id,
+                    'is_admin' => $is_admin,
                 ],
                 // #2202 — three semantic status buckets (Active / Achieved /
                 // Missed) rendered as pills, no "All", defaulting to Active so
