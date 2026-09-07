@@ -133,16 +133,31 @@ final class FrontendAttendanceLeaderboardView extends FrontendViewBase {
             return;
         }
 
-        // URL-tamper guard: a team the coach isn't allowed to see → empty.
-        if ( $allowed_team_ids !== null && $team_id > 0 && ! in_array( $team_id, $allowed_team_ids, true ) ) {
-            self::renderFilterForm( $from, $to, $team_id, $n, $allowed_team_ids, $period, $type_key );
-            echo '<p class="tt-notice">' . esc_html__( 'This team has no attendance recorded in the selected window. Try widening the date range or picking another period.', 'talenttrack' ) . '</p>';
-            return;
-        }
-
         self::renderFilterForm( $from, $to, $team_id, $n, $allowed_team_ids, $period, $type_key );
 
-        $board = ( new AttendanceRankingQuery() )->leaderboard( $from, $to, $n, $team_id, $allowed_team_ids, $type_key );
+        // #3338 — a URL-tamper guard is a result, not an error: a team the
+        // coach may not see yields an empty board, and that empty board has
+        // to live inside the region so a filter change can replace it.
+        $tampered = $allowed_team_ids !== null && $team_id > 0 && ! in_array( $team_id, $allowed_team_ids, true );
+        $board    = $tampered
+            ? [ 'total' => 0, 'top' => [], 'bottom' => [] ]
+            : ( new AttendanceRankingQuery() )->leaderboard( $from, $to, $n, $team_id, $allowed_team_ids, $type_key );
+
+        // #3338 — everything the filters govern. The body's early returns
+        // now end the BODY rather than the whole render, which is what keeps
+        // the region's closing tag guaranteed.
+        printf( '<div data-tt-filter-region data-tt-filter-count="%d">', (int) ( $board['total'] ?? 0 ) );
+        self::renderBody( $board );
+        echo '</div>';
+    }
+
+    /**
+     * The filtered output: KPI strip and the two ranked tables, or the
+     * empty state (#3338).
+     *
+     * @param array<string,mixed> $board
+     */
+    private static function renderBody( array $board ): void {
         if ( ( $board['total'] ?? 0 ) === 0 ) {
             echo '<p class="tt-notice">' . esc_html__( 'No attendance recorded in the selected window. Try widening the date range or picking another period.', 'talenttrack' ) . '</p>';
             return;
@@ -338,6 +353,10 @@ final class FrontendAttendanceLeaderboardView extends FrontendViewBase {
             'active_count' => $active_count,
             'chips'        => $chips,
             'reset_url'    => add_query_arg( $reset_args, $dash_url ),
+            // #3338 — filter in place (epic #3335). A report is where
+            // the pending state earns its keep: the server work is the
+            // slow part, not the network hop.
+            'refresh'      => true,
             // #2448 — personal saved views, rendered by FilterBar above the bar.
             'saved_views'  => [
                 'key'         => 'attendance_leaderboard',

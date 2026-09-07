@@ -138,10 +138,17 @@ final class FrontendMinutesAuditView extends FrontendViewBase {
 
         $matrix = ( new MinutesAuditQuery() )->matrix( $team_id, $from, $to, $type_filter );
 
+        // #3338 — everything the filters govern, both empty states included.
+        printf(
+            '<div data-tt-filter-region data-tt-filter-count="%d">',
+            (int) $matrix['summary']['total_games']
+        );
+
         // Honest empty state: distinguish "no games in window" from
         // "games present but nothing recorded yet".
         if ( $matrix['summary']['total_games'] === 0 ) {
             echo '<p class="tt-notice">' . esc_html__( 'No games for this team in the selected window. Widen the date range or pick another team.', 'talenttrack' ) . '</p>';
+            echo '</div>';
             return;
         }
 
@@ -155,6 +162,7 @@ final class FrontendMinutesAuditView extends FrontendViewBase {
         }
 
         self::renderMatrix( $matrix, $gap, $team_id );
+        echo '</div>'; // #3338 — /.tt-filter-region
     }
 
     /**
@@ -429,6 +437,10 @@ final class FrontendMinutesAuditView extends FrontendViewBase {
             'active_count' => $active_count,
             'chips'        => $chips,
             'reset_url'    => add_query_arg( $reset_args, $dash_url ),
+            // #3338 — filter in place (epic #3335). A report is where
+            // the pending state earns its keep: the server work is the
+            // slow part, not the network hop.
+            'refresh'      => true,
             // #2448 — personal saved views, rendered by FilterBar above the bar.
             'saved_views'  => [
                 'key'         => 'minutes_audit',

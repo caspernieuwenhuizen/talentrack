@@ -468,6 +468,17 @@ final class FrontendStandardReportsView extends FrontendViewBase {
             'active_count' => $active_count,
             'chips'        => $chips,
             'reset_url'    => add_query_arg( $reset_args, $dash_url ),
+            // #3338 — NOT migrated to in-place refresh, deliberately.
+            //
+            // This one view renders eight sub-reports through this one bar,
+            // each with its own body and its own early returns. A region has
+            // to wrap each body and survive every one of those returns, which
+            // means extracting eight bodies — its own change, not a flag.
+            //
+            // And `refresh => true` is not free to set speculatively: it also
+            // switches OFF `data-tt-filter-submit`, so a surface that opts in
+            // without marking a region loses auto-submit and gains nothing.
+            // Filtering would silently stop working. Filed as a follow-up.
             // #2449 — personal saved views, keyed per report slug so a view
             // saved on one standard report never surfaces on another. Every
             // caller of this wrapper gets them; `extra_hidden` carries the

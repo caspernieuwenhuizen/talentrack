@@ -126,6 +126,12 @@ final class FrontendAttendanceTeamReportView extends FrontendViewBase {
         self::renderFilterForm( $from, $to, $effective_period, $type_key );
 
         $rows = self::query( $from, $to, $allowed_team_ids, $type_key );
+
+        // #3338 — everything the filters govern, in one region the refresh
+        // swaps. The empty state is inside it: filtering down to nothing has
+        // to replace the tables, not leave the previous window's on screen.
+        printf( '<div data-tt-filter-region data-tt-filter-count="%d">', count( $rows ) );
+
         if ( $rows === [] ) {
             // #2351 — when the coach only sees teams they're assigned to, say
             // so, so an empty window doesn't read as "the academy has no data".
@@ -133,6 +139,7 @@ final class FrontendAttendanceTeamReportView extends FrontendViewBase {
                 ? ' ' . esc_html__( 'This report is limited to the teams you coach.', 'talenttrack' )
                 : '';
             echo '<p class="tt-notice">' . esc_html__( 'No attendance recorded in the selected window.', 'talenttrack' ) . $scope_note . '</p>';
+            echo '</div>';
             return;
         }
 
@@ -216,6 +223,7 @@ final class FrontendAttendanceTeamReportView extends FrontendViewBase {
             echo '</tr>';
         }
         echo '</tbody></table></div></div>';
+        echo '</div>'; // #3338 — /.tt-filter-region
     }
 
     /**
@@ -356,6 +364,10 @@ final class FrontendAttendanceTeamReportView extends FrontendViewBase {
             'active_count' => $active_count,
             'chips'        => $chips,
             'reset_url'    => add_query_arg( $reset_args, $dash_url ),
+            // #3338 — filter in place (epic #3335). A report is where
+            // the pending state earns its keep: the server work is the
+            // slow part, not the network hop.
+            'refresh'      => true,
             // #2448 — personal saved views, rendered by FilterBar above the bar.
             'saved_views'  => [
                 'key'         => 'attendance_team',
