@@ -789,8 +789,13 @@ final class FilterBar {
 			'team_id'  => (int) ( $group['team_id'] ?? 0 ),
 			'user_id'  => (int) ( $group['user_id'] ?? get_current_user_id() ),
 			'is_admin' => ! empty( $group['is_admin'] ),
-			'placeholder' => (string) ( $group['placeholder'] ?? __( 'Type a name…', 'talenttrack' ) ),
-		] );
+		] + ( isset( $group['placeholder'] )
+			// No default of our own: the picker's own "Type a name to
+			// search…" is already in the catalogue and already translated.
+			// A near-duplicate string here would buy nothing and cost a
+			// translation on every locale.
+			? [ 'placeholder' => (string) $group['placeholder'] ]
+			: [] ) );
 	}
 
 	/**
