@@ -59867,6 +59867,7 @@ msgstr "Potentieel"
 #: src/Shared/Frontend/Components/EvidencePanel.php
 msgid "No potential or behaviour ratings set in this window."
 msgstr "Geen potentieel- of gedragsbeoordelingen vastgelegd in deze periode."
+
 #: src/Modules/Pdp/Prep/PdpPrepQuestionDefaults.php
 msgid "Where is this player now?"
 msgstr "Waar staat deze speler nu?"
