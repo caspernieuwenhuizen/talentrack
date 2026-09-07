@@ -223,10 +223,20 @@ final class UnitContext {
         }
 
         return [
-            'type'        => 'number',
-            'step'        => 'any',
-            'inputmode'   => 'decimal',
-            'placeholder' => $this->symbol() !== '' ? $this->symbol() : __( 'value', 'talenttrack' ),
+            'type'      => 'number',
+            'step'      => 'any',
+            'inputmode' => 'decimal',
+            // #3275 — the generic string, not the unit symbol.
+            //
+            // #3273 made the placeholder the symbol, but the entry row
+            // already renders a unit chip beside the input, so a minutes
+            // test read `[ min ] min`. The chip carries the unit; the
+            // placeholder says what the box is for. The duration branch
+            // above is the exception and keeps `mm:ss`, because there the
+            // placeholder is telling you the *shape* to type, which no
+            // chip can say — and the entry row suppresses its chip for
+            // exactly that reason.
+            'placeholder' => __( 'value', 'talenttrack' ),
         ];
     }
 

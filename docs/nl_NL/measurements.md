@@ -75,14 +75,28 @@ Dat heeft drie gevolgen die de moeite waard zijn bij het opzetten van een test.
 
 ### Tijden als mm:ss
 
-Vink **Invoeren en tonen als mm:ss** aan bij een test met een tijdseenheid. Een
-resultaat typ je dan als `5:30` en leest terug als `5:30`, en de streefband
-schrijf je op dezelfde manier. Het wordt opgeslagen in seconden, zodat trends,
-gemiddelden en streefwaarden op de echte grootheid werken.
+Een test in **minuten of uren staat standaard op mm:ss** — zo'n eenheid kiezen
+zegt immers al dat het om tijden gaat. Een resultaat typ je als `5:30` en leest
+terug als `5:30`, de streefband schrijf je op dezelfde manier, en het wordt
+opgeslagen in seconden zodat trends, gemiddelden en streefwaarden op de echte
+grootheid werken.
 
-Zonder het vinkje gedraagt een tijd zich als elk ander getal: `5,5` bij een test
-in minuten is vijfeneenhalve minuut. `5:30` invullen in een veld dat niet op
-mm:ss staat wordt geweigerd in plaats van geraden.
+Tests in **seconden of milliseconden blijven decimaal**: een 10m-sprint is
+`2,05 s` en niet `0:02,05`.
+
+**Invoeren en tonen als mm:ss** staat direct onder de eenheidkeuze en overschrijft
+de standaard in beide richtingen. Vink het uit bij een test in minuten om
+decimale minuten in te voeren, of aan bij een andere tijdseenheid om mm:ss te
+gebruiken.
+
+Zonder mm:ss gedraagt een tijd zich als elk ander getal: `5,5` bij een test in
+minuten is vijfeneenhalve minuut. `5:30` invullen in een veld dat niet op mm:ss
+staat wordt geweigerd in plaats van geraden.
+
+Eén meting is gemaximeerd op vier uur. Dat is ruim genoeg voor een wedstrijd,
+een Cooper-test of een circuit, en het is wat een typefout als `1130` bij een
+decimale minutentest tegenhoudt — die anders als bijna negentien uur was
+opgeslagen.
 
 ## Statustests (een handmatige spelersstatus)
 

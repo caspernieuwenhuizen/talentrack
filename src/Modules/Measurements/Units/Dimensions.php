@@ -54,7 +54,12 @@ final class Dimensions {
      * @var array<string, array{float, float}>
      */
     private const PLAUSIBLE = [
-        self::TIME   => [ 0.0, 86400.0 ],
+        // #3275 — four hours, not a full day. A single test reading is never
+        // hours long: a match, a Cooper test and any circuit all fit well
+        // inside this. At 86400 the ceiling caught nothing that mattered —
+        // `1130` typed on a minutes test (meaning 11:30) stored 67 800 s and
+        // passed, which is the 18-hour reading this bound exists to stop.
+        self::TIME   => [ 0.0, 14400.0 ],
         self::LENGTH => [ 0.0, 1000.0 ],
         self::MASS   => [ 0.0, 2000.0 ],
         self::COUNT  => [ 0.0, 1000000.0 ],

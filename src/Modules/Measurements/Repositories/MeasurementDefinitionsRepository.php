@@ -137,7 +137,22 @@ class MeasurementDefinitionsRepository {
             'unit'        => isset( $data['unit'] ) && $data['unit'] !== '' ? (string) $data['unit'] : null,
             'dimension'      => Dimensions::safe( (string) ( $data['dimension'] ?? Dimensions::DIMENSIONLESS ) ),
             'entry_unit_id'  => ! empty( $data['entry_unit_id'] ) ? (int) $data['entry_unit_id'] : null,
-            'numeric_format' => $this->safeNumericFormat( $data['numeric_format'] ?? 'plain' ),
+            // #3275 — a test measured in minutes defaults to mm:ss.
+            //
+            // Choosing minutes as the entry unit IS the statement "this is a
+            // mm:ss quantity". Defaulting to `plain` there reproduced exactly
+            // the confusion #3273 set out to remove — 5.30 meaning 5:18 — and
+            // left the coach to discover a checkbox they had no reason to look
+            // for. Seconds and milliseconds stay plain: a 10m sprint is
+            // 2.05 s, not 0:02.05.
+            //
+            // Only when the caller passes nothing. An explicit value always
+            // wins, in both directions, so this never overrides a choice.
+            'numeric_format' => $this->safeNumericFormat(
+                array_key_exists( 'numeric_format', $data )
+                    ? $data['numeric_format']
+                    : self::defaultNumericFormatFor( $data )
+            ),
             'scale_min'   => isset( $data['scale_min'] ) ? (float) $data['scale_min'] : null,
             'scale_max'   => isset( $data['scale_max'] ) ? (float) $data['scale_max'] : null,
             'frequency'   => (string) ( $data['frequency'] ?? 'adhoc' ),
@@ -285,4 +300,32 @@ class MeasurementDefinitionsRepository {
     private function safeNumericFormat( string $value ): string {
         return $value === 'duration' ? 'duration' : 'plain';
     }
+
+    /**
+     * The format a test should get when the caller names none (#3275).
+     *
+     * Minutes-and-longer units are read and written as mm:ss; seconds and
+     * milliseconds are decimals. Keyed on the unit SYMBOL rather than on the
+     * dimension, because `time` covers both — every unit in the dimension
+     * would otherwise get the same answer, which is the bug.
+     *
+     * @param array<string, mixed> $data
+     */
+    public static function defaultNumericFormatFor( array $data ): string {
+        if ( (string) ( $data['dimension'] ?? '' ) !== Dimensions::TIME ) return 'plain';
+
+        $unit = strtolower( trim( (string) ( $data['unit'] ?? '' ) ) );
+        return in_array( $unit, self::MMSS_UNITS, true ) ? 'duration' : 'plain';
+    }
+
+    /**
+     * Time units whose readings a person says as mm:ss.
+     *
+     * A list, not a threshold: adding an hours unit later means adding it
+     * here, which is a decision someone makes rather than a rule that
+     * silently reclassifies existing tests.
+     *
+     * @var list<string>
+     */
+    private const MMSS_UNITS = [ 'min', 'h', 'hr', 'u' ];
 }

@@ -70,14 +70,26 @@ That has three consequences worth knowing when you set a test up.
 
 ### Times as mm:ss
 
-Tick **Enter and show as mm:ss** on a test whose unit is a time. A result is
-then typed as `5:30` and reads back as `5:30`, and its target band is written
-the same way. It is stored in seconds, so trends, averages and target flags all
-work on the real quantity.
+A test measured in **minutes or hours gets mm:ss by default** — choosing a unit
+like that is already the statement that its readings are times. A result is
+typed as `5:30` and reads back as `5:30`, its target band is written the same
+way, and it is stored in seconds so trends, averages and target flags all work
+on the real quantity.
 
-Without the tick, a time behaves like any other number: `5.5` on a test
-measured in minutes is five and a half minutes. Entering `5:30` in a field that
-is not set to mm:ss is refused rather than guessed at.
+Tests measured in **seconds or milliseconds stay decimal**, because a 10m sprint
+is `2.05 s`, not `0:02.05`.
+
+**Enter and show as mm:ss** sits directly under the unit picker and overrides
+the default in either direction. Untick it on a minutes test to enter decimal
+minutes; tick it on any other time unit to enter mm:ss.
+
+Without mm:ss, a time behaves like any other number: `5.5` on a test measured in
+minutes is five and a half minutes. Entering `5:30` in a field that is not set
+to mm:ss is refused rather than guessed at.
+
+A single reading is capped at four hours. That covers a match, a Cooper test and
+any circuit, and it is what catches a typo like `1130` on a decimal minutes test
+— which would otherwise have been stored as nearly nineteen hours.
 
 ## Status tests (a manual player status)
 

@@ -28680,10 +28680,10 @@ msgstr "Invoeren en tonen als mm:ss"
 #: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:329
 msgid ""
 "For a time test. A result is typed as 5:30 and reads back as 5:30; it is "
-"stored in seconds."
+"stored in seconds. Tests measured in minutes get this by default."
 msgstr ""
 "Voor een tijdtest. Een resultaat typ je als 5:30 en leest terug als 5:30; "
-"het wordt opgeslagen in seconden."
+"het wordt opgeslagen in seconden. Tests in minuten staan hier standaard op."
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:334
 msgid "Scale minimum"
