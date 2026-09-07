@@ -4,6 +4,7 @@ namespace TT\Modules\Activities\Repositories;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 use TT\Domain\Vocabularies\Lookups\ActivityStatusKey;
+use TT\Domain\Vocabularies\Lookups\ActivityTypeKey;
 use TT\Infrastructure\Archive\ArchiveRepository;
 use TT\Infrastructure\Query\QueryHelpers;
 use TT\Infrastructure\Tenancy\CurrentClub;
@@ -1477,6 +1478,7 @@ final class ActivitiesRepository {
         global $wpdb;
         $p     = $wpdb->prefix;
         $scope = QueryHelpers::apply_demo_scope( 'a', 'activity' );
+        $match_like = ActivityTypeKey::MATCH_LIKE_SQL;
 
         // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $rows = $wpdb->get_results( $wpdb->prepare(
@@ -1485,7 +1487,7 @@ final class ActivitiesRepository {
               WHERE a.team_id = %d
                 AND a.club_id = %d
                 AND a.archived_at IS NULL
-                AND a.activity_type_key = 'match'
+                AND a.activity_type_key IN ({$match_like})
                 AND a.session_date >= CURDATE()
                 AND ( a.activity_status_key IS NULL OR a.activity_status_key NOT IN ('completed','cancelled') )
                 {$scope}
@@ -1513,6 +1515,7 @@ final class ActivitiesRepository {
         global $wpdb;
         $p     = $wpdb->prefix;
         $scope = QueryHelpers::apply_demo_scope( 'a', 'activity' );
+        $match_like = ActivityTypeKey::MATCH_LIKE_SQL;
 
         // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $rows = $wpdb->get_results( $wpdb->prepare(
@@ -1521,7 +1524,7 @@ final class ActivitiesRepository {
               WHERE a.team_id = %d
                 AND a.club_id = %d
                 AND a.archived_at IS NULL
-                AND a.activity_type_key = 'match'
+                AND a.activity_type_key IN ({$match_like})
                 AND a.session_date <= CURDATE()
                 AND a.home_score IS NOT NULL
                 AND a.away_score IS NOT NULL

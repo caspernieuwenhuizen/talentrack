@@ -3,6 +3,7 @@ namespace TT\Modules\Vct\Rules\Providers;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+use TT\Domain\Vocabularies\Lookups\ActivityTypeKey;
 use TT\Infrastructure\Tenancy\CurrentClub;
 
 /**
@@ -14,11 +15,11 @@ use TT\Infrastructure\Tenancy\CurrentClub;
  * if Activities renames or relocates its repository, only this adapter
  * changes.
  *
- * "Match" detection looks for `activity_type` containing the word
- * `match` (covers `match`, `home_match`, `away_match`, etc.). The
- * Activities module's activity_type lookup vocabulary is the source of
- * truth; this adapter intentionally matches loosely so future
- * match-flavoured subtypes are picked up without code changes.
+ * "Match" detection uses `ActivityTypeKey::MATCH_LIKE` — game and
+ * tournament, the latter because a tournament is a multi-game day
+ * (#2686) and anchors a match-day context exactly like a game does.
+ * Cancelled fixtures are excluded: a called-off game should not pull
+ * the week's trainings into an MD-1 shape.
  */
 class NativeActivitiesReader implements ActivitiesReader {
 
@@ -38,15 +39,19 @@ class NativeActivitiesReader implements ActivitiesReader {
 
         global $wpdb;
         $activities = $wpdb->prefix . 'tt_activities';
+        $match_like = ActivityTypeKey::MATCH_LIKE_SQL;
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $date = $wpdb->get_var( $wpdb->prepare(
             "SELECT session_date FROM {$activities}
               WHERE club_id = %d
                 AND team_id = %d
-                AND activity_type LIKE %s
+                AND activity_type_key IN ({$match_like})
+                AND archived_at IS NULL
+                AND ( activity_status_key IS NULL OR activity_status_key <> 'cancelled' )
                 AND session_date BETWEEN %s AND %s
               ORDER BY session_date {$direction}
               LIMIT 1",
-            CurrentClub::id(), $team_id, '%match%', $window_start, $window_end
+            CurrentClub::id(), $team_id, $window_start, $window_end
         ) );
         return $date !== null ? (string) $date : null;
     }
