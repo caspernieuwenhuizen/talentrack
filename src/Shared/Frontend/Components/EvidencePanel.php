@@ -415,7 +415,10 @@ final class EvidencePanel {
         foreach ( $potential as $row ) {
             $band = LookupTranslator::byTypeAndName( 'potential_band', (string) ( $row->potential_band ?? '' ) );
             $out .= '<li class="tt-evidence__card">'
-                . '<span class="tt-evidence__card-title">' . esc_html__( 'Potential', 'talenttrack' ) . '</span>'
+                // _x() — the plain msgid already exists behind the player
+                // profile's own context, and a second bare one would ship
+                // to Dutch untranslated (#1223 catches exactly this).
+                . '<span class="tt-evidence__card-title">' . esc_html( _x( 'Potential', 'evidence panel — a potential band set in the window', 'talenttrack' ) ) . '</span>'
                 . '<span class="tt-evidence__card-meta">' . esc_html( $band ) . ' · '
                 . esc_html( TTDate::date( (string) ( $row->set_at ?? '' ) ) ) . '</span>'
                 . '</li>';

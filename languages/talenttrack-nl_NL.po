@@ -59753,6 +59753,11 @@ msgid "Potential and behaviour"
 msgstr "Potentieel en gedrag"
 
 #: src/Shared/Frontend/Components/EvidencePanel.php
+msgctxt "evidence panel — a potential band set in the window"
+msgid "Potential"
+msgstr "Potentieel"
+
+#: src/Shared/Frontend/Components/EvidencePanel.php
 msgid "No potential or behaviour ratings set in this window."
 msgstr "Geen potentieel- of gedragsbeoordelingen vastgelegd in deze periode."
 
