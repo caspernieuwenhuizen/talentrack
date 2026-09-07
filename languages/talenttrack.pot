@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-07T20:35:03+00:00\n"
+"POT-Creation-Date: 2026-09-07T21:00:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: talenttrack\n"
@@ -38185,31 +38185,43 @@ msgstr ""
 msgid "No periodisation calendar is set up, so the training is not adjusted for where you are in the season."
 msgstr ""
 
-#: src/Modules/Training/Wizard/ProposalStep.php:129
+#: src/Modules/Training/Wizard/ProposalStep.php:133
+msgid "There is a game this week, so the cycle is paused. This training is planned at neutral intensity, and the cycle picks up where it left off next week."
+msgstr ""
+
+#: src/Modules/Training/Wizard/ProposalStep.php:134
+msgid "This week is set to neutral, so the cycle is paused. This training is planned at neutral intensity, and the cycle picks up where it left off next week."
+msgstr ""
+
+#: src/Modules/Training/Wizard/ProposalStep.php:136
+msgid "This block runs longer than its weekly profile, so the later weeks are planned at neutral intensity. Add weeks to the profile to keep the progression going."
+msgstr ""
+
+#: src/Modules/Training/Wizard/ProposalStep.php:138
 msgid "This team has no usable age group, so exercises cannot be checked as age-safe."
 msgstr ""
 
-#: src/Modules/Training/Wizard/ProposalStep.php:131
+#: src/Modules/Training/Wizard/ProposalStep.php:140
 msgid "This age group has no training profile yet, so there is no age-safe intensity ceiling to plan inside. Someone with the VCT configuration permission — normally the head of development — can add one under VCT configuration → Age profiles, and drafting will work from then on."
 msgstr ""
 
-#: src/Modules/Training/Wizard/ProposalStep.php:137
+#: src/Modules/Training/Wizard/ProposalStep.php:146
 msgid "Trainings are not drafted automatically at this age. Load is not planned in numbers for the youngest groups — build the training yourself and the plan will hold it like any other."
 msgstr ""
 
-#: src/Modules/Training/Wizard/ProposalStep.php:139
+#: src/Modules/Training/Wizard/ProposalStep.php:148
 msgid "This training pushes the team past its planned load for the week."
 msgstr ""
 
-#: src/Modules/Training/Wizard/ProposalStep.php:141
+#: src/Modules/Training/Wizard/ProposalStep.php:150
 msgid "This falls too soon after a hard training for this age group."
 msgstr ""
 
-#: src/Modules/Training/Wizard/ProposalStep.php:143
+#: src/Modules/Training/Wizard/ProposalStep.php:152
 msgid "A player is flagged for a growth spurt, so the intensity has been held back."
 msgstr ""
 
-#: src/Modules/Training/Wizard/ProposalStep.php:170
+#: src/Modules/Training/Wizard/ProposalStep.php:179
 msgid "This training cannot be drafted as asked. Go back and change the length or the theme."
 msgstr ""
 

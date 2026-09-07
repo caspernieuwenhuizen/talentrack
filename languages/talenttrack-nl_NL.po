@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TalentTrack 3.19.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/talenttrack\n"
-"POT-Creation-Date: 2026-09-07T20:35:03+00:00\n"
+"POT-Creation-Date: 2026-09-07T21:00:12+00:00\n"
 "PO-Revision-Date: 2026-06-10 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Nederlands\n"
@@ -43706,7 +43706,7 @@ msgstr ""
 "neutrale intensiteit gepland. Voeg weken toe aan het profiel om de opbouw "
 "door te laten lopen."
 
-#: src/Modules/Training/Wizard/ProposalStep.php:129
+#: src/Modules/Training/Wizard/ProposalStep.php:138
 msgid ""
 "This team has no usable age group, so exercises cannot be checked as age-"
 "safe."
@@ -43714,7 +43714,7 @@ msgstr ""
 "Dit team heeft geen bruikbare leeftijdscategorie, dus oefeningen kunnen niet "
 "op leeftijdsveiligheid worden gecontroleerd."
 
-#: src/Modules/Training/Wizard/ProposalStep.php:131
+#: src/Modules/Training/Wizard/ProposalStep.php:140
 msgid ""
 "This age group has no training profile yet, so there is no age-safe "
 "intensity ceiling to plan inside. Someone with the VCT configuration "
@@ -43727,7 +43727,7 @@ msgstr ""
 "toe onder VCT-configuratie → Leeftijdsprofielen, en vanaf dan werkt het "
 "opstellen wel."
 
-#: src/Modules/Training/Wizard/ProposalStep.php:137
+#: src/Modules/Training/Wizard/ProposalStep.php:146
 msgid ""
 "Trainings are not drafted automatically at this age. Load is not planned in "
 "numbers for the youngest groups — build the training yourself and the plan "
@@ -43737,23 +43737,23 @@ msgstr ""
 "jongste categorieën wordt de belasting niet in getallen gepland — bouw de "
 "training zelf op, dan houdt het plan hem net als elke andere."
 
-#: src/Modules/Training/Wizard/ProposalStep.php:139
+#: src/Modules/Training/Wizard/ProposalStep.php:148
 msgid "This training pushes the team past its planned load for the week."
 msgstr ""
 "Deze training brengt het team boven de geplande belasting voor deze week."
 
-#: src/Modules/Training/Wizard/ProposalStep.php:141
+#: src/Modules/Training/Wizard/ProposalStep.php:150
 msgid "This falls too soon after a hard training for this age group."
 msgstr "Dit valt te kort na een zware training voor deze leeftijdscategorie."
 
-#: src/Modules/Training/Wizard/ProposalStep.php:143
+#: src/Modules/Training/Wizard/ProposalStep.php:152
 msgid ""
 "A player is flagged for a growth spurt, so the intensity has been held back."
 msgstr ""
 "Er staat een groeispurt-vlag bij een speler, dus de intensiteit is "
 "teruggebracht."
 
-#: src/Modules/Training/Wizard/ProposalStep.php:170
+#: src/Modules/Training/Wizard/ProposalStep.php:179
 msgid ""
 "This training cannot be drafted as asked. Go back and change the length or "
 "the theme."
