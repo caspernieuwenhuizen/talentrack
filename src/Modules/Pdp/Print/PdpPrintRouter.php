@@ -19,8 +19,13 @@ use TT\Infrastructure\Query\LookupTranslator;
  * admin / theme shell renders, emit a standalone document, exit.
  *
  * Single A4 default — photo, season label, current goals + status,
- * agreed actions, signature lines. The `include_evidence` toggle
- * appends a second page with evaluation summary + methodology pins.
+ * agreed actions, signature lines. The `include_evidence` toggle appends a
+ * second page carrying the shared evidence panel over the same
+ * `EvidencePacket` the Evidence tab and the verdict screen read (#3304).
+ * It used to assemble its own — five evaluations and ten activities,
+ * scoped by neither `club_id` nor the archive flag — so its numbers could
+ * legitimately disagree with the tab a coach had open for the same player
+ * on the same day.
  */
 class PdpPrintRouter {
 
@@ -100,10 +105,11 @@ class PdpPrintRouter {
     }
 
     private static function emit( object $file, bool $include_evidence ): void {
+        $file_id = (int) $file->id;
         $player  = QueryHelpers::get_player( (int) $file->player_id );
         $season  = ( new SeasonsRepository() )->find( (int) $file->season_id );
-        $convs   = ( new PdpConversationsRepository() )->listForFile( (int) $file->id );
-        $verdict = ( new PdpVerdictsRepository() )->findForFile( (int) $file->id );
+        $convs   = ( new PdpConversationsRepository() )->listForFile( $file_id );
+        $verdict = ( new PdpVerdictsRepository() )->findForFile( $file_id );
 
         global $wpdb; $p = $wpdb->prefix;
         $goals = $wpdb->get_results( $wpdb->prepare(
@@ -146,6 +152,17 @@ class PdpPrintRouter {
         .toolbar button, .toolbar a { padding: 6px 12px; border: 1px solid #c5c8cc; background: #fff; cursor: pointer; border-radius: 4px; font-size: 10pt; color: #1a1d21; text-decoration: none; }
         @media print { .toolbar { display: none; } }
         .pagebreak { page-break-before: always; }
+        <?php
+        // #3304 — the evidence panel's own rules, read from the enqueued
+        // sheet rather than restated here. This document has no wp_head()
+        // to enqueue into, and a second copy of these rules is exactly the
+        // drift the epic exists to end. Escaped by the CSS parser, not by
+        // us: it is a stylesheet the plugin ships, not user input.
+        if ( $include_evidence ) {
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo \TT\Shared\Frontend\Components\EvidencePanel::css();
+        }
+        ?>
     </style>
 </head>
 <body>
@@ -163,7 +180,7 @@ class PdpPrintRouter {
         // silently failed. Fall back to the file's own detail URL,
         // computed server-side, which always works.
         $close_url = add_query_arg(
-            [ 'tt_view' => 'pdp', 'id' => (int) $file->id ],
+            [ 'tt_view' => 'pdp', 'id' => $file_id ],
             \TT\Shared\Frontend\Components\RecordLink::dashboardUrl()
         );
         ?>
@@ -249,65 +266,23 @@ class PdpPrintRouter {
     <?php if ( $include_evidence ) : ?>
         <div class="pagebreak"></div>
         <h2><?php esc_html_e( 'Evidence', 'talenttrack' ); ?></h2>
-        <?php self::renderEvidencePage( (int) $file->player_id ); ?>
+        <?php
+        // #3304 (epic #3301) — the same packet and the same component the
+        // Evidence tab and the verdict screen read. This page used to run
+        // its own two queries, scoped by neither `club_id` nor the activity
+        // archive flag, so on a multi-team install it could legitimately
+        // disagree with the tab a coach had open for the same player on the
+        // same day. Unlinked: paper has nowhere to click to.
+        \TT\Shared\Frontend\Components\EvidencePanel::render(
+            \TT\Modules\Pdp\EvidencePacket::forFile( $file_id ),
+            [ 'linked' => false, 'variant' => 'print' ]
+        );
+        ?>
     <?php endif; ?>
 </body>
 </html><?php
     }
 
-    /**
-     * Evidence page (second A4): last N evaluations + methodology pins
-     * + recent activities. Read-only summary.
-     */
-    private static function renderEvidencePage( int $player_id ): void {
-        global $wpdb; $p = $wpdb->prefix;
-        $evals = $wpdb->get_results( $wpdb->prepare(
-            "SELECT eval_date, notes FROM {$p}tt_evaluations
-              WHERE player_id = %d AND archived_at IS NULL
-              ORDER BY eval_date DESC LIMIT 5",
-            $player_id
-        ) );
-
-        echo '<h3>' . esc_html__( 'Recent evaluations', 'talenttrack' ) . '</h3>';
-        if ( $evals ) {
-            echo '<table><thead><tr>';
-            echo '<th>' . esc_html__( 'Date', 'talenttrack' ) . '</th>';
-            echo '<th>' . esc_html__( 'Notes', 'talenttrack' ) . '</th>';
-            echo '</tr></thead><tbody>';
-            foreach ( $evals as $e ) {
-                echo '<tr><td>' . esc_html( (string) $e->eval_date ) . '</td>';
-                echo '<td>' . esc_html( (string) ( $e->notes ?? '' ) ) . '</td></tr>';
-            }
-            echo '</tbody></table>';
-        } else {
-            echo '<p><em>' . esc_html__( 'No evaluations on record.', 'talenttrack' ) . '</em></p>';
-        }
-
-        $acts = $wpdb->get_results( $wpdb->prepare(
-            "SELECT a.session_date, a.title, att.status
-               FROM {$p}tt_attendance att
-               JOIN {$p}tt_activities a ON a.id = att.activity_id
-              WHERE att.player_id = %d
-              ORDER BY a.session_date DESC LIMIT 10",
-            $player_id
-        ) );
-        echo '<h3>' . esc_html__( 'Recent activities', 'talenttrack' ) . '</h3>';
-        if ( $acts ) {
-            echo '<table><thead><tr>';
-            echo '<th>' . esc_html__( 'Date', 'talenttrack' ) . '</th>';
-            echo '<th>' . esc_html__( 'Activity', 'talenttrack' ) . '</th>';
-            echo '<th>' . esc_html__( 'Status', 'talenttrack' ) . '</th>';
-            echo '</tr></thead><tbody>';
-            foreach ( $acts as $a ) {
-                echo '<tr><td>' . esc_html( (string) $a->session_date ) . '</td>';
-                echo '<td>' . esc_html( (string) $a->title ) . '</td>';
-                echo '<td>' . esc_html( LookupTranslator::byTypeAndName( 'attendance_status', (string) $a->status ) ) . '</td></tr>';
-            }
-            echo '</tbody></table>';
-        } else {
-            echo '<p><em>' . esc_html__( 'No attendance records.', 'talenttrack' ) . '</em></p>';
-        }
-    }
 
     /**
      * v3.110.192 (#804) — translate the PDP file status enum

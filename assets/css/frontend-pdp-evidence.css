@@ -238,10 +238,55 @@
 
 /* Print: the evidence page is a second sheet of a document somebody hands
    to a parent. Links have nowhere to go on paper, and a section must not
-   break across a page fold mid-table. */
+   break across a page fold mid-table.
+
+   `.tt-evidence--print` says the same thing without a media query, because
+   the PDF exporter renders through DomPDF, which resolves no viewport and
+   ignores `@media print` outright. Without it the tables would come out of
+   the exporter as the 360px card stack — readable, but not what a coach
+   hands to a parent. (#3304) */
 @media print {
     .tt-evidence__scroll { overflow-x: visible; }
     .tt-evidence__section { break-inside: avoid; }
     .tt-evidence__card { break-inside: avoid; }
     .tt-evidence a { text-decoration: none; color: inherit; }
+}
+
+.tt-evidence--print .tt-evidence__scroll { overflow-x: visible; }
+.tt-evidence--print .tt-evidence__section { break-inside: avoid; }
+.tt-evidence--print .tt-evidence__card { break-inside: avoid; }
+
+.tt-evidence--print .tt-evidence__table { display: table; }
+.tt-evidence--print .tt-evidence__table thead { display: table-header-group; }
+.tt-evidence--print .tt-evidence__table tbody { display: table-row-group; }
+
+.tt-evidence--print .tt-evidence__table tr {
+    display: table-row;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.tt-evidence--print .tt-evidence__table th,
+.tt-evidence--print .tt-evidence__table td {
+    display: table-cell;
+    width: auto;
+    text-align: left;
+    vertical-align: top;
+    padding: var(--tt-sp-2, 8px);
+    border-bottom: 1px solid var(--tt-line-soft, #eef0ec);
+}
+
+.tt-evidence--print .tt-evidence__table td::before { content: none; }
+
+.tt-evidence--print .tt-evidence__stats {
+    display: table;
+    width: 100%;
+}
+
+.tt-evidence--print .tt-evidence__stat {
+    display: table-cell;
+    padding: var(--tt-sp-2, 8px);
 }

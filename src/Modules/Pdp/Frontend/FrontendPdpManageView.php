@@ -1376,18 +1376,37 @@ class FrontendPdpManageView extends FrontendViewBase {
             echo '<p class="tt-notice">' . esc_html__( 'Only head of academy or head coach roles can record a verdict.', 'talenttrack' ) . '</p>';
             return;
         }
-        $existing = ( new PdpVerdictsRepository() )->findForFile( (int) $file->id );
+        $file_id  = (int) $file->id;
+        $existing = ( new PdpVerdictsRepository() )->findForFile( $file_id );
         $title    = $existing ? __( 'Edit end-of-season verdict', 'talenttrack' ) : __( 'Record end-of-season verdict', 'talenttrack' );
         self::renderHeader( $title );
 
         $base_url  = remove_query_arg( [ 'action', 'conv', 'player_id' ] );
-        $rest_path = 'pdp-files/' . (int) $file->id . '/verdict';
+        $rest_path = 'pdp-files/' . $file_id . '/verdict';
         $decisions = [
             PdpVerdictDecision::PROMOTE  => __( 'Promote to next age group', 'talenttrack' ),
             PdpVerdictDecision::RETAIN   => __( 'Retain in current group', 'talenttrack' ),
             PdpVerdictDecision::RELEASE  => __( 'Release from academy', 'talenttrack' ),
             PdpVerdictDecision::TRANSFER => __( 'Transfer to another team / club', 'talenttrack' ),
         ];
+
+        // #3304 (epic #3301) — the evidence, above the decision.
+        //
+        // The verdict is the moment a player's season is judged, and until
+        // now the screen where it is recorded showed none of what it should
+        // be judged on: the packet existed, its only caller was a REST
+        // endpoint nothing consumed, and the head of academy read the
+        // numbers somewhere else — or from memory. Same packet, same
+        // component, same order as the coach saw on the Evidence tab, so
+        // the two are visibly one set of numbers rather than two.
+        \TT\Shared\Frontend\Components\EvidencePanel::enqueue();
+        echo '<details class="tt-pdp-verdict-evidence"><summary>'
+            . esc_html__( 'Evidence for this season', 'talenttrack' )
+            . '</summary>';
+        \TT\Shared\Frontend\Components\EvidencePanel::render(
+            \TT\Modules\Pdp\EvidencePacket::forFile( $file_id )
+        );
+        echo '</details>';
         ?>
         <form class="tt-ajax-form" data-rest-path="<?php echo esc_attr( $rest_path ); ?>" data-rest-method="PUT">
             <div class="tt-field">

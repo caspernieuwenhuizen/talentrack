@@ -91,6 +91,8 @@ Ouders zien dezelfde tijdlijn voor hun kind, alleen-lezen en bezittelijk ("ontwi
 
 Wanneer het laatste gesprek van de cyclus is ondertekend, legt het hoofd academie (of de hoofdcoach in sommige configuraties) een eindoordeel vast: **doorstromen**, **behouden**, **uitsluiten**, of **transfer**. Het eindoordeel is een aparte rij, los ondertekend van de gesprekken.
 
+Boven de beslissing staat **Bewijs van dit seizoen** — ingeklapt, één tik weg — met het hele seizoen in hetzelfde paneel dat de trainer bij een gesprek leest. De cijfers komen uit één verzameling, dus waar het hoofd opleiding het eindoordeel op baseert, is zichtbaar hetzelfde als wat de trainer zag.
+
 De knop *Eindoordeel vastleggen* staat bij de gesprekkenlijst, onder de cyclus. De knop blijft **uitgeschakeld totdat elk gesprek in de cyclus is afgetekend**, met de voortgang op de knop zelf — bijv. *Eindoordeel vastleggen (3/5 gesprekken afgerond)* — zodat duidelijk is waarom hij nog niet beschikbaar is in plaats van dat hij ontbreekt.
 
 ## Carryover
@@ -116,7 +118,7 @@ Een doel kan ook aan een **ontwikkelgesprek** worden gekoppeld. Op het gespreksf
 
 ## Printen
 
-De **Printen / PDF**-knop in het detailoverzicht opent een schone A4-layout: foto, seizoenslabel, huidige doelen + status, afgesproken acties per gesprek, en handtekeningÂ­regels voor coach / speler / ouder. Schakel *Opnieuw renderen met bewijspagina* in voor een tweede A4 met recente evaluaties en activiteiten.
+De **Printen / PDF**-knop in het detailoverzicht opent een schone A4-layout: foto, seizoenslabel, huidige doelen + status, afgesproken acties per gesprek, en handtekeningÂ­regels voor coach / speler / ouder. Schakel *Opnieuw renderen met bewijspagina* in voor een tweede A4 met hetzelfde bewijs dat de trainer op het tabblad Bewijs leest en het hoofd opleiding op het eindoordeelscherm — één verzameling, dus de cijfers op papier en op het scherm kunnen niet uit elkaar lopen.
 
 ## Configuratie
 

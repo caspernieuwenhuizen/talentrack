@@ -49,13 +49,28 @@ final class EvidencePanel {
     }
 
     /**
+     * The panel's stylesheet as text, for a standalone document that has no
+     * `wp_head()` to enqueue into — the PDP print page and the PDF exporter
+     * inline it into their own style block rather than keeping a second
+     * copy of these rules (#3304).
+     */
+    public static function css(): string {
+        $path = TT_PLUGIN_DIR . 'assets/css/frontend-pdp-evidence.css';
+        return is_readable( $path ) ? (string) file_get_contents( $path ) : '';
+    }
+
+    /**
      * Echo the panel for one packet.
      *
      * @param array<string,mixed>|null $packet From `EvidencePacket::forFile()`
      *                                         or `::forConversation()`.
-     * @param array{linked?:bool} $options `linked` false drops the record
-     *                                     links — the print has no browser
-     *                                     to open them in.
+     * @param array{linked?:bool,variant?:string} $options `linked` false drops
+     *                                     the record links — the print has no
+     *                                     browser to open them in. `variant`
+     *                                     `print` forces the table layout,
+     *                                     because a PDF renderer resolves no
+     *                                     viewport and DomPDF ignores
+     *                                     `@media print` outright.
      */
     public static function render( ?array $packet, array $options = [] ): void {
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- html() escapes internally.
@@ -64,18 +79,21 @@ final class EvidencePanel {
 
     /**
      * @param array<string,mixed>|null $packet
-     * @param array{linked?:bool} $options
+     * @param array{linked?:bool,variant?:string} $options
      */
     public static function html( ?array $packet, array $options = [] ): string {
+        $classes = 'tt-evidence';
+        if ( ( $options['variant'] ?? '' ) === 'print' ) $classes .= ' tt-evidence--print';
+
         if ( ! is_array( $packet ) ) {
-            return '<div class="tt-evidence"><p class="tt-evidence__empty">'
+            return '<div class="' . esc_attr( $classes ) . '"><p class="tt-evidence__empty">'
                 . esc_html__( 'No evidence could be assembled for this player.', 'talenttrack' )
                 . '</p></div>';
         }
 
         $linked = ! array_key_exists( 'linked', $options ) || (bool) $options['linked'];
 
-        $out  = '<div class="tt-evidence">';
+        $out  = '<div class="' . esc_attr( $classes ) . '">';
         $out .= self::windowLine( $packet );
         $out .= self::evaluations( $packet, $linked );
         $out .= self::attendanceAndMinutes( $packet, $linked );
