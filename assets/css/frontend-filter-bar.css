@@ -941,10 +941,44 @@ html.tt-sheet-lock body {
 }
 
 /* Respect reduced-motion. */
+/* -------------------------------------------------------------------
+ * #3336 — the busy state while a filter is being applied in place.
+ *
+ * A full page load announced itself; an in-place swap does not, so a slow
+ * report used to look like nothing had happened. The bar dims and stops
+ * taking input, and the region it governs goes translucent — enough to
+ * read as "working", not so much that the reader loses their place.
+ *
+ * `pointer-events: none` on the bar is what stops a second filter being
+ * queued into a request that has already gone; the script also aborts and
+ * supersedes, so the two together mean the last thing asked for is the
+ * only thing that lands.
+ * ------------------------------------------------------------------- */
+.tt-dashboard .tt-filterbar.is-refreshing {
+	opacity: 0.6;
+	pointer-events: none;
+}
+.tt-dashboard .tt-filterbar.is-refreshing::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	cursor: progress;
+}
+.tt-dashboard .tt-filterbar {
+	position: relative;
+}
+.tt-dashboard [data-tt-filter-region][aria-busy="true"] {
+	opacity: 0.55;
+	transition: opacity 0.12s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.tt-dashboard .tt-filter-sheet,
 	.tt-dashboard .tt-switch__track,
-	.tt-dashboard .tt-switch__track::after {
+	.tt-dashboard .tt-switch__track::after,
+	/* #3336 — the busy fade is decoration; the opacity itself still
+	   applies, so the state is still visible without the animation. */
+	.tt-dashboard [data-tt-filter-region][aria-busy="true"] {
 		transition: none;
 	}
 	/* Without the slide-up transition the sheet would sit at
