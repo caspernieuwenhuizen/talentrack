@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TalentTrack\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/talenttrack\n"
-"POT-Creation-Date: 2026-09-07T17:37:43+00:00\n"
+"POT-Creation-Date: 2026-09-07T17:43:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: Español\n"
@@ -325,7 +325,7 @@ msgstr "Personal"
 #: src/Modules/Teams/Admin/TeamsPage.php:131
 #: src/Shared/Frontend/CoachForms.php:667
 #: src/Shared/Frontend/Components/FrontendThreadView.php:172
-#: src/Shared/Frontend/Components/SavedViews.php:488
+#: src/Shared/Frontend/Components/SavedViews.php:478
 #: src/Shared/Frontend/DashboardShortcode.php:331
 #: src/Shared/Frontend/FrontendBackupsView.php:303
 #: src/Shared/Frontend/FrontendConfigurationView.php:660
@@ -2509,7 +2509,7 @@ msgstr ""
 #: src/Shared/Frontend/DashboardShortcode.php:317
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:2006
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:3032
-#: src/Shared/Frontend/FrontendComparisonView.php:368
+#: src/Shared/Frontend/FrontendComparisonView.php:381
 #: src/Shared/Frontend/FrontendEvaluationsView.php:188
 #: src/Shared/Frontend/FrontendEvaluationsView.php:196
 #: src/Shared/Frontend/FrontendEvaluationsView.php:458
@@ -3973,7 +3973,7 @@ msgstr ""
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1182
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:3015
 #: src/Shared/Frontend/FrontendAuditLogView.php:507
-#: src/Shared/Frontend/FrontendComparisonView.php:274
+#: src/Shared/Frontend/FrontendComparisonView.php:287
 #: src/Shared/Frontend/FrontendEvaluationsView.php:186
 #: src/Shared/Frontend/FrontendEvaluationsView.php:299
 #: src/Shared/Frontend/FrontendEvaluationsView.php:429
@@ -4234,7 +4234,7 @@ msgstr ""
 
 #: src/Infrastructure/REST/SavedViewsRestController.php:130
 #: src/Infrastructure/REST/SavedViewsRestController.php:180
-#: src/Shared/Frontend/Components/SavedViews.php:473
+#: src/Shared/Frontend/Components/SavedViews.php:463
 msgid "Give this view a name first."
 msgstr ""
 
@@ -4706,7 +4706,7 @@ msgstr ""
 #: src/Modules/Analytics/Frontend/FrontendMinutesTeamReportView.php:459
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:210
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:279
-#: src/Shared/Frontend/FrontendComparisonView.php:286
+#: src/Shared/Frontend/FrontendComparisonView.php:299
 msgid "All types"
 msgstr ""
 
@@ -4791,7 +4791,7 @@ msgstr "Añadir"
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:1382
 #: src/Modules/Teams/Admin/TeamsPage.php:57
 #: src/Modules/Training/Frontend/PlanBuilderRenderer.php:364
-#: src/Shared/Frontend/Components/SavedViews.php:474
+#: src/Shared/Frontend/Components/SavedViews.php:464
 #: src/Shared/Frontend/DashboardShortcode.php:290
 #: src/Shared/Frontend/FrontendSetupView.php:976
 #: src/Shared/Frontend/FrontendWizardsAdminView.php:50
@@ -5221,7 +5221,7 @@ msgstr "Actualizar"
 #: src/Shared/Frontend/Components/FormSaveButton.php:52
 #: src/Shared/Frontend/Components/FrontendThreadView.php:174
 #: src/Shared/Frontend/Components/SavedViews.php:302
-#: src/Shared/Frontend/Components/SavedViews.php:490
+#: src/Shared/Frontend/Components/SavedViews.php:480
 #: src/Shared/Frontend/DashboardShortcode.php:294
 #: src/Shared/Frontend/DashboardShortcode.php:295
 #: src/Shared/Frontend/DashboardShortcode.php:297
@@ -5629,7 +5629,7 @@ msgstr ""
 #: src/Shared/Frontend/Components/GuestAddModal.php:112
 #: src/Shared/Frontend/Components/MediaUploader.php:178
 #: src/Shared/Frontend/Components/SavedViews.php:300
-#: src/Shared/Frontend/Components/SavedViews.php:489
+#: src/Shared/Frontend/Components/SavedViews.php:479
 #: src/Shared/Frontend/Components/SaveState.php:108
 #: src/Shared/Frontend/DashboardShortcode.php:329
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:3636
@@ -5717,7 +5717,7 @@ msgstr ""
 #: src/Modules/Reports/PlayerReportRenderer.php:690
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:269
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:275
-#: src/Shared/Frontend/Components/FilterBar.php:844
+#: src/Shared/Frontend/Components/FilterBar.php:846
 #: src/Shared/Frontend/Components/FrontendListTable.php:426
 #: src/Shared/Frontend/FrontendAuditLogView.php:208
 #: src/Shared/Frontend/FrontendAuditLogView.php:508
@@ -5747,7 +5747,7 @@ msgstr "Desde"
 #: src/Modules/Measurements/Frontend/FrontendTestTrendsView.php:527
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:273
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:276
-#: src/Shared/Frontend/Components/FilterBar.php:845
+#: src/Shared/Frontend/Components/FilterBar.php:847
 #: src/Shared/Frontend/Components/FrontendListTable.php:427
 #: src/Shared/Frontend/FrontendAuditLogView.php:509
 #: src/Shared/Frontend/FrontendConfigurationView.php:2834
@@ -6763,7 +6763,7 @@ msgstr ""
 #: src/Shared/CoreSurfaceRegistration.php:807
 #: src/Shared/CoreSurfaceRegistration.php:2020
 #: src/Shared/Frontend/DashboardShortcode.php:930
-#: src/Shared/Frontend/FrontendComparisonView.php:390
+#: src/Shared/Frontend/FrontendComparisonView.php:403
 #: src/Shared/Frontend/FrontendEvaluationsView.php:53
 #: src/Shared/Frontend/FrontendEvaluationsView.php:103
 #: src/Shared/Frontend/FrontendEvaluationsView.php:124
@@ -7951,7 +7951,7 @@ msgstr ""
 #: src/Modules/Wizards/Prospect/ReviewStep.php:45
 #: src/Modules/Wizards/TeamBlueprint/ReviewStep.php:31
 #: src/Shared/Frontend/Components/GuestAddModal.php:85
-#: src/Shared/Frontend/Components/SavedViews.php:481
+#: src/Shared/Frontend/Components/SavedViews.php:471
 #: src/Shared/Frontend/FrontendConfigurationView.php:1062
 #: src/Shared/Frontend/FrontendHolidaysView.php:81
 #: src/Shared/Frontend/FrontendHolidaysView.php:185
@@ -8158,9 +8158,9 @@ msgstr "— Ninguno —"
 #: src/Modules/Planning/Frontend/FrontendTeamPlannerView.php:405
 #: src/Modules/Workflow/Frontend/FrontendMyTasksView.php:298
 #: src/Shared/Admin/BulkActionsHelper.php:176
-#: src/Shared/Frontend/Components/FilterBar.php:411
-#: src/Shared/Frontend/Components/FilterBar.php:641
-#: src/Shared/Frontend/Components/FilterBar.php:866
+#: src/Shared/Frontend/Components/FilterBar.php:413
+#: src/Shared/Frontend/Components/FilterBar.php:643
+#: src/Shared/Frontend/Components/FilterBar.php:868
 #: src/Shared/Frontend/FrontendInstallProfileView.php:122
 #: src/Shared/Frontend/FrontendStandardReportsView.php:1651
 msgid "Apply"
@@ -8200,8 +8200,8 @@ msgid "Generated %s"
 msgstr ""
 
 #: src/Modules/Analytics/Frontend/FrontendExploreView.php:501
-#: src/Shared/Frontend/Components/FilterBar.php:397
-#: src/Shared/Frontend/Components/FilterBar.php:398
+#: src/Shared/Frontend/Components/FilterBar.php:399
+#: src/Shared/Frontend/Components/FilterBar.php:400
 msgid "Filters"
 msgstr ""
 
@@ -11056,7 +11056,7 @@ msgstr ""
 
 #: src/Modules/Authorization/Admin/UserComparisonPage.php:103
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:220
-#: src/Shared/Frontend/FrontendComparisonView.php:295
+#: src/Shared/Frontend/FrontendComparisonView.php:308
 msgid "Compare"
 msgstr ""
 
@@ -14196,8 +14196,8 @@ msgstr ""
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:290
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamChemistryView.php:946
 #: src/Modules/Translations/Admin/TranslationsConfigTab.php:137
-#: src/Shared/Frontend/Components/FilterBar.php:560
-#: src/Shared/Frontend/Components/FilterBar.php:624
+#: src/Shared/Frontend/Components/FilterBar.php:562
+#: src/Shared/Frontend/Components/FilterBar.php:626
 msgid "Clear"
 msgstr "Borrar"
 
@@ -14335,7 +14335,7 @@ msgstr ""
 
 #: src/Modules/Configuration/Admin/ConfigurationPage.php:765
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:208
-#: src/Shared/Frontend/FrontendComparisonView.php:283
+#: src/Shared/Frontend/FrontendComparisonView.php:296
 msgid "Evaluation Type"
 msgstr ""
 
@@ -15194,7 +15194,7 @@ msgstr ""
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:421
 #: src/Modules/Wizards/Team/BasicsStep.php:31
 #: src/Modules/Wizards/Team/ReviewStep.php:20
-#: src/Shared/Frontend/FrontendComparisonView.php:369
+#: src/Shared/Frontend/FrontendComparisonView.php:382
 #: src/Shared/Frontend/FrontendMyProfileView.php:99
 #: src/Shared/Frontend/FrontendPlayersManageView.php:251
 #: src/Shared/Frontend/FrontendSetupView.php:216
@@ -15867,7 +15867,7 @@ msgstr ""
 
 #: src/Modules/CustomCss/DesignSystem/TokenCatalogue.php:280
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:262
-#: src/Shared/Frontend/FrontendComparisonView.php:354
+#: src/Shared/Frontend/FrontendComparisonView.php:367
 msgid "Cards"
 msgstr ""
 
@@ -16539,14 +16539,14 @@ msgstr ""
 #: src/Modules/CustomWidgets/DataSources/ActivitiesRecent.php:32
 #: src/Modules/CustomWidgets/DataSources/EvaluationsRecent.php:32
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:200
-#: src/Shared/Frontend/FrontendComparisonView.php:275
+#: src/Shared/Frontend/FrontendComparisonView.php:288
 msgid "Date from"
 msgstr ""
 
 #: src/Modules/CustomWidgets/DataSources/ActivitiesRecent.php:33
 #: src/Modules/CustomWidgets/DataSources/EvaluationsRecent.php:33
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:204
-#: src/Shared/Frontend/FrontendComparisonView.php:276
+#: src/Shared/Frontend/FrontendComparisonView.php:289
 msgid "Date to"
 msgstr ""
 
@@ -16797,7 +16797,7 @@ msgstr ""
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:164
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:212
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:321
-#: src/Shared/Frontend/FrontendComparisonView.php:651
+#: src/Shared/Frontend/FrontendComparisonView.php:664
 #: src/Shared/Frontend/FrontendEvaluationsView.php:504
 msgid "Category"
 msgstr "Categoría"
@@ -20035,7 +20035,7 @@ msgstr ""
 #: src/Modules/Export/Exporters/PlayerOnePagerPdfExporter.php:143
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:299
 #: src/Modules/Teams/Admin/TeamPlayersPanel.php:61
-#: src/Shared/Frontend/FrontendComparisonView.php:372
+#: src/Shared/Frontend/FrontendComparisonView.php:385
 msgid "Jersey"
 msgstr ""
 
@@ -20743,8 +20743,8 @@ msgstr "Imprimir"
 #: src/Modules/Training/Frontend/PlanBuilderRenderer.php:220
 #: src/Modules/Training/Print/TrainingPlanPrintRouter.php:95
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:256
-#: src/Shared/Frontend/Components/FilterBar.php:119
-#: src/Shared/Frontend/Components/FilterBar.php:611
+#: src/Shared/Frontend/Components/FilterBar.php:121
+#: src/Shared/Frontend/Components/FilterBar.php:613
 #: src/Shared/Frontend/Components/GuestAddModal.php:48
 #: src/Shared/Frontend/Components/MediaGallery.php:323
 #: src/Shared/Frontend/DashboardShortcode.php:288
@@ -26789,7 +26789,7 @@ msgstr ""
 
 #: src/Modules/Measurements/Frontend/FrontendPlayerBmiView.php:212
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:302
-#: src/Shared/Frontend/FrontendComparisonView.php:373
+#: src/Shared/Frontend/FrontendComparisonView.php:386
 #: src/Shared/Frontend/FrontendMyProfileView.php:116
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:1457
 msgid "Height"
@@ -34582,7 +34582,7 @@ msgstr ""
 #: src/Modules/Players/Admin/PlayersPage.php:175
 #: src/Modules/Players/Admin/PlayersPage.php:507
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:292
-#: src/Shared/Frontend/FrontendComparisonView.php:370
+#: src/Shared/Frontend/FrontendComparisonView.php:383
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:507
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:1306
 msgid "Position(s)"
@@ -34592,7 +34592,7 @@ msgstr ""
 #: src/Modules/Players/Admin/PlayersPage.php:508
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:296
 #: src/Modules/Teams/Admin/TeamPlayersPanel.php:63
-#: src/Shared/Frontend/FrontendComparisonView.php:371
+#: src/Shared/Frontend/FrontendComparisonView.php:384
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:817
 #: src/Shared/Frontend/FrontendPlayersManageView.php:231
 #: src/Shared/Frontend/FrontendPlayersManageView.php:246
@@ -34802,7 +34802,7 @@ msgstr ""
 #: src/Modules/Players/Frontend/FrontendPlayerAccountsView.php:124
 #: src/Modules/Strava/Frontend/FrontendStravaAdminView.php:230
 #: src/Modules/Strava/Frontend/FrontendStravaView.php:125
-#: src/Shared/Frontend/Components/SavedViews.php:475
+#: src/Shared/Frontend/Components/SavedViews.php:465
 #: src/Shared/Frontend/FrontendBackupsView.php:453
 #: src/Shared/Frontend/FrontendHolidaysView.php:344
 #: src/Shared/Frontend/FrontendSeasonsView.php:187
@@ -36063,7 +36063,7 @@ msgstr ""
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:337
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:304
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:352
-#: src/Shared/Frontend/FrontendComparisonView.php:387
+#: src/Shared/Frontend/FrontendComparisonView.php:400
 msgid "Most recent"
 msgstr ""
 
@@ -36100,7 +36100,7 @@ msgstr[1] "Gebaseerd op %d evaluaties"
 #: src/Modules/Reports/PlayerReportRenderer.php:241
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:339
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:351
-#: src/Shared/Frontend/FrontendComparisonView.php:389
+#: src/Shared/Frontend/FrontendComparisonView.php:402
 #: src/Shared/Frontend/FrontendOverviewView.php:143
 #: src/Shared/Frontend/FrontendOverviewView.php:232
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:1266
@@ -36422,7 +36422,7 @@ msgstr ""
 
 #: src/Modules/Spond/Admin/SpondOverviewPage.php:249
 #: src/Modules/StaffDevelopment/Frontend/FrontendMyStaffCertificationsView.php:160
-#: src/Shared/Frontend/Components/SavedViews.php:491
+#: src/Shared/Frontend/Components/SavedViews.php:481
 #: src/Shared/Frontend/DashboardShortcode.php:312
 #: src/Shared/Frontend/DashboardShortcode.php:328
 #: src/Shared/Frontend/FrontendSpondView.php:272
@@ -36989,12 +36989,12 @@ msgid "Maximum of 4 players."
 msgstr ""
 
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:225
-#: src/Shared/Frontend/FrontendComparisonView.php:301
+#: src/Shared/Frontend/FrontendComparisonView.php:314
 msgid "Pick at least one player above and click Compare."
 msgstr ""
 
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:256
-#: src/Shared/Frontend/FrontendComparisonView.php:327
+#: src/Shared/Frontend/FrontendComparisonView.php:340
 msgid ""
 "Mixed age groups in this comparison. Overall ratings use age-group-specific "
 "category weights, so the numbers below are not perfectly apples-to-apples — "
@@ -37002,7 +37002,7 @@ msgid ""
 msgstr ""
 
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:272
-#: src/Shared/Frontend/FrontendComparisonView.php:365
+#: src/Shared/Frontend/FrontendComparisonView.php:378
 msgid "Basic facts"
 msgstr ""
 
@@ -37011,17 +37011,17 @@ msgid "Attribute"
 msgstr ""
 
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:324
-#: src/Shared/Frontend/FrontendComparisonView.php:384
+#: src/Shared/Frontend/FrontendComparisonView.php:397
 msgid "Headline numbers"
 msgstr ""
 
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:338
-#: src/Shared/Frontend/FrontendComparisonView.php:388
+#: src/Shared/Frontend/FrontendComparisonView.php:401
 msgid "Rolling (last 5)"
 msgstr ""
 
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:359
-#: src/Shared/Frontend/FrontendComparisonView.php:405
+#: src/Shared/Frontend/FrontendComparisonView.php:418
 msgid "Main category averages"
 msgstr ""
 
@@ -41065,7 +41065,7 @@ msgid "Never translate. Always show source text."
 msgstr ""
 
 #: src/Modules/Translations/Admin/UserProfilePreference.php:62
-#: src/Shared/Frontend/FrontendComparisonView.php:341
+#: src/Shared/Frontend/FrontendComparisonView.php:354
 msgid "Side-by-side"
 msgstr ""
 
@@ -45646,29 +45646,29 @@ msgstr ""
 msgid "This feature is still being built and may change."
 msgstr ""
 
-#: src/Shared/Frontend/Components/FilterBar.php:118
+#: src/Shared/Frontend/Components/FilterBar.php:120
 msgid "Open filters"
 msgstr ""
 
 #. translators: 1: filter name, e.g. "Team". 2: its value, e.g. "Ajax U17".
-#: src/Shared/Frontend/Components/FilterBar.php:305
+#: src/Shared/Frontend/Components/FilterBar.php:307
 #, php-format
 msgctxt "active filter chip"
 msgid "%1$s: %2$s"
 msgstr ""
 
 #. translators: %s: the active filter, e.g. "Team: Ajax U17".
-#: src/Shared/Frontend/Components/FilterBar.php:540
+#: src/Shared/Frontend/Components/FilterBar.php:542
 #, php-format
 msgid "Remove filter %s"
 msgstr ""
 
-#: src/Shared/Frontend/Components/FilterBar.php:937
+#: src/Shared/Frontend/Components/FilterBar.php:939
 msgid "More filters"
 msgstr ""
 
 #. translators: %s: the filter's name, e.g. "Archive".
-#: src/Shared/Frontend/Components/FilterBar.php:967
+#: src/Shared/Frontend/Components/FilterBar.php:969
 #, php-format
 msgid "Clear the %s filter"
 msgstr ""
@@ -46158,29 +46158,29 @@ msgstr ""
 msgid "e.g. U17 league games"
 msgstr ""
 
-#: src/Shared/Frontend/Components/SavedViews.php:480
+#: src/Shared/Frontend/Components/SavedViews.php:470
 msgid "Edit saved view"
 msgstr ""
 
-#: src/Shared/Frontend/Components/SavedViews.php:482
+#: src/Shared/Frontend/Components/SavedViews.php:472
 msgid "Also replace its filters with the ones set now"
 msgstr ""
 
-#: src/Shared/Frontend/Components/SavedViews.php:484
+#: src/Shared/Frontend/Components/SavedViews.php:474
 msgid "Open this view by default on this screen"
 msgstr ""
 
-#: src/Shared/Frontend/Components/SavedViews.php:485
+#: src/Shared/Frontend/Components/SavedViews.php:475
 msgid ""
 "Applied when you open the screen without filters of your own. Use Clear to "
 "see everything."
 msgstr ""
 
-#: src/Shared/Frontend/Components/SavedViews.php:486
+#: src/Shared/Frontend/Components/SavedViews.php:476
 msgid "Delete this saved view? This cannot be undone."
 msgstr ""
 
-#: src/Shared/Frontend/Components/SavedViews.php:487
+#: src/Shared/Frontend/Components/SavedViews.php:477
 msgid "Saved views"
 msgstr ""
 
@@ -47216,16 +47216,16 @@ msgstr ""
 msgid "Importing…"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendComparisonView.php:410
+#: src/Shared/Frontend/FrontendComparisonView.php:423
 msgid "Radar profile"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendComparisonView.php:415
+#: src/Shared/Frontend/FrontendComparisonView.php:428
 msgid "Rating trend"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendComparisonView.php:601
-#: src/Shared/Frontend/FrontendComparisonView.php:643
+#: src/Shared/Frontend/FrontendComparisonView.php:614
+#: src/Shared/Frontend/FrontendComparisonView.php:656
 msgid "No category data yet for these filters."
 msgstr ""
 
