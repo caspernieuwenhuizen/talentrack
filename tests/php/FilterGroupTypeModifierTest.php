@@ -193,6 +193,48 @@ final class FilterGroupTypeModifierTest extends WP_UnitTestCase {
         $this->assertGreaterThan( $status, $menu );
     }
 
+    /**
+     * #3334 — the sheet orders groups the way the inline row does.
+     *
+     * #3319 moved the utility groups to the end of the desktop row and left
+     * the sheet rendering the caller's order, so the archive menu was last
+     * on a laptop and first on a phone. The sheet is a single column, so
+     * "last" is the bottom — where a control set once in a blue moon belongs
+     * anyway.
+     */
+    public function test_the_sheet_orders_utility_groups_last_too(): void {
+        $html = FilterBar::html( [
+            'reset_url' => '/?reset=1',
+            'groups'    => [
+                // Declared FIRST, as the activities list declares its archive
+                // menu — the case that made the two layouts disagree.
+                [ 'type' => 'menu', 'key' => 'archived', 'label' => 'Archive',
+                  'default_value' => 'active',
+                  'options' => [
+                      [ 'value' => 'active', 'label' => 'Active', 'url' => '/a', 'active' => true ],
+                      [ 'value' => 'archived', 'label' => 'Archived', 'url' => '/b', 'active' => false ],
+                  ] ],
+                [ 'type' => 'select', 'key' => 'team', 'name' => 'team_id', 'label' => 'Team',
+                  'selected' => '', 'options' => [ '2' => 'Ajax U17' ] ],
+            ],
+        ] );
+
+        $start = strpos( $html, '<div class="tt-filter-sheet__body">' );
+        $end   = strpos( $html, '</div>', (int) $start );
+        $this->assertNotFalse( $start );
+        $body = substr( $html, (int) $start, (int) $end - (int) $start + 200 );
+
+        $team = strpos( $body, 'tt-filterbar__group--team' );
+        $menu = strpos( $body, 'tt-filterbar__group--t-menu' );
+        $this->assertNotFalse( $team, 'the filter group should be in the sheet' );
+        $this->assertNotFalse( $menu, 'the utility group should be in the sheet' );
+        $this->assertGreaterThan(
+            $team,
+            $menu,
+            'the ⋯ menu must come after the filters in the sheet, as it does inline'
+        );
+    }
+
     /** The trailing block is inline chrome and hidden on a phone, like the row. */
     public function test_the_trailing_block_is_hidden_on_mobile(): void {
         $css = (string) file_get_contents(

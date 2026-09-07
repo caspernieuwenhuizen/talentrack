@@ -613,7 +613,19 @@ final class FilterBar {
 			. ' aria-label="' . esc_attr__( 'Close', 'talenttrack' ) . '">&#10005;</button>';
 		$out .= '</div>';
 		$out .= '<div class="tt-filter-sheet__body">';
-		foreach ( $groups as $group ) {
+		// #3334 — the same partition the inline row uses, so the two layouts
+		// agree on where a control lives.
+		//
+		// The sheet rendered the caller's order untouched while #3319 moved
+		// the status pills and the ⋯ to the end of the desktop row, so on the
+		// activities list the archive menu was last on a laptop and first on
+		// a phone. Same coach, same list, the two devices they use in one
+		// afternoon.
+		//
+		// The sheet is a single column, so "last" means bottom — which is
+		// also where a control set once in a blue moon belongs on a phone.
+		[ $sheet_filters, $sheet_utility ] = self::partitionUtilityGroups( $groups );
+		foreach ( array_merge( $sheet_filters, $sheet_utility ) as $group ) {
 			$out .= self::renderGroup( $group, true );
 		}
 		if ( $extra !== '' ) {
