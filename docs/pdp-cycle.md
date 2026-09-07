@@ -21,6 +21,10 @@ A **PDP file** is a per-season development plan for a single player. It pulls to
 - **Parents / guardians** — read-only of their child's file (after sign-off) plus a per-conversation acknowledgement button.
 - **Read-only observer** — read-only across all files; no edit, no acknowledgement.
 
+**The one boundary worth knowing by heart:** a coach's **preparation** is read by that coach and the head of academy, and by nobody else. Not the player, not their parents, not a read-only observer — on any screen, in the print, or in any export. Everything else on a PDP file follows the row above.
+
+That is not a display rule that a future screen might forget. The gate lives in the repository every read goes through, so a surface added next year cannot reach round it, and there is a test per surface that it does not.
+
 ## PDP setup: who has a PDP this season
 
 The **PDP** tile opens on a single **player-centric list** for the current season instead of a bare list of files. It starts from the player (CLAUDE.md §1): every player you coach is shown once, with a clear indicator of whether their PDP **for this season** exists yet.
@@ -63,9 +67,17 @@ It saves as you write, like the conversation form beside it. Sign-off is unaffec
 
 > **Upgrading from the agenda box.** The single free-text *Agenda (pre-meeting)* field is retired. Whatever was written in it moved into the *"Anything else to prepare?"* question on the same conversation, so nothing is lost. One consequence worth knowing: the agenda used to be shown to the player on their own PDP view, and preparation is not. Text that moved became less visible, never more.
 
-The form's **Evidence** tab collects what the academy already knows about the player since the previous conversation, read-only, so the coach opens the talk on the record rather than on memory: evaluations with their rating, assessor and notes; attendance with the present / absent / excused split, matches played and minutes, with the per-match breakdown; goals, and whether each one has moved; the player's own self-reflection; staff notes, injuries and journey events; and the potential and behaviour ratings set in the window.
+#### Evidence
+
+The **Evidence** tab collects what the academy already knows about the player since the previous conversation, read-only, so the coach opens the talk on the record rather than on memory: evaluations with their rating, assessor and notes; attendance with the present / absent / excused split, matches played and minutes, with the per-match breakdown; goals, and whether each one has moved; the player's own self-reflection; staff notes, injuries and journey events; and the potential and behaviour ratings set in the window.
 
 A section with nothing in it says so rather than disappearing — "No evaluations in this window" is itself worth knowing before a conversation.
+
+Every record links through to its own page, so an evaluation worth reading in full is one tap away and a back link brings you here again.
+
+**Where the numbers come from.** One assembly, read by three screens: this tab, the printed file's evidence page, and the end-of-season verdict screen. They are club-scoped and exclude archived and trashed records, so the same player on the same day shows a coach and a head of academy the same figures. The tab narrows the window to what has happened since the previous conversation; the print and the verdict cover the whole season.
+
+#### Order of play
 
 The conversations run in order: only the **active** conversation — the earliest one not yet signed off — is fully editable. Later conversations in the cycle are read-only except for their **planned date**, so a coach can schedule the whole season ahead without filling in a talk out of turn. A later conversation opens for full editing once the one before it is signed off.
 
