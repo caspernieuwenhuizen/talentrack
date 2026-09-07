@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-07T17:30:36+00:00\n"
+"POT-Creation-Date: 2026-09-07T17:37:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: talenttrack\n"
@@ -4999,7 +4999,7 @@ msgstr ""
 #: src/Modules/Invitations/Frontend/InvitationsConfigView.php:236
 #: src/Modules/License/Admin/AccountPage.php:322
 #: src/Modules/MatchExecution/Frontend/FrontendMatchExecutionView.php:1266
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:411
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:418
 #: src/Modules/Methodology/Frontend/FrontendMethodologyVocabularyView.php:202
 #: src/Modules/Pdp/Frontend/FrontendMyPdpView.php:426
 #: src/Modules/Players/Frontend/FrontendPlayerStatusMethodologyView.php:284
@@ -5774,7 +5774,7 @@ msgstr ""
 #: src/Modules/Analytics/Domain/DimensionValueResolver.php:103
 #: src/Modules/Knowledge/Frontend/FrontendSubmissionReviewView.php:136
 #: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:306
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:45
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:46
 #, php-format
 msgid "%1$s — %2$s"
 msgstr ""
@@ -14173,7 +14173,7 @@ msgid "Showing the newest %1$d of %2$d matching entries. Narrow the date range t
 msgstr ""
 
 #: src/Modules/Configuration/Admin/ErrorLogPage.php:103
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:489
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:496
 #: src/Shared/Frontend/FrontendTeamDetailView.php:729
 msgid "Level"
 msgstr ""
@@ -24798,26 +24798,26 @@ msgid "Everyone is up to date."
 msgstr ""
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementCoverageView.php:168
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:744
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:74
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:774
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:79
 msgid "Once a season"
 msgstr ""
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementCoverageView.php:169
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:745
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:75
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:775
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:80
 msgid "Twice a season"
 msgstr ""
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementCoverageView.php:170
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:746
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:76
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:776
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:81
 msgid "Four times a season"
 msgstr ""
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementCoverageView.php:171
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:747
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:77
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:777
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:82
 msgid "Monthly"
 msgstr ""
 
@@ -24918,7 +24918,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementEntryView.php:430
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:775
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:805
 msgid "Add test"
 msgstr ""
 
@@ -25000,7 +25000,7 @@ msgid "Edit test"
 msgstr ""
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:228
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:547
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:554
 msgid "That test could not be found."
 msgstr ""
 
@@ -25017,12 +25017,12 @@ msgid "Value type"
 msgstr ""
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:298
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:39
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:40
 msgid "Unit"
 msgstr ""
 
 #: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:300
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:40
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:41
 #: src/Modules/Methodology/Frontend/FrontendMethodologyVocabularyView.php:211
 #: src/Modules/StaffDevelopment/Frontend/FrontendMyStaffGoalsView.php:128
 #: src/Modules/Vct/Wizard/ReviewStep.php:59
@@ -25035,170 +25035,170 @@ msgstr ""
 msgid "A unit from the list carries its dimension, so values are stored in a canonical base and can be compared and converted."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:317
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:53
-msgid "Custom unit (overrides the list)"
-msgstr ""
-
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:320
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:55
-msgid "e.g. watt/kg"
-msgstr ""
-
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:321
-msgid "A custom unit has no dimension: its values are stored exactly as typed, and are never converted or compared across units."
-msgstr ""
-
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:327
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:59
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:326
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:60
 msgid "Enter and show as mm:ss"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:329
-msgid "For a time test. A result is typed as 5:30 and reads back as 5:30; it is stored in seconds."
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:328
+msgid "For a time test. A result is typed as 5:30 and reads back as 5:30; it is stored in seconds. Tests measured in minutes get this by default."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:334
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:332
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:62
+msgid "Custom unit (overrides the list)"
+msgstr ""
+
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:335
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:64
+msgid "e.g. watt/kg"
+msgstr ""
+
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:336
+msgid "A custom unit has no dimension: its values are stored exactly as typed, and are never converted or compared across units."
+msgstr ""
+
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:341
 msgid "Scale minimum"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:339
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:346
 msgid "Scale maximum"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:346
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:66
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:353
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:71
 msgid "Direction"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:355
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:80
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:362
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:85
 msgid "Recurrence"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:366
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:373
 msgid "Active (available when recording results)"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:373
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:380
 msgid "Show this test’s results on the player profile"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:379
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:386
 msgid "Target bands per age group"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:381
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:388
 msgid "Optional. The green band is on target and the amber band is a warning; anything outside flags red. Leave blank to skip an age group."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:396
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:403
 #: src/Modules/Measurements/Wizards/MeasurementTargetsStep.php:54
 msgid "Green from"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:397
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:404
 #: src/Modules/Measurements/Wizards/MeasurementTargetsStep.php:55
 msgid "Green to"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:398
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:405
 #: src/Modules/Measurements/Wizards/MeasurementTargetsStep.php:56
 msgid "Amber from"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:399
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:406
 #: src/Modules/Measurements/Wizards/MeasurementTargetsStep.php:57
 msgid "Amber to"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:421
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:428
 msgid "Export results"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:423
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:430
 msgid "Download every recorded result for this test as a formatted Excel workbook."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:455
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:462
 #: src/Modules/Measurements/Frontend/FrontendTestResultsView.php:216
 msgid "Export Excel"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:475
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:482
 msgid "Status levels"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:477
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:484
 msgid "List the status levels from lowest to highest. Each level shows as a coloured chip on the player profile. Clear a level’s label to remove it."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:492
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:499
 msgid "e.g. On track"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:495
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:502
 #: src/Shared/Frontend/FrontendHolidaysView.php:311
 msgid "Colour"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:556
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:563
 msgid "Test activated."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:557
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:564
 msgid "Test deactivated."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:565
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:572
 msgid "Test archived."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:566
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:573
 msgid "That test could not be archived."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:572
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:579
 msgid "Test saved."
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:725
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:755
 #: src/Modules/Measurements/Wizards/MeasurementDetailsStep.php:42
 msgid "A number (with a unit)"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:726
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:756
 #: src/Modules/Measurements/Wizards/MeasurementDetailsStep.php:43
 msgid "A scale score"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:727
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:757
 #: src/Modules/Measurements/Wizards/MeasurementDetailsStep.php:44
 msgid "Pass / fail"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:728
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:758
 #: src/Modules/Measurements/Wizards/MeasurementDetailsStep.php:45
 msgid "A status (coloured levels)"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:735
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:62
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:765
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:67
 msgid "Higher is better"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:736
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:63
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:766
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:68
 msgid "Lower is better"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:737
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:64
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:767
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:69
 msgid "Neither (just track it)"
 msgstr ""
 
-#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:748
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:78
+#: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:778
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:83
 msgid "No fixed cadence"
 msgstr ""
 
@@ -25490,42 +25490,42 @@ msgstr ""
 msgid "Could not save the target."
 msgstr ""
 
-#: src/Modules/Measurements/Units/Dimensions.php:99
+#: src/Modules/Measurements/Units/Dimensions.php:104
 msgctxt "measurement dimension"
 msgid "Time"
 msgstr ""
 
-#: src/Modules/Measurements/Units/Dimensions.php:100
+#: src/Modules/Measurements/Units/Dimensions.php:105
 msgctxt "measurement dimension"
 msgid "Length"
 msgstr ""
 
-#: src/Modules/Measurements/Units/Dimensions.php:101
+#: src/Modules/Measurements/Units/Dimensions.php:106
 msgctxt "measurement dimension"
 msgid "Mass"
 msgstr ""
 
-#: src/Modules/Measurements/Units/Dimensions.php:102
+#: src/Modules/Measurements/Units/Dimensions.php:107
 msgctxt "measurement dimension"
 msgid "Count"
 msgstr ""
 
-#: src/Modules/Measurements/Units/Dimensions.php:103
+#: src/Modules/Measurements/Units/Dimensions.php:108
 msgctxt "measurement dimension"
 msgid "Rate"
 msgstr ""
 
-#: src/Modules/Measurements/Units/Dimensions.php:104
+#: src/Modules/Measurements/Units/Dimensions.php:109
 msgctxt "measurement dimension"
 msgid "Percentage"
 msgstr ""
 
-#: src/Modules/Measurements/Units/Dimensions.php:105
+#: src/Modules/Measurements/Units/Dimensions.php:110
 msgctxt "measurement dimension"
 msgid "Level"
 msgstr ""
 
-#: src/Modules/Measurements/Units/Dimensions.php:106
+#: src/Modules/Measurements/Units/Dimensions.php:111
 msgctxt "measurement dimension"
 msgid "No dimension"
 msgstr ""
@@ -25548,7 +25548,7 @@ msgstr ""
 msgid "That value is outside the range this kind of test can hold (%1$s to %2$s)."
 msgstr ""
 
-#: src/Modules/Measurements/Units/UnitContext.php:229
+#: src/Modules/Measurements/Units/UnitContext.php:239
 msgid "value"
 msgstr ""
 
@@ -25568,7 +25568,7 @@ msgstr ""
 msgid "A test name is required."
 msgstr ""
 
-#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:24
+#: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:25
 msgid "Unit & recurrence"
 msgstr ""
 
