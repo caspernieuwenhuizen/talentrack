@@ -357,3 +357,53 @@
 @media (prefers-reduced-motion: reduce) {
     .tt-dashboard .tt-vct-accordion-summary::after { transition: none; }
 }
+
+/* ── Per-team cycle (#3360, epic #3354) ──────────────────────────── */
+/* Sits inside the team accordion, under the training days. Mobile-first:
+   the options stack at 360px and sit in a row from 480px up. */
+.tt-dashboard .tt-vct-cycle {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--tt-line, #e3e6e1);
+}
+.tt-dashboard .tt-vct-cycle-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+@media (min-width: 480px) {
+    .tt-dashboard .tt-vct-cycle-row { flex-direction: row; flex-wrap: wrap; }
+}
+.tt-dashboard .tt-vct-cycle-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 6px 14px;
+    border: 1px solid #d6d7da;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+.tt-dashboard .tt-vct-cycle-option:has(input:checked) {
+    background: #e6f4f1;
+    border-color: var(--tt-primary, #1d7874);
+    color: var(--tt-primary, #1d7874);
+}
+.tt-dashboard .tt-vct-cycle-option:focus-within {
+    outline: 2px solid var(--tt-primary, #1d7874);
+    outline-offset: 2px;
+}
+.tt-dashboard .tt-vct-cycle-option input { width: 18px; height: 18px; }
+.tt-dashboard .tt-vct-cycle-preview {
+    margin: 12px 0 0;
+    color: var(--tt-muted, #6a6d66);
+    font-size: 0.88rem;
+}
+.tt-dashboard .tt-vct-cycle-remove {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--tt-line, #e3e6e1);
+}
+.tt-dashboard .tt-vct-cycle-remove .tt-btn { min-height: 48px; }

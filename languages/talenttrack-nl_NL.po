@@ -45144,6 +45144,101 @@ msgstr "Leeftijdsprofiel verwijderd."
 msgid "Team schedule saved."
 msgstr "Teamschema opgeslagen."
 
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:560
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] "%d week"
+msgstr[1] "%d weken"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:573
+msgid "Starts on"
+msgstr "Start op"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:577
+msgid "Week 1 begins on the Monday of this week."
+msgstr "Week 1 begint op de maandag van deze week."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:582
+msgid "Weekly shape"
+msgstr "Weekvorm"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:585
+msgid "Match the cycle length"
+msgstr "Passend bij de cycluslengte"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:600
+msgid "Save cycle"
+msgstr "Cyclus opslaan"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:611
+msgid ""
+"Removing the cycle sends this team back to planning from the season's macro-"
+"blocks. Trainings already planned keep the week they were given."
+msgstr ""
+"De cyclus verwijderen laat dit team weer plannen vanuit de macro-blokken van "
+"het seizoen. Trainingen die al gepland zijn, houden de week die ze kregen."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:612
+msgid "Remove cycle"
+msgstr "Cyclus verwijderen"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:640
+msgid "week %1$d %2$s"
+msgstr "week %1$d %2$s"
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:726
+msgid "Cycle saved."
+msgstr "Cyclus opgeslagen."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:735
+msgid "Removing failed: your form expired. Please reload."
+msgstr "Verwijderen mislukt: je formulier is verlopen. Laad de pagina opnieuw."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:749
+msgid "Cycle removed. This team plans from the season's macro-blocks again."
+msgstr ""
+"Cyclus verwijderd. Dit team plant weer vanuit de macro-blokken van het "
+"seizoen."
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:751
+msgid "Removing failed: database error."
+msgstr "Verwijderen mislukt: databasefout."
+
+#: src/Modules/Vct/Validation/VctTeamCycleValidator.php:30
+msgid "A cycle is %s weeks long. Pick one of those."
+msgstr "Een cyclus duurt %s weken. Kies er een van."
+
+#: src/Modules/Vct/Validation/VctTeamCycleValidator.php:38
+msgid ""
+"The start date is not a date. Use the date picker, or type it as YYYY-MM-DD."
+msgstr ""
+"De startdatum is geen datum. Gebruik de datumkiezer of typ hem als JJJJ-MM-"
+"DD."
+
+#: src/Modules/Vct/Validation/VctTeamCycleValidator.php:44
+msgid "That weekly shape no longer exists. Pick another one."
+msgstr "Die weekvorm bestaat niet meer. Kies een andere."
+
+#: src/Modules/Vct/Validation/VctTeamCycleValidator.php:52
+msgid ""
+"That weekly shape covers %1$d weeks, but the cycle is %2$d. Pick a shape "
+"with one row per week of the cycle."
+msgstr ""
+"Die weekvorm beslaat %1$d weken, maar de cyclus is %2$d. Kies een vorm met "
+"één regel per week van de cyclus."
+
+#: src/Modules/Vct/Rest/VctTeamCyclesRestController.php:74
+msgid "season_id and team_id are required."
+msgstr "season_id en team_id zijn verplicht."
+
+#: src/Modules/Vct/Rest/VctTeamCyclesRestController.php:100
+msgid "The cycle could not be saved."
+msgstr "De cyclus kon niet worden opgeslagen."
+
+#: src/Modules/Vct/Rest/VctTeamCyclesRestController.php:121
+msgid "The cycle could not be removed."
+msgstr "De cyclus kon niet worden verwijderd."
+
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:42
 msgid "You do not have access to the VCT exercise library."
 msgstr "Je hebt geen toegang tot de VCT-oefeningenbibliotheek."

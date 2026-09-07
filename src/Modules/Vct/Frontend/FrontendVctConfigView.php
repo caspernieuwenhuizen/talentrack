@@ -9,9 +9,12 @@ use TT\Infrastructure\Security\AuthorizationService;
 use TT\Modules\Exercises\ExercisesRepository;
 use TT\Modules\Pdp\Repositories\SeasonsRepository;
 use TT\Modules\Vct\Repositories\VctAgeProfilesRepository;
+use TT\Modules\Vct\Repositories\VctCycleWeekOverridesRepository;
 use TT\Modules\Vct\Repositories\VctMacroBlocksRepository;
+use TT\Modules\Vct\Repositories\VctTeamCyclesRepository;
 use TT\Modules\Vct\Repositories\VctTeamSchedulesRepository;
 use TT\Modules\Vct\Services\AgeProfileAdminService;
+use TT\Modules\Vct\Validation\VctTeamCycleValidator;
 use TT\Shared\Frontend\Components\FrontendBreadcrumbs;
 use TT\Shared\Frontend\FrontendViewBase;
 
@@ -533,8 +536,134 @@ class FrontendVctConfigView extends FrontendViewBase {
             echo '<div class="tt-form-actions">';
             echo '<button type="submit" class="tt-btn tt-btn-primary">' . esc_html__( 'Save', 'talenttrack' ) . '</button>';
             echo '</div>';
-            echo '</form></details>';
+            echo '</form>';
+
+            self::renderCycleForm( $team_id, $season_id );
+
+            echo '</details>';
         }
+    }
+
+    /**
+     * The team's repeating cycle (#3360, epic #3354) — length, the Monday
+     * it starts on, and the weekly shape it repeats.
+     *
+     * Its own form inside the team's accordion, so it saves independently
+     * of the training days above it. Settings sub-form, so Save-only per
+     * CLAUDE.md §6 (a) — there is no record being edited to cancel out of.
+     */
+    private static function renderCycleForm( int $team_id, int $season_id ): void {
+        $cycle  = ( new VctTeamCyclesRepository() )->findForTeamSeason( $team_id, $season_id );
+        $length = $cycle !== null ? (int) $cycle['cycle_weeks'] : VctTeamCyclesRepository::DEFAULT_WEEKS;
+        $anchor = $cycle !== null ? (string) $cycle['anchor_date'] : self::defaultAnchorFor( $season_id );
+        $chosen = $cycle !== null ? (int) ( $cycle['template_id'] ?? 0 ) : 0;
+
+        echo '<form method="POST" action="" class="tt-vct-form tt-vct-cycle">';
+        wp_nonce_field( 'tt_vct_cfg_cycle_save_' . $team_id . '_' . $season_id, '_tt_vct_cfg_nonce' );
+        echo '<input type="hidden" name="_tt_action" value="save_cycle">';
+        echo '<input type="hidden" name="team_id"    value="' . esc_attr( (string) $team_id ) . '">';
+        echo '<input type="hidden" name="season_id"  value="' . esc_attr( (string) $season_id ) . '">';
+
+        echo '<fieldset class="tt-vct-cycle-length">';
+        echo '<legend>' . esc_html__( 'Cycle length', 'talenttrack' ) . '</legend>';
+        echo '<div class="tt-vct-cycle-row">';
+        foreach ( VctTeamCyclesRepository::ALLOWED_WEEKS as $weeks ) {
+            $id = 'tt-cycle-' . $team_id . '-' . $weeks;
+            echo '<label class="tt-vct-cycle-option" for="' . esc_attr( $id ) . '">';
+            echo '<input type="radio" id="' . esc_attr( $id ) . '" name="cycle_weeks" value="' . esc_attr( (string) $weeks ) . '"'
+                . checked( $length, $weeks, false ) . '> ';
+            echo '<span>' . esc_html( sprintf(
+                /* translators: %d = number of weeks in the cycle. */
+                _n( '%d week', '%d weeks', $weeks, 'talenttrack' ),
+                $weeks
+            ) ) . '</span>';
+            echo '</label>';
+        }
+        echo '</div>';
+        echo '</fieldset>';
+
+        echo '<div class="tt-vct-form-grid">';
+        echo '<div class="tt-field">';
+        echo '<label class="tt-field-label" for="tt-cycle-anchor-' . esc_attr( (string) $team_id ) . '">'
+            . esc_html__( 'Starts on', 'talenttrack' ) . '</label>';
+        echo '<input class="tt-input" type="date" id="tt-cycle-anchor-' . esc_attr( (string) $team_id ) . '"'
+            . ' name="anchor_date" value="' . esc_attr( $anchor ) . '">';
+        echo '<p class="tt-field-hint">' . esc_html__( 'Week 1 begins on the Monday of this week.', 'talenttrack' ) . '</p>';
+        echo '</div>';
+
+        echo '<div class="tt-field">';
+        echo '<label class="tt-field-label" for="tt-cycle-shape-' . esc_attr( (string) $team_id ) . '">'
+            . esc_html__( 'Weekly shape', 'talenttrack' ) . '</label>';
+        echo '<select class="tt-input" id="tt-cycle-shape-' . esc_attr( (string) $team_id ) . '" name="template_id">';
+        echo '<option value="0">' . esc_html__( 'Match the cycle length', 'talenttrack' ) . '</option>';
+        foreach ( VctTeamCycleValidator::templatesForLength( $length ) as $template ) {
+            echo '<option value="' . esc_attr( (string) $template['id'] ) . '"'
+                . selected( $chosen, (int) $template['id'], false ) . '>'
+                . esc_html( (string) $template['label'] ) . '</option>';
+        }
+        echo '</select>';
+        echo '</div>';
+        echo '</div>';
+
+        if ( $cycle !== null ) {
+            echo '<p class="tt-vct-cycle-preview">' . esc_html( self::cyclePreview( $length, $chosen ) ) . '</p>';
+        }
+
+        echo '<div class="tt-form-actions">';
+        echo '<button type="submit" class="tt-btn tt-btn-primary">' . esc_html__( 'Save cycle', 'talenttrack' ) . '</button>';
+        echo '</div>';
+        echo '</form>';
+
+        if ( $cycle !== null ) {
+            echo '<form method="POST" action="" class="tt-vct-cycle-remove">';
+            wp_nonce_field( 'tt_vct_cfg_cycle_delete_' . $team_id . '_' . $season_id, '_tt_vct_cfg_nonce' );
+            echo '<input type="hidden" name="_tt_action" value="delete_cycle">';
+            echo '<input type="hidden" name="team_id"    value="' . esc_attr( (string) $team_id ) . '">';
+            echo '<input type="hidden" name="season_id"  value="' . esc_attr( (string) $season_id ) . '">';
+            echo '<p class="tt-field-hint">' . esc_html__( 'Removing the cycle sends this team back to planning from the season\'s macro-blocks. Trainings already planned keep the week they were given.', 'talenttrack' ) . '</p>';
+            echo '<button type="submit" class="tt-btn tt-btn-secondary">' . esc_html__( 'Remove cycle', 'talenttrack' ) . '</button>';
+            echo '</form>';
+        }
+    }
+
+    /**
+     * The season's start, snapped forward to a Monday — the sensible place
+     * for week 1 to begin when nobody has chosen one.
+     */
+    private static function defaultAnchorFor( int $season_id ): string {
+        $season = ( new SeasonsRepository() )->find( $season_id );
+        $start  = $season !== null ? (string) ( $season->start_date ?? '' ) : '';
+        $monday = VctTeamCyclesRepository::normaliseToMonday( $start );
+        return $monday ?? '';
+    }
+
+    /**
+     * One line naming each week of the cycle, so the choice is legible
+     * without opening the cycle calendar.
+     */
+    private static function cyclePreview( int $length, int $template_id ): string {
+        $templates = VctTeamCycleValidator::templatesForLength( $length );
+        $profile   = [];
+
+        foreach ( $templates as $template ) {
+            if ( $template_id > 0 && (int) $template['id'] !== $template_id ) continue;
+            $profile = is_array( $template['phase_profile'] ) ? $template['phase_profile'] : [];
+            break;
+        }
+        if ( $profile === [] ) return '';
+
+        $parts = [];
+        foreach ( $profile as $week ) {
+            $phase = isset( $week['phase'] ) ? (string) $week['phase'] : '';
+            if ( $phase === '' ) continue;
+            $parts[] = sprintf(
+                /* translators: 1: week number within the cycle, 2: the phase name for that week. */
+                __( 'week %1$d %2$s', 'talenttrack' ),
+                (int) ( $week['week'] ?? 0 ),
+                LookupTranslator::byTypeAndName( 'vct_phase', $phase )
+            );
+        }
+        return implode( ' · ', $parts );
     }
 
     /**
@@ -667,6 +796,64 @@ class FrontendVctConfigView extends FrontendViewBase {
             self::notice(
                 $ok ? 'success' : 'error',
                 $ok ? __( 'Team schedule saved.', 'talenttrack' ) : __( 'Save failed: database error.', 'talenttrack' )
+            );
+        }
+
+        if ( $action === 'save_cycle' ) {
+            $team_id   = absint( $_POST['team_id']   ?? 0 );
+            $season_id = absint( $_POST['season_id'] ?? 0 );
+            if ( ! wp_verify_nonce( (string) ( $_POST['_tt_vct_cfg_nonce'] ?? '' ), 'tt_vct_cfg_cycle_save_' . $team_id . '_' . $season_id ) ) {
+                self::notice( 'error', __( 'Save failed: your form expired. Please reload.', 'talenttrack' ) );
+                return;
+            }
+
+            $template_id = absint( $_POST['template_id'] ?? 0 );
+            $input = [
+                'cycle_weeks' => absint( $_POST['cycle_weeks'] ?? 0 ),
+                'anchor_date' => isset( $_POST['anchor_date'] ) ? sanitize_text_field( wp_unslash( (string) $_POST['anchor_date'] ) ) : '',
+                'template_id' => $template_id,
+            ];
+
+            // The shared validator, so the form and the REST endpoint
+            // refuse the same things for the same reasons.
+            $error = VctTeamCycleValidator::validate( $input );
+            if ( $error !== null ) {
+                self::notice( 'error', $error );
+                return;
+            }
+
+            $ok = ( new VctTeamCyclesRepository() )->upsert(
+                $team_id,
+                $season_id,
+                (int) $input['cycle_weeks'],
+                (string) $input['anchor_date'],
+                $template_id > 0 ? $template_id : null
+            );
+            self::notice(
+                $ok ? 'success' : 'error',
+                $ok ? __( 'Cycle saved.', 'talenttrack' ) : __( 'Save failed: database error.', 'talenttrack' )
+            );
+        }
+
+        if ( $action === 'delete_cycle' ) {
+            $team_id   = absint( $_POST['team_id']   ?? 0 );
+            $season_id = absint( $_POST['season_id'] ?? 0 );
+            if ( ! wp_verify_nonce( (string) ( $_POST['_tt_vct_cfg_nonce'] ?? '' ), 'tt_vct_cfg_cycle_delete_' . $team_id . '_' . $season_id ) ) {
+                self::notice( 'error', __( 'Removing failed: your form expired. Please reload.', 'talenttrack' ) );
+                return;
+            }
+
+            // The overrides go with it. An override only ever means "this
+            // week of the cycle is an exception", so one left behind would
+            // silently re-apply to a cycle set up months later.
+            ( new VctCycleWeekOverridesRepository() )->clearSeason( $team_id, $season_id );
+            $ok = ( new VctTeamCyclesRepository() )->delete( $team_id, $season_id );
+
+            self::notice(
+                $ok ? 'success' : 'error',
+                $ok
+                    ? __( 'Cycle removed. This team plans from the season\'s macro-blocks again.', 'talenttrack' )
+                    : __( 'Removing failed: database error.', 'talenttrack' )
             );
         }
     }
