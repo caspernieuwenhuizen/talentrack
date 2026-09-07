@@ -1,3 +1,26 @@
+# TalentTrack v4.115.7 — Filtering by player means typing a name, not scrolling the academy (#3332)
+
+The player filter on goals and evaluations was a dropdown listing every player
+you could see — the whole academy for an admin, in whatever order the database
+returned, with no way to type toward a name. On a phone it was a native picker
+the length of the squad list.
+
+Both now use the same type-to-filter player picker the rest of the app uses:
+start typing a name and pick it. A coach still sees only their own teams'
+players, exactly as before.
+
+# TalentTrack v4.115.7 — Filters sit in the same order on a phone as on a laptop (#3334)
+
+The archive menu was the last thing on the bar on a desktop and the first thing
+in the filter sheet on a phone — the same list, the same coach, the two devices
+they use in one afternoon. Filters now come first and the utility controls last
+in both places.
+
+Trial cases also asked about archived rows with an on/off switch where every
+other list uses the `⋯` menu. It uses the menu now, so archive state looks and
+behaves the same wherever you meet it — and an unfiltered list no longer says
+it is filtered.
+
 # TalentTrack v4.115.6 — A test measured in minutes now offers mm:ss without being asked (#3275)
 
 Setting up a test in minutes and opening the entry grid gave you a decimal
