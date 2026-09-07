@@ -98,6 +98,53 @@ final class ReportFilters {
      * Takes the EFFECTIVE period, not the raw one: if a pill is active it
      * describes the window and a second chip would say the same thing twice.
      */
+    /**
+     * The one time control a surface shows (#3331).
+     *
+     * Nine surfaces rendered a `period` pill-dropdown AND a standalone
+     * `date_range` for the same question. The two could disagree, which is
+     * what #3293 had to teach the pill to stop doing — and a control that
+     * cannot contradict itself is a better answer than one taught not to.
+     *
+     * The presets stay link-based, so they commit themselves with JS off.
+     * The custom branch carries the same `from` / `to` field names the
+     * `date_range` group used, so a saved view or bookmark written before
+     * this still resolves — `paramNames()` picks them up from `custom`.
+     *
+     * The trigger reads the window, not the preset, whenever a custom one is
+     * what the query ran on. That is the whole point: the label and the data
+     * agree.
+     *
+     * @param array<int,array<string,mixed>> $options   the preset links.
+     * @param string                         $effective the period the query
+     *        actually used — `effectivePeriod()`, never the raw `?period=`.
+     * @return array<string,mixed> a `period` group for FilterBar.
+     */
+    public static function periodGroup(
+        array $options,
+        string $effective,
+        string $from,
+        string $to,
+        string $from_name = 'from',
+        string $to_name = 'to'
+    ): array {
+        $labels     = self::periodLabels();
+        $range_chip = self::customRangeChip( $effective, $from, $to );
+
+        return [
+            'type'          => 'period',
+            'key'           => 'period',
+            'label'         => __( 'Period', 'talenttrack' ),
+            'active_label'  => $range_chip ?? (string) ( $labels[ $effective ] ?? $labels[''] ),
+            'options'       => $options,
+            'custom'        => [
+                'from' => [ 'name' => $from_name, 'value' => $from ],
+                'to'   => [ 'name' => $to_name,   'value' => $to ],
+            ],
+            'custom_active' => $range_chip !== null,
+        ];
+    }
+
     public static function customRangeChip( string $effective_period, string $from, string $to ): ?string {
         if ( $effective_period !== '' ) return null;
 
