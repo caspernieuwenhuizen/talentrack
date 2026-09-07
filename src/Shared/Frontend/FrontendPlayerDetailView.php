@@ -534,10 +534,38 @@ final class FrontendPlayerDetailView extends FrontendViewBase {
         $photo     = (string) ( $player->photo_url ?? '' );
         $jersey    = ! empty( $player->jersey_number ) ? (int) $player->jersey_number : 0;
         $positions = json_decode( (string) ( $player->preferred_positions ?? '' ), true );
-        // #2155 — hero pill shows the long description (Striker, Centre back).
-        $first_pos = is_array( $positions ) && ! empty( $positions )
-            ? \TT\Infrastructure\Query\LabelTranslator::positionLabel( (string) $positions[0] )
-            : '';
+        // #3329 — one pill per position, in stored order.
+        //
+        // The hero kept `$positions[0]` and dropped the rest, so a player
+        // with four positions read as a specialist in the header while the
+        // Identity row, the sidebar card and the edit form all listed four.
+        // For an academy that treats positional range as a development
+        // signal, that is the wrong first impression on the most-trafficked
+        // screen in the plugin.
+        //
+        // Showing all of them only became possible with #3246: every
+        // position lookup now carries a per-locale abbreviation, so four
+        // pills fit where four long Dutch labels never would. #2155's choice
+        // of the long description was right for a single pill and is what
+        // the `title` still carries.
+        //
+        // `get_lookup_abbrev_pairs()` omits rows with no abbreviation rather
+        // than returning an empty string, so the fallback is written here:
+        // an academy that has not filled them in keeps readable full labels
+        // instead of losing the position, and never sees the internal key.
+        $abbrev_map = QueryHelpers::get_lookup_abbrev_pairs( 'position' );
+        $position_pills = [];
+        if ( is_array( $positions ) ) {
+            foreach ( $positions as $code ) {
+                $code = (string) $code;
+                if ( $code === '' ) continue;
+                $full = \TT\Infrastructure\Query\LabelTranslator::positionLabel( $code );
+                $position_pills[] = [
+                    'short' => (string) ( $abbrev_map[ $code ] ?? $full ),
+                    'full'  => $full,
+                ];
+            }
+        }
         $journey   = self::journeyText( $player );
         // #1089 VCT-14 — orange PHV pill on the hero when active.
         $phv_active = $phv_row !== null && ! empty( $phv_row['is_active'] );
@@ -582,9 +610,14 @@ final class FrontendPlayerDetailView extends FrontendViewBase {
                                 · <?php echo esc_html( $journey_text ); ?>
                             <?php endif; ?>
                         </span>
-                        <?php if ( $first_pos !== '' ) : ?>
-                            <span class="tt-player-pill tt-player-pill--pos"><?php echo esc_html( $first_pos ); ?></span>
-                        <?php endif; ?>
+                        <?php foreach ( $position_pills as $pill ) : ?>
+                            <span class="tt-player-pill tt-player-pill--pos"
+                                  title="<?php echo esc_attr( $pill['full'] ); ?>"><?php
+                                echo esc_html( $pill['short'] );
+                            ?><?php if ( $pill['short'] !== $pill['full'] ) : ?>
+                                <span class="tt-screen-reader-text"><?php echo esc_html( $pill['full'] ); ?></span>
+                            <?php endif; ?></span>
+                        <?php endforeach; ?>
                     </p>
                 </div>
             </div>
