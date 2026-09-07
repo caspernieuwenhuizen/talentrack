@@ -263,8 +263,12 @@ final class EvidencePacket {
     }
 
     /**
-     * Sessions in the window with the present / absent / excused split and
-     * the rate the player profile shows, so the two cannot disagree.
+     * Activities in the window with the present / absent / excused split
+     * and the rate the player profile shows, so the two cannot disagree.
+     *
+     * The count is keyed `activities`, not the `sessions` the old packet
+     * used: the entity was renamed under #0035 and the packet was carrying
+     * the old word into a payload a future front end would have to keep.
      *
      * @return array<string,mixed>
      */
@@ -276,7 +280,7 @@ final class EvidencePacket {
 
         $row = $wpdb->get_row( $wpdb->prepare(
             "SELECT
-                COUNT(*) AS sessions,
+                COUNT(*) AS total,
                 SUM(CASE WHEN att.status = 'Present' THEN 1 ELSE 0 END) AS present,
                 SUM(CASE WHEN att.status = 'Absent'  THEN 1 ELSE 0 END) AS absent,
                 SUM(CASE WHEN att.status = 'Excused' THEN 1 ELSE 0 END) AS excused
@@ -291,15 +295,15 @@ final class EvidencePacket {
             $player_id, $club_id, $from, $to
         ), ARRAY_A );
 
-        $sessions = (int) ( $row['sessions'] ?? 0 );
-        $present  = (int) ( $row['present'] ?? 0 );
+        $total   = (int) ( $row['total'] ?? 0 );
+        $present = (int) ( $row['present'] ?? 0 );
 
         return [
-            'sessions' => $sessions,
-            'present'  => $present,
-            'absent'   => (int) ( $row['absent'] ?? 0 ),
-            'excused'  => (int) ( $row['excused'] ?? 0 ),
-            'rate'     => $sessions > 0 ? round( $present / $sessions * 100 ) : null,
+            'activities' => $total,
+            'present'    => $present,
+            'absent'     => (int) ( $row['absent'] ?? 0 ),
+            'excused'    => (int) ( $row['excused'] ?? 0 ),
+            'rate'       => $total > 0 ? round( $present / $total * 100 ) : null,
         ];
     }
 

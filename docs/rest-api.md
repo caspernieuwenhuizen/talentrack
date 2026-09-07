@@ -513,7 +513,7 @@ group is club-scoped and excludes archived and trashed rows.
       "categories": [ { "category_id": 4, "label": "Passing", "is_main": true, "rating": 7.5 } ]
     }
   ],
-  "attendance": { "sessions": 24, "present": 21, "absent": 2, "excused": 1, "rate": 88 },
+  "attendance": { "activities": 24, "present": 21, "absent": 2, "excused": 1, "rate": 88 },
   "minutes": { "apps": 14, "minutes": 812, "breakdown": [ ] },
   "goals": [ { "id": 5, "title": "Win more headers", "status": "in_progress", "changed_in_window": true, "is_closed": false } ],
   "injuries": [ { "id": 2, "started_on": "2026-10-05", "actual_return": "2026-11-20", "is_open": false } ],
@@ -526,7 +526,12 @@ group is club-scoped and excludes archived and trashed rows.
 `notes` is assembled for the **reader**, not for the record: a caller who
 cannot see this player's staff notes on the player file gets an empty
 array here, and a private-to-coach note stays private. `rate` is null when
-the window holds no sessions.
+the window holds no activities.
+
+`attendance.activities` was `attendance.sessions` before #3302 — the
+entity was renamed under #0035 and the packet was still carrying the old
+word. The endpoint had no consumers, so the key is corrected rather than
+kept.
 
 `minutes.breakdown` comes from `MinutesQuery::matchBreakdownForPlayer()`,
 which is team-scoped — a player with no team gets the totals and an empty

@@ -69,7 +69,7 @@ final class PdpEvidencePacketTest extends WP_UnitTestCase {
         $this->assertCount( 1, $packet['notes'] );
         $this->assertCount( 1, $packet['recent_journey'] );
 
-        $this->assertSame( 2, $packet['attendance']['sessions'] );
+        $this->assertSame( 2, $packet['attendance']['activities'] );
         $this->assertSame( 1, $packet['attendance']['present'] );
         $this->assertSame( 1, $packet['attendance']['absent'] );
         $this->assertSame( 50.0, (float) $packet['attendance']['rate'] );
