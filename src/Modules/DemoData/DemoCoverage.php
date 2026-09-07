@@ -627,6 +627,19 @@ class DemoCoverage {
         'tt_impersonation_log' => [ 'exempt' => 'Authentication audit: who signed in as whom, and when. Same reason as tt_audit_log — a fabricated entry corrupts the record a real investigation reads, and this one is about accounts rather than content.' ],
         'tt_comms_log'   => [ 'exempt' => 'One row per real send attempt, and what the operator-facing "did the parents actually get it?" query reads. Seeding it would answer that question with sends that never happened.' ],
         'tt_comms_inbox' => [ 'planned' => '#2600' ],
+        // #3357 (epic #3354) — the per-team VCT cycle and its manual week
+        // overrides. A demo academy should ship with a cycle configured, or
+        // the cycle week never appears on a demo training and the feature
+        // looks broken rather than unconfigured. The generator lands with
+        // the configuration surface that gives a cycle somewhere to be
+        // edited; seeding one before then would produce rows no screen can
+        // show.
+        'tt_vct_team_cycles' => [ 'planned' => '#3360' ],
+        // The override table stays empty even once cycles are generated: an
+        // override is a coach correcting the automation, and a demo run that
+        // shipped pre-corrected weeks would misrepresent what the automation
+        // does on its own.
+        'tt_vct_cycle_weeks' => [ 'exempt' => 'A coach\'s manual correction of an automatically-resolved week. Absence of a row already means "resolve this week automatically", so an empty table is the correct state — and a seeded override would hide what the automation does unaided.' ],
         'tt_player_status_methodology' => [ 'exempt' => 'Per-club weighting of the traffic-light inputs. Operator configuration, like tt_module_state — a seeded row would silently change how every demo player\'s status is computed.' ],
         'tt_error_log'   => [ 'exempt' => 'Error log. Synthetic errors would send operators chasing bugs that never happened.' ],
         // #2631 — derived state, not content. Rows are written only by the

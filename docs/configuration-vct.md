@@ -66,7 +66,13 @@ truth, used by both the REST endpoint and any other writer, so the
 WordPress render and a future SaaS front end get identical answers.
 
 The **Reference phase profiles** read-only table above the editor lists
-the seeded template profiles for reference.
+the seeded template profiles for reference. Four ship: a three-week, a
+four-week, a six-week (the default) and the five-week speelwijze cycle.
+
+The three-week profile is introduce → load → unload. Three weeks leaves
+no room for a peak week, so it is not a shortened six-week ladder — it
+is a different shape, and the right one when the block it sits in is
+short.
 
 ## Which age groups are modelled, and why not the youngest
 

@@ -69,7 +69,14 @@ zodat de WordPress-weergave en een toekomstige SaaS-frontend dezelfde
 antwoorden geven.
 
 De alleen-lezen tabel **Referentie-faseprofielen** boven de editor toont
-de meegeleverde sjabloonprofielen ter referentie.
+de meegeleverde sjabloonprofielen ter referentie. Er zijn er vier: een
+van drie weken, een van vier weken, een van zes weken (de standaard) en
+de speelwijzecyclus van vijf weken.
+
+Het profiel van drie weken loopt van introductie via opbouw naar deload.
+In drie weken is geen ruimte voor een piekweek, dus het is geen ingekorte
+ladder van zes weken maar een andere vorm — en de juiste wanneer het blok
+waarin het valt kort is.
 
 ## Welke leeftijdscategorieën gemodelleerd zijn, en waarom de jongste niet
 
