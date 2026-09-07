@@ -328,14 +328,57 @@ final class SavedViews {
             $name = trim( (string) $name );
             if ( $name === '' ) continue;
             if ( $name === \TT\Infrastructure\Filters\SavedViewsDefaults::OFF_PARAM ) continue;
-            if ( ! isset( $_GET[ $name ] ) ) continue; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-            $value = sanitize_text_field( wp_unslash( (string) $_GET[ $name ] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-            if ( $value === '' ) continue;
+            $value = self::requestValue( $name );
+            if ( $value === null ) continue;
+
             $out[ $name ] = $value;
         }
         ksort( $out );
         return $out;
+    }
+
+    /**
+     * The current request's value for one of `paramNames()`'s names, or null.
+     *
+     * `paramNames()` yields the **form field name**, and every
+     * `FrontendListTable` surface names its filters `filter[<key>]`. PHP never
+     * creates a `$_GET['filter[team_id]']` key — a query string of
+     * `filter[team_id]=2` arrives as `$_GET['filter']['team_id']` — so a flat
+     * lookup dropped every nested filter and kept only the flat ones
+     * (`search`, `orderby`, `order`).
+     *
+     * That is what left a reader who narrowed a list with its dropdowns with
+     * no way to save the view: `$has_filters` was false, so the bookmark
+     * control was never rendered for anyone who had not already saved one.
+     * It also meant a stored view containing `filter[team_id]` could never
+     * equal the live URL, so `matchingViewId()` never fired on a list.
+     *
+     * The value is returned under the caller's **bracketed** name, because
+     * that is the shape `saved-views.js` writes: it reads the raw query
+     * string through `URLSearchParams`, where `filter[team_id]` survives
+     * intact. Both sides must speak the same key or the comparison is
+     * meaningless.
+     *
+     * @return string|null the sanitised scalar value, or null when absent,
+     *                     empty, or an array (`filter[x][]=a&filter[x][]=b`) —
+     *                     a repeated param is not a saved-view filter, and
+     *                     casting it would print "Array" plus a notice.
+     */
+    private static function requestValue( string $name ): ?string {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        if ( preg_match( '/^([^\[\]]+)\[([^\[\]]+)\]$/', $name, $m ) ) {
+            $parent = $_GET[ $m[1] ] ?? null;
+            $raw    = is_array( $parent ) ? ( $parent[ $m[2] ] ?? null ) : null;
+        } else {
+            $raw = $_GET[ $name ] ?? null;
+        }
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+        if ( ! is_scalar( $raw ) ) return null;
+
+        $value = sanitize_text_field( wp_unslash( (string) $raw ) );
+        return $value === '' ? null : $value;
     }
 
     /**
