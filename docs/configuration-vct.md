@@ -32,6 +32,54 @@ Before #1546 there were two tiles (one each for macro-blocks and age
 profiles) and the Team schedules tab had no tile at all. The single tile
 makes all three reachable from one entry point.
 
+## Macro-blocks and cycles are not the same thing
+
+A **macro-block** is a dated stretch of the season — build-up, in-season,
+taper. It has a start and an end, and it happens once.
+
+A **cycle** is the three, four or six week rhythm a team trains to, and it
+repeats. It is set per team, and it is the thing that answers "which week
+of the cycle is this training in?"
+
+Where a team has a cycle, the cycle decides the week's intensity. Where it
+does not, the macro-block does, exactly as before — an academy that never
+sets up a cycle plans the way it always has.
+
+The difference that matters in practice: **a week the team plays pauses
+the cycle**, and the paused week is not spent. A team in week 3 that plays
+on Saturday is still in week 3 the following week. Macro-blocks have no
+such notion — their weeks run straight through whatever else is in the
+calendar.
+
+## Setting a team's cycle
+
+Each team's accordion on the **Team schedules** tab carries a cycle
+section under its training days. Three fields:
+
+- **Cycle length** — three, four or six weeks. Six is the default.
+- **Starts on** — the week cycle week 1 begins. Any day you pick is
+  stored as the Monday of that week, because the whole feature counts in
+  whole weeks; the season's start date is offered as the default.
+- **Weekly shape** — which reference phase profile the cycle repeats.
+  Leave it on *Match the cycle length* to use the seeded profile of that
+  length.
+
+The line under the fields names each week of the cycle, so you can read
+the shape without opening anything else.
+
+A shape has to have one row per week of the cycle. Picking a four-week
+shape for a six-week cycle is refused rather than accepted — a cycle
+whose last two weeks were flat for no visible reason is the kind of thing
+nobody traces back to this screen.
+
+**Remove cycle** sends the team back to planning from the season's
+macro-blocks, and removes any weeks that were set to neutral by hand.
+Trainings already planned keep the cycle week they were given.
+
+Setting a cycle needs the VCT configuration permission, which the head of
+development holds. A cycle decides how hard a squad is worked week by
+week, so it is not part of general administration.
+
 ## Picking a season and team
 
 Season and team are now **dropdowns** — no raw ID typing.

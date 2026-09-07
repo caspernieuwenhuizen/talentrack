@@ -32,6 +32,56 @@ Vóór #1546 waren er twee tegels (één voor macro-blokken en één voor
 leeftijdsprofielen) en had het tabblad Teamschema's helemaal geen tegel.
 De ene tegel maakt alle drie bereikbaar vanaf één ingang.
 
+## Macro-blokken en cycli zijn niet hetzelfde
+
+Een **macro-blok** is een gedateerd stuk van het seizoen — opbouw,
+wedstrijdseizoen, afbouw. Het heeft een begin en een eind, en het gebeurt
+één keer.
+
+Een **cyclus** is het ritme van drie, vier of zes weken waarin een team
+traint, en dat herhaalt zich. Je stelt hem per team in, en hij beantwoordt
+de vraag: in welke week van de cyclus valt deze training?
+
+Heeft een team een cyclus, dan bepaalt de cyclus de intensiteit van de
+week. Heeft het die niet, dan doet het macro-blok dat, precies zoals
+voorheen — een academie die nooit een cyclus instelt, plant zoals altijd.
+
+Het verschil dat in de praktijk telt: **een week waarin het team speelt
+zet de cyclus stil**, en die week wordt niet verbruikt. Een team in week 3
+dat zaterdag speelt, zit de week erna nog steeds in week 3. Macro-blokken
+kennen dat niet — hun weken lopen door, wat er verder ook in de agenda
+staat.
+
+## De cyclus van een team instellen
+
+Onder de trainingsdagen van elk team op het tabblad **Teamschema's**
+staat een cyclusgedeelte. Drie velden:
+
+- **Cycluslengte** — drie, vier of zes weken. Zes is de standaard.
+- **Start op** — de week waarin cyclusweek 1 begint. Welke dag je ook
+  kiest, hij wordt opgeslagen als de maandag van die week, want de hele
+  functie rekent in hele weken; de startdatum van het seizoen staat als
+  standaard klaar.
+- **Weekvorm** — welk referentiefaseprofiel de cyclus herhaalt. Laat hem
+  op *Passend bij de cycluslengte* staan voor het meegeleverde profiel
+  van die lengte.
+
+De regel onder de velden noemt elke week van de cyclus, zodat je de vorm
+kunt lezen zonder iets anders te openen.
+
+Een vorm moet één regel per week van de cyclus hebben. Een vorm van vier
+weken kiezen bij een cyclus van zes weken wordt geweigerd in plaats van
+geaccepteerd — een cyclus waarvan de laatste twee weken zonder
+zichtbare reden vlak zijn, herleidt niemand tot dit scherm.
+
+**Cyclus verwijderen** laat het team weer plannen vanuit de macro-blokken
+van het seizoen, en wist de weken die met de hand op neutraal zijn gezet.
+Trainingen die al gepland zijn, houden de cyclusweek die ze kregen.
+
+Een cyclus instellen vraagt de VCT-configuratierechten, die het hoofd
+opleiding heeft. Een cyclus bepaalt hoe zwaar een selectie week na week
+wordt belast, dus het hoort niet bij het gewone beheer.
+
 ## Een seizoen en team kiezen
 
 Seizoen en team zijn nu **keuzelijsten** — geen ID's meer intypen.

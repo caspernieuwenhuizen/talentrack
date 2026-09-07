@@ -171,6 +171,35 @@ Deliberately **not** added to `FrontendModulesView`, where `/modules` and `/feat
 - **`GET /profiles/{slug}` writes nothing**, and the smoke suite asserts it against a snapshot of live module and feature state rather than by inspection — the preview being read-only is the property the whole "nothing is written without a human seeing the diff" decision rests on.
 - **No WP-isms in the payload.** The response exposes what a caller may do via the capability gate, never a role name.
 
+## VCT team cycles (#3360)
+
+The per-team repeating cycle — how many weeks it runs, the Monday week 1 starts
+on, and which reference phase profile it repeats.
+`VctTeamCyclesRestController` (`src/Modules/Vct/Rest/VctTeamCyclesRestController.php`).
+
+- **Caps:** `tt_vct_admin_config` on every verb, the same gate the VCT
+  configuration tile uses. A cycle decides how hard a squad is worked week by
+  week, so it sits with the head of development rather than with general
+  administration.
+- **Routes:** `GET /vct/team-cycles?season_id=N`,
+  `PUT /vct/team-cycles?season_id=N&team_id=M`,
+  `DELETE /vct/team-cycles?season_id=N&team_id=M`.
+- **`PUT` requires `cycle_weeks` and `anchor_date`.** `cycle_weeks` must be 3,
+  4 or 6 — anything else is a 400 rather than a coerced value, because a
+  silently corrected cycle length would plan a season nobody chose. The anchor
+  is stored as the Monday of whatever week it names; the whole feature counts
+  in whole weeks.
+- **`template_id` must match the cycle's length.** A four-week shape on a
+  six-week cycle is refused: accepting it produces a cycle whose last two weeks
+  are flat for no reason the coach can see. Omit it (or send 0) to use the
+  seeded profile of that length.
+- **`DELETE` also clears the team's week overrides.** An override only ever
+  means "this week of the cycle is an exception", so one left behind would
+  silently re-apply to a cycle set up months later.
+- **Absence of a cycle is a normal answer, not an error.** A team with no row
+  is simply planned from the season's macro-blocks, as it was before cycles
+  existed.
+
 ## VCT age profiles (#2601)
 
 The per-age workload envelope the training generator plans inside: maximum
@@ -481,6 +510,68 @@ One envelope for all three so the panel renders one way. Facts with an empty
 value are dropped server-side rather than rendered blank. **Read-only in v1** —
 editing inside a panel means a second save path and a stale-parent problem, on a
 surface whose job is orientation rather than data entry.
+
+## PDP evidence packet (#3302, epic #3301)
+
+### `GET /pdp-files/{id}/evidence-packet`
+
+Everything the academy already knows about the player on this PDP file,
+assembled once. Read-only. Gated on `tt_view_pdp` / `tt_edit_pdp` /
+`tt_edit_pdp_verdict` plus the per-file scope check.
+
+The same assembly backs three surfaces — the Evidence tab on a
+conversation, the printed file, and the verdict screen — so they cannot
+show three different answers for the same player on the same day. Every
+group is club-scoped and excludes archived and trashed rows.
+
+```json
+{
+  "file_id": 12,
+  "player_id": 340,
+  "conversation_id": 0,
+  "season": { "id": 3, "name": "2026/27", "start_date": "2026-07-01", "end_date": "2027-06-30" },
+  "window": { "from": "2026-07-01", "to": "2027-06-30", "scope": "season" },
+  "status": { },
+  "behaviour": [ ],
+  "potential": [ ],
+  "evaluations": [
+    {
+      "id": 88, "eval_date": "2026-09-01", "rating": 7.2,
+      "notes": "Reads the game two passes ahead.",
+      "assessor_id": 9, "assessor_name": "Ada Kuipers", "eval_type_id": 2,
+      "categories": [ { "category_id": 4, "label": "Passing", "is_main": true, "rating": 7.5 } ]
+    }
+  ],
+  "attendance": { "activities": 24, "present": 21, "absent": 2, "excused": 1, "rate": 88 },
+  "minutes": { "apps": 14, "minutes": 812, "breakdown": [ ] },
+  "goals": [ { "id": 5, "title": "Win more headers", "status": "in_progress", "changed_in_window": true, "is_closed": false } ],
+  "injuries": [ { "id": 2, "started_on": "2026-10-05", "actual_return": "2026-11-20", "is_open": false } ],
+  "notes": [ { "id": 31, "created_at": "2026-09-15 09:00:00", "author_name": "Ada Kuipers", "visibility": "public", "body": "…" } ],
+  "self_reflection": "",
+  "recent_journey": [ ]
+}
+```
+
+`notes` is assembled for the **reader**, not for the record: a caller who
+cannot see this player's staff notes on the player file gets an empty
+array here, and a private-to-coach note stays private. `rate` is null when
+the window holds no activities.
+
+`attendance.activities` was `attendance.sessions` before #3302 — the
+entity was renamed under #0035 and the packet was still carrying the old
+word. The endpoint had no consumers, so the key is corrected rather than
+kept.
+
+`minutes.breakdown` comes from `MinutesQuery::matchBreakdownForPlayer()`,
+which is team-scoped — a player with no team gets the totals and an empty
+breakdown rather than a wrong one.
+
+`EvidencePacket::forConversation( $conversation_id )` is the same shape
+narrowed to the window since the previous conversation in the cycle, with
+`window.scope` set to `conversation`, `conversation_id` populated, and
+`self_reflection` carrying what the player wrote for that talk. The first
+conversation of a season has no predecessor, so its window opens at the
+season start.
 
 ## Adding a new resource
 
