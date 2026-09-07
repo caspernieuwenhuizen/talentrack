@@ -124,6 +124,13 @@ The detail view's **Print / PDF** button opens a clean A4 layout: photo, season 
 - **Top-level menu → Seasons** — list, add, set current. Setting a new season as current triggers carryover.
 - **Configuration → System** — the *PDP cycle default* (2 / 3 / 4) and *Print: include evidence by default* toggle.
 - **Per-team override** — on the team edit page, set *PDP cycle size* to override the club default.
+- **Configuration → PDP preparation questions** — what a coach is asked to think about before each conversation, with a separate set per conversation in the cycle. Every academy starts with a shipped set and can add, reword, reorder or remove questions.
+
+### Preparation questions
+
+The start of a season asks different things than the end, so each conversation in the cycle carries its own set of prompts. Answers are **private to the coach and the head of academy** — never shown to the player or their parents, on any surface.
+
+Rewording a question that has already been answered does not change what those answers were given against: the old wording is kept on the preps that hold them, and the new wording applies from the next conversation onward. So a prep written last season still reads the way it was written.
 
 ## Workflow nudges
 

@@ -52,6 +52,48 @@ dat zaterdag speelt, zit de week erna nog steeds in week 3. Macro-blokken
 kennen dat niet — hun weken lopen door, wat er verder ook in de agenda
 staat.
 
+## De cyclus, week voor week
+
+Het tabblad **Cyclus** toont het seizoen van één team week voor week:
+welke week van de cyclus het is, de fase en het thema, de intensiteit
+en — de kolom die er het meest toe doet — **waarom** de week is wat hij
+is.
+
+Bij een neutrale week staat er ofwel "Er is deze week een wedstrijd",
+ofwel wie hem met de hand heeft gezet en wanneer. Zonder die regel leest
+een neutrale week als een bug, en het eerste wat iemand bij een bug doet
+is de planner niet meer vertrouwen.
+
+In de lijst zie je de pauzeregel werken: cyclusweek 3 komt **na** een
+neutrale week in plaats van eraan op te gaan. Dat is het deel van de
+regel dat mensen verrast, en dit is het enige scherm waar het zichtbaar
+is.
+
+### Een week corrigeren
+
+Elke week biedt drie keuzes, geen vinkje:
+
+- **Automatisch** — bepaal hem uit het wedstrijdprogramma. De standaard.
+- **Neutraal forceren** — pauzeer een week waarin geen wedstrijd staat.
+- **Toch doorlopen** — laat de week gewoon doorlopen *ondanks* een
+  wedstrijd. Dit is degene die in de praktijk voorkomt: een
+  oefenwedstrijd die nooit bedoeld was om iets te onderbreken.
+
+"Automatisch" verwijdert de correctie helemaal in plaats van een derde
+toestand op te slaan, dus een week die je terugzet op automatisch
+gedraagt zich alsof hij nooit is aangeraakt.
+
+Eén knop **Weken opslaan** legt alles vast. Eén week wijzigen verschuift
+elke week erna, dus elke schakelaar opslaan op het moment dat je hem
+aantikt zou een reeks half doordachte verschuivingen doorvoeren zonder
+één punt om ze vanaf terug te draaien. De lijst wordt na het opslaan
+opnieuw opgebouwd, zodat het doorwerkende effect meteen zichtbaar is.
+
+Een week corrigeren vraagt de VCT-configuratierechten. Trainers kunnen de
+kalender wel zien — je moet het ritme kunnen lezen waarnaar je plant —
+maar een week verschuiven verandert de rest van het seizoen voor de hele
+selectie.
+
 ## De cyclus van een team instellen
 
 Onder de trainingsdagen van elk team op het tabblad **Teamschema's**

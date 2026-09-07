@@ -124,6 +124,13 @@ De **Printen / PDF**-knop in het detailoverzicht opent een schone A4-layout: fot
 - **Hoofdmenu â†’ Seizoenen** â€” lijst, toevoegen, huidig instellen. Een nieuw huidig seizoen instellen activeert de carryover.
 - **Configuratie â†’ Systeem** â€” *POP-cyclusstandaard* (2 / 3 / 4) en de *Print: standaard bewijs meenemen*-knop.
 - **Per-team override** â€” op de team-bewerkÂ­pagina kun je *POP-cyclusÂ­grootte* afwijkend instellen.
+- **Configuratie → POP-voorbereidingsvragen** — waar een trainer over nadenkt voor elk gesprek, met per gesprek in de cyclus een eigen set. Elke academie begint met een meegeleverde set en kan vragen toevoegen, herformuleren, verslepen of verwijderen.
+
+### Voorbereidingsvragen
+
+Aan het begin van het seizoen vraag je andere dingen dan aan het eind, dus elk gesprek in de cyclus heeft een eigen set prompts. De antwoorden zijn **alleen zichtbaar voor de trainer en het hoofd opleiding** — nooit voor de speler of de ouders, op geen enkel scherm.
+
+Herformuleer je een vraag die al beantwoord is, dan verandert dat niet waar die antwoorden op gegeven zijn: de oude formulering blijft staan bij de voorbereidingen die ze bevatten, en de nieuwe formulering geldt vanaf het volgende gesprek. Een voorbereiding van vorig seizoen leest dus nog steeds zoals hij geschreven is.
 
 ## WerkflowÂ­herinneringen
 

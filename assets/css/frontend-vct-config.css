@@ -407,3 +407,116 @@
     border-top: 1px solid var(--tt-line, #e3e6e1);
 }
 .tt-dashboard .tt-vct-cycle-remove .tt-btn { min-height: 48px; }
+
+/* ── Cycle calendar (#3361, epic #3354) ──────────────────────────── */
+/* Cards at 360px, a table-like row from 768px, from the same markup.
+   A coach checking this week's plan at the pitch must not have to scroll
+   sideways to reach the state column — so there is no scroller here. */
+.tt-dashboard .tt-vct-week-list {
+    list-style: none;
+    margin: 16px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+.tt-dashboard .tt-vct-week {
+    padding: 12px;
+    border: 1px solid var(--tt-line, #e3e6e1);
+    border-left: 4px solid var(--tt-primary, #1d7874);
+    border-radius: 8px;
+    background: #fff;
+}
+.tt-dashboard .tt-vct-week.is-neutral {
+    border-left-color: #b8860b;
+    background: #fffbf2;
+}
+.tt-dashboard .tt-vct-week-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    justify-content: space-between;
+}
+.tt-dashboard .tt-vct-week-date { font-weight: 600; }
+.tt-dashboard .tt-vct-week-state {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #e6f4f1;
+    color: var(--tt-primary, #1d7874);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+.tt-dashboard .tt-vct-week.is-neutral .tt-vct-week-state {
+    background: #fdf0d5;
+    color: #8a6200;
+}
+.tt-dashboard .tt-vct-week-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin: 8px 0 0;
+    font-size: 0.88rem;
+}
+.tt-dashboard .tt-vct-week-facts dt {
+    color: var(--tt-muted, #6a6d66);
+    font-weight: 500;
+}
+.tt-dashboard .tt-vct-week-facts dt::after { content: ':'; }
+.tt-dashboard .tt-vct-week-facts dd { margin: 0; }
+/* Plain text, never a tooltip — hover does not exist on touch, and this
+   is the line that stops a neutral week reading as a bug. */
+.tt-dashboard .tt-vct-week-why {
+    margin: 8px 0 0;
+    color: var(--tt-muted, #6a6d66);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+.tt-dashboard .tt-vct-week-choice {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0 0;
+    padding: 0;
+    border: 0;
+}
+.tt-dashboard .tt-vct-week-legend {
+    padding: 0;
+    color: var(--tt-muted, #6a6d66);
+    font-size: 0.82rem;
+}
+.tt-dashboard .tt-vct-week-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 4px 12px;
+    border: 1px solid #d6d7da;
+    border-radius: 6px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+.tt-dashboard .tt-vct-week-option:has(input:checked) {
+    background: #e6f4f1;
+    border-color: var(--tt-primary, #1d7874);
+    color: var(--tt-primary, #1d7874);
+}
+.tt-dashboard .tt-vct-week-option:focus-within {
+    outline: 2px solid var(--tt-primary, #1d7874);
+    outline-offset: 2px;
+}
+.tt-dashboard .tt-vct-week-option input { width: 18px; height: 18px; }
+
+@media (min-width: 768px) {
+    .tt-dashboard .tt-vct-week {
+        display: grid;
+        grid-template-columns: minmax(9rem, 1fr) minmax(10rem, 1.4fr) minmax(12rem, auto);
+        align-items: center;
+        gap: 12px 16px;
+    }
+    .tt-dashboard .tt-vct-week-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .tt-dashboard .tt-vct-week-facts { margin: 0; }
+    .tt-dashboard .tt-vct-week-why { grid-column: 1 / -1; margin: 0; }
+    .tt-dashboard .tt-vct-week-choice { flex-direction: row; flex-wrap: wrap; margin: 0; }
+    .tt-dashboard .tt-vct-week-legend { flex-basis: 100%; }
+}

@@ -49,6 +49,8 @@ class FrontendConfigurationView extends FrontendViewBase {
                 'theme'       => __( 'Appearance', 'talenttrack' ),
                 'rating'      => __( 'Rating scale', 'talenttrack' ),
                 'pdp-blocks'  => __( 'PDP cycle blocks', 'talenttrack' ),
+                // #3305 — the questions a coach prepares each talk against.
+                'pdp-prep-questions' => __( 'PDP preparation questions', 'talenttrack' ),
                 // #1727 — central per-age-category default match minutes.
                 'match-minutes' => __( 'Match minutes', 'talenttrack' ),
                 // #3044 — how many a side each age group plays.
@@ -96,6 +98,13 @@ class FrontendConfigurationView extends FrontendViewBase {
                 self::renderHeader( __( 'PDP cycle blocks', 'talenttrack' ) );
                 self::renderSubBackLink();
                 self::renderPdpBlocksForm();
+                return;
+            case 'pdp-prep-questions':
+                // #3305 (epic #3301) — the prompts a coach prepares a PDP
+                // conversation against, configured per conversation template.
+                self::renderHeader( __( 'PDP preparation questions', 'talenttrack' ) );
+                self::renderSubBackLink();
+                self::renderPdpPrepQuestionsForm();
                 return;
             case 'match-minutes':
                 // #1727 — central per-age-category default match minutes.
@@ -2852,6 +2861,99 @@ class FrontendConfigurationView extends FrontendViewBase {
             [],
             TT_VERSION
         );
+    }
+
+    /**
+     * #3305 (epic #3301) — the prompts a coach prepares a PDP conversation
+     * against, one set per conversation template.
+     *
+     * Save model: this is a settings sub-form, so the §6 Save + Cancel
+     * contract's exemption (a) applies — each row commits on its own and
+     * "leaving without saving" is just navigating away. There is no record
+     * being edited to cancel out of.
+     *
+     * The scaffolding is server-rendered and `frontend-pdp-prep-questions.js`
+     * hydrates it from the JSON payload below, talking to
+     * `/pdp-prep-questions` for every change.
+     */
+    private static function renderPdpPrepQuestionsForm(): void {
+        $repo    = new \TT\Modules\Pdp\Prep\PdpPrepQuestionsRepository();
+        $labels  = \TT\Domain\Vocabularies\Enums\PdpConversationTemplate::labelled();
+        $payload = [
+            'templates' => $repo->listAll(),
+            'labels'    => $labels,
+            'types'     => \TT\Modules\Pdp\Prep\PdpPrepQuestionsRepository::allowedFieldTypes(),
+        ];
+        ?>
+        <p class="tt-pdp-prep-config__intro">
+            <?php esc_html_e( 'What a coach is asked to think about before each PDP conversation. The start of a season asks different things than the end, so each conversation in the cycle has its own set.', 'talenttrack' ); ?>
+        </p>
+        <p class="tt-pdp-prep-config__intro">
+            <?php esc_html_e( 'A coach\'s answers are private to them and the head of academy — never shown to the player or their parents. Rewording a question that has already been answered keeps the old wording on those answers, so a prep from last season still reads the way it was written.', 'talenttrack' ); ?>
+        </p>
+
+        <div class="tt-pdp-prep-config" data-tt-prep-questions>
+            <?php foreach ( $labels as $key => $label ) : ?>
+                <section class="tt-pdp-prep-config__template" data-tt-prep-template="<?php echo esc_attr( $key ); ?>">
+                    <h3 class="tt-pdp-prep-config__heading"><?php echo esc_html( $label ); ?></h3>
+                    <ol class="tt-pdp-prep-config__list" data-tt-prep-list></ol>
+                    <div class="tt-pdp-prep-config__actions">
+                        <button type="button" class="tt-btn tt-btn-secondary" data-tt-prep-add>
+                            <?php esc_html_e( 'Add question', 'talenttrack' ); ?>
+                        </button>
+                    </div>
+                </section>
+            <?php endforeach; ?>
+            <p class="tt-form-msg" data-tt-prep-msg role="status" aria-live="polite"></p>
+        </div>
+
+        <script type="application/json" data-tt-prep-payload>
+            <?php echo wp_json_encode( $payload ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — JSON in script type=application/json is safe ?>
+        </script>
+        <?php
+        wp_enqueue_style(
+            'tt-pdp-prep-questions',
+            TT_PLUGIN_URL . 'assets/css/frontend-pdp-prep-questions.css',
+            [],
+            TT_VERSION
+        );
+        wp_enqueue_script(
+            'tt-pdp-prep-questions',
+            TT_PLUGIN_URL . 'assets/js/frontend-pdp-prep-questions.js',
+            [],
+            TT_VERSION,
+            true
+        );
+        wp_localize_script( 'tt-pdp-prep-questions', 'TT_PDP_PREP', [
+            'rest_root' => esc_url_raw( rest_url( 'talenttrack/v1' ) ),
+            'nonce'     => wp_create_nonce( 'wp_rest' ),
+            'i18n'      => [
+                'label'          => __( 'Question', 'talenttrack' ),
+                'help_text'      => __( 'Help text', 'talenttrack' ),
+                'field_type'     => __( 'Answer type', 'talenttrack' ),
+                'options'        => __( 'Choices (one per line)', 'talenttrack' ),
+                'required'       => __( 'Answer required', 'talenttrack' ),
+                'save'           => __( 'Save question', 'talenttrack' ),
+                'cancel'         => __( 'Cancel', 'talenttrack' ),
+                'edit'           => __( 'Edit', 'talenttrack' ),
+                'remove'         => __( 'Remove', 'talenttrack' ),
+                'move_up'        => __( 'Move up', 'talenttrack' ),
+                'move_down'      => __( 'Move down', 'talenttrack' ),
+                'empty'          => __( 'No questions yet for this conversation.', 'talenttrack' ),
+                'saving'         => __( 'Saving…', 'talenttrack' ),
+                'saved'          => __( 'Saved.', 'talenttrack' ),
+                'save_failed'    => __( 'Could not save. Try again.', 'talenttrack' ),
+                'confirm_remove' => __( 'Remove this question? Answers already given to it stay readable on the preps that hold them.', 'talenttrack' ),
+                'versioned'      => __( 'Saved as a new version — preps already answered keep the old wording.', 'talenttrack' ),
+                'type_textarea'  => __( 'Long text', 'talenttrack' ),
+                'type_text'      => __( 'Short text', 'talenttrack' ),
+                'type_select'    => __( 'Choose one', 'talenttrack' ),
+                'type_multi'     => __( 'Choose several', 'talenttrack' ),
+                'type_checkbox'  => __( 'Yes / no', 'talenttrack' ),
+                'type_number'    => __( 'Number', 'talenttrack' ),
+                'type_date'      => __( 'Date', 'talenttrack' ),
+            ],
+        ] );
     }
 
     private static function renderDashboardForm(): void {
