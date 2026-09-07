@@ -267,6 +267,19 @@ class FrontendComparisonView extends FrontendViewBase {
             \TT\Shared\Frontend\Components\FilterBar::render( [
                 'active_count' => $active_count,
                 'chips'        => $chips,
+                // #3333 — this was the one FilterBar surface with no way back
+                // to unfiltered: without a `reset_url` the bar renders no
+                // Clear at all, and the two controls here are a date range and
+                // a select, neither of which has a "none" option to walk back
+                // to. The comparison view keeps its player selection in the
+                // same query, so Clear drops only the filter params.
+                'reset_url'    => \TT\Infrastructure\Filters\FilterParam::removeFromUrl(
+                    'eval_type_id',
+                    \TT\Infrastructure\Filters\FilterParam::removeFromUrl(
+                        'date_to',
+                        \TT\Infrastructure\Filters\FilterParam::removeFromUrl( 'date_from' )
+                    )
+                ),
                 'groups'       => [
                     [
                         'type'       => 'date_range',
