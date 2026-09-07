@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TalentTrack\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/talenttrack\n"
-"POT-Creation-Date: 2026-09-07T21:13:43+00:00\n"
+"POT-Creation-Date: 2026-09-07T21:39:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: Español\n"
@@ -2493,7 +2493,8 @@ msgstr ""
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:285
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:372
 #: src/Modules/Training/Wizard/WhenStep.php:34
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:158
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:161
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:716
 #: src/Modules/Vct/Wizard/ReviewStep.php:50
 #: src/Modules/Vct/Wizard/WhenStep.php:52
 #: src/Modules/Wizards/Activity/ReviewStep.php:59
@@ -3917,8 +3918,9 @@ msgstr "Jugadores"
 #: src/Modules/Analytics/Frontend/FrontendAnalyticsView.php:233
 #: src/Modules/CustomWidgets/DataSources/PdpFiles.php:22
 #: src/Modules/CustomWidgets/DataSources/PdpFiles.php:31
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:155
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:475
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:158
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:478
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:713
 #: src/Shared/Frontend/FrontendConfigurationView.php:2769
 #: src/Shared/Frontend/FrontendSeasonsView.php:77
 msgid "Season"
@@ -4549,7 +4551,7 @@ msgstr[1] ""
 #: src/Infrastructure/REST/TrainingPlansRestController.php:616
 #: src/Modules/Pdp/Frontend/FrontendPdpManageView.php:877
 #: src/Modules/Pdp/Frontend/FrontendPdpManageView.php:926
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:178
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:181
 #: src/Modules/Workflow/Frontend/FrontendMyTasksView.php:264
 #: src/Modules/Workflow/Frontend/FrontendTasksDashboardView.php:69
 #: src/Modules/Workflow/Frontend/FrontendTasksDashboardView.php:133
@@ -5213,9 +5215,9 @@ msgstr "Actualizar"
 #: src/Modules/Strava/Frontend/FrontendStravaAdminView.php:131
 #: src/Modules/TeamDevelopment/Frontend/FrontendPlayerAttributesView.php:119
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:500
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:226
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:359
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:537
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:229
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:362
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:540
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:374
 #: src/Shared/Frontend/CoachForms.php:127
 #: src/Shared/Frontend/CoachForms.php:592
@@ -5384,7 +5386,7 @@ msgstr ""
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:1381
 #: src/Modules/Training/Frontend/FrontendTrainingRunView.php:612
 #: src/Modules/Training/Frontend/PlanBuilderRenderer.php:363
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:292
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:295
 #: src/Shared/Frontend/Components/SaveState.php:91
 #: src/Shared/Frontend/FrontendBackupsView.php:249
 #: src/Shared/Frontend/FrontendConfigurationView.php:522
@@ -5629,6 +5631,7 @@ msgstr ""
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:392
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:400
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamChemistryView.php:770
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:759
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:373
 #: src/Shared/Frontend/Components/FormSaveButton.php:69
 #: src/Shared/Frontend/Components/FrontendThreadView.php:173
@@ -7243,7 +7246,7 @@ msgstr ""
 #: src/Modules/Training/Frontend/FrontendTrainingCoverageView.php:53
 #: src/Modules/Training/Frontend/FrontendTrainingPlansView.php:46
 #: src/Modules/Training/Frontend/FrontendTrainingRunView.php:58
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:49
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:50
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:40
 #: src/Modules/Vct/Frontend/FrontendVctSessionView.php:66
 #: src/Modules/Workflow/Frontend/FrontendTasksDashboardView.php:44
@@ -7853,7 +7856,7 @@ msgstr ""
 #: src/Modules/Teams/Admin/TeamsPage.php:159
 #: src/Modules/Tournaments/Wizard/ReviewStep.php:46
 #: src/Modules/Training/Frontend/FrontendTrainingPhotoView.php:288
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:277
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:280
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:163
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:211
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:313
@@ -9136,7 +9139,7 @@ msgstr ""
 #: src/Modules/People/Admin/TeamStaffPanel.php:53
 #: src/Modules/Reports/PlayerReportRenderer.php:690
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:269
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:278
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:281
 #: src/Shared/Frontend/Components/FilterBar.php:949
 #: src/Shared/Frontend/Components/FilterBar.php:1081
 #: src/Shared/Frontend/Components/FrontendListTable.php:445
@@ -12453,7 +12456,7 @@ msgstr ""
 #: src/Modules/Measurements/Frontend/FrontendTestResultsView.php:176
 #: src/Modules/Measurements/Frontend/FrontendTestTrendsView.php:527
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:273
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:279
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:282
 #: src/Shared/Frontend/Components/FilterBar.php:950
 #: src/Shared/Frontend/Components/FilterBar.php:1082
 #: src/Shared/Frontend/Components/FrontendListTable.php:446
@@ -15160,7 +15163,7 @@ msgstr ""
 #: src/Modules/Players/SeasonRollover/FrontendSeasonRolloverView.php:125
 #: src/Modules/Players/SeasonRollover/FrontendSeasonRolloverView.php:139
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:289
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:424
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:427
 #: src/Modules/Wizards/Team/BasicsStep.php:31
 #: src/Modules/Wizards/Team/ReviewStep.php:20
 #: src/Shared/Frontend/FrontendComparisonView.php:382
@@ -19151,6 +19154,7 @@ msgstr ""
 #: src/Modules/Exercises/Frontend/FrontendExerciseLibraryView.php:233
 #: src/Modules/Exercises/Frontend/FrontendExerciseLibraryView.php:383
 #: src/Modules/Exercises/Frontend/FrontendExerciseLibraryView.php:592
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:808
 msgid "Intensity"
 msgstr ""
 
@@ -19836,7 +19840,7 @@ msgstr ""
 #: src/Modules/Reports/Frontend/FrontendScoutAccessView.php:109
 #: src/Modules/Tournaments/Wizard/MatchesStep.php:154
 #: src/Modules/Training/Frontend/FrontendTrainingPhotoView.php:296
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:280
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:283
 #: src/Shared/Admin/OptionSetEditor.php:135
 #: src/Shared/Frontend/Components/MediaGallery.php:231
 #: src/Shared/Frontend/Components/MediaUploader.php:180
@@ -22306,7 +22310,7 @@ msgid "Load pattern"
 msgstr ""
 
 #: src/Modules/Knowledge/Blocks/LoadMatrixBlock.php:56
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:568
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:571
 msgid "Cycle length"
 msgstr ""
 
@@ -29238,7 +29242,7 @@ msgid "Week"
 msgstr ""
 
 #: src/Modules/Methodology/Frontend/MethodologyView.php:213
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:287
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:290
 msgid "Speelwijze-thema"
 msgstr ""
 
@@ -32008,7 +32012,7 @@ msgstr ""
 
 #. translators: %d = block number, 1-indexed
 #: src/Modules/Pdp/Frontend/FrontendPdpPlanningView.php:114
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:276
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:279
 #: src/Shared/Frontend/FrontendConfigurationView.php:2832
 #, php-format
 msgid "Block %d"
@@ -32231,7 +32235,7 @@ msgstr ""
 
 #. translators: %d = block number
 #: src/Modules/Pdp/Rest/PdpBlocksRestController.php:153
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:303
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:306
 #: src/Modules/Vct/Validation/VctMacroBlockValidator.php:79
 #: src/Shared/Frontend/FrontendConfigurationView.php:2845
 #, php-format
@@ -39772,6 +39776,7 @@ msgstr ""
 #: src/Modules/Training/Frontend/FrontendTrainingPlansView.php:449
 #: src/Modules/Training/Wizard/ThemeStep.php:20
 #: src/Modules/Training/Wizard/ThemeStep.php:34
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:805
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:213
 #: src/Modules/Vct/Frontend/FrontendVctSessionView.php:179
 #: src/Modules/Vct/Wizard/ReviewStep.php:59
@@ -40233,12 +40238,12 @@ msgid ""
 msgstr ""
 
 #: src/Modules/Training/Frontend/PlanBuilderRenderer.php:350
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:281
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:284
 msgid "Move up"
 msgstr ""
 
 #: src/Modules/Training/Frontend/PlanBuilderRenderer.php:351
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:282
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:285
 msgid "Move down"
 msgstr ""
 
@@ -41471,197 +41476,204 @@ msgid ""
 "writes the trial to their journey, so the timeline starts on day one."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:50
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:66
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:51
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:67
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:68
 #: src/Shared/Configuration/ConfigurationSurfaces.php:457
 msgid "VCT configuration"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:51
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:52
 msgid "You do not have access to the VCT configuration tile."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:81
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:83
 msgid "Macro-blocks"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:82
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:84
 msgid "Age profiles"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:83
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:85
 msgid "Team schedules"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:85
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:86
+msgid "Cycle"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:88
 msgid "VCT configuration sections"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:112
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:115
 #: src/Shared/Frontend/FrontendConfigurationView.php:2775
 msgid "current"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:124
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:127
 msgid ""
 "No seasons configured yet. Add a season under Configuration → Seasons first, "
 "then come back here."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:125
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:128
 #: src/Shared/Frontend/FrontendConfigurationView.php:2741
 msgid "Manage seasons"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:134
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:137
 msgid ""
 "Define the macro-block calendar for a season. The club default applies to "
 "every team; pick a team to set an override."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:149
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:152
 msgid ""
 "Define the macro-block calendar for a season. The club default applies to "
 "every team; pick a team to set an override just for them."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:160
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:163
 msgid "Club default (all teams)"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:172
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:476
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:175
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:479
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:726
 #: src/Modules/Vct/Frontend/FrontendVctSessionView.php:175
 msgid "Load"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:177
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:180
 msgid "Reference phase profiles"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:178
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:181
 msgid "Weeks"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:210
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:213
 #: src/Shared/Frontend/FrontendTrialLetterTemplatesEditorView.php:92
 msgid "Club default"
 msgstr ""
 
 #. translators: %s = the scope being edited (a team name or "Club default")
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:215
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:218
 #, php-format
 msgid "Macro-blocks — %s"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:222
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:225
 msgid "Add block"
 msgstr ""
 
 #. translators: %d = team id for a team no longer in the list
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:250
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:253
 #, php-format
 msgid "Team #%d"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:283
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:286
 msgid "Advanced: weekly phase profile (JSON)"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:284
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:287
 msgid ""
 "Optional. Array of { week, phase, multiplier, tactical_theme } objects. "
 "Leave blank for the default profile."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:285
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:288
 msgid "Speelwijze-thema per week"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:286
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:289
 msgid ""
 "Optionally tag each week with a playing-style theme. Weeks come from the "
 "phase profile above."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:288
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:291
 msgid "— geen —"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:289
+#. translators: %d = the week's position within the cycle.
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:292
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:790
 #, php-format
 msgid "Week %d"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:290
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:293
 msgid "Add weeks to the phase profile above to tag themes."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:291
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:294
 msgid "e.g. Build-up block"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:293
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:296
 msgid "Block set saved."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:294
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:297
 #: src/Shared/Frontend/FrontendConfigurationView.php:2837
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:181
 #: src/Shared/Frontend/FrontendTeamDetailView.php:478
 msgid "Could not save. Try again."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:295
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:298
 msgid "No macro-blocks yet. Add the first block to start the season calendar."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:296
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:299
 msgid "Add at least one block before saving."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:297
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:300
 #, php-format
 msgid "The advanced phase profile for block %d is not valid JSON."
 msgstr ""
 
 #. translators: %d = block number
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:299
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:302
 #: src/Modules/Vct/Validation/VctMacroBlockValidator.php:64
 #, php-format
 msgid "Block %d needs a name."
 msgstr ""
 
 #. translators: %d = block number
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:301
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:304
 #, php-format
 msgid "Block %d needs a start and end date."
 msgstr ""
 
 #. translators: 1: block A number, 2: block B number
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:305
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:308
 #: src/Shared/Frontend/FrontendConfigurationView.php:2841
 #, php-format
 msgid "Block %1$d overlaps with block %2$d."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:306
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:309
 msgid "Looks good — no overlaps, all dates valid."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:317
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:320
 msgid "No age profiles are set up yet."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:318
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:321
 msgid ""
 "Age profiles cap how long and how intensely each team can train safely, by "
 "age group. Until they exist, the VCT planner can't build a training. Add the "
 "first one below — they're part of the standard VCT setup for your club."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:324
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:327
 msgid ""
 "Tune the per-age workload envelope. Coaches see the resulting ceiling on the "
 "wizard's Duration step + the engine enforces it everywhere."
@@ -41669,244 +41681,322 @@ msgstr ""
 
 #. translators: 1: minutes max, 2: intensity ceiling
 #. translators: 1: minutes, 2: intensity band
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:332
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:335
 #: src/Modules/Vct/Frontend/FrontendVctSessionPrintView.php:90
 #: src/Modules/Vct/Frontend/FrontendVctSessionView.php:224
 #, php-format
 msgid "%1$d min · band %2$d"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:340
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:432
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:343
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:435
 msgid "Minutes per training (max)"
 msgstr ""
 
 #. translators: 1: lowest intensity band, 2: highest intensity band.
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:342
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:434
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:345
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:437
 #, php-format
 msgid "Intensity band max (%1$d-%2$d)"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:348
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:436
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:351
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:439
 msgid "Min recovery hours between high"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:349
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:437
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:352
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:440
 msgid "PHV load reduction %"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:350
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:438
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:353
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:441
 msgid "Weekly load envelope"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:352
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:441
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:355
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:444
 msgid "Match load multiplier per minute"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:356
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:359
 msgid "MD logic enabled (off for U10/U11 per Appendix A)"
 msgstr ""
 
 #. translators: %s is an age group, e.g. U13.
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:372
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:375
 #, php-format
 msgid "Remove %s profile"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:376
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:379
 msgid ""
 "Teams in this age group stop getting drafted trainings. Trainings already "
 "planned are unaffected."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:408
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:411
 msgid "Add an age profile"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:412
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:415
 msgid "Every age group already has a profile."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:417
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:420
 msgid ""
 "Set the limits for an age group the planner cannot draft for yet. The "
 "training shape is copied from the closest age group that already has one; "
 "the limits below are yours."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:446
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:449
 msgid "MD logic enabled (off for the youngest groups per Appendix A)"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:450
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:453
 msgid "Add profile"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:460
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:463
 msgid ""
 "Set per-team weekly VCT training days. Drives the wizard's date-default to "
 "the next configured weekday."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:487
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:490
 msgid ""
 "No teams yet. Create your teams under Teams first, then come back here to "
 "set their training days."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:491
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:494
 #: src/Shared/Frontend/FrontendTeamDetailView.php:997
 msgid "Mon"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:491
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:494
 #: src/Shared/Frontend/FrontendTeamDetailView.php:998
 msgid "Tue"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:491
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:494
 #: src/Shared/Frontend/FrontendTeamDetailView.php:999
 msgid "Wed"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:491
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:494
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1000
 msgid "Thu"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:491
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:494
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1001
 msgid "Fri"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:491
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:494
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1002
 msgid "Sat"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:491
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:494
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1003
 msgid "Sun"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:516
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:519
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1016
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1017
 msgid "Training days"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:527
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:530
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1032
 msgid "Default start time"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:531
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:534
 msgid "Default duration (minutes)"
 msgstr ""
 
 #. translators: %d = number of weeks in the cycle.
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:577
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:580
 #, php-format
 msgid "%d week"
 msgid_plural "%d weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:588
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:591
 msgid "Starts on"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:591
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:594
 msgid "Week 1 begins on the Monday of this week."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:596
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:599
 msgid "Weekly shape"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:598
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:601
 msgid "Match the cycle length"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:613
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:616
 msgid "Save cycle"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:623
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:626
 msgid ""
 "Removing the cycle sends this team back to planning from the season's macro-"
 "blocks. Trainings already planned keep the week they were given."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:624
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:627
 msgid "Remove cycle"
 msgstr ""
 
 #. translators: 1: week number within the cycle, 2: the phase name for that week.
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:661
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:664
 #, php-format
 msgid "week %1$d %2$s"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:709
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:736
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:766
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:781
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:806
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:687
+msgid ""
+"The team's cycle, week by week. A week with a game pauses the cycle and is "
+"not spent — the week after it picks up where the cycle left off. Correct any "
+"week here."
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:704
+msgid "No teams yet. Create your teams under Teams first."
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:737
+msgid ""
+"This team has no cycle for this season, so it is planned from the season's "
+"macro-blocks."
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:738
+msgid "Set a cycle"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:760
+msgid "Save weeks"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:787
+msgctxt "cycle week that is paused because the team plays"
+msgid "Neutral"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:801
+msgctxt "VCT conditioning phase of a cycle week"
+msgid "Phase"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:819
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:1889
+#: src/Shared/Frontend/FrontendActivitiesManageView.php:2168
+msgid "This week"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:843
+msgid "Automatic"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:844
+msgctxt "pause the cycle for this week"
+msgid "Force neutral"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:845
+msgctxt "run this week normally despite a game"
+msgid "Run anyway"
+msgstr ""
+
+#. translators: 1: person who set the week, 2: date they set it.
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:867
+#, php-format
+msgid "Set by %1$s on %2$s"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:872
+msgid "Set by hand"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:876
+msgid "There is a game this week"
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:921
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:948
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:978
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:993
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1018
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1054
 msgid "Save failed: your form expired. Please reload."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:724
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:936
 msgid "Age profile updated."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:724
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:798
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:834
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:936
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1010
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1046
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:460
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:2786
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1110
 msgid "Save failed: database error."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:757
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:969
 msgid ""
 "Age profile added. The training shape was copied from the closest age group, "
 "so the planner can draft for these teams now."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:758
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:970
 msgid ""
 "Age profile added. No training shape existed to copy, so the planner still "
 "needs a blueprint for this age group."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:772
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:984
 msgid "Age profile removed."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:798
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1010
 msgid "Team schedule saved."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:834
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1046
 msgid "Cycle saved."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:842
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1082
+msgid "Some weeks could not be saved. Reload and check them."
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1084
+msgid "Weeks saved. Later weeks have shifted to match."
+msgstr ""
+
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1092
 msgid "Removing failed: your form expired. Please reload."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:855
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1105
 msgid "Cycle removed. This team plans from the season's macro-blocks again."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:856
+#: src/Modules/Vct/Frontend/FrontendVctConfigView.php:1106
 msgid "Removing failed: database error."
 msgstr ""
 
@@ -42185,6 +42275,23 @@ msgstr ""
 #: src/Modules/Vct/Rest/VctAgeProfilesRestController.php:146
 #: src/Modules/Vct/Services/AgeProfileAdminService.php:82
 msgid "The age profile could not be saved."
+msgstr ""
+
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:63
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:81
+msgid "team_id and season_id are required."
+msgstr ""
+
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:86
+msgid "weeks must be a map of week start date to state."
+msgstr ""
+
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:105
+msgid "A week is either automatic, neutral or active."
+msgstr ""
+
+#: src/Modules/Vct/Rest/VctCycleWeeksRestController.php:114
+msgid "Some weeks could not be saved."
 msgstr ""
 
 #: src/Modules/Vct/Rest/VctExercisesRestController.php:111
@@ -46880,11 +46987,6 @@ msgstr ""
 
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1703
 msgid "Show roster"
-msgstr ""
-
-#: src/Shared/Frontend/FrontendActivitiesManageView.php:1889
-#: src/Shared/Frontend/FrontendActivitiesManageView.php:2168
-msgid "This week"
 msgstr ""
 
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1892
