@@ -66,6 +66,8 @@ final class FrontendMinutesGridView extends FrontendViewBase {
                 /* translators: %d is the number of unsaved cell changes. */
                 'unsaved'   => __( '%d unsaved change(s)', 'talenttrack' ),
                 'confirm'   => __( 'You have unsaved changes. Leave without saving?', 'talenttrack' ),
+                // #3337 — the same question for an in-place filter change.
+                'confirm_filter' => __( 'You have unsaved changes. Change the filter and lose them?', 'talenttrack' ),
             ],
         ] );
     }
@@ -145,16 +147,25 @@ final class FrontendMinutesGridView extends FrontendViewBase {
 
         $matrix = ( new MinutesGridQuery() )->matrix( $team_id, $from, $to );
 
+        // #3337 — everything the filters govern, both empty states included.
+        printf(
+            '<div data-tt-filter-region data-tt-filter-count="%d">',
+            (int) $matrix['summary']['total_players']
+        );
+
         if ( $matrix['summary']['total_players'] === 0 ) {
             echo '<p class="tt-notice">' . esc_html__( 'No active players on this team yet. Add players to the roster first.', 'talenttrack' ) . '</p>';
+            echo '</div>';
             return;
         }
         if ( $matrix['summary']['total_activities'] === 0 ) {
             echo '<p class="tt-notice">' . esc_html__( 'No matches for this team in the selected window. Widen the date range or pick another team.', 'talenttrack' ) . '</p>';
+            echo '</div>';
             return;
         }
 
         self::renderGrid( $matrix );
+        echo '</div>'; // #3337 — /.tt-filter-region
     }
 
     private static function crumbs(): void {
@@ -515,6 +526,9 @@ final class FrontendMinutesGridView extends FrontendViewBase {
             'active_count' => $active_count,
             'chips'        => $chips,
             'reset_url'    => add_query_arg( $reset_args, $dash_url ),
+            // #3337 — filter in place (epic #3335), guarded against losing
+            // unsaved cells by `frontend-minutes-grid.js`.
+            'refresh'      => true,
             'groups'       => [
                 [
                     'type'     => 'select',

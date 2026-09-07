@@ -68,6 +68,11 @@ final class FrontendAttendanceGridView extends FrontendViewBase {
                 'completeConfirm' => __( 'Save and mark completed', 'talenttrack' ),
                 'completeCancel'  => __( 'Back to the grid', 'talenttrack' ),
                 'confirm'   => __( 'You have unsaved changes. Leave without saving?', 'talenttrack' ),
+                // #3337 — the same question for an in-place filter change,
+                // which is not a navigation and so never reaches
+                // `beforeunload`. Worded for what actually happens: the page
+                // is not being left, the grid underneath is being replaced.
+                'confirm_filter' => __( 'You have unsaved changes. Change the filter and lose them?', 'talenttrack' ),
             ],
         ] );
     }
@@ -161,16 +166,25 @@ final class FrontendAttendanceGridView extends FrontendViewBase {
 
         $matrix = ( new AttendanceGridQuery() )->matrix( $team_id, $from, $to, $type_filter );
 
+        // #3337 — everything the filters govern, both empty states included.
+        printf(
+            '<div data-tt-filter-region data-tt-filter-count="%d">',
+            (int) $matrix['summary']['total_players']
+        );
+
         if ( $matrix['summary']['total_players'] === 0 ) {
             echo '<p class="tt-notice">' . esc_html__( 'No active players on this team yet. Add players to the roster first.', 'talenttrack' ) . '</p>';
+            echo '</div>';
             return;
         }
         if ( $matrix['summary']['total_activities'] === 0 ) {
             echo '<p class="tt-notice">' . esc_html__( 'No activities for this team in the selected window. Widen the date range or change the type filter.', 'talenttrack' ) . '</p>';
+            echo '</div>';
             return;
         }
 
         self::renderGrid( $matrix, $team_id );
+        echo '</div>'; // #3337 — /.tt-filter-region
     }
 
     /**
@@ -435,6 +449,11 @@ final class FrontendAttendanceGridView extends FrontendViewBase {
             'active_count' => $active_count,
             'chips'        => $chips,
             'reset_url'    => add_query_arg( $reset_args, $dash_url ),
+            // #3337 — filter in place (epic #3335). This grid holds unsaved
+            // cell edits behind an explicit Save, so `frontend-attendance-grid.js`
+            // registers a guard: a filter change on a dirty grid asks first,
+            // and a declined answer leaves both the grid and the control alone.
+            'refresh'      => true,
             'groups'       => [
                 [
                     'type'     => 'select',

@@ -5748,6 +5748,13 @@ msgstr "Terug naar het raster"
 msgid "You have unsaved changes. Leave without saving?"
 msgstr "Je hebt niet-opgeslagen wijzigingen. Weggaan zonder opslaan?"
 
+#. #3337 — the same question for an in-place filter change. Worded for what
+#. happens: the page is not left, the grid underneath is replaced.
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php
+msgid "You have unsaved changes. Change the filter and lose them?"
+msgstr "Je hebt niet-opgeslagen wijzigingen. Filter wijzigen en ze kwijtraken?"
+
 #: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:80
 msgid "You do not have permission to record attendance."
 msgstr "Je hebt geen rechten om aanwezigheid vast te leggen."

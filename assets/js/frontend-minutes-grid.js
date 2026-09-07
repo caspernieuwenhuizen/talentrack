@@ -343,5 +343,19 @@
 		}
 	} );
 
+	// #3337 — the same promise for an in-place filter change, which is not a
+	// navigation and so never reaches `beforeunload` above. Warn and let the
+	// coach choose; `false` leaves the grid and the control untouched.
+	window.TT = window.TT || {};
+	window.TT.filterRefreshGuards = window.TT.filterRefreshGuards || [];
+	window.TT.filterRefreshGuards.push( function () {
+		if ( dirty.size === 0 && dirtyStats.size === 0 ) { return true; }
+		var message = I18N.confirm_filter || I18N.confirm || '';
+		if ( typeof window.ttConfirm === 'function' ) {
+			return window.ttConfirm( { message: message, danger: true } );
+		}
+		return window.confirm( message );
+	} );
+
 	refresh();
 }() );
