@@ -32,6 +32,25 @@ Before #1546 there were two tiles (one each for macro-blocks and age
 profiles) and the Team schedules tab had no tile at all. The single tile
 makes all three reachable from one entry point.
 
+## Macro-blocks and cycles are not the same thing
+
+A **macro-block** is a dated stretch of the season — build-up, in-season,
+taper. It has a start and an end, and it happens once.
+
+A **cycle** is the three, four or six week rhythm a team trains to, and it
+repeats. It is set per team, and it is the thing that answers "which week
+of the cycle is this training in?"
+
+Where a team has a cycle, the cycle decides the week's intensity. Where it
+does not, the macro-block does, exactly as before — an academy that never
+sets up a cycle plans the way it always has.
+
+The difference that matters in practice: **a week the team plays pauses
+the cycle**, and the paused week is not spent. A team in week 3 that plays
+on Saturday is still in week 3 the following week. Macro-blocks have no
+such notion — their weeks run straight through whatever else is in the
+calendar.
+
 ## Picking a season and team
 
 Season and team are now **dropdowns** — no raw ID typing.

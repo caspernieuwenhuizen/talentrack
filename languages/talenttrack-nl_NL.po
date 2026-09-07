@@ -43677,6 +43677,35 @@ msgstr ""
 "Er is geen periodiseringskalender ingesteld, dus de training wordt niet "
 "aangepast aan waar je in het seizoen zit."
 
+#: src/Modules/Training/Wizard/ProposalStep.php:133
+msgid ""
+"There is a game this week, so the cycle is paused. This training is planned "
+"at neutral intensity, and the cycle picks up where it left off next week."
+msgstr ""
+"Er is deze week een wedstrijd, dus de cyclus staat stil. Deze training wordt "
+"op neutrale intensiteit gepland en de cyclus pakt volgende week op waar hij "
+"gebleven was."
+
+#: src/Modules/Training/Wizard/ProposalStep.php:134
+msgid ""
+"This week is set to neutral, so the cycle is paused. This training is "
+"planned at neutral intensity, and the cycle picks up where it left off next "
+"week."
+msgstr ""
+"Deze week staat op neutraal, dus de cyclus staat stil. Deze training wordt "
+"op neutrale intensiteit gepland en de cyclus pakt volgende week op waar hij "
+"gebleven was."
+
+#: src/Modules/Training/Wizard/ProposalStep.php:136
+msgid ""
+"This block runs longer than its weekly profile, so the later weeks are "
+"planned at neutral intensity. Add weeks to the profile to keep the "
+"progression going."
+msgstr ""
+"Dit blok loopt langer dan het weekprofiel, dus de latere weken worden op "
+"neutrale intensiteit gepland. Voeg weken toe aan het profiel om de opbouw "
+"door te laten lopen."
+
 #: src/Modules/Training/Wizard/ProposalStep.php:129
 msgid ""
 "This team has no usable age group, so exercises cannot be checked as age-"
