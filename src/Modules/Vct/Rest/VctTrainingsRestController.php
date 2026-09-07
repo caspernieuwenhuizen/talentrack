@@ -3,6 +3,7 @@ namespace TT\Modules\Vct\Rest;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+use TT\Domain\Vocabularies\Lookups\ActivityTypeKey;
 use TT\Infrastructure\REST\RestResponse;
 use TT\Infrastructure\Security\AuthorizationService;
 use TT\Infrastructure\Tenancy\CurrentClub;
@@ -329,8 +330,8 @@ class VctTrainingsRestController {
     private static function findActivityForSlot( array $session ): ?array {
         global $wpdb;
         $activities = $wpdb->prefix . 'tt_activities';
-        $sql = "SELECT id, session_date, start_time, activity_type, location FROM {$activities}
-                 WHERE club_id = %d AND team_id = %d AND session_date = %s";
+        $sql = "SELECT id, session_date, start_time, activity_type_key, location FROM {$activities}
+                 WHERE club_id = %d AND team_id = %d AND session_date = %s AND archived_at IS NULL";
         $params = [ CurrentClub::id(), (int) $session['team_id'], (string) $session['session_date'] ];
         if ( ! empty( $session['start_time'] ) ) {
             $sql .= ' AND start_time = %s';
@@ -338,8 +339,8 @@ class VctTrainingsRestController {
         } else {
             $sql .= ' AND start_time IS NULL';
         }
-        $sql .= " AND activity_type LIKE %s LIMIT 1";
-        $params[] = '%training%';
+        $sql .= ' AND activity_type_key = %s LIMIT 1';
+        $params[] = ActivityTypeKey::TRAINING;
 
         $row = $wpdb->get_row( $wpdb->prepare( $sql, $params ), ARRAY_A );
         return $row !== null ? (array) $row : null;
@@ -357,7 +358,7 @@ class VctTrainingsRestController {
             'team_id'       => (int) $session['team_id'],
             'session_date'  => (string) $session['session_date'],
             'start_time'    => $session['start_time'] ?? null,
-            'activity_type' => 'training',
+            'activity_type_key' => ActivityTypeKey::TRAINING,
             'title'         => sprintf(
                 /* translators: 1: age group, 2: md context label */
                 __( 'VCT training — %1$s (%2$s)', 'talenttrack' ),
