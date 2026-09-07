@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TalentTrack\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/talenttrack\n"
-"POT-Creation-Date: 2026-09-07T19:47:25+00:00\n"
+"POT-Creation-Date: 2026-09-07T20:01:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: Español\n"
@@ -101,8 +101,8 @@ msgstr ""
 #: src/Infrastructure/RecycleBin/RecycleBinEntities.php:43
 #: src/Infrastructure/Security/RolesService.php:464
 #: src/Modules/Activities/Admin/ActivitiesPage.php:380
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:267
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:223
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:281
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:234
 #: src/Modules/Activities/Frontend/FrontendRatingsGridView.php:216
 #: src/Modules/Analytics/AnalyticsModule.php:113
 #: src/Modules/Analytics/AnalyticsModule.php:156
@@ -555,8 +555,8 @@ msgid ""
 msgstr ""
 
 #: src/Core/FeatureRegistry.php:292
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:105
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:209
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:110
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:223
 #: src/Modules/License/FeatureMap.php:414
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:527
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:678
@@ -571,9 +571,9 @@ msgid ""
 msgstr ""
 
 #: src/Core/FeatureRegistry.php:307
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:97
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:162
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:209
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:99
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:173
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:220
 #: src/Modules/License/FeatureMap.php:415
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:537
 msgid "Minutes + statistics"
@@ -1846,7 +1846,7 @@ msgstr ""
 
 #. translators: %s: player name
 #: src/Infrastructure/Query/LabelTranslator.php:61
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:224
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:238
 #: src/Modules/Analytics/AnalyticsModule.php:120
 #: src/Modules/Analytics/Domain/DimensionValueResolver.php:144
 #: src/Modules/MatchPrep/Frontend/FrontendMatchPrepView.php:954
@@ -1856,7 +1856,7 @@ msgid "Present"
 msgstr "Presente"
 
 #: src/Infrastructure/Query/LabelTranslator.php:62
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:226
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:240
 #: src/Modules/Analytics/AnalyticsModule.php:121
 #: src/Modules/Analytics/Domain/DimensionValueResolver.php:145
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:223
@@ -1865,21 +1865,21 @@ msgid "Absent"
 msgstr "Ausente"
 
 #: src/Infrastructure/Query/LabelTranslator.php:63
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:225
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:239
 #: src/Modules/Analytics/Domain/DimensionValueResolver.php:147
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:222
 msgid "Late"
 msgstr "Tarde"
 
 #: src/Infrastructure/Query/LabelTranslator.php:64
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:228
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:242
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:225
 #: src/Modules/MatchPrep/Frontend/FrontendMatchPrepView.php:956
 msgid "Injured"
 msgstr "Lesionado"
 
 #: src/Infrastructure/Query/LabelTranslator.php:65
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:227
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:241
 #: src/Modules/Analytics/Domain/DimensionValueResolver.php:146
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:224
 msgid "Excused"
@@ -2068,7 +2068,7 @@ msgid "Mentor"
 msgstr "Mentor"
 
 #: src/Infrastructure/Query/LabelTranslator.php:217
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:273
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:287
 #: src/Modules/Training/Frontend/FrontendTrainingCoverageView.php:62
 #: src/Modules/Training/Frontend/FrontendTrainingPhotoView.php:78
 #: src/Modules/Training/Frontend/FrontendTrainingPlansView.php:70
@@ -2086,8 +2086,8 @@ msgid "Training"
 msgstr "Entrenamiento"
 
 #: src/Infrastructure/Query/LabelTranslator.php:218
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:273
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:226
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:287
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:237
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditEditView.php:130
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditEditView.php:156
 #: src/Modules/Knowledge/Periodisation.php:225
@@ -2413,8 +2413,8 @@ msgstr ""
 #: src/Infrastructure/RecycleBin/RecycleBinEntities.php:44
 #: src/Modules/Activities/Admin/ActivitiesPage.php:98
 #: src/Modules/Activities/Admin/ActivitiesPage.php:345
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:442
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:522
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:461
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:536
 #: src/Modules/Analytics/AnalyticsModule.php:114
 #: src/Modules/Analytics/AnalyticsModule.php:135
 #: src/Modules/Analytics/AnalyticsModule.php:158
@@ -2738,8 +2738,8 @@ msgstr ""
 
 #: src/Infrastructure/REST/ActivitiesRestController.php:477
 #: src/Infrastructure/REST/ActivitiesRestController.php:578
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:134
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:124
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:139
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:126
 msgid "That team is not in your scope."
 msgstr ""
 
@@ -3992,7 +3992,7 @@ msgstr "Fecha"
 #: src/Infrastructure/REST/PeekRestController.php:178
 #: src/Modules/Activities/Admin/ActivitiesPage.php:95
 #: src/Modules/Activities/Admin/ActivitiesPage.php:290
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:454
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:473
 #: src/Modules/Analytics/Frontend/FrontendAttendanceLeaderboardView.php:388
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:462
 #: src/Modules/Analytics/Frontend/FrontendAttendanceTeamReportView.php:385
@@ -4713,8 +4713,8 @@ msgstr ""
 
 #: src/Modules/Activities/Admin/ActivitiesPage.php:68
 #: src/Modules/Activities/Admin/ActivitiesPage.php:222
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:210
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:163
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:224
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:174
 #: src/Modules/Activities/Frontend/FrontendRatingsGridView.php:377
 #: src/Modules/Alerts/Frontend/FrontendAlertsInboxView.php:365
 #: src/Modules/Analytics/AnalyticsModule.php:132
@@ -5119,9 +5119,9 @@ msgid "Optional. Hold Ctrl/Cmd to select multiple."
 msgstr ""
 
 #: src/Modules/Activities/Admin/ActivitiesPage.php:379
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:192
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:258
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:184
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:206
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:272
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:195
 #: src/Modules/Analytics/AnalyticsModule.php:110
 #: src/Modules/Analytics/Frontend/FrontendCohortBoardView.php:147
 #: src/Modules/DataBrowser/SemanticRegistry.php:102
@@ -5187,8 +5187,8 @@ msgid "Update"
 msgstr "Actualizar"
 
 #: src/Modules/Activities/Admin/ActivitiesPage.php:434
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:356
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:324
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:370
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:335
 #: src/Modules/Analytics/Frontend/FrontendEvalCoverageView.php:152
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditEditView.php:256
 #: src/Modules/Configuration/Admin/ConfigurationPage.php:867
@@ -5419,9 +5419,9 @@ msgid "Could not save — try again"
 msgstr ""
 
 #: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:57
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:353
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:367
 #: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:65
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:321
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:332
 msgid "No unsaved changes"
 msgstr ""
 
@@ -5470,51 +5470,56 @@ msgstr ""
 msgid "You have unsaved changes. Leave without saving?"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:80
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:75
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:70
+msgid "You have unsaved changes. Change the filter and lose them?"
+msgstr ""
+
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:85
 msgid "You do not have permission to record attendance."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:86
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:91
 msgid "The attendance grid has been switched off for your academy."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:99
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:104
 msgid ""
 "Attendance itself is not affected: you can still mark a squad present from "
 "the activity, one activity at a time. The grid is the faster desktop way to "
 "do a whole week at once."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:106
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:111
 msgid ""
 "Record attendance for a whole period at once. Rows are players, columns are "
 "activities; pick a status per cell and Save. This is the desktop alternative "
 "to the step-by-step wizard."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:122
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:127
 msgid ""
 "You don't coach any teams yet, so there is no attendance to record. Ask an "
 "administrator to assign you to a team."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:128
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:133
 msgid "No teams yet — add one to record attendance."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:165
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:149
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:176
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:157
 msgid "No active players on this team yet. Add players to the roster first."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:169
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:181
 msgid ""
 "No activities for this team in the selected window. Widen the date range or "
 "change the type filter."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:195
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:339
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:209
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:350
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditEditView.php:207
 #: src/Modules/Exercises/Frontend/FrontendExerciseLibraryView.php:201
 #: src/Modules/Training/Frontend/FrontendTrainingPhotoView.php:289
@@ -5524,14 +5529,14 @@ msgstr ""
 msgid "Minutes"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:201
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:191
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:215
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:202
 msgctxt "segmented control label: which of the two data-entry grids"
 msgid "Grid"
 msgstr ""
 
 #. translators: state label for a PDP meeting that's further out in the cycle and not yet actionable
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:223
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:237
 #: src/Modules/Authorization/Admin/RolesPage.php:254
 #: src/Modules/Knowledge/Frontend/FrontendMyLearningView.php:147
 #: src/Modules/Pdp/Frontend/FrontendPdpManageView.php:905
@@ -5546,45 +5551,45 @@ msgstr ""
 msgid "—"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:223
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:237
 msgctxt "attendance status abbreviation: not set"
 msgid "·"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:224
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:238
 msgctxt "attendance status abbreviation: present"
 msgid "P"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:225
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:239
 msgctxt "attendance status abbreviation: late"
 msgid "L"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:226
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:240
 msgctxt "attendance status abbreviation: absent"
 msgid "A"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:227
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:241
 msgctxt "attendance status abbreviation: excused"
 msgid "E"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:228
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:242
 msgctxt "attendance status abbreviation: injured"
 msgid "I"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:259
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:273
 msgid "pick a status per cell, then Save"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:289
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:303
 msgid "all present"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:292
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:306
 #: src/Modules/Analytics/Frontend/FrontendAttendanceLeaderboardView.php:236
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:221
 #: src/Modules/Analytics/Frontend/FrontendAttendanceTeamReportView.php:57
@@ -5593,13 +5598,13 @@ msgid "Present %"
 msgstr ""
 
 #. translators: 1: player name, 2: activity date.
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:321
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:335
 #, php-format
 msgid "Attendance for %1$s on %2$s"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:355
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:323
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:369
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:334
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditEditView.php:260
 #: src/Modules/Authorization/Admin/MatrixPage.php:765
 #: src/Modules/Backup/Admin/BackupSettingsPage.php:831
@@ -5659,35 +5664,35 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:378
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:457
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:392
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:476
 msgid "Training + matches"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:379
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:393
 msgid "Training only"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:380
+#: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:394
 msgid "Matches only"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:78
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:80
 msgid "You do not have permission to record minutes."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:83
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:85
 msgid "The minutes grid has been switched off for your academy."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:91
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:93
 msgid ""
 "Minutes themselves are not affected: you can still enter them per activity, "
 "and a live match writes them for you. The grid is the faster desktop way to "
 "correct a whole squad at once."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:98
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:100
 msgid ""
 "Record match minutes, goals and assists for a whole period at once. Rows are "
 "players, columns are matches; fill the cells and Save. Only players in a "
@@ -5695,39 +5700,39 @@ msgid ""
 "scoreline."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:112
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:114
 msgid ""
 "You don't coach any teams yet, so there are no minutes to record. Ask an "
 "administrator to assign you to a team."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:118
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:120
 msgid "No teams yet — add one to record minutes."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:153
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:162
 msgid ""
 "No matches for this team in the selected window. Widen the date range or "
 "pick another team."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:188
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:199
 msgid "Minutes + stats"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:210
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:221
 msgid "fill the cells per match, then Save"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:235
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:246
 msgid "Minutes come from the match sheet; your entry is kept as a correction."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:235
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:246
 msgid "live"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:239
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:250
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditView.php:256
 #: src/Modules/Analytics/Frontend/FrontendMinutesTeamReportView.php:232
 #: src/Modules/DemoData/Admin/DemoReviewPage.php:71
@@ -5737,60 +5742,60 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:273
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:284
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditView.php:283
 msgid "Not in squad"
 msgstr ""
 
 #. translators: 1: player name, 2: match date.
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:285
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:296
 #, php-format
 msgid "Minutes for %1$s on %2$s"
 msgstr ""
 
 #. translators: 1: player name, 2: match date.
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:293
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:304
 #, php-format
 msgid "Goals for %1$s on %2$s"
 msgstr ""
 
 #. translators: 1: player name, 2: match date.
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:299
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:310
 #, php-format
 msgid "Assists for %1$s on %2$s"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:340
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:351
 msgctxt "minutes column, abbreviated"
 msgid "Min"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:347
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:388
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:358
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:399
 #: src/Modules/Analytics/Frontend/FrontendMinutesTeamReportView.php:241
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:892
 msgctxt "goals scored in matches"
 msgid "Goals scored"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:348
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:359
 msgctxt "goals column, abbreviated"
 msgid "G"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:352
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:389
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:363
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:400
 #: src/Modules/Analytics/Frontend/FrontendMinutesTeamReportView.php:242
 msgctxt "who created a goal"
 msgid "Assists"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:353
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:364
 msgctxt "assists column, abbreviated"
 msgid "A"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:385
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:396
 #: src/Modules/Analytics/Frontend/FrontendCohortBoardView.php:120
 #: src/Modules/Journey/Frontend/FrontendInjuriesView.php:130
 #: src/Modules/Measurements/Frontend/FrontendMeasurementCoverageView.php:121
@@ -5801,23 +5806,23 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:432
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:443
 msgid "Attributed / score"
 msgstr ""
 
 #. translators: %d: goals attributed to a named scorer.
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:445
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:456
 #, php-format
 msgid "%d attributed"
 msgid_plural "%d attributed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:460
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:471
 msgid "Every goal in this match has a scorer against it."
 msgstr ""
 
-#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:461
+#: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:472
 msgid ""
 "Some goals in this match have no scorer against anyone yet. The scoreline is "
 "unchanged."
