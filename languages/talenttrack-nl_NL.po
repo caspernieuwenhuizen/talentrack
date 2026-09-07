@@ -49310,6 +49310,17 @@ msgstr "Deze functie wordt nog gebouwd en kan veranderen."
 msgid "Open filters"
 msgstr "Filters openen"
 
+#. #3336 — announced to a screen reader after an in-place filter refresh,
+#. which is silent in a way a page load was not.
+#: src/Shared/Frontend/Components/FilterBar.php
+msgid "Filters applied."
+msgstr "Filters toegepast."
+
+#. translators: %s: the number of results after filtering.
+#: src/Shared/Frontend/Components/FilterBar.php
+msgid "%s results"
+msgstr "%s resultaten"
+
 #. translators: 1: filter name, e.g. "Team". 2: its value, e.g. "Ajax U17".
 #: src/Shared/Frontend/Components/FilterBar.php:308
 #, php-format
