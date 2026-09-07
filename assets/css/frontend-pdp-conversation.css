@@ -1,0 +1,47 @@
+/*
+ * frontend-pdp-conversation.css (#3303, epic #3301)
+ *
+ * The PDP conversation surface's own chrome — the two panes behind the
+ * record-spine tab strip, the signature-lock banner, and the player's
+ * self-reflection card.
+ *
+ * These rules were inline `style=` attributes on the elements themselves,
+ * with hardcoded hex, alongside a `<style>` block and an inline `<script>`
+ * for the tab strip. All three are forbidden by CLAUDE.md § 2; the strip
+ * now comes from `RecordSpine`, and its styling and behaviour with it.
+ *
+ * Authoring rule: mobile-first. Base is the 360px viewport; breakpoints
+ * scale UP via `min-width`. Colours read the `tokens.css` custom
+ * properties, never raw hex.
+ *
+ * Class contract — owned by FrontendPdpManageView::renderConversationForm():
+ *
+ *   .tt-pdp-conv-pane                 one tab panel (Conversation / Evidence)
+ *   .tt-pdp-conv-locked               signature-lock banner
+ *   .tt-pdp-conv-reflection           the player's own words, above the form
+ *   .tt-pdp-conv-reflection__title    its label
+ */
+
+.tt-pdp-conv-pane[hidden] { display: none; }
+
+.tt-pdp-conv-locked {
+    background: var(--tt-warning-subtle, #fdf3d8);
+    border: 1px solid var(--tt-warning, #e8902b);
+    border-radius: var(--tt-radius, 8px);
+    padding: var(--tt-sp-3, 12px);
+    margin-bottom: var(--tt-sp-3, 12px);
+}
+
+.tt-pdp-conv-reflection {
+    background: var(--tt-bg-soft, #f4f6f3);
+    border: 1px solid var(--tt-line, #e3e6e1);
+    border-left: 3px solid var(--tt-info, #2d6fb3);
+    border-radius: var(--tt-radius, 8px);
+    padding: var(--tt-sp-3, 12px);
+    margin: var(--tt-sp-3, 12px) 0;
+}
+
+.tt-pdp-conv-reflection__title {
+    margin: 0 0 var(--tt-sp-1, 4px);
+    font-weight: 600;
+}

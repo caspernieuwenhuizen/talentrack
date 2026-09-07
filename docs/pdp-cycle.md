@@ -52,7 +52,9 @@ Each conversation has two halves:
 - **Pre-meeting** — agenda + the player's self-reflection.
 - **Post-meeting** — notes, agreed actions, and a sign-off.
 
-The form's **evidence sidebar** lists every evaluation, activity, and goal change for that player since the previous conversation — read-only, just there to anchor the discussion.
+The form's **Evidence** tab collects what the academy already knows about the player since the previous conversation, read-only, so the coach opens the talk on the record rather than on memory: evaluations with their rating, assessor and notes; attendance with the present / absent / excused split, matches played and minutes, with the per-match breakdown; goals, and whether each one has moved; the player's own self-reflection; staff notes, injuries and journey events; and the potential and behaviour ratings set in the window.
+
+A section with nothing in it says so rather than disappearing — "No evaluations in this window" is itself worth knowing before a conversation.
 
 The conversations run in order: only the **active** conversation — the earliest one not yet signed off — is fully editable. Later conversations in the cycle are read-only except for their **planned date**, so a coach can schedule the whole season ahead without filling in a talk out of turn. A later conversation opens for full editing once the one before it is signed off.
 
