@@ -14,6 +14,7 @@ use TT\Modules\Vct\Repositories\VctMacroBlocksRepository;
 use TT\Modules\Vct\Repositories\VctTeamCyclesRepository;
 use TT\Modules\Vct\Repositories\VctTeamSchedulesRepository;
 use TT\Modules\Vct\Services\AgeProfileAdminService;
+use TT\Modules\Vct\Services\VctCycleResolver;
 use TT\Modules\Vct\Validation\VctTeamCycleValidator;
 use TT\Shared\Frontend\Components\FrontendBreadcrumbs;
 use TT\Shared\Frontend\FrontendViewBase;
@@ -61,7 +62,7 @@ class FrontendVctConfigView extends FrontendViewBase {
         }
 
         $tab = isset( $_GET['tab'] ) ? sanitize_key( (string) $_GET['tab'] ) : 'blocks';
-        if ( ! in_array( $tab, [ 'blocks', 'age-profiles', 'schedules' ], true ) ) $tab = 'blocks';
+        if ( ! in_array( $tab, [ 'blocks', 'age-profiles', 'schedules', 'cycle' ], true ) ) $tab = 'blocks';
 
         FrontendBreadcrumbs::fromDashboard( __( 'VCT configuration', 'talenttrack' ) );
         self::renderHeader( __( 'VCT configuration', 'talenttrack' ) );
@@ -71,6 +72,7 @@ class FrontendVctConfigView extends FrontendViewBase {
         switch ( $tab ) {
             case 'age-profiles': self::renderAgeProfilesTab(); break;
             case 'schedules':    self::renderSchedulesTab();    break;
+            case 'cycle':        self::renderCycleTab();        break;
             case 'blocks':
             default:             self::renderBlocksTab();       break;
         }
@@ -81,6 +83,7 @@ class FrontendVctConfigView extends FrontendViewBase {
             'blocks'       => __( 'Macro-blocks',   'talenttrack' ),
             'age-profiles' => __( 'Age profiles',   'talenttrack' ),
             'schedules'    => __( 'Team schedules', 'talenttrack' ),
+            'cycle'        => __( 'Cycle',          'talenttrack' ),
         ];
         echo '<nav class="tt-vct-config-tabs" aria-label="' . esc_attr__( 'VCT configuration sections', 'talenttrack' ) . '">';
         foreach ( $tabs as $slug => $label ) {
@@ -666,6 +669,215 @@ class FrontendVctConfigView extends FrontendViewBase {
         return implode( ' · ', $parts );
     }
 
+    // ── CYCLE CALENDAR ───────────────────────────────────────────────
+
+    /**
+     * The resolved cycle, week by week, with a per-week override control
+     * (#3361, epic #3354).
+     *
+     * The toggle is only half the point. The other half is the **Why**
+     * column: a coach who sees "Neutral" with no explanation assumes a
+     * bug, and the shift it causes — cycle week 3 landing after the
+     * neutral week rather than being spent on it — is the single most
+     * surprising thing about the pause rule. This is the only screen
+     * where either is visible.
+     */
+    private static function renderCycleTab(): void {
+        $seasons = ( new SeasonsRepository() )->all();
+        echo '<p>' . esc_html__( 'The team\'s cycle, week by week. A week with a game pauses the cycle and is not spent — the week after it picks up where the cycle left off. Correct any week here.', 'talenttrack' ) . '</p>';
+
+        if ( empty( $seasons ) ) {
+            self::noSeasonsNotice();
+            return;
+        }
+
+        /** @var list<object{id:int|string, name:string, is_current:int|string}> $seasons */
+        /** @var object{id:int|string}|null $current */
+        $current        = ( new SeasonsRepository() )->current();
+        $default_season = $current !== null ? (int) $current->id : (int) $seasons[0]->id;
+        $season_id      = isset( $_GET['season_id'] ) ? absint( $_GET['season_id'] ) : $default_season;
+        if ( $season_id <= 0 ) $season_id = $default_season;
+
+        /** @var list<object{id:int|string, name:string, age_group?:string|null}> $teams */
+        $teams = QueryHelpers::get_teams();
+        if ( ! $teams ) {
+            echo '<p class="tt-empty">' . esc_html__( 'No teams yet. Create your teams under Teams first.', 'talenttrack' ) . '</p>';
+            return;
+        }
+
+        $team_id = isset( $_GET['team_id'] ) ? absint( $_GET['team_id'] ) : (int) $teams[0]->id;
+
+        echo '<form method="GET" action="" class="tt-vct-picker">';
+        echo '<input type="hidden" name="tt_view" value="vct-config">';
+        echo '<input type="hidden" name="tab"     value="cycle">';
+        self::renderSeasonSelect( $seasons, $season_id, __( 'Season', 'talenttrack' ) );
+
+        echo '<div class="tt-field">';
+        echo '<label class="tt-field-label" for="tt-vct-team">' . esc_html__( 'Team', 'talenttrack' ) . '</label>';
+        echo '<select id="tt-vct-team" class="tt-input" name="team_id" data-tt-vct-autoload>';
+        foreach ( $teams as $t ) {
+            $tname = (string) $t->name;
+            if ( ! empty( $t->age_group ) ) $tname .= ' (' . (string) $t->age_group . ')';
+            echo '<option value="' . esc_attr( (string) (int) $t->id ) . '" ' . selected( $team_id, (int) $t->id, false ) . '>'
+                . esc_html( $tname ) . '</option>';
+        }
+        echo '</select>';
+        echo '</div>';
+        echo '<noscript><button type="submit" class="tt-btn tt-btn-secondary">' . esc_html__( 'Load', 'talenttrack' ) . '</button></noscript>';
+        echo '</form>';
+
+        if ( defined( 'TT_PLUGIN_URL' ) && defined( 'TT_VERSION' ) ) {
+            wp_enqueue_script( 'tt-vct-config', TT_PLUGIN_URL . 'assets/js/frontend-vct-config.js', [], TT_VERSION, true );
+        }
+
+        $weeks = ( new VctCycleResolver() )->resolveSeason( $team_id, $season_id );
+        if ( $weeks === [] ) {
+            $schedules_url = add_query_arg( [ 'tab' => 'schedules' ] );
+            echo '<p class="tt-empty">'
+                . esc_html__( 'This team has no cycle for this season, so it is planned from the season\'s macro-blocks.', 'talenttrack' )
+                . ' <a href="' . esc_url( $schedules_url ) . '">' . esc_html__( 'Set a cycle', 'talenttrack' ) . '</a>'
+                . '</p>';
+            return;
+        }
+
+        $overrides = ( new VctCycleWeekOverridesRepository() )->listForSeason( $team_id, $season_id );
+
+        echo '<form method="POST" action="" class="tt-vct-cycle-weeks">';
+        wp_nonce_field( 'tt_vct_cfg_cycle_weeks_' . $team_id . '_' . $season_id, '_tt_vct_cfg_nonce' );
+        echo '<input type="hidden" name="_tt_action" value="save_cycle_weeks">';
+        echo '<input type="hidden" name="team_id"    value="' . esc_attr( (string) $team_id ) . '">';
+        echo '<input type="hidden" name="season_id"  value="' . esc_attr( (string) $season_id ) . '">';
+
+        echo '<ul class="tt-vct-week-list">';
+        foreach ( $weeks as $week ) {
+            self::renderCycleWeek( $week, $overrides );
+        }
+        echo '</ul>';
+
+        echo '<div class="tt-form-actions">';
+        echo '<a class="tt-btn tt-btn-secondary" href="' . esc_url( add_query_arg( [ 'tab' => 'schedules' ] ) ) . '">'
+            . esc_html__( 'Cancel', 'talenttrack' ) . '</a>';
+        echo '<button type="submit" class="tt-btn tt-btn-primary">' . esc_html__( 'Save weeks', 'talenttrack' ) . '</button>';
+        echo '</div>';
+        echo '</form>';
+    }
+
+    /**
+     * One week. Renders as a card on a phone and a table-like row from
+     * 768px, both from this markup — a coach checking this week's plan at
+     * the pitch should not have to scroll sideways to reach the state.
+     *
+     * @param array<string,mixed>                     $week
+     * @param array<string, array<string,mixed>>      $overrides
+     */
+    private static function renderCycleWeek( array $week, array $overrides ): void {
+        $monday   = (string) $week['week_starts_on'];
+        $neutral  = $week['state'] === VctCycleResolver::STATE_NEUTRAL;
+        $override = $overrides[ $monday ] ?? null;
+        $choice   = $override !== null ? (string) $override['state'] : 'auto';
+
+        echo '<li class="tt-vct-week' . ( $neutral ? ' is-neutral' : '' ) . '">';
+
+        echo '<div class="tt-vct-week-head">';
+        echo '<span class="tt-vct-week-date">'
+            . esc_html( (string) mysql2date( get_option( 'date_format' ), $monday, true ) )
+            . '</span>';
+        echo '<span class="tt-vct-week-state">'
+            . ( $neutral
+                ? esc_html_x( 'Neutral', 'cycle week that is paused because the team plays', 'talenttrack' )
+                : esc_html( sprintf(
+                    /* translators: %d = the week's position within the cycle. */
+                    __( 'Week %d', 'talenttrack' ),
+                    (int) $week['cycle_week']
+                ) ) )
+            . '</span>';
+        echo '</div>';
+
+        echo '<dl class="tt-vct-week-facts">';
+        if ( ! $neutral && $week['phase'] !== null ) {
+            // _x, not __: the bare "Phase" msgid already renders as
+            // "Spelfase" — the tactical sense. This is the conditioning
+            // phase of a cycle week, which is "Conditiefase".
+            echo '<dt>' . esc_html_x( 'Phase', 'VCT conditioning phase of a cycle week', 'talenttrack' ) . '</dt>';
+            echo '<dd>' . esc_html( LookupTranslator::byTypeAndName( 'vct_phase', (string) $week['phase'] ) ) . '</dd>';
+        }
+        if ( ! $neutral && $week['tactical_theme'] !== null ) {
+            echo '<dt>' . esc_html__( 'Theme', 'talenttrack' ) . '</dt>';
+            echo '<dd>' . esc_html( LookupTranslator::byTypeAndName( 'vct_tactical_theme', (string) $week['tactical_theme'] ) ) . '</dd>';
+        }
+        echo '<dt>' . esc_html__( 'Intensity', 'talenttrack' ) . '</dt>';
+        echo '<dd>' . esc_html( (string) number_format_i18n( (float) $week['multiplier'], 2 ) ) . '</dd>';
+        echo '</dl>';
+
+        $why = self::cycleWeekReason( $week, $override );
+        if ( $why !== '' ) {
+            echo '<p class="tt-vct-week-why">' . esc_html( $why ) . '</p>';
+        }
+
+        $name = 'week_state[' . esc_attr( $monday ) . ']';
+        echo '<fieldset class="tt-vct-week-choice">';
+        echo '<legend class="tt-vct-week-legend">' . esc_html__( 'This week', 'talenttrack' ) . '</legend>';
+        foreach ( self::cycleWeekChoices() as $value => $label ) {
+            $id = 'tt-week-' . $monday . '-' . $value;
+            echo '<label class="tt-vct-week-option" for="' . esc_attr( $id ) . '">';
+            echo '<input type="radio" id="' . esc_attr( $id ) . '" name="' . $name . '"'
+                . ' value="' . esc_attr( $value ) . '"' . checked( $choice, $value, false ) . '> ';
+            echo '<span>' . esc_html( $label ) . '</span>';
+            echo '</label>';
+        }
+        echo '</fieldset>';
+
+        echo '</li>';
+    }
+
+    /**
+     * Three states, not a checkbox. "Leave it alone", "force neutral" and
+     * "run it anyway" are three different intentions, and a checkbox that
+     * silently meant "auto or neutral" could not express the friendly a
+     * coach does not want the cycle to pause for.
+     *
+     * @return array<string,string>
+     */
+    private static function cycleWeekChoices(): array {
+        return [
+            'auto'    => __( 'Automatic', 'talenttrack' ),
+            'neutral' => _x( 'Force neutral', 'pause the cycle for this week', 'talenttrack' ),
+            'active'  => _x( 'Run anyway', 'run this week normally despite a game', 'talenttrack' ),
+        ];
+    }
+
+    /**
+     * Why the week is in the state it is. The column that stops a neutral
+     * week reading as a bug.
+     *
+     * @param array<string,mixed>      $week
+     * @param array<string,mixed>|null $override
+     */
+    private static function cycleWeekReason( array $week, ?array $override ): string {
+        if ( $override !== null ) {
+            $who  = $override['set_by'] !== null ? get_userdata( (int) $override['set_by'] ) : null;
+            $name = $who ? (string) $who->display_name : '';
+            $when = (string) $override['set_at'] !== ''
+                ? mysql2date( get_option( 'date_format' ), (string) $override['set_at'], true )
+                : '';
+
+            if ( $name !== '' && $when !== '' ) {
+                return sprintf(
+                    /* translators: 1: person who set the week, 2: date they set it. */
+                    __( 'Set by %1$s on %2$s', 'talenttrack' ),
+                    $name,
+                    $when
+                );
+            }
+            return __( 'Set by hand', 'talenttrack' );
+        }
+
+        if ( $week['state'] === VctCycleResolver::STATE_NEUTRAL && $week['fixture_week'] ) {
+            return __( 'There is a game this week', 'talenttrack' );
+        }
+        return '';
+    }
+
     /**
      * Human-readable training-day summary for a schedule accordion's
      * meta line, e.g. "Tue · Thu".
@@ -833,6 +1045,44 @@ class FrontendVctConfigView extends FrontendViewBase {
                 $ok ? 'success' : 'error',
                 $ok ? __( 'Cycle saved.', 'talenttrack' ) : __( 'Save failed: database error.', 'talenttrack' )
             );
+        }
+
+        if ( $action === 'save_cycle_weeks' ) {
+            $team_id   = absint( $_POST['team_id']   ?? 0 );
+            $season_id = absint( $_POST['season_id'] ?? 0 );
+            if ( ! wp_verify_nonce( (string) ( $_POST['_tt_vct_cfg_nonce'] ?? '' ), 'tt_vct_cfg_cycle_weeks_' . $team_id . '_' . $season_id ) ) {
+                self::notice( 'error', __( 'Save failed: your form expired. Please reload.', 'talenttrack' ) );
+                return;
+            }
+
+            $overrides_repo = new VctCycleWeekOverridesRepository();
+            $submitted      = (array) ( $_POST['week_state'] ?? [] );
+            $changed        = 0;
+            $failed         = 0;
+
+            foreach ( $submitted as $week => $state ) {
+                $week  = sanitize_text_field( wp_unslash( (string) $week ) );
+                $state = sanitize_key( (string) $state );
+
+                // 'auto' removes the row rather than storing a third state.
+                // "No row means no exception" is what keeps the resolver's
+                // reading of that table honest.
+                $ok = $state === 'auto'
+                    ? $overrides_repo->clear( $team_id, $week )
+                    : $overrides_repo->set( $team_id, $season_id, $week, $state, null, get_current_user_id() );
+
+                if ( $ok ) {
+                    $changed++;
+                } else {
+                    $failed++;
+                }
+            }
+
+            if ( $failed > 0 ) {
+                self::notice( 'error', __( 'Some weeks could not be saved. Reload and check them.', 'talenttrack' ) );
+            } else {
+                self::notice( 'success', __( 'Weeks saved. Later weeks have shifted to match.', 'talenttrack' ) );
+            }
         }
 
         if ( $action === 'delete_cycle' ) {
