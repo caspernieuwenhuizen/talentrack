@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-07T18:48:52+00:00\n"
+"POT-Creation-Date: 2026-09-07T19:08:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: talenttrack\n"
@@ -3800,7 +3800,7 @@ msgstr ""
 #: src/Shared/Frontend/Components/MinutesBreakdown.php:58
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1182
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:3015
-#: src/Shared/Frontend/FrontendAuditLogView.php:507
+#: src/Shared/Frontend/FrontendAuditLogView.php:524
 #: src/Shared/Frontend/FrontendComparisonView.php:287
 #: src/Shared/Frontend/FrontendEvaluationsView.php:173
 #: src/Shared/Frontend/FrontendEvaluationsView.php:288
@@ -7732,10 +7732,10 @@ msgstr ""
 #: src/Modules/Planning/Frontend/FrontendTeamPlannerView.php:405
 #: src/Modules/Workflow/Frontend/FrontendMyTasksView.php:298
 #: src/Shared/Admin/BulkActionsHelper.php:176
-#: src/Shared/Frontend/Components/FilterBar.php:424
-#: src/Shared/Frontend/Components/FilterBar.php:666
-#: src/Shared/Frontend/Components/FilterBar.php:937
-#: src/Shared/Frontend/Components/FilterBar.php:1051
+#: src/Shared/Frontend/Components/FilterBar.php:440
+#: src/Shared/Frontend/Components/FilterBar.php:700
+#: src/Shared/Frontend/Components/FilterBar.php:971
+#: src/Shared/Frontend/Components/FilterBar.php:1085
 #: src/Shared/Frontend/FrontendInstallProfileView.php:122
 #: src/Shared/Frontend/FrontendStandardReportsView.php:1639
 msgid "Apply"
@@ -7771,8 +7771,8 @@ msgid "Generated %s"
 msgstr ""
 
 #: src/Modules/Analytics/Frontend/FrontendExploreView.php:501
-#: src/Shared/Frontend/Components/FilterBar.php:410
-#: src/Shared/Frontend/Components/FilterBar.php:411
+#: src/Shared/Frontend/Components/FilterBar.php:426
+#: src/Shared/Frontend/Components/FilterBar.php:427
 msgid "Filters"
 msgstr ""
 
@@ -8593,8 +8593,8 @@ msgstr ""
 #: src/Modules/Authorization/Admin/MatrixPage.php:484
 #: src/Modules/Configuration/Admin/ConfigurationPage.php:518
 #: src/Modules/DemoData/Admin/DemoReviewPage.php:70
-#: src/Shared/Frontend/FrontendAuditLogView.php:489
-#: src/Shared/Frontend/FrontendAuditLogView.php:549
+#: src/Shared/Frontend/FrontendAuditLogView.php:506
+#: src/Shared/Frontend/FrontendAuditLogView.php:566
 #: src/Shared/Frontend/FrontendCustomFieldsView.php:92
 #: src/Shared/Frontend/FrontendCustomFieldsView.php:100
 #: src/Shared/Frontend/FrontendCustomFieldsView.php:125
@@ -8736,11 +8736,11 @@ msgstr ""
 #: src/Modules/Reports/PlayerReportRenderer.php:690
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:269
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:275
-#: src/Shared/Frontend/Components/FilterBar.php:915
-#: src/Shared/Frontend/Components/FilterBar.php:1047
+#: src/Shared/Frontend/Components/FilterBar.php:949
+#: src/Shared/Frontend/Components/FilterBar.php:1081
 #: src/Shared/Frontend/Components/FrontendListTable.php:445
-#: src/Shared/Frontend/FrontendAuditLogView.php:208
-#: src/Shared/Frontend/FrontendAuditLogView.php:508
+#: src/Shared/Frontend/FrontendAuditLogView.php:221
+#: src/Shared/Frontend/FrontendAuditLogView.php:525
 #: src/Shared/Frontend/FrontendConfigurationView.php:2833
 #: src/Shared/Frontend/FrontendEvaluationsView.php:203
 #: src/Shared/Frontend/FrontendMyActivitiesView.php:108
@@ -9335,7 +9335,7 @@ msgid "Scout access"
 msgstr ""
 
 #: src/Modules/Authorization/Admin/MatrixEntityCatalog.php:168
-#: src/Shared/Frontend/FrontendAuditLogView.php:146
+#: src/Shared/Frontend/FrontendAuditLogView.php:159
 msgid "Impersonation"
 msgstr ""
 
@@ -9571,7 +9571,7 @@ msgstr ""
 #: src/Modules/Training/Wizard/WhenStep.php:22
 #: src/Modules/Vct/Wizard/WhenStep.php:27
 #: src/Modules/Workflow/Frontend/FrontendWorkflowConfigView.php:288
-#: src/Shared/Frontend/FrontendAuditLogView.php:546
+#: src/Shared/Frontend/FrontendAuditLogView.php:563
 #: src/Shared/Frontend/FrontendConfigurationView.php:2570
 #: src/Shared/Frontend/FrontendSpondMonitorView.php:190
 msgid "When"
@@ -10060,7 +10060,7 @@ msgstr ""
 #: src/Modules/Stats/Admin/UsageStatsDetailsPage.php:398
 #: src/Modules/Stats/Admin/UsageStatsDetailsPage.php:480
 #: src/Modules/Stats/Admin/UsageStatsPage.php:219
-#: src/Shared/Frontend/FrontendAuditLogView.php:547
+#: src/Shared/Frontend/FrontendAuditLogView.php:564
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:146
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:243
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:368
@@ -11752,8 +11752,8 @@ msgstr ""
 #: src/Modules/Comms/Frontend/FrontendMessageLogView.php:236
 #: src/Modules/Comms/Frontend/FrontendMessageLogView.php:245
 #: src/Modules/Comms/Frontend/FrontendMessageLogView.php:254
-#: src/Shared/Frontend/FrontendAuditLogView.php:483
-#: src/Shared/Frontend/FrontendAuditLogView.php:492
+#: src/Shared/Frontend/FrontendAuditLogView.php:500
+#: src/Shared/Frontend/FrontendAuditLogView.php:509
 msgid "— Any —"
 msgstr ""
 
@@ -11785,10 +11785,10 @@ msgstr ""
 #: src/Modules/Measurements/Frontend/FrontendTestTrendsView.php:527
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:273
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:276
-#: src/Shared/Frontend/Components/FilterBar.php:916
-#: src/Shared/Frontend/Components/FilterBar.php:1048
+#: src/Shared/Frontend/Components/FilterBar.php:950
+#: src/Shared/Frontend/Components/FilterBar.php:1082
 #: src/Shared/Frontend/Components/FrontendListTable.php:446
-#: src/Shared/Frontend/FrontendAuditLogView.php:509
+#: src/Shared/Frontend/FrontendAuditLogView.php:526
 #: src/Shared/Frontend/FrontendConfigurationView.php:2834
 #: src/Shared/Frontend/FrontendEvaluationsView.php:204
 #: src/Shared/Frontend/FrontendMailComposeView.php:142
@@ -11814,8 +11814,8 @@ msgstr ""
 
 #: src/Modules/Comms/Frontend/FrontendMessageLogView.php:349
 #: src/Modules/Comms/Frontend/FrontendMyMessagesView.php:165
-#: src/Shared/Frontend/FrontendAuditLogView.php:613
-#: src/Shared/Frontend/FrontendAuditLogView.php:615
+#: src/Shared/Frontend/FrontendAuditLogView.php:630
+#: src/Shared/Frontend/FrontendAuditLogView.php:632
 msgid "Newer"
 msgstr ""
 
@@ -11824,7 +11824,7 @@ msgstr ""
 #: src/Modules/Comms/Frontend/FrontendMessageLogView.php:353
 #: src/Modules/Comms/Frontend/FrontendMyMessagesView.php:169
 #: src/Shared/Frontend/Components/FrontendListTable.php:180
-#: src/Shared/Frontend/FrontendAuditLogView.php:619
+#: src/Shared/Frontend/FrontendAuditLogView.php:636
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:561
 #, php-format
 msgid "Page %1$d of %2$d"
@@ -11832,8 +11832,8 @@ msgstr ""
 
 #: src/Modules/Comms/Frontend/FrontendMessageLogView.php:357
 #: src/Modules/Comms/Frontend/FrontendMyMessagesView.php:173
-#: src/Shared/Frontend/FrontendAuditLogView.php:623
-#: src/Shared/Frontend/FrontendAuditLogView.php:625
+#: src/Shared/Frontend/FrontendAuditLogView.php:640
+#: src/Shared/Frontend/FrontendAuditLogView.php:642
 msgid "Older"
 msgstr ""
 
@@ -13428,8 +13428,8 @@ msgstr ""
 #: src/Modules/Stats/Admin/PlayerRateCardView.php:290
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamChemistryView.php:946
 #: src/Modules/Translations/Admin/TranslationsConfigTab.php:137
-#: src/Shared/Frontend/Components/FilterBar.php:573
-#: src/Shared/Frontend/Components/FilterBar.php:649
+#: src/Shared/Frontend/Components/FilterBar.php:607
+#: src/Shared/Frontend/Components/FilterBar.php:683
 msgid "Clear"
 msgstr ""
 
@@ -13440,25 +13440,25 @@ msgstr ""
 #: src/Modules/Players/SeasonRollover/FrontendSeasonRolloverView.php:252
 #: src/Modules/Players/SeasonRollover/FrontendSeasonRolloverView.php:319
 #: src/Modules/Players/SeasonRollover/FrontendSeasonRolloverView.php:328
-#: src/Shared/Frontend/FrontendAuditLogView.php:480
-#: src/Shared/Frontend/FrontendAuditLogView.php:548
+#: src/Shared/Frontend/FrontendAuditLogView.php:497
+#: src/Shared/Frontend/FrontendAuditLogView.php:565
 msgid "Action"
 msgstr ""
 
 #: src/Modules/Configuration/Admin/ConfigurationPage.php:519
-#: src/Shared/Frontend/FrontendAuditLogView.php:550
+#: src/Shared/Frontend/FrontendAuditLogView.php:567
 msgid "IP"
 msgstr ""
 
 #: src/Modules/Configuration/Admin/ConfigurationPage.php:520
 #: src/Modules/Export/Exporters/AuditLogCsvExporter.php:43
 #: src/Modules/Export/Exporters/AuditLogCsvExporter.php:114
-#: src/Shared/Frontend/FrontendAuditLogView.php:551
+#: src/Shared/Frontend/FrontendAuditLogView.php:568
 msgid "Payload"
 msgstr ""
 
 #: src/Modules/Configuration/Admin/ConfigurationPage.php:524
-#: src/Shared/Frontend/FrontendAuditLogView.php:525
+#: src/Shared/Frontend/FrontendAuditLogView.php:542
 msgid "No audit entries match your filters."
 msgstr ""
 
@@ -18876,7 +18876,7 @@ msgstr ""
 
 #: src/Modules/Export/Exporters/AuditLogCsvExporter.php:42
 #: src/Modules/Export/Exporters/AuditLogCsvExporter.php:113
-#: src/Shared/Frontend/FrontendAuditLogView.php:389
+#: src/Shared/Frontend/FrontendAuditLogView.php:402
 msgid "IP address"
 msgstr ""
 
@@ -19344,7 +19344,7 @@ msgstr ""
 
 #: src/Modules/Export/Exporters/TeamPlanningPdfExporter.php:398
 #: src/Modules/PersonaDashboard/Widgets/DataTableWidget.php:93
-#: src/Shared/Frontend/FrontendAuditLogView.php:346
+#: src/Shared/Frontend/FrontendAuditLogView.php:359
 msgid "Day"
 msgstr ""
 
@@ -19522,8 +19522,8 @@ msgstr ""
 #: src/Modules/Training/Frontend/PlanBuilderRenderer.php:220
 #: src/Modules/Training/Print/TrainingPlanPrintRouter.php:95
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:256
-#: src/Shared/Frontend/Components/FilterBar.php:121
-#: src/Shared/Frontend/Components/FilterBar.php:624
+#: src/Shared/Frontend/Components/FilterBar.php:132
+#: src/Shared/Frontend/Components/FilterBar.php:658
 #: src/Shared/Frontend/Components/GuestAddModal.php:48
 #: src/Shared/Frontend/Components/MediaGallery.php:323
 #: src/Shared/Frontend/DashboardShortcode.php:288
@@ -22087,7 +22087,7 @@ msgstr ""
 
 #: src/Modules/Knowledge/Wizards/AssignPeopleStep.php:34
 #: src/Modules/PersonaDashboard/Widgets/DataTableWidget.php:122
-#: src/Shared/Frontend/FrontendAuditLogView.php:204
+#: src/Shared/Frontend/FrontendAuditLogView.php:217
 msgid "Who"
 msgstr ""
 
@@ -32869,7 +32869,7 @@ msgid "(unknown user)"
 msgstr ""
 
 #: src/Modules/Players/Frontend/FrontendPlayerAccountsView.php:317
-#: src/Shared/Frontend/FrontendAuditLogView.php:367
+#: src/Shared/Frontend/FrontendAuditLogView.php:380
 msgid "Username"
 msgstr ""
 
@@ -42846,33 +42846,43 @@ msgstr ""
 msgid "This feature is still being built and may change."
 msgstr ""
 
-#: src/Shared/Frontend/Components/FilterBar.php:120
+#: src/Shared/Frontend/Components/FilterBar.php:131
 msgid "Open filters"
 msgstr ""
 
+#: src/Shared/Frontend/Components/FilterBar.php:135
+msgid "Filters applied."
+msgstr ""
+
+#. translators: %s: the number of results after filtering.
+#: src/Shared/Frontend/Components/FilterBar.php:137
+#, php-format
+msgid "%s results"
+msgstr ""
+
 #. translators: 1: filter name, e.g. "Team". 2: its value, e.g. "Ajax U17".
-#: src/Shared/Frontend/Components/FilterBar.php:318
+#: src/Shared/Frontend/Components/FilterBar.php:334
 #, php-format
 msgctxt "active filter chip"
 msgid "%1$s: %2$s"
 msgstr ""
 
 #. translators: %s: the active filter, e.g. "Team: Ajax U17".
-#: src/Shared/Frontend/Components/FilterBar.php:553
+#: src/Shared/Frontend/Components/FilterBar.php:587
 #, php-format
 msgid "Remove filter %s"
 msgstr ""
 
-#: src/Shared/Frontend/Components/FilterBar.php:972
+#: src/Shared/Frontend/Components/FilterBar.php:1006
 msgid "Custom range…"
 msgstr ""
 
-#: src/Shared/Frontend/Components/FilterBar.php:1076
+#: src/Shared/Frontend/Components/FilterBar.php:1110
 msgid "More filters"
 msgstr ""
 
 #. translators: %s: the filter's name, e.g. "Archive".
-#: src/Shared/Frontend/Components/FilterBar.php:1106
+#: src/Shared/Frontend/Components/FilterBar.php:1140
 #, php-format
 msgid "Clear the %s filter"
 msgstr ""
@@ -44207,105 +44217,105 @@ msgstr ""
 msgid "You do not have permission to read the impersonation log."
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:130
+#: src/Shared/Frontend/FrontendAuditLogView.php:143
 msgid "All entries"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:135
+#: src/Shared/Frontend/FrontendAuditLogView.php:148
 msgid "Failed logins"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:185
+#: src/Shared/Frontend/FrontendAuditLogView.php:198
 msgid "Nobody has used impersonation yet."
 msgstr ""
 
 #. translators: %d: number of recorded impersonations
-#: src/Shared/Frontend/FrontendAuditLogView.php:194
+#: src/Shared/Frontend/FrontendAuditLogView.php:207
 #, php-format
 msgid "%d impersonation on record."
 msgid_plural "%d impersonations on record."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:203
+#: src/Shared/Frontend/FrontendAuditLogView.php:216
 #: src/Shared/Frontend/FrontendWizardsAdminView.php:166
 msgid "Started"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:205
+#: src/Shared/Frontend/FrontendAuditLogView.php:218
 msgid "Acted as"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:206
+#: src/Shared/Frontend/FrontendAuditLogView.php:219
 msgid "Ended"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:207
+#: src/Shared/Frontend/FrontendAuditLogView.php:220
 msgid "Reason given"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:220
+#: src/Shared/Frontend/FrontendAuditLogView.php:233
 msgid "Still open"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:262
+#: src/Shared/Frontend/FrontendAuditLogView.php:275
 msgid "Audit log table not found. Run migrations to enable failed-login tracking."
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:326
+#: src/Shared/Frontend/FrontendAuditLogView.php:339
 msgid "Last 7 days"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:328
-#: src/Shared/Frontend/FrontendAuditLogView.php:333
+#: src/Shared/Frontend/FrontendAuditLogView.php:341
+#: src/Shared/Frontend/FrontendAuditLogView.php:346
 msgid "Failed login attempts"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:331
+#: src/Shared/Frontend/FrontendAuditLogView.php:344
 msgid "Last 30 days"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:338
+#: src/Shared/Frontend/FrontendAuditLogView.php:351
 msgid "No failed login attempts recorded in the last 30 days."
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:342
+#: src/Shared/Frontend/FrontendAuditLogView.php:355
 msgid "Daily breakdown — last 30 days"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:347
-#: src/Shared/Frontend/FrontendAuditLogView.php:368
-#: src/Shared/Frontend/FrontendAuditLogView.php:390
+#: src/Shared/Frontend/FrontendAuditLogView.php:360
+#: src/Shared/Frontend/FrontendAuditLogView.php:381
+#: src/Shared/Frontend/FrontendAuditLogView.php:403
 msgid "Attempts"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:363
+#: src/Shared/Frontend/FrontendAuditLogView.php:376
 msgid "Top attempted usernames"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:385
+#: src/Shared/Frontend/FrontendAuditLogView.php:398
 msgid "Top source IPs"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:406
+#: src/Shared/Frontend/FrontendAuditLogView.php:419
 msgid "No automatic lockout in v1 — this view exists to surface volume so the operator can act when an unusual pattern emerges. Lockout is a v2 enhancement once real volume is observed."
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:498
+#: src/Shared/Frontend/FrontendAuditLogView.php:515
 msgid "User #"
 msgstr ""
 
 #. translators: 1: first row index, 2: last row index, 3: total count
-#: src/Shared/Frontend/FrontendAuditLogView.php:529
+#: src/Shared/Frontend/FrontendAuditLogView.php:546
 #, php-format
 msgid "Showing %1$d–%2$d of %3$d entries."
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:534
+#: src/Shared/Frontend/FrontendAuditLogView.php:551
 msgid "Clear filters"
 msgstr ""
 
-#: src/Shared/Frontend/FrontendAuditLogView.php:573
+#: src/Shared/Frontend/FrontendAuditLogView.php:590
 msgid "(system)"
 msgstr ""
 
