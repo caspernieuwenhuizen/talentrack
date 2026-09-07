@@ -482,7 +482,13 @@
 /* -------------------------------------------------------------------
  * Doen per speler + rollen (right column)
  * ------------------------------------------------------------------- */
-.tt-mp-right { display: flex; flex-direction: column; gap: 0.875rem; }
+/* #3297 — Player focus and Roles were wrapped in a `.tt-mp-right` flex
+   column. They are direct grid children now, so screen and paper can place
+   them independently: the right rail stacks them as before, and the export
+   moves Roles under Selectie · minuten. Below the desktop breakpoint the
+   grid is a single column and source order is the layout, so no placement
+   rule is needed there. */
+.tt-mp-roles-panel { margin-top: 0.875rem; }
 
 .tt-mp-dps {
     width: 100%;
@@ -858,6 +864,16 @@
     .tt-mp-grid {
         grid-template-columns: 14rem minmax(0, 1fr) 22rem;
     }
+    /* #3297 — explicit placement, because the four panels are now direct
+       grid children and their source order (roster, middle, focus, roles)
+       is the PAPER order, not this one. On screen the middle column spans
+       both rows and the right rail stacks focus over roles, which is
+       exactly what the removed `.tt-mp-right` wrapper used to do. */
+    .tt-mp-grid { grid-template-rows: auto 1fr; }
+    .tt-mp-roster-panel { grid-column: 1; grid-row: 1; }
+    .tt-mp-middle       { grid-column: 2; grid-row: 1 / span 2; }
+    .tt-mp-focus-panel  { grid-column: 3; grid-row: 1; }
+    .tt-mp-roles-panel  { grid-column: 3; grid-row: 2; align-self: start; }
 }
 
 /* -------------------------------------------------------------------
@@ -1137,10 +1153,37 @@
    its three-column shape whatever viewport the coach exported from. The
    ≥1100px media query cannot be relied on for that — html2canvas is told
    the window is the page width, but stating the columns here means the
-   sheet does not depend on that being honoured. */
+   sheet does not depend on that being honoured.
+   ---------------------------------------------------------------------
+   #3297 — layout A. The columns are millimetres, not the screen's
+   `14rem / 1fr / 22rem`: that ratio is a viewport response and has no
+   business on A4. 62 / 135 / 78mm with 3mm gaps fills the 281mm printable
+   width exactly.
+
+   Roles moves under the roster so both squad lists — the same names read
+   the same way — share the left column, which is what frees a full-height
+   right column for the fifteen player-goal rows. That, plus the tighter
+   row padding below, is what takes the sheet from ~386mm tall to one page;
+   no exporter change could have done it. */
 .tt-image-pdf-capture .tt-mp-grid {
-    grid-template-columns: 14rem minmax(0, 1fr) 22rem;
-    gap: 0.625rem;
+    grid-template-columns: 62mm 135mm 78mm;
+    grid-template-rows: auto 1fr;
+    gap: 3mm;
+    align-items: start;
+}
+.tt-image-pdf-capture .tt-mp-roster-panel { grid-column: 1; grid-row: 1; }
+.tt-image-pdf-capture .tt-mp-roles-panel  { grid-column: 1; grid-row: 2; margin-top: 3mm; }
+.tt-image-pdf-capture .tt-mp-middle       { grid-column: 2; grid-row: 1 / span 2; }
+.tt-image-pdf-capture .tt-mp-focus-panel  { grid-column: 3; grid-row: 1 / span 2; }
+
+/* The left column carries two stacked lists against the middle column's
+   pitches, so its rows run one notch tighter — height is bought here
+   before it is ever bought from type size. */
+.tt-image-pdf-capture .tt-mp-roster-panel td,
+.tt-image-pdf-capture .tt-mp-roster-panel th,
+.tt-image-pdf-capture .tt-mp-roles-panel .tt-mp-sp-list li {
+    padding-top: 0.4mm;
+    padding-bottom: 0.4mm;
 }
 
 .tt-image-pdf-capture .tt-mp-paperhead {
@@ -1212,4 +1255,84 @@
 .tt-image-pdf-capture .tt-mp-toolbar,
 .tt-image-pdf-capture .tt-mp-save-state {
     display: none !important;
+}
+
+/* -------------------------------------------------------------------
+ * #3297 — writing room.
+ *
+ * An unfilled box is room to write, not a gap. The empty rows under
+ * Player focus and the empty lines in a goal box both print as ruled
+ * lines, which is why the sheet can reserve fifteen focus rows without
+ * looking unfinished.
+ *
+ * The filler rows exist only here: `renderDps()` appends them to the
+ * live tbody, and this is the only scope that reveals them, so the
+ * screen still shows one row per available player.
+ * ------------------------------------------------------------------- */
+.tt-mp-dps-rule { display: none; }
+
+.tt-image-pdf-capture .tt-mp-dps-rule { display: table-row; }
+.tt-image-pdf-capture .tt-mp-dps-rule td {
+    border-bottom: 1px solid var(--tt-mp-line-soft, #dfe3e6);
+    height: 5.4mm;
+}
+
+/* Fifteen rows at the screen's height would be 258mm of column on a 194mm
+   page — on its own taller than the sheet. The screen row is sized by a
+   48px touch target it needs and paper does not; 5.4mm is a normal ruled
+   line, comfortable to write on, and it is what brings the tallest column
+   inside the page. Type size is untouched: this is height bought from
+   padding, per the design rule that the 7pt floor is the last thing to
+   move. */
+.tt-image-pdf-capture .tt-mp-dps tbody td {
+    padding: 0.5mm 1mm;
+    min-height: 0;
+    height: 5.4mm;
+}
+.tt-image-pdf-capture .tt-mp-dps tbody td.tt-mp-col-text input {
+    min-height: 0;
+    padding: 0.3mm 0.6mm;
+}
+.tt-image-pdf-capture .tt-mp-dps thead th {
+    padding: 0.8mm 1mm;
+}
+
+/* The last line of a goal box keeps its rule on paper — on screen it is
+   dropped so the box does not look double-bordered, but here every line
+   is a line to write on. */
+.tt-image-pdf-capture .tt-mp-gbox-lines input:last-child {
+    border-bottom: 1px solid var(--tt-mp-line-soft, #dfe3e6);
+}
+.tt-image-pdf-capture .tt-mp-gbox-lines {
+    padding: 0.8mm 1.4mm;
+}
+/* Same trade as the focus rows: the screen line carries a 36px minimum for
+   the finger, paper needs a line to write on. 5mm is one, and it is what
+   brings the middle column — pitches plus five goal boxes — inside the
+   page without touching the type. */
+.tt-image-pdf-capture .tt-mp-gbox-lines input {
+    min-height: 0;
+    height: 5mm;
+    padding: 0.2mm 0.3mm;
+    font-size: 9pt;
+    line-height: 1.15;
+}
+.tt-image-pdf-capture .tt-mp-gbox-title {
+    padding-top: 0.6mm;
+    padding-bottom: 0.6mm;
+}
+
+/* The last of the height, taken from the middle column's own chrome rather
+   than from any content: the goals panel's padding, the gap under the
+   pitches, and a slightly flatter pitch. Two half-pitches at 68:75 are
+   taller than they need to be on paper — the chips and their positions
+   read the same at 68:62, and it is the difference between one page and
+   two. */
+.tt-image-pdf-capture .tt-mp-pitch { aspect-ratio: 68 / 62; }
+.tt-image-pdf-capture .tt-mp-goals {
+    margin-top: 2.5mm;
+    padding: 2mm;
+}
+.tt-image-pdf-capture .tt-mp-goals-title {
+    margin-bottom: 1.5mm;
 }

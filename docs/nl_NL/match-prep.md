@@ -243,6 +243,28 @@ wordt op de pagina gepast en gecentreerd; is het hoger dan één pagina,
 dan wordt het op ware grootte over twee pagina's afgedrukt in plaats van
 weggekrompen tot iets onleesbaars.
 
+### Het afgedrukte blad is voor papier opgemaakt
+
+De PDF is **één liggende pagina**, ingedeeld voor in de hand in plaats
+van voor het scherm:
+
+- **Links** — Selectie · minuten, met Rollen & standaardsituaties
+  eronder. Het zijn allebei dezelfde spelers op dezelfde manier gelezen,
+  een naam per regel, dus ze delen de smalle kolom.
+- **Midden** — de twee halve velden en daaronder de wedstrijddoelen.
+- **Rechts** — Doen per speler, met altijd **vijftien regels**: eerst de
+  spelers die al een notitie hebben, daarna lijntjes tot dat aantal. Dit
+  is het blok waarin je tijdens de warming-up schrijft, dus de ruimte
+  staat er of je hem vooraf hebt ingevuld of niet.
+
+Lege doelvakken en ongebruikte spelersregels komen als **schrijflijntjes**
+op papier, niet als gaten of als grijze hulptekst. Een volle selectie van
+22 spelers past nog steeds op die ene pagina.
+
+De route **Wedstrijdformulier afdrukken** (`?tt_match_prep_print=1`) drukt
+dezelfde indeling af, zodat de pagina die je zonder JavaScript afdrukt en
+de PDF die je exporteert hetzelfde document zijn.
+
 Twee dingen blijven er bewust af. **Lege velden komen leeg op papier**:
 een doelstelling of spelersnotitie die je niet hebt ingevuld wordt een
 lege schrijfregel, niet de grijze hint ("Doelstelling 2…", "…"), en een

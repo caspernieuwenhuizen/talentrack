@@ -33,6 +33,15 @@ use TT\Modules\MatchPrep\Repositories\MatchPrepRepository;
 final class MatchPrepPrintableRenderer {
 
     /**
+     * #3297 — rows the "Doen per speler" block reserves on paper.
+     *
+     * A squad list grows and shrinks; the writing room does not. Mirrors
+     * `FOCUS_LINES` in `assets/js/frontend-match-prep.js`, which does the
+     * same padding for the image-capture export — one design, two renderers.
+     */
+    private const FOCUS_LINES = 15;
+
+    /**
      * Render the body HTML for a match-prep printable. Empty string
      * when the activity isn't found or no prep exists (the caller's
      * page chrome surfaces the "not found" notice if it wants to).
@@ -140,23 +149,24 @@ final class MatchPrepPrintableRenderer {
 
         ob_start();
         ?>
-        <h1><?php echo esc_html( self::title( $activity ) ); ?></h1>
-        <p class="tt-mpp-meta"><?php echo esc_html( self::metaLine( $activity, $prep ) ); ?></p>
+        <?php
+        // #3297 — layout A, the same sheet the image-capture export prints.
+        //
+        // The two renderers had drifted into two documents for one artefact:
+        // this route stacked its blocks down the page while the export laid
+        // them out in three columns. One design now, two renderers — so the
+        // no-JS fallback is a fallback and not a different sheet.
+        //
+        // Order is the screen's own: selection (with roles beneath it), the
+        // pitches and the match's goals, then a player-goal column.
+        ?>
+        <header class="tt-mpp-head">
+            <h1><?php echo esc_html( self::title( $activity ) ); ?></h1>
+            <p class="tt-mpp-meta"><?php echo esc_html( self::metaLine( $activity, $prep ) ); ?></p>
+        </header>
 
-        <div class="tt-mpp-pitches">
-            <?php self::renderPitch( __( '1e helft', 'talenttrack' ), $slots, $lineup_by_half[1], $players_by_id ); ?>
-            <?php self::renderPitch( __( '2e helft', 'talenttrack' ), $slots, $lineup_by_half[2], $players_by_id ); ?>
-        </div>
-
-        <div class="tt-mpp-bench-row">
-            <?php
-            $bench_1 = self::benchNames( $availability, $pitch_ids_by_half[1], $players_by_id );
-            $bench_2 = self::benchNames( $availability, $pitch_ids_by_half[2], $players_by_id );
-            ?>
-            <p><strong><?php esc_html_e( 'Bank 1e helft:', 'talenttrack' ); ?></strong> <?php echo esc_html( $bench_1 !== [] ? implode( ', ', $bench_1 ) : '—' ); ?></p>
-            <p><strong><?php esc_html_e( 'Bank 2e helft:', 'talenttrack' ); ?></strong> <?php echo esc_html( $bench_2 !== [] ? implode( ', ', $bench_2 ) : '—' ); ?></p>
-        </div>
-
+        <div class="tt-mpp-sheet">
+        <div class="tt-mpp-col tt-mpp-col-left">
         <?php if ( $available_ids ) :
             // #1873 — Selectie · minuten, mirroring the on-screen left rail:
             // per-player minutes per half (full half length when on the
@@ -196,7 +206,48 @@ final class MatchPrepPrintableRenderer {
             </table>
         <?php endif; ?>
 
-        <div class="tt-mpp-bottom">
+            <?php
+            // #3297 — roles sit under the selection, as on the exported
+            // sheet: both blocks are the same squad read the same way, a
+            // name per line, so they share the narrow left column — which
+            // is what frees a full-height column for the player goals.
+            $role_defs = FrontendMatchPrepView::roleDefinitions();
+            ?>
+            <h2><?php esc_html_e( 'Roles & set pieces', 'talenttrack' ); ?></h2>
+            <table class="tt-mpp-roles-table">
+                <tbody>
+                <?php foreach ( $role_defs as $role ) :
+                    $key   = (string) $role['key'];
+                    $rpid  = (int) ( $roles_by_key[ $key ] ?? 0 );
+                    // #2198 — unassigned roles print blank, not a placeholder dash.
+                    $rname = ( $rpid > 0 && isset( $players_by_id[ $rpid ] ) )
+                        ? QueryHelpers::player_display_name( $players_by_id[ $rpid ] )
+                        : '';
+                    ?>
+                    <tr>
+                        <th><?php echo esc_html( (string) $role['label'] ); ?></th>
+                        <td><?php echo esc_html( $rname ); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div><!-- /.tt-mpp-col-left -->
+
+        <div class="tt-mpp-col tt-mpp-col-mid">
+            <div class="tt-mpp-pitches">
+                <?php self::renderPitch( __( '1e helft', 'talenttrack' ), $slots, $lineup_by_half[1], $players_by_id ); ?>
+                <?php self::renderPitch( __( '2e helft', 'talenttrack' ), $slots, $lineup_by_half[2], $players_by_id ); ?>
+            </div>
+
+            <div class="tt-mpp-bench-row">
+                <?php
+                $bench_1 = self::benchNames( $availability, $pitch_ids_by_half[1], $players_by_id );
+                $bench_2 = self::benchNames( $availability, $pitch_ids_by_half[2], $players_by_id );
+                ?>
+                <p><strong><?php esc_html_e( 'Bank 1e helft:', 'talenttrack' ); ?></strong> <?php echo esc_html( $bench_1 !== [] ? implode( ', ', $bench_1 ) : '—' ); ?></p>
+                <p><strong><?php esc_html_e( 'Bank 2e helft:', 'talenttrack' ); ?></strong> <?php echo esc_html( $bench_2 !== [] ? implode( ', ', $bench_2 ) : '—' ); ?></p>
+            </div>
+
             <div class="tt-mpp-bottom-col">
                 <?php
                 // #2831 — the principles this match is working on, above the
@@ -253,7 +304,9 @@ final class MatchPrepPrintableRenderer {
                 <?php endif; ?>
             </div>
 
-            <div class="tt-mpp-bottom-col">
+        </div><!-- /.tt-mpp-col-mid -->
+
+            <div class="tt-mpp-col tt-mpp-col-right">
                 <h2><?php esc_html_e( 'Doen per speler', 'talenttrack' ); ?></h2>
                 <?php if ( ! $available_ids ) : ?>
                     <p class="tt-mpp-empty"><?php esc_html_e( 'Geen beschikbaarheid vastgelegd.', 'talenttrack' ); ?></p>
@@ -283,35 +336,20 @@ final class MatchPrepPrintableRenderer {
                                 <td class="tt-mpp-flag-col"><?php echo $cam ? '🎥' : ''; ?></td>
                             </tr>
                         <?php endforeach; ?>
+                        <?php
+                        // #3297 — pad to FOCUS_LINES ruled rows, matching the
+                        // exported sheet. The block the coach writes in during
+                        // the warm-up always looks the same in the hand, so
+                        // the room is reserved rather than earned.
+                        $filler = self::FOCUS_LINES - count( $available_ids );
+                        for ( $i = 0; $i < $filler; $i++ ) : ?>
+                            <tr class="tt-mpp-rule"><td></td><td></td><td></td><td></td></tr>
+                        <?php endfor; ?>
                         </tbody>
                     </table>
                 <?php endif; ?>
-            </div>
-        </div>
-
-        <?php
-        // #1873 — Rollen & standaardsituaties: captain + set-piece takers,
-        // reusing the on-screen role definitions + labels.
-        $role_defs = FrontendMatchPrepView::roleDefinitions();
-        ?>
-        <h2><?php esc_html_e( 'Roles & set pieces', 'talenttrack' ); ?></h2>
-        <table class="tt-mpp-roles-table">
-            <tbody>
-            <?php foreach ( $role_defs as $role ) :
-                $key   = (string) $role['key'];
-                $rpid  = (int) ( $roles_by_key[ $key ] ?? 0 );
-                // #2198 — unassigned roles print blank, not a placeholder dash.
-                $rname = ( $rpid > 0 && isset( $players_by_id[ $rpid ] ) )
-                    ? QueryHelpers::player_display_name( $players_by_id[ $rpid ] )
-                    : '';
-                ?>
-                <tr>
-                    <th><?php echo esc_html( (string) $role['label'] ); ?></th>
-                    <td><?php echo esc_html( $rname ); ?></td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+            </div><!-- /.tt-mpp-col-right -->
+        </div><!-- /.tt-mpp-sheet -->
         <?php
         return (string) ob_get_clean();
     }
@@ -345,9 +383,26 @@ final class MatchPrepPrintableRenderer {
         .tt-mpp-slot-label { position: absolute; transform: translate(-50%, calc(-50% + 24px)); white-space: nowrap; font-size: 8.5pt; color: #1a1d21; background: rgba(255,255,255,0.85); padding: 1px 4px; border-radius: 3px; max-width: 90px; overflow: hidden; text-overflow: ellipsis; }
         .tt-mpp-bench-row p { margin: 2px 0; font-size: 10pt; color: #5b6e75; }
         .tt-mpp-bench-row strong { color: #1a1d21; }
-        .tt-mpp-bottom { display: table; width: 100%; margin-top: 6px; }
-        .tt-mpp-bottom-col { display: table-cell; width: 50%; padding-right: 8px; vertical-align: top; }
-        .tt-mpp-bottom-col:last-child { padding-right: 0; padding-left: 8px; }
+        /* #3297 — layout A. Three columns in millimetres, the same
+           62 / 135 / 78 the exported sheet uses, because these are paper
+           measurements and the page is the same page. The blocks stacked
+           down the sheet before, which is why this route and the export
+           printed two different documents. */
+        .tt-mpp-head { border-bottom: 0.6mm solid #0b3d2e; padding-bottom: 2mm; margin-bottom: 3mm; }
+        .tt-mpp-head h1 { margin: 0; }
+        .tt-mpp-sheet { display: table; width: 100%; table-layout: fixed; }
+        .tt-mpp-col { display: table-cell; vertical-align: top; }
+        .tt-mpp-col-left  { width: 62mm; padding-right: 3mm; }
+        .tt-mpp-col-mid   { width: 135mm; padding-right: 3mm; }
+        .tt-mpp-col-right { width: 78mm; }
+        .tt-mpp-col h2:first-child { margin-top: 0; }
+        /* The left column carries two lists against the middle column's
+           pitches, so its rows run a notch tighter — height comes from
+           padding before it ever comes from type size. */
+        .tt-mpp-col-left th, .tt-mpp-col-left td { padding: 1.5px 4px; font-size: 9pt; }
+        .tt-mpp-bottom-col { margin-top: 4px; }
+        /* An unfilled row is writing room, not a gap. */
+        .tt-mpp-rule td { height: 5.4mm; }
         table { width: 100%; border-collapse: collapse; margin: 2px 0; }
         th, td { border: 1px solid #d6dadd; padding: 3px 5px; text-align: left; font-size: 10pt; vertical-align: top; }
         th { background: #f3f4f6; font-weight: 700; }

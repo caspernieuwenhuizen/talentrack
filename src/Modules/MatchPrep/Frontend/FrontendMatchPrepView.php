@@ -727,9 +727,19 @@ class FrontendMatchPrepView extends FrontendViewBase {
                     </div>
                 </section>
 
-                <!-- RIGHT — doen per speler + rollen -->
-                <section class="tt-mp-right">
-                    <div class="tt-mp-panel">
+                <!-- RIGHT — doen per speler -->
+                <?php
+                // #3297 — Player focus and Roles are direct children of the
+                // grid rather than nested in a `.tt-mp-right` wrapper, so the
+                // two layouts can place them independently: on screen they
+                // stack in the right rail as before, and on paper Roles moves
+                // under Selectie · minuten. That is what frees a full-height
+                // column for the fifteen player-goal rows.
+                //
+                // Placement is explicit in both scopes (see the CSS) rather
+                // than relying on source order, because the two orders differ.
+                ?>
+                <section class="tt-mp-panel tt-mp-focus-panel">
                         <header class="tt-mp-panel-head"><?php esc_html_e( 'Player focus', 'talenttrack' ); ?></header>
                         <table class="tt-mp-dps">
                             <thead>
@@ -786,9 +796,9 @@ class FrontendMatchPrepView extends FrontendViewBase {
                             ?>
                             </tbody>
                         </table>
-                    </div>
+                </section>
 
-                    <div class="tt-mp-panel">
+                <section class="tt-mp-panel tt-mp-roles-panel">
                         <header class="tt-mp-panel-head"><?php esc_html_e( 'Roles & set pieces', 'talenttrack' ); ?></header>
                         <ul class="tt-mp-sp-list" data-tt-mp-roles>
                             <?php foreach ( self::roleDefinitions() as $role ) :
@@ -819,7 +829,6 @@ class FrontendMatchPrepView extends FrontendViewBase {
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                    </div>
                 </section>
             </div>
             </div><!-- /.tt-mp-sheet -->

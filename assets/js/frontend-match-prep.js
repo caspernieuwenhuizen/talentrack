@@ -22,6 +22,16 @@
 (function () {
     'use strict';
 
+    /**
+     * #3297 — rows the "Player focus" block reserves on the printed sheet.
+     *
+     * A squad list grows and shrinks as availability changes; the writing
+     * room on paper does not. Fifteen covers a full match-day squad with
+     * lines to spare, and the block always looks the same in the coach's
+     * hand. Mirrors FOCUS_LINES in the design mockup.
+     */
+    var FOCUS_LINES = 15;
+
     var root = document.querySelector('.tt-match-prep');
     if (!root) return;
 
@@ -468,6 +478,30 @@
                 + '</td>'
                 + '</tr>';
         }).join('');
+
+        // #3297 — pad to FOCUS_LINES ruled rows, for the PDF only.
+        //
+        // On screen this block is one row per available player. On paper the
+        // count is fixed: it is the block the coach writes in during the
+        // warm-up, so the room is reserved rather than earned. The filler
+        // rows carry no inputs and no player id — they are writing lines,
+        // and `.tt-image-pdf-capture` is the only scope that reveals them.
+        //
+        // It lives here rather than in PHP because this function replaces
+        // the tbody wholesale on every availability change; server-rendered
+        // filler would be wiped the first time a coach ticked a player.
+        if (avail.length < FOCUS_LINES) {
+            var filler = '';
+            for (var i = avail.length; i < FOCUS_LINES; i++) {
+                filler += '<tr class="tt-mp-dps-rule" aria-hidden="true">'
+                    + '<td class="tt-mp-col-name"></td>'
+                    + '<td class="tt-mp-col-text"></td>'
+                    + '<td class="tt-mp-col-spec"></td>'
+                    + '<td class="tt-mp-col-cam"></td>'
+                    + '</tr>';
+            }
+            tbody.insertAdjacentHTML('beforeend', filler);
+        }
 
         // Wire events for the just-rendered rows.
         $$('input[data-tt-mp-attention]', tbody).forEach(function (inp) {

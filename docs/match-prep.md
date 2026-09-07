@@ -226,6 +226,28 @@ phone and from a desktop produces the same document. The sheet is fitted
 to the page and centred; where it is taller than one page it is printed
 at full size across two rather than shrunk to something you can't read.
 
+### The printed sheet is laid out for paper
+
+The PDF is **one landscape page**, arranged for the hand rather than for
+the screen:
+
+- **Left** — Selection · minutes, with Roles & set pieces underneath it.
+  Both are the same squad read the same way, a name per line, so they
+  share the narrow column.
+- **Middle** — the two half-pitches, then the match goals.
+- **Right** — Doen per speler, which always reserves **fifteen rows**:
+  the players who already carry a note, then ruled lines to the count.
+  It is the block you write in during the warm-up, so the room is there
+  whether or not you filled it in beforehand.
+
+Empty goal boxes and unused player rows print as **ruled writing lines**,
+not as gaps or placeholder text. A full 22-player squad still fits the
+one page.
+
+The **Print match sheet** route (`?tt_match_prep_print=1`) prints the same
+layout, so the page you print without JavaScript and the PDF you export
+are the same document.
+
 Two things are deliberately left off the paper. **Empty fields print
 blank**: a goal line or a player note you haven't filled in comes out as
 an empty ruled line, not as its grey hint text ("Doelstelling 2…", "…"),
