@@ -146,7 +146,9 @@ final class FrontendAttendanceLeaderboardView extends FrontendViewBase {
         // #3338 — everything the filters govern. The body's early returns
         // now end the BODY rather than the whole render, which is what keeps
         // the region's closing tag guaranteed.
-        printf( '<div data-tt-filter-region data-tt-filter-count="%d">', (int) ( $board['total'] ?? 0 ) );
+        // No `?? 0`: the board's shape guarantees `total`, and a second dead
+        // null-coalesce here is what the PHPStan baseline counts.
+        printf( '<div data-tt-filter-region data-tt-filter-count="%d">', (int) $board['total'] );
         self::renderBody( $board );
         echo '</div>';
     }
