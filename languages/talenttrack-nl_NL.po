@@ -60139,6 +60139,10 @@ msgstr "Potentieel"
 msgid "No potential or behaviour ratings set in this window."
 msgstr "Geen potentieel- of gedragsbeoordelingen vastgelegd in deze periode."
 
+#: src/Modules/Pdp/Frontend/FrontendPdpManageView.php
+msgid "Evidence for this season"
+msgstr "Bewijs van dit seizoen"
+
 #~ msgid ""
 #~ "This team has no attendance recorded in the selected window. Try widening "
 #~ "the date range or picking another period."

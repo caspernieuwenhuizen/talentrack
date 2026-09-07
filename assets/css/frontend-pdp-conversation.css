@@ -45,3 +45,30 @@
     margin: 0 0 var(--tt-sp-1, 4px);
     font-weight: 600;
 }
+
+/* #3304 — the evidence, above the verdict decision. Collapsed by default:
+   a head of academy who already knows the player should not have to scroll
+   a season's worth of record to reach the four buttons, and one who does
+   not is one tap away from all of it. */
+.tt-pdp-verdict-evidence {
+    border: 1px solid var(--tt-line, #e3e6e1);
+    border-radius: var(--tt-radius, 8px);
+    background: var(--tt-paper, #fff);
+    padding: var(--tt-sp-3, 12px);
+    margin-bottom: var(--tt-sp-4, 16px);
+}
+
+.tt-pdp-verdict-evidence summary {
+    cursor: pointer;
+    font-weight: 600;
+    /* A 48px target: the summary is the only way into the panel. */
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    touch-action: manipulation;
+}
+
+.tt-pdp-verdict-evidence[open] summary {
+    margin-bottom: var(--tt-sp-3, 12px);
+    border-bottom: 1px solid var(--tt-line-soft, #eef0ec);
+}

@@ -91,6 +91,8 @@ Parents see the same timeline for their child, read-only and possessive ("&lt;Ch
 
 When the cycle's last conversation is signed off, the head of academy (or head coach in some configurations) records a verdict: **promote**, **retain**, **release**, or **transfer**. The verdict is its own row, signed off independently from the conversation rows.
 
+The verdict screen carries **Evidence for this season** above the decision — collapsed, one tap away — showing the whole season through the same panel the coach reads on a conversation. The numbers on it come from one assembly, so what the head of academy defends a verdict with is visibly what the coach saw.
+
 The *Record verdict* button sits with the conversation list, below the cycle. It stays **disabled until every conversation in the cycle is signed off**, showing the progress on the button itself — e.g. *Record verdict (3/5 conversations closed)* — so it's clear why it isn't available yet rather than missing.
 
 ## Carryover
@@ -116,7 +118,7 @@ A goal can also link to a **development talk**. On the conversation form, the co
 
 ## Print
 
-The detail view's **Print / PDF** button opens a clean A4 layout: photo, season label, current goals + status, agreed actions per conversation, and signature lines for coach / player / parent. Toggle *Re-render with evidence page* to add a second A4 with recent evaluations and activities.
+The detail view's **Print / PDF** button opens a clean A4 layout: photo, season label, current goals + status, agreed actions per conversation, and signature lines for coach / player / parent. Toggle *Re-render with evidence page* to add a second A4 carrying the same evidence the coach reads on the Evidence tab and the head of academy reads on the verdict screen — one assembly, so the printed numbers and the on-screen ones cannot disagree.
 
 ## Configuration
 
