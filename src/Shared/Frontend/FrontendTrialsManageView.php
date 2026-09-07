@@ -313,14 +313,35 @@ class FrontendTrialsManageView extends FrontendViewBase {
                     'placeholder' => __( 'Any', 'talenttrack' ),
                     'options'     => $decision_options,
                 ],
+                // #3334 — archive state through the `⋯` menu, as on the nine
+                // list surfaces and the activities view. It was the only
+                // surface asking with a toggle, which cost a 48px row on
+                // every visit for a filter set once in a blue moon.
+                //
+                // `default_value` names the state the list opens in, so the
+                // default does not chip on arrival — the #3320 lesson. The
+                // `include_archived` param is unchanged, so existing links,
+                // bookmarks and saved views keep working.
                 [
-                    'type'     => 'toggle',
-                    'key'      => 'include-archived',
-                    'label'    => __( 'Include archived', 'talenttrack' ),
-                    'name'     => 'include_archived',
-                    'on'       => $filters['include_archived'],
-                    'on_label' => __( 'Show', 'talenttrack' ),
-                    'value'    => '1',
+                    'type'          => 'menu',
+                    'key'           => 'include-archived',
+                    'label'         => __( 'Archive', 'talenttrack' ),
+                    'param'         => 'include_archived',
+                    'default_value' => '0',
+                    'options'       => [
+                        [
+                            'value'  => '0',
+                            'label'  => __( 'Active', 'talenttrack' ),
+                            'url'    => remove_query_arg( 'include_archived' ),
+                            'active' => ! $filters['include_archived'],
+                        ],
+                        [
+                            'value'  => '1',
+                            'label'  => __( 'Include archived', 'talenttrack' ),
+                            'url'    => add_query_arg( 'include_archived', '1' ),
+                            'active' => (bool) $filters['include_archived'],
+                        ],
+                    ],
                 ],
             ],
         ] );
