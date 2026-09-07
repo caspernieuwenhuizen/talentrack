@@ -220,6 +220,13 @@ final class FrontendMessageLogView extends FrontendViewBase {
             'chips'        => $chips,
             'reset_url'    => self::clearUrl(),
             'groups'       => [
+                // #3332 looked at converting this to the player typeahead and
+                // deliberately did not. The options come from
+                // `CommsLogRepository::playersInLog()` — only players who
+                // actually appear in the log — which is a narrower and more
+                // useful list than the academy roster the picker resolves.
+                // Swapping it would offer players who have never been
+                // messaged, which is worse, not better.
                 [
                     'type'        => 'select',
                     'key'         => 'player',

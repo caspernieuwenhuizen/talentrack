@@ -378,6 +378,25 @@ class FrontendListTable {
             $type  = (string) ( $filter['type']  ?? 'text' );
             $label = (string) ( $filter['label'] ?? $key );
 
+            // #3332 — a player filter is a type-to-filter picker, not a
+            // dropdown of every player in the academy. The list surfaces name
+            // their filters `filter[<key>]`, and the picker's hidden input
+            // dispatches a bubbling `change`, which is the event this table's
+            // hydrator already live-filters on.
+            if ( $type === 'player' ) {
+                $groups[] = [
+                    'type'     => 'player',
+                    'key'      => $key,
+                    'label'    => $label,
+                    'name'     => 'filter[' . $key . ']',
+                    'selected' => (int) ( $current[ $key ] ?? 0 ),
+                    'team_id'  => (int) ( $filter['team_id'] ?? 0 ),
+                    'user_id'  => (int) ( $filter['user_id'] ?? get_current_user_id() ),
+                    'is_admin' => ! empty( $filter['is_admin'] ),
+                ];
+                continue;
+            }
+
             if ( $type === 'select' ) {
                 $opts   = is_array( $filter['options'] ?? null ) ? $filter['options'] : [];
                 $render = (string) ( $filter['render'] ?? 'select' );
