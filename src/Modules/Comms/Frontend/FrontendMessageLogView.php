@@ -104,9 +104,14 @@ final class FrontendMessageLogView extends FrontendViewBase {
         $total = $repo->count( $filters );
         $rows  = $repo->search( $filters, $page, self::PER_PAGE );
 
+        // #3339 — everything the filters govern, in one region the refresh
+        // swaps. Summary, table and pager move together: a swap that updated
+        // the rows and left the count behind would be worse than the reload.
+        printf( '<div data-tt-filter-region data-tt-filter-count="%d">', (int) $total );
         self::renderSummary( $total, $page );
         self::renderTable( $rows );
         self::renderPagination( $total, $page );
+        echo '</div>';
     }
 
     /**
@@ -219,6 +224,8 @@ final class FrontendMessageLogView extends FrontendViewBase {
             'active_count' => $active_count,
             'chips'        => $chips,
             'reset_url'    => self::clearUrl(),
+            // #3339 — filter in place (epic #3335).
+            'refresh'      => true,
             'groups'       => [
                 // #3332 looked at converting this to the player typeahead and
                 // deliberately did not. The options come from

@@ -94,8 +94,15 @@ final class FrontendAlertsInboxView extends FrontendViewBase {
             'limit'        => self::PAGE_SIZE,
         ] );
 
+        // #3339 — the region the filters govern (epic #3335). The empty
+        // state is inside it: filtering down to nothing has to replace the
+        // list with "nothing needs your attention", not leave the previous
+        // rows sitting there.
+        printf( '<div data-tt-filter-region data-tt-filter-count="%d">', count( $rows ) );
+
         if ( empty( $rows ) ) {
             echo '<p class="tt-notice">' . esc_html__( 'Nothing needs your attention right now.', 'talenttrack' ) . '</p>';
+            echo '</div>';
             return;
         }
 
@@ -104,6 +111,7 @@ final class FrontendAlertsInboxView extends FrontendViewBase {
             self::renderRow( $row );
         }
         echo '</ul>';
+        echo '</div>';
     }
 
     /**
@@ -231,6 +239,8 @@ final class FrontendAlertsInboxView extends FrontendViewBase {
             'hidden'      => $hidden,
             'form_action' => $base,
             'reset_url'   => add_query_arg( [ 'tt_view' => 'alerts' ], $base ), /* tt-xview-ok */
+            // #3339 — filter in place (epic #3335).
+            'refresh'     => true,
         ] );
 
         // A chip deep-link scopes the whole list to one record. Say so, and
