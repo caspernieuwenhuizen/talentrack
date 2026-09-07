@@ -511,6 +511,68 @@ value are dropped server-side rather than rendered blank. **Read-only in v1** �
 editing inside a panel means a second save path and a stale-parent problem, on a
 surface whose job is orientation rather than data entry.
 
+## PDP evidence packet (#3302, epic #3301)
+
+### `GET /pdp-files/{id}/evidence-packet`
+
+Everything the academy already knows about the player on this PDP file,
+assembled once. Read-only. Gated on `tt_view_pdp` / `tt_edit_pdp` /
+`tt_edit_pdp_verdict` plus the per-file scope check.
+
+The same assembly backs three surfaces — the Evidence tab on a
+conversation, the printed file, and the verdict screen — so they cannot
+show three different answers for the same player on the same day. Every
+group is club-scoped and excludes archived and trashed rows.
+
+```json
+{
+  "file_id": 12,
+  "player_id": 340,
+  "conversation_id": 0,
+  "season": { "id": 3, "name": "2026/27", "start_date": "2026-07-01", "end_date": "2027-06-30" },
+  "window": { "from": "2026-07-01", "to": "2027-06-30", "scope": "season" },
+  "status": { },
+  "behaviour": [ ],
+  "potential": [ ],
+  "evaluations": [
+    {
+      "id": 88, "eval_date": "2026-09-01", "rating": 7.2,
+      "notes": "Reads the game two passes ahead.",
+      "assessor_id": 9, "assessor_name": "Ada Kuipers", "eval_type_id": 2,
+      "categories": [ { "category_id": 4, "label": "Passing", "is_main": true, "rating": 7.5 } ]
+    }
+  ],
+  "attendance": { "activities": 24, "present": 21, "absent": 2, "excused": 1, "rate": 88 },
+  "minutes": { "apps": 14, "minutes": 812, "breakdown": [ ] },
+  "goals": [ { "id": 5, "title": "Win more headers", "status": "in_progress", "changed_in_window": true, "is_closed": false } ],
+  "injuries": [ { "id": 2, "started_on": "2026-10-05", "actual_return": "2026-11-20", "is_open": false } ],
+  "notes": [ { "id": 31, "created_at": "2026-09-15 09:00:00", "author_name": "Ada Kuipers", "visibility": "public", "body": "…" } ],
+  "self_reflection": "",
+  "recent_journey": [ ]
+}
+```
+
+`notes` is assembled for the **reader**, not for the record: a caller who
+cannot see this player's staff notes on the player file gets an empty
+array here, and a private-to-coach note stays private. `rate` is null when
+the window holds no activities.
+
+`attendance.activities` was `attendance.sessions` before #3302 — the
+entity was renamed under #0035 and the packet was still carrying the old
+word. The endpoint had no consumers, so the key is corrected rather than
+kept.
+
+`minutes.breakdown` comes from `MinutesQuery::matchBreakdownForPlayer()`,
+which is team-scoped — a player with no team gets the totals and an empty
+breakdown rather than a wrong one.
+
+`EvidencePacket::forConversation( $conversation_id )` is the same shape
+narrowed to the window since the previous conversation in the cycle, with
+`window.scope` set to `conversation`, `conversation_id` populated, and
+`self_reflection` carrying what the player wrote for that talk. The first
+conversation of a season has no predecessor, so its window opens at the
+season start.
+
 ## Adding a new resource
 
 1. Add a controller under `src/Infrastructure/REST/` (or per-module `Rest/` directory) following the existing pattern: `init()` adds the `rest_api_init` action, `register()` registers the routes, `can_view()` / `can_edit()` return capability checks, handlers extract via `\WP_REST_Request`, validate, write via `$wpdb`, return `RestResponse::success()` / `RestResponse::error()`.

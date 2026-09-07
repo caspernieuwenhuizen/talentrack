@@ -10223,11 +10223,6 @@ parameters:
 			path: src/Modules/Pdp/Carryover/SeasonCarryover.php
 
 		-
-			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
-			count: 2
-			path: src/Modules/Pdp/EvidencePacket.php
-
-		-
 			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
 			count: 6
 			path: src/Modules/Pdp/Frontend/FrontendMyPdpView.php
