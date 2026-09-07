@@ -9,6 +9,7 @@ use TT\Modules\Vct\Repositories\VctSessionsRepository;
 use TT\Modules\Vct\Rest\VctAgeProfilesRestController;
 use TT\Modules\Vct\Rest\VctExercisesRestController;
 use TT\Modules\Vct\Rest\VctMacroBlocksRestController;
+use TT\Modules\Vct\Rest\VctTeamCyclesRestController;
 use TT\Modules\Vct\Rest\VctPhvFlagsRestController;
 use TT\Modules\Vct\Rest\VctTeamSchedulesRestController;
 use TT\Modules\Vct\Rest\VctTrainingsRestController;
@@ -71,6 +72,7 @@ class VctModule implements ModuleInterface {
         VctExercisesRestController::init();
         VctTeamSchedulesRestController::init();
         VctMacroBlocksRestController::init();
+        VctTeamCyclesRestController::init();
         VctAgeProfilesRestController::init();
         VctWorkloadRestController::init();
         VctPhvFlagsRestController::init();
