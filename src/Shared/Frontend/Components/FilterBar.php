@@ -115,10 +115,26 @@ final class FilterBar {
 				TT_VERSION,
 				true
 			);
+			// #3336 — in-place refresh for the surfaces that opt in. Loaded
+			// alongside the bar rather than per surface: it binds only to a
+			// form carrying `data-tt-filter-refresh`, so a surface that has
+			// not opted in pays a parse and nothing else.
+			wp_enqueue_script(
+				'tt-filter-refresh',
+				TT_PLUGIN_URL . 'assets/js/components/filter-refresh.js',
+				[ 'tt-filter-bar' ],
+				TT_VERSION,
+				true
+			);
 			wp_localize_script( 'tt-filter-bar', 'TT_FILTER_BAR', [
 				'i18n' => [
 					'open'  => __( 'Open filters', 'talenttrack' ),
 					'close' => __( 'Close', 'talenttrack' ),
+					// #3336 — an in-place swap is silent to a screen reader in
+					// a way a page load was not, so the result is announced.
+					'filters_applied' => __( 'Filters applied.', 'talenttrack' ),
+					/* translators: %s: the number of results after filtering. */
+					'results_count'   => __( '%s results', 'talenttrack' ),
 				],
 			] );
 			self::$js_enqueued = true;
@@ -428,6 +444,24 @@ final class FilterBar {
 		// both the inline row and the sheet body. Caller pre-escapes the
 		// raw HTML.
 		$form_attrs = isset( $args['form_attrs'] ) && is_array( $args['form_attrs'] ) ? $args['form_attrs'] : [];
+
+		// #3336 — `refresh => true` opts the surface into in-place filtering.
+		//
+		// It marks the form for filter-refresh.js and it is also what
+		// suppresses the old auto-submit: `data-tt-filter-submit` makes
+		// filter-bar.js navigate on change, which is exactly the full page
+		// load this replaces. Two handlers on one `change` would fire both.
+		//
+		// FrontendListTable surfaces do not use this — their own hydrator
+		// already refreshes them, and opts out of the auto-submit the same
+		// way (#2082).
+		$refresh = ! empty( $args['refresh'] );
+		if ( $refresh ) {
+			$form_attrs['data-tt-filter-refresh'] = '1';
+			foreach ( $groups as $i => $g ) {
+				if ( is_array( $g ) ) $groups[ $i ]['auto_submit'] = false;
+			}
+		}
 		$extra      = (string) ( $args['extra_controls'] ?? '' );
 
 		$form_attr_html = '';
@@ -1184,9 +1218,13 @@ final class FilterBar {
 			$out .= '<input type="hidden" name="' . esc_attr( $name )
 				. '" value="' . esc_attr( $off_value ) . '" data-tt-switch-off />';
 		}
+		// #3336 — honours `auto_submit` like the select does. A refreshing
+		// surface turns it off so filter-bar.js does not navigate on the same
+		// `change` filter-refresh.js is handling.
+		$auto_submit = ! isset( $group['auto_submit'] ) || ! empty( $group['auto_submit'] );
 		$out .= '<input type="checkbox" class="tt-switch__input" name="' . esc_attr( $name )
 			. '" value="' . esc_attr( $value ) . '"' . ( $on ? ' checked' : '' )
-			. ' data-tt-filter-submit />';
+			. ( $auto_submit ? ' data-tt-filter-submit' : '' ) . ' />';
 		$out .= '<span class="tt-switch__track" aria-hidden="true"></span>';
 		if ( $on_label !== '' ) {
 			$out .= '<span class="tt-switch__label">' . esc_html( $on_label ) . '</span>';

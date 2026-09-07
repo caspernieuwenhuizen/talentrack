@@ -103,9 +103,22 @@ class FrontendAuditLogView extends FrontendViewBase {
         $entity_types = $audit->distinctValues( 'entity_type' );
 
         self::renderFilterForm( $filters, $actions, $entity_types );
+
+        // #3336 — everything the filters govern, in one region the refresh
+        // swaps. The summary, the table and the pager have to move together:
+        // a swap that updated the rows but left "1–50 of 4 812" behind would
+        // be worse than the reload it replaced.
+        //
+        // `data-tt-filter-count` is how the script announces the result
+        // without knowing what a "result" is on this surface.
+        printf(
+            '<div data-tt-filter-region data-tt-filter-count="%d">',
+            (int) $total
+        );
         self::renderSummary( $total, $page, $filters );
         self::renderTable( $entries );
         self::renderPagination( $total, $page, $filters );
+        echo '</div>';
     }
 
     /**
@@ -471,6 +484,10 @@ class FrontendAuditLogView extends FrontendViewBase {
             'active_count' => $active_count,
             'chips'        => $chips,
             'reset_url'    => self::clearUrl(),
+            // #3336 — filter in place. The audit log is the surface most
+            // likely to expose a missing pending state: the largest result
+            // sets in the app, and a date range that invites wide windows.
+            'refresh'      => true,
             // #2449 — personal saved views for the audit log.
             'saved_views'  => [ 'key' => 'audit-log' ],
             'groups'       => [
