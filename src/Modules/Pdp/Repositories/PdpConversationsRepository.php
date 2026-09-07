@@ -176,8 +176,13 @@ class PdpConversationsRepository {
     public function update( int $id, array $patch ): bool {
         if ( $id <= 0 || empty( $patch ) ) return false;
 
+        // #3306 (epic #3301) — `agenda` is gone from the writable set. The
+        // coach's preparation is the question sets in
+        // `tt_pdp_prep_answers`; the column keeps its content for one
+        // release so migration 0257's move is reversible, and nothing
+        // writes to it after this release.
         $allowed = [
-            'scheduled_at', 'conducted_at', 'agenda', 'notes',
+            'scheduled_at', 'conducted_at', 'notes',
             'agreed_actions', 'player_reflection',
             'coach_signoff_at', 'parent_ack_at', 'player_ack_at',
             'planning_window_start', 'planning_window_end',

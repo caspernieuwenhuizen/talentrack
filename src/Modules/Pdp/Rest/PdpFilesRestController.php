@@ -930,7 +930,16 @@ class PdpFilesRestController {
         ];
     }
 
-    /** @return array<string,mixed> */
+    /**
+     * #3306 (epic #3301) — `agenda` no longer appears in this payload. A
+     * player's and a parent's token both reach this endpoint, and the
+     * column's content is now the coach's private preparation, which they
+     * must not be able to read from anywhere. The preparation has its own
+     * resource at `/pdp-conversations/{id}/prep`, gated to coach + head of
+     * academy.
+     *
+     * @return array<string,mixed>
+     */
     private static function format_conversation( object $row ): array {
         return [
             'id'                => (int) $row->id,
@@ -939,7 +948,6 @@ class PdpFilesRestController {
             'template_key'      => (string) $row->template_key,
             'scheduled_at'      => $row->scheduled_at,
             'conducted_at'      => $row->conducted_at,
-            'agenda'            => $row->agenda,
             'notes'             => $row->notes,
             'agreed_actions'    => $row->agreed_actions,
             'player_reflection' => $row->player_reflection,

@@ -174,7 +174,7 @@ class FrontendMyPdpView extends FrontendViewBase {
         echo '</div>'; // .tt-pdp-rail
 
         // Inline detail panels — one per conversation, hidden until its
-        // marker is tapped. Holds notes / agenda / agreed actions / goals
+        // marker is tapped. Holds notes / agreed actions / goals
         // discussed / saved reflection, and the acknowledgement flow
         // (unchanged from before).
         echo '<div class="tt-pdp-panels">';
@@ -233,10 +233,14 @@ class FrontendMyPdpView extends FrontendViewBase {
                 echo '<div class="tt-pop-bubble"><strong>' . esc_html__( 'Agreed actions', 'talenttrack' ) . '</strong><div>'
                     . wp_kses_post( (string) $conv->agreed_actions ) . '</div></div>';
             }
-        } elseif ( ! empty( $conv->agenda ) ) {
-            echo '<div class="tt-pop-bubble"><strong>' . esc_html__( 'Agenda', 'talenttrack' ) . '</strong><div>'
-                . wp_kses_post( (string) $conv->agenda ) . '</div></div>';
         }
+
+        // #3306 (epic #3301) — the coach's `agenda` used to appear here on
+        // an upcoming talk. It is now their preparation, and preparation is
+        // coach + head-of-academy only: it is where a coach writes candidly
+        // about a minor before sitting down with them. What the player and
+        // their family see is what was agreed in the talk itself — the
+        // notes and the agreed actions above.
 
         // Goals discussed in this talk (the self-review reflects on these).
         $gl_ids = ( new GoalLinksRepository() )->goalsForConversation( $cid );

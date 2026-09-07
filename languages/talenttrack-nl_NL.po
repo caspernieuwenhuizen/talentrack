@@ -60128,6 +60128,31 @@ msgstr "Het veld \"%s\" moet een geldig telefoonnummer zijn."
 msgid "Unknown field type: %s"
 msgstr "Onbekend veldtype: %s"
 
+#: src/Modules/Pdp/Frontend/FrontendPdpManageView.php
+msgctxt "PDP conversation tab — the coach's own prep"
+msgid "Preparation"
+msgstr "Voorbereiding"
+
+#: src/Modules/Pdp/Frontend/FrontendPdpManageView.php
+msgid ""
+"Only you and the head of academy can read this. It is never shown to the "
+"player or their parents, on any screen or in any export."
+msgstr ""
+"Alleen jij en het hoofd opleiding kunnen dit lezen. Het wordt nooit getoond "
+"aan de speler of de ouders, op geen enkel scherm en in geen enkele export."
+
+#: src/Modules/Pdp/Frontend/FrontendPdpManageView.php
+msgid "No preparation questions for this conversation yet"
+msgstr "Nog geen voorbereidingsvragen voor dit gesprek"
+
+#: src/Modules/Pdp/Frontend/FrontendPdpManageView.php
+msgid ""
+"An academy admin sets these under Configuration → PDP preparation "
+"questions, with a different set for each conversation in the cycle."
+msgstr ""
+"Een beheerder stelt deze in onder Configuratie → POP-voorbereidingsvragen, "
+"met per gesprek in de cyclus een eigen set."
+
 #~ msgid "No evaluations on record."
 #~ msgstr "Geen evaluaties geregistreerd."
 

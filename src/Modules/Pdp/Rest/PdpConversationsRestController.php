@@ -137,7 +137,7 @@ class PdpConversationsRestController {
         // fields on a non-active conversation; only scheduled_at may change.
         // Mirrors the frontend's per-field lock in case the form is bypassed.
         if ( $content_locked ) {
-            $blocked = [ 'conducted_at', 'agenda', 'notes', 'agreed_actions', 'coach_signoff_at' ];
+            $blocked = [ 'conducted_at', 'notes', 'agreed_actions', 'coach_signoff_at' ];
             foreach ( array_keys( $patch ) as $field ) {
                 if ( in_array( $field, $blocked, true ) ) {
                     return RestResponse::error(
@@ -217,8 +217,11 @@ class PdpConversationsRestController {
 
         // Coach (or admin): full conversation edit + sign-off.
         if ( $is_admin || ( current_user_can( 'tt_edit_pdp' ) && $is_coach_for_player ) ) {
+            // #3306 — `agenda` retired; preparation is its own resource at
+            // `/pdp-conversations/{id}/prep`, gated to coach + head of
+            // academy rather than to whoever may edit the conversation.
             return [
-                'scheduled_at', 'conducted_at', 'agenda', 'notes',
+                'scheduled_at', 'conducted_at', 'notes',
                 'agreed_actions', 'player_reflection',
                 'coach_signoff_at', 'parent_ack_at', 'player_ack_at',
             ];
@@ -246,7 +249,6 @@ class PdpConversationsRestController {
             case 'player_ack_at':
                 if ( $value === null || $value === '' ) return null;
                 return sanitize_text_field( (string) $value );
-            case 'agenda':
             case 'notes':
             case 'agreed_actions':
             case 'player_reflection':

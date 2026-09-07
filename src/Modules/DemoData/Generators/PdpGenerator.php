@@ -26,17 +26,17 @@ use TT\Modules\Pdp\Repositories\SeasonsRepository;
  */
 class PdpGenerator implements DependentGeneratorInterface {
 
-    /** @var array<string, array{agenda:string, notes:string, actions:string, reflection:string, summary:string}> */
+    /** @var array<string, array{prep:string, notes:string, actions:string, reflection:string, summary:string}> */
     private const COPY_BY_LANGUAGE = [
         'en_US' => [
-            'agenda'     => 'Review the block, agree two focus points, check in on wellbeing.',
+            'prep'       => 'Review the block, agree two focus points, check in on wellbeing.',
             'notes'      => 'Good engagement in training. Wants more game time in midfield.',
             'actions'    => 'Extra weak-foot work twice a week; review at the next conversation.',
             'reflection' => 'I want to be braver on the ball when we are under pressure.',
             'summary'    => 'Steady progress across the season; stays in the current age group.',
         ],
         'nl_NL' => [
-            'agenda'     => 'Blok terugkijken, twee aandachtspunten afspreken, welzijn bespreken.',
+            'prep'       => 'Blok terugkijken, twee aandachtspunten afspreken, welzijn bespreken.',
             'notes'      => 'Goede inzet op de training. Wil meer speeltijd op het middenveld.',
             'actions'    => 'Twee keer per week extra werken met de zwakke voet; volgende keer evalueren.',
             'reflection' => 'Ik wil durven voetballen als we onder druk staan.',
@@ -126,7 +126,7 @@ class PdpGenerator implements DependentGeneratorInterface {
                 'season_id'      => $season_id,
                 'owner_coach_id' => $coach_id > 0 ? $coach_id : null,
                 'cycle_size'     => $cycle_size,
-                'notes'          => $copy['agenda'],
+                'notes'          => $copy['prep'],
             ] );
             if ( $file_id <= 0 ) continue;
 
@@ -153,7 +153,7 @@ class PdpGenerator implements DependentGeneratorInterface {
      * is conducted and signed off, the next one stays open. Calendar links go
      * on the scheduled ones — that's where a coach needs the reminder.
      *
-     * @param array{agenda:string, notes:string, actions:string, reflection:string, summary:string} $copy
+     * @param array{prep:string, notes:string, actions:string, reflection:string, summary:string} $copy
      */
     private function fillCycle( int $file_id, int $coach_id, array $copy ): int {
         global $wpdb;
@@ -181,8 +181,9 @@ class PdpGenerator implements DependentGeneratorInterface {
                 $wpdb->update(
                     "{$wpdb->prefix}tt_pdp_conversations",
                     [
+                        // #3306 — `agenda` is retired; the coach's
+                        // preparation is the prep answers seeded above.
                         'conducted_at'      => $conducted,
-                        'agenda'            => $copy['agenda'],
                         'notes'             => $copy['notes'],
                         'agreed_actions'    => $copy['actions'],
                         'player_reflection' => $copy['reflection'],
@@ -221,7 +222,7 @@ class PdpGenerator implements DependentGeneratorInterface {
      * from WP-CLI has no user at all. The gate is right; going round it here
      * is the same choice the calendar-link insert above makes.
      *
-     * @param array{agenda:string, notes:string, actions:string, reflection:string, summary:string} $copy
+     * @param array{prep:string, notes:string, actions:string, reflection:string, summary:string} $copy
      * @return int Rows written.
      */
     private function seedPrep( int $conversation_id, string $template_key, array $copy ): int {
@@ -262,7 +263,7 @@ class PdpGenerator implements DependentGeneratorInterface {
      * a completed one are on screen. Signed-off verdicts raise their journey
      * event through the repository.
      *
-     * @param array{agenda:string, notes:string, actions:string, reflection:string, summary:string} $copy
+     * @param array{prep:string, notes:string, actions:string, reflection:string, summary:string} $copy
      */
     private function closeSomeFiles( PdpFilesRepository $files, int $hoa, array $copy ): int {
         $verdicts = new PdpVerdictsRepository();

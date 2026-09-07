@@ -32,6 +32,7 @@ maken** en **Wijzigingen terugdraaien**.
 | [Evaluaties](evaluations.md) | Bij het bewerken van een bestaande |
 | [Spelersdoelen](goals.md) | Bij het bewerken van een bestaand doel |
 | [POP-gesprek](pdp-cycle.md) | Tot het is ondertekend |
+| [POP-voorbereiding](pdp-cycle.md) | De antwoorden van de trainer, tot het gesprek is ondertekend |
 | [POP-zelfreflectie](pdp-cycle.md) | Zolang het reflectievenster open staat |
 
 **Waarom juist deze.** Het zijn allemaal plekken waar je *schrijft* — zinnen
