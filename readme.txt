@@ -4,13 +4,23 @@ Tags: soccer, academy, player development, evaluations, coaching, football
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 4.115.7
+Stable tag: 4.116.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Frontend-first, modular youth football talent management system for a single club.
 
 == Changelog ==
+
+= 4.116.0 — One period control on the reports and grids, not two (#3331) Eight screens asked the same question twice: a period dropdown (*Last week*, *This month*, *This season*) and, separately, a From/To date range. Two controls for one window, and it was never obvious which of them the numbers came from.  They are one control now. Picking a preset sets the window; **Custom range…** opens the dates inside the same dropdown, and typing there wins. Whatever the control says is the window the report actually used — pick a preset and it names the preset, type dates and it names the dates.  Existing links, bookmarks and saved views keep working: the dates are the same `from` and `to` they always were. =
+
+= 4.116.0 — Filtering the audit log no longer reloads the page (#3336) Changing a filter on the audit log used to reload the whole screen: a white flash, no sign anything was happening, and nothing stopping you picking a second filter into a request that had already gone. On the widest date ranges that is a long wait staring at a blank page.  The results now update in place. While they load, the filter bar dims and stops taking input, and screen-reader users are told how many results came back. Back and forward still work, and the address bar still carries your filters, so a filtered view is still something you can bookmark or send to someone.  Without JavaScript nothing changes — the filters still work by loading the page, exactly as before. =
+
+= 4.116.0 — The attendance and minutes grids filter without reloading — and without losing your work (#3337) Both grids now update in place when you change a team, a period or a type, like the reports do.  The part that mattered most: if you have entered attendance or minutes and not yet saved, changing a filter **asks first**. Say no and the grid and the filter both stay exactly as they were. Nothing is saved on your behalf, and nothing is thrown away without being asked — a filter is still a way of looking, not a way of committing. =
+
+= 4.116.0 — The attendance and minutes reports filter without reloading (#3338) Changing a team, a period or an activity type on a report reloaded the whole page — and on a season-wide minutes audit that is a long wait staring at nothing, because the slow part is the server working out the numbers.  The five Analytics reports now update in place: the tiles, the tables and the empty states all change together, the filter bar dims while it works and stops taking input, and screen readers are told what came back. Narrowing to a window with no data now replaces the tables with "nothing recorded", instead of leaving the previous window's numbers on screen.  Without JavaScript nothing changes — the filters still work by loading the page. =
+
+= 4.116.0 — The message log and alerts inbox filter without reloading (#3339) Changing a filter on either screen reloaded the whole page. They now update in place, like the audit log: the bar dims while the results load, a second filter cannot be queued into a request that has already gone, and screen readers are told what came back.  Filtering an alerts inbox down to nothing now replaces the list with "nothing needs your attention" rather than leaving the previous alerts on screen.  Without JavaScript nothing changes — the filters still work by loading the page. =
 
 = 4.115.7 — Filtering by player means typing a name, not scrolling the academy (#3332) The player filter on goals and evaluations was a dropdown listing every player you could see — the whole academy for an admin, in whatever order the database returned, with no way to type toward a name. On a phone it was a native picker the length of the squad list.  Both now use the same type-to-filter player picker the rest of the app uses: start typing a name and pick it. A coach still sees only their own teams' players, exactly as before. =
 
