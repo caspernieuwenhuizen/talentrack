@@ -37,6 +37,35 @@
 	var TT = ( window.TT = window.TT || {} );
 	TT.i18n = TT.i18n || {};
 
+	/**
+	 * #3337 — guards a surface can register before its region is swapped.
+	 *
+	 * The two grids hold unsaved cell edits behind an explicit Save
+	 * (CLAUDE.md §6 model B). A full page load let `beforeunload` catch
+	 * that; an in-place swap bypasses the browser entirely and would
+	 * discard twenty entered cells with no prompt and no navigation to
+	 * intercept.
+	 *
+	 * A guard is `function (): boolean | Promise<boolean>` — false aborts
+	 * the refresh and leaves both the region and the control alone. It is a
+	 * registry rather than a cancellable event because the answer is a
+	 * confirm dialog, and `ttConfirm` resolves asynchronously; a `preventDefault`
+	 * on a synchronous event cannot wait for a person.
+	 *
+	 * @type {Array<function(): (boolean|Promise<boolean>)>}
+	 */
+	TT.filterRefreshGuards = TT.filterRefreshGuards || [];
+
+	/** Resolve every guard; any false stops the refresh. */
+	function guardsPass() {
+		var answers = TT.filterRefreshGuards.map( function ( fn ) {
+			try { return fn(); } catch ( e ) { return true; }
+		} );
+		return Promise.all( answers ).then( function ( results ) {
+			return results.every( Boolean );
+		} );
+	}
+
 	/** Milliseconds before the busy state is shown — see startPending(). */
 	var PENDING_DELAY = 150;
 
@@ -144,6 +173,7 @@
 					region.innerHTML = fresh.innerHTML;
 					if ( push ) { window.history.pushState( { ttFilter: 1 }, '', url ); }
 					announce( fresh );
+					remember();   // #3337 — the region now matches these values
 					endPending();
 					pending = null;
 
@@ -165,16 +195,56 @@
 		// both a select and the player picker's hidden input fire, and it is
 		// what the list-table hydrator already listens for, so the two paths
 		// agree on when a filter is "set".
+		/**
+		 * #3337 — ask the surface before swapping anything.
+		 *
+		 * `revert` puts the control back when a guard says no. Leaving a
+		 * select showing a team whose rows were never loaded is the worst of
+		 * both: the reader believes the filter applied and the data says
+		 * otherwise.
+		 */
+		function requestRefresh( revert ) {
+			guardsPass().then( function ( ok ) {
+				if ( ok ) { refresh( true ); return; }
+				if ( typeof revert === 'function' ) { revert(); }
+			} );
+		}
+
+		// #3337 — the value each control had when the region last matched it.
+		//
+		// `change` fires AFTER the value has changed, so it is too late to
+		// read the old one there; and a person answering a dialog takes long
+		// enough that nothing transient survives. This is recorded at bind
+		// time and updated on every successful refresh, so a declined guard
+		// always has something true to put back.
+		var committed = new WeakMap();
+		function remember() {
+			Array.prototype.forEach.call( form.elements, function ( el ) {
+				if ( ! el.name ) { return; }
+				committed.set( el, el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value );
+			} );
+		}
+		remember();
+
 		form.addEventListener( 'change', function ( e ) {
-			if ( ! e.target || ! e.target.name ) { return; }
-			refresh( true );
+			var ctrl = e.target;
+			if ( ! ctrl || ! ctrl.name ) { return; }
+			requestRefresh( function () {
+				if ( ! committed.has( ctrl ) ) { return; }
+				var was = committed.get( ctrl );
+				if ( ctrl.type === 'checkbox' || ctrl.type === 'radio' ) {
+					ctrl.checked = was;
+				} else {
+					ctrl.value = was;
+				}
+			} );
 		} );
 
 		// The bar's Apply buttons (the sheet footer, the custom-range branch)
 		// submit the form; take that over.
 		form.addEventListener( 'submit', function ( e ) {
 			e.preventDefault();
-			refresh( true );
+			requestRefresh( null );
 		} );
 
 		// Back/forward restores a previous filter state. Re-render from the

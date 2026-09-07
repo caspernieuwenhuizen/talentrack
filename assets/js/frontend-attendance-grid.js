@@ -289,6 +289,29 @@
 		}
 	} );
 
+	// #3337 — the same promise, for a filter change that no longer navigates.
+	//
+	// `beforeunload` above is the browser's guard against losing entered
+	// cells, and it only fires on a real navigation. Filtering in place
+	// (#3336) is not one, so without this a coach who had entered twenty
+	// cells and then re-scoped the grid would lose them with no prompt.
+	//
+	// Warn and let them choose, per the decision on #3337: saving first
+	// would turn a filter change into a write, which breaks the explicit-Save
+	// promise this surface makes (CLAUDE.md §6 model B); refusing while dirty
+	// would block a legitimate read. `false` leaves the grid and the control
+	// exactly as they were.
+	window.TT = window.TT || {};
+	window.TT.filterRefreshGuards = window.TT.filterRefreshGuards || [];
+	window.TT.filterRefreshGuards.push( function () {
+		if ( dirty.size === 0 ) { return true; }
+		var message = I18N.confirm_filter || I18N.confirm || '';
+		if ( typeof window.ttConfirm === 'function' ) {
+			return window.ttConfirm( { message: message, danger: true } );
+		}
+		return window.confirm( message );
+	} );
+
 	grid.querySelectorAll( 'tbody tr' ).forEach( recomputeRate );
 	refresh();
 }() );
