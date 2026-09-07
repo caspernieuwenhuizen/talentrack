@@ -11,15 +11,19 @@ order: 60
 
 # Persoonlijk Ontwikkelingsplan (POP)
 
-Een **POP-dossier** is een seizoensÂ­gebonden ontwikkelplan voor Ã©Ã©n speler. Het brengt samen wat anders verspreid raakt over evaluaties, doelen en losse aantekeningen â€” en geeft de academie een herhaalbare cadans: instelbare gespreksÂ­momenten over het seizoen, polymorfe koppelingen tussen doelen en de methodische woordenlijst, en een doelbewust eindeseizoensÂ­oordeel ondertekend door het hoofd academie.
+Een **POP-dossier** is een seizoens­gebonden ontwikkelplan voor één speler. Het brengt samen wat anders verspreid raakt over evaluaties, doelen en losse aantekeningen — en geeft de academie een herhaalbare cadans: instelbare gespreks­momenten over het seizoen, polymorfe koppelingen tussen doelen en de methodische woordenlijst, en een doelbewust eindeseizoens­oordeel ondertekend door het hoofd academie.
 
 ## Wie ziet wat
 
-- **Coaches** â€” volledige bewerking van POP-dossiers voor spelers in hun eigen teams. Tegel: **Performance â†’ POP**.
-- **Hoofd academie** â€” globale bewerking van alle dossiers plus exclusieve schrijftoegang tot het eindeseizoensÂ­oordeel.
-- **Spelers** â€” alleen-lezen op het eigen dossier, gepresenteerd als een seizoenstijdlijn, plus een bewerkbare zelfreflectie voor het ene eerstvolgende geplande gesprek. Tegel: **Mijn â†’ Mijn POP**.
-- **Ouders / verzorgers** â€” alleen-lezen op het dossier van hun kind (na ondertekening) plus een per-gesprek bevestigingsÂ­knop.
-- **Read-only observer** â€” alleen-lezen op alle dossiers; geen bewerking, geen bevestiging.
+- **Coaches** — volledige bewerking van POP-dossiers voor spelers in hun eigen teams. Tegel: **Performance → POP**.
+- **Hoofd academie** — globale bewerking van alle dossiers plus exclusieve schrijftoegang tot het eindeseizoens­oordeel.
+- **Spelers** — alleen-lezen op het eigen dossier, gepresenteerd als een seizoenstijdlijn, plus een bewerkbare zelfreflectie voor het ene eerstvolgende geplande gesprek. Tegel: **Mijn → Mijn POP**.
+- **Ouders / verzorgers** — alleen-lezen op het dossier van hun kind (na ondertekening) plus een per-gesprek bevestigings­knop.
+- **Read-only observer** — alleen-lezen op alle dossiers; geen bewerking, geen bevestiging.
+
+**De grens die je uit je hoofd moet kennen:** de **voorbereiding** van een trainer wordt gelezen door die trainer en het hoofd opleiding, en door niemand anders. Niet door de speler, niet door de ouders, niet door een read-only observer — op geen enkel scherm, niet in de print en in geen enkele export. Al het andere in een POP-dossier volgt de rij hierboven.
+
+Dat is geen weergaveregel die een toekomstig scherm kan vergeten. De controle zit in de repository waar elke uitlezing doorheen gaat, dus een scherm dat er volgend jaar bij komt kan er niet omheen — en er is per scherm een test dat het dat ook niet doet.
 
 ## POP-overzicht: wie heeft dit seizoen een POP
 
@@ -41,7 +45,7 @@ De dekkingsdata is ook beschikbaar via REST op `GET /wp-json/talenttrack/v1/pdp-
 
 ### 1. Open het dossier
 
-Klik op de **POP**-tegel op *POP aanmaken* in de rij van een speler (of op *Nieuw POP-dossier openen*), kies een speler en klik op *Nieuw POP-dossier openen*. Het dossier wordt aangemaakt met Ã©Ã©n gesprek per cyclus (2, 3 of 4 â€” instelbaar per club, te overschrijven per team). Elk `scheduled_at` wordt evenredig over de start- en einddatum van het seizoen verdeeld.
+Klik op de **POP**-tegel op *POP aanmaken* in de rij van een speler (of op *Nieuw POP-dossier openen*), kies een speler en klik op *Nieuw POP-dossier openen*. Het dossier wordt aangemaakt met één gesprek per cyclus (2, 3 of 4 — instelbaar per club, te overschrijven per team). Elk `scheduled_at` wordt evenredig over de start- en einddatum van het seizoen verdeeld.
 
 Voor elk gesprek wordt automatisch een native agenda-item bijgehouden.
 
@@ -63,13 +67,21 @@ Het formulier slaat zichzelf op, net als het gespreksformulier ernaast. Ondertek
 
 > **Overstappen van het agendaveld.** Het losse vrije-tekstveld *Agenda (voor het gesprek)* vervalt. Wat erin stond is verplaatst naar de vraag *“Nog iets anders voor te bereiden?”* bij hetzelfde gesprek, dus er gaat niets verloren. Eén gevolg is het benoemen waard: de agenda was zichtbaar voor de speler op zijn eigen POP-scherm, en de voorbereiding is dat niet. Tekst die is verplaatst werd dus minder zichtbaar, nooit meer.
 
-Het tabblad **Bewijs** in het formulier verzamelt wat de academie al weet over de speler sinds het vorige gesprek — alleen-lezen, zodat de trainer het gesprek opent op basis van het dossier en niet op basis van zijn geheugen: evaluaties met beoordeling, beoordelaar en notities; aanwezigheid met de verdeling aanwezig / afwezig / afgemeld, gespeelde wedstrijden en speelminuten, met de opbouw per wedstrijd; doelen, en of ze bewogen zijn; de zelfreflectie van de speler; notities van de staf, blessures en gebeurtenissen op de tijdlijn; en de potentieel- en gedragsbeoordelingen uit die periode.
+#### Bewijs
+
+Het tabblad **Bewijs** verzamelt wat de academie al weet over de speler sinds het vorige gesprek — alleen-lezen, zodat de trainer het gesprek opent op basis van het dossier en niet op basis van zijn geheugen: evaluaties met beoordeling, beoordelaar en notities; aanwezigheid met de verdeling aanwezig / afwezig / afgemeld, gespeelde wedstrijden en speelminuten, met de opbouw per wedstrijd; doelen, en of ze bewogen zijn; de zelfreflectie van de speler; notities van de staf, blessures en gebeurtenissen op de tijdlijn; en de potentieel- en gedragsbeoordelingen uit die periode.
 
 Een onderdeel zonder inhoud zegt dat ook, in plaats van te verdwijnen — “Geen evaluaties in deze periode” is zelf iets om te weten voor een gesprek.
 
+Elk record linkt door naar zijn eigen pagina, dus een evaluatie die je helemaal wilt lezen is één tik weg en een terugkoppeling brengt je hier weer terug.
+
+**Waar de cijfers vandaan komen.** Eén verzameling, gelezen door drie schermen: dit tabblad, de bewijspagina van de print, en het eindeseizoensoordeel. Ze zijn per club afgebakend en laten gearchiveerde en verwijderde records buiten beschouwing, dus dezelfde speler op dezelfde dag laat een trainer en een hoofd opleiding dezelfde getallen zien. Het tabblad beperkt de periode tot wat er sinds het vorige gesprek is gebeurd; de print en het eindoordeel beslaan het hele seizoen.
+
+#### Volgorde
+
 De gesprekken verlopen op volgorde: alleen het **actieve** gesprek — het eerste dat nog niet is afgetekend — is volledig bewerkbaar. Latere gesprekken in de cyclus zijn alleen-lezen, behalve hun **geplande datum**, zodat een coach het hele seizoen vooruit kan plannen zonder een gesprek buiten de beurt in te vullen. Een later gesprek komt vrij voor volledige bewerking zodra het voorgaande gesprek is afgetekend.
 
-De speler kan op elk moment vÃ³Ã³r ondertekening zijn zelfreflectie invullen. Zodra de coach ondertekent, wordt het veld vergrendeld.
+De speler kan op elk moment vóór ondertekening zijn zelfreflectie invullen. Zodra de coach ondertekent, wordt het veld vergrendeld.
 
 ### Het gespreksformulier slaat zichzelf op
 
@@ -83,7 +95,7 @@ Een **inhoudelijk vergrendeld** gesprek — een later gesprek in de cyclus — s
 
 ### 3. Bevestiging
 
-Na ondertekening verschijnt het gesprek op het *Mijn POP*-overzicht van de speler (en de ouder, indien gekoppeld). Beiden kunnen op *Bevestigen* klikken â€” een lichte "ik heb het gezien"-timestamp.
+Na ondertekening verschijnt het gesprek op het *Mijn POP*-overzicht van de speler (en de ouder, indien gekoppeld). Beiden kunnen op *Bevestigen* klikken — een lichte "ik heb het gezien"-timestamp.
 
 Als het gesprek persoonlijk plaatsvindt, kan de coach die bevestigingen ook op het gespreksformulier vastleggen — *Bevestiging speler vastleggen* / *Bevestiging ouder vastleggen*, elk achter een bevestigingsdialoog. Het legt dezelfde bevestiging vast alsof de speler of ouder er zelf op had geklikt. Bevestig alleen wanneer zij het gesprek daadwerkelijk met u hebben bevestigd.
 
@@ -98,7 +110,7 @@ Als het gesprek persoonlijk plaatsvindt, kan de coach die bevestigingen ook op h
 
 Ouders zien dezelfde tijdlijn voor hun kind, alleen-lezen en bezittelijk ("ontwikkelplan van &lt;kind&gt;"): de opgeslagen reflectie is zichtbaar maar er is geen bewerkbaar veld, en zij bevestigen via hun eigen knop. De tijdlijnstatus wordt afgeleid uit de ingeplande gesprekken en hun planvensters - er verandert niets aan de planning of de vensterdata.
 
-### 4. EindeseizoensÂ­oordeel
+### 4. Eindeseizoens­oordeel
 
 Wanneer het laatste gesprek van de cyclus is ondertekend, legt het hoofd academie (of de hoofdcoach in sommige configuraties) een eindoordeel vast: **doorstromen**, **behouden**, **uitsluiten**, of **transfer**. Het eindoordeel is een aparte rij, los ondertekend van de gesprekken.
 
@@ -108,18 +120,18 @@ De knop *Eindoordeel vastleggen* staat bij de gesprekkenlijst, onder de cyclus. 
 
 ## Carryover
 
-Bij het instellen van een nieuw huidig seizoen draait een eenmalige taak: elk open POP-dossier uit het vorige seizoen wordt voor het nieuwe seizoen gerepliceerd â€” verse gesprekken, vers `created_at`, maar de open doelen van de speler (alles behalve `completed` of `archived`) worden meegenomen.
+Bij het instellen van een nieuw huidig seizoen draait een eenmalige taak: elk open POP-dossier uit het vorige seizoen wordt voor het nieuwe seizoen gerepliceerd — verse gesprekken, vers `created_at`, maar de open doelen van de speler (alles behalve `completed` of `archived`) worden meegenomen.
 
 Tekstuele inhoud van gesprekken wordt **niet** meegenomen. Elk seizoen begint schoon; de geschiedenis blijft staan waar het stond.
 
-## DoelenÂ­koppelingen
+## Doelen­koppelingen
 
-Een doel kan nu gekoppeld worden aan Ã©Ã©n of meer methodische entiteiten:
+Een doel kan nu gekoppeld worden aan één of meer methodische entiteiten:
 
 - een **principe** (bv. *opbouwen vanaf achteren*)
 - een **voetbalhandeling** (bv. *passen onder druk*)
 - een **positie** (bv. *nummer 8*)
-- een **spelerswaarde** (toewijding, leerbaarheid, leiderschap, veerkracht, communicatie, werkethiek, fairplay, ambitie â€” bewerkbaar via Configuratie â†’ Lookups)
+- een **spelerswaarde** (toewijding, leerbaarheid, leiderschap, veerkracht, communicatie, werkethiek, fairplay, ambitie — bewerkbaar via Configuratie → Lookups)
 
 De koppelingen verschijnen op het spelerprofiel en in de printsjabloon; ze maken queries mogelijk als "alle doelen gekoppeld aan *veerkracht* in de academie" of "elke speler die werkt aan *opbouwen vanaf achteren*".
 
@@ -129,14 +141,14 @@ Een doel kan ook aan een **ontwikkelgesprek** worden gekoppeld. Op het gespreksf
 
 ## Printen
 
-De **Printen / PDF**-knop in het detailoverzicht opent een schone A4-layout: foto, seizoenslabel, huidige doelen + status, afgesproken acties per gesprek, en handtekeningÂ­regels voor coach / speler / ouder. Schakel *Opnieuw renderen met bewijspagina* in voor een tweede A4 met hetzelfde bewijs dat de trainer op het tabblad Bewijs leest en het hoofd opleiding op het eindoordeelscherm — één verzameling, dus de cijfers op papier en op het scherm kunnen niet uit elkaar lopen.
+De **Printen / PDF**-knop in het detailoverzicht opent een schone A4-layout: foto, seizoenslabel, huidige doelen + status, afgesproken acties per gesprek, en handtekening­regels voor coach / speler / ouder. Schakel *Opnieuw renderen met bewijspagina* in voor een tweede A4 met hetzelfde bewijs dat de trainer op het tabblad Bewijs leest en het hoofd opleiding op het eindoordeelscherm — één verzameling, dus de cijfers op papier en op het scherm kunnen niet uit elkaar lopen.
 
 ## Configuratie
 
-- **Configuratie â†’ Lookups â†’ SpelersÂ­waarden** â€” bewerk de waarde-woordenlijst.
-- **Hoofdmenu â†’ Seizoenen** â€” lijst, toevoegen, huidig instellen. Een nieuw huidig seizoen instellen activeert de carryover.
-- **Configuratie â†’ Systeem** â€” *POP-cyclusstandaard* (2 / 3 / 4) en de *Print: standaard bewijs meenemen*-knop.
-- **Per-team override** â€” op de team-bewerkÂ­pagina kun je *POP-cyclusÂ­grootte* afwijkend instellen.
+- **Configuratie → Lookups → Spelers­waarden** — bewerk de waarde-woordenlijst.
+- **Hoofdmenu → Seizoenen** — lijst, toevoegen, huidig instellen. Een nieuw huidig seizoen instellen activeert de carryover.
+- **Configuratie → Systeem** — *POP-cyclusstandaard* (2 / 3 / 4) en de *Print: standaard bewijs meenemen*-knop.
+- **Per-team override** — op de team-bewerk­pagina kun je *POP-cyclus­grootte* afwijkend instellen.
 - **Configuratie → POP-voorbereidingsvragen** — waar een trainer over nadenkt voor elk gesprek, met per gesprek in de cyclus een eigen set. Elke academie begint met een meegeleverde set en kan vragen toevoegen, herformuleren, verslepen of verwijderen.
 
 ### Voorbereidingsvragen
@@ -145,14 +157,14 @@ Aan het begin van het seizoen vraag je andere dingen dan aan het eind, dus elk g
 
 Herformuleer je een vraag die al beantwoord is, dan verandert dat niet waar die antwoorden op gegeven zijn: de oude formulering blijft staan bij de voorbereidingen die ze bevatten, en de nieuwe formulering geldt vanaf het volgende gesprek. Een voorbereiding van vorig seizoen leest dus nog steeds zoals hij geschreven is.
 
-## WerkflowÂ­herinneringen
+## Werkflow­herinneringen
 
 Er zijn drie taaktemplates geregistreerd:
 
-- `POP_conversation_due` â€” herinnert de verantwoordelijke coach wanneer `scheduled_at` van een gesprek nadert.
-- `POP_verdict_due` â€” herinnert het hoofd academie aan het einde van het seizoen.
+- `POP_conversation_due` — herinnert de verantwoordelijke coach wanneer `scheduled_at` van een gesprek nadert.
+- `POP_verdict_due` — herinnert het hoofd academie aan het einde van het seizoen.
 
-Beide gebruiken de werkflow- en takenmotor â€” dezelfde inbox, dezelfde herinneringsÂ­cadans die je instelt via Configuratie â†’ Werkflow.
+Beide gebruiken de werkflow- en takenmotor — dezelfde inbox, dezelfde herinnerings­cadans die je instelt via Configuratie → Werkflow.
 
 ### Zelfreflectie-nudge
 
