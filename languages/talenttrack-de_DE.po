@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TalentTrack\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/talenttrack\n"
-"POT-Creation-Date: 2026-09-07T20:01:27+00:00\n"
+"POT-Creation-Date: 2026-09-07T20:25:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
@@ -1746,20 +1746,20 @@ msgid "Cancelled"
 msgstr ""
 
 #: src/Infrastructure/Query/LabelTranslator.php:40
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:157
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:163
 #: src/Modules/Wizards/Goal/DetailsStep.php:24
 msgid "Low"
 msgstr ""
 
 #: src/Infrastructure/Query/LabelTranslator.php:41
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:156
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:162
 #: src/Modules/DemoData/Admin/DemoDataPage.php:720
 #: src/Modules/Wizards/Goal/DetailsStep.php:24
 msgid "Medium"
 msgstr ""
 
 #: src/Infrastructure/Query/LabelTranslator.php:42
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:155
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:161
 #: src/Modules/Wizards/Goal/DetailsStep.php:24
 msgid "High"
 msgstr ""
@@ -1848,7 +1848,7 @@ msgstr ""
 #: src/Infrastructure/Query/LabelTranslator.php:61
 #: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:238
 #: src/Modules/Analytics/AnalyticsModule.php:120
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:144
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:150
 #: src/Modules/MatchPrep/Frontend/FrontendMatchPrepView.php:954
 #: src/Modules/Wizards/Evaluation/AttendanceStep.php:160
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1016
@@ -1858,7 +1858,7 @@ msgstr "Anwesend"
 #: src/Infrastructure/Query/LabelTranslator.php:62
 #: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:240
 #: src/Modules/Analytics/AnalyticsModule.php:121
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:145
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:151
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:223
 #: src/Modules/Wizards/Evaluation/AttendanceStep.php:161
 msgid "Absent"
@@ -1866,7 +1866,7 @@ msgstr "Abwesend"
 
 #: src/Infrastructure/Query/LabelTranslator.php:63
 #: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:239
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:147
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:153
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:222
 msgid "Late"
 msgstr "Verspätet"
@@ -1880,7 +1880,7 @@ msgstr "Verletzt"
 
 #: src/Infrastructure/Query/LabelTranslator.php:65
 #: src/Modules/Activities/Frontend/FrontendAttendanceGridView.php:241
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:146
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:152
 #: src/Modules/Analytics/Frontend/FrontendAttendancePlayerReportView.php:224
 msgid "Excused"
 msgstr "Entschuldigt"
@@ -2377,8 +2377,8 @@ msgstr ""
 
 #: src/Infrastructure/Query/LabelTranslator.php:477
 #: src/Modules/Analytics/AnalyticsModule.php:182
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:150
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:153
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:156
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:159
 #: src/Modules/CustomWidgets/DataSources/GoalsOpen.php:36
 #: src/Modules/CustomWidgets/DataSources/PdpFiles.php:35
 #: src/Modules/Knowledge/Frontend/FrontendCourseView.php:193
@@ -3772,7 +3772,7 @@ msgstr ""
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:150
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:638
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:216
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:175
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:176
 #: src/Modules/Wizards/Activity/ReviewStep.php:61
 #: src/Modules/Wizards/Activity/TypeStatusStep.php:41
 #: src/Modules/Wizards/Prospect/IdentityStep.php:100
@@ -5929,7 +5929,7 @@ msgstr ""
 #. translators: 1: course title, 2: lesson title
 #. translators: 1: unit symbol, 2: the kind of quantity it measures
 #: src/Modules/Activities/Frontend/FrontendRatingsGridView.php:331
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:103
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:109
 #: src/Modules/Knowledge/Frontend/FrontendSubmissionReviewView.php:136
 #: src/Modules/Measurements/Frontend/FrontendMeasurementTestsView.php:306
 #: src/Modules/Measurements/Wizards/MeasurementOptionsStep.php:46
@@ -6440,7 +6440,7 @@ msgstr[1] ""
 #: src/Modules/Alerts/Frontend/FrontendAlertPolicyView.php:210
 #: src/Modules/Alerts/Frontend/FrontendAlertsInboxView.php:177
 #: src/Modules/Alerts/Frontend/FrontendAlertsInboxView.php:341
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:148
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:154
 #: src/Modules/Analytics/Frontend/FrontendExploreView.php:832
 #: src/Modules/Pdp/Print/PdpPrintRouter.php:320
 #: src/Modules/Pdp/Repositories/PdpFilesRepository.php:212
@@ -7045,7 +7045,7 @@ msgid "Current club"
 msgstr ""
 
 #: src/Modules/Analytics/AnalyticsModule.php:220
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:161
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:167
 msgid "Promoted"
 msgstr ""
 
@@ -7114,7 +7114,7 @@ msgstr ""
 msgid "Pending"
 msgstr "Ausstehend"
 
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:149
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:155
 #: src/Modules/Development/IdeaStatus.php:101
 #: src/Modules/Knowledge/Frontend/KnowledgeChrome.php:82
 #: src/Modules/Knowledge/Frontend/LearningReports.php:66
@@ -7129,8 +7129,8 @@ msgstr "Ausstehend"
 msgid "In progress"
 msgstr ""
 
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:151
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:154
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:157
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:160
 #: src/Modules/Prospects/Frontend/FrontendScoutingPlanView.php:303
 #: src/Modules/Prospects/Frontend/FrontendScoutingPlanView.php:391
 #: src/Modules/Prospects/Repositories/ScoutingVisitsRepository.php:37
@@ -7140,7 +7140,7 @@ msgstr ""
 msgid "Cancelled"
 msgstr "Abgebrochen"
 
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:152
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:158
 #: src/Modules/MatchAnalysis/Frontend/FrontendMatchAnalysisView.php:661
 #: src/Modules/MatchAnalysis/Wizards/SectionStepFields.php:55
 #: src/Modules/Pdp/Frontend/FrontendMyPdpView.php:500
@@ -7153,24 +7153,24 @@ msgstr "Abgebrochen"
 msgid "Planned"
 msgstr "Geplant"
 
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:158
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:164
 msgid "Admit"
 msgstr ""
 
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:159
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:165
 msgid "Decline"
 msgstr ""
 
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:160
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:166
 msgid "No offer made"
 msgstr ""
 
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:162
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:168
 msgid "Age group change"
 msgstr ""
 
 #. translators: %s record id that couldn't be resolved to a name
-#: src/Modules/Analytics/Domain/DimensionValueResolver.php:181
+#: src/Modules/Analytics/Domain/DimensionValueResolver.php:187
 #, php-format
 msgid "#%s (missing)"
 msgstr ""
@@ -7245,7 +7245,7 @@ msgstr ""
 #: src/Modules/Training/Frontend/FrontendTrainingRunView.php:58
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:46
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:40
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:65
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:66
 #: src/Modules/Workflow/Frontend/FrontendTasksDashboardView.php:44
 #: src/Modules/Workflow/Frontend/FrontendWorkflowConfigView.php:50
 #: src/Shared/Frontend/DashboardShortcode.php:595
@@ -16588,7 +16588,7 @@ msgstr ""
 
 #: src/Modules/CustomWidgets/DataSources/PlayersActive.php:36
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:215
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:171
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:172
 #: src/Modules/Vct/Wizard/ReviewStep.php:57
 #: src/Shared/Frontend/Components/GuestAddModal.php:90
 msgid "Age"
@@ -19482,7 +19482,7 @@ msgstr ""
 #: src/Modules/Planning/Frontend/FrontendTeamPlannerView.php:265
 #: src/Modules/Training/Frontend/FrontendTrainingPlansView.php:174
 #: src/Modules/Training/Frontend/FrontendTrainingPlansView.php:438
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:173
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:174
 #: src/Modules/Vct/Wizard/DurationStep.php:19
 #: src/Modules/Vct/Wizard/ReviewStep.php:60
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1034
@@ -25829,7 +25829,7 @@ msgstr ""
 #: src/Modules/MatchPrep/Print/MatchPrepPrintableRenderer.php:179
 #: src/Modules/MatchPrep/Print/MatchPrepPrintableRenderer.php:180
 #: src/Modules/Strava/Frontend/FrontendStravaView.php:129
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:173
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:174
 #: src/Modules/Vct/Wizard/ReviewStep.php:60
 msgid "min"
 msgstr ""
@@ -39771,7 +39771,7 @@ msgstr ""
 #: src/Modules/Training/Wizard/ThemeStep.php:20
 #: src/Modules/Training/Wizard/ThemeStep.php:34
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:213
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:178
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:179
 #: src/Modules/Vct/Wizard/ReviewStep.php:59
 #: src/Modules/Vct/Wizard/ThemeStep.php:20
 #: src/Shared/Frontend/FrontendMySettingsView.php:409
@@ -41510,7 +41510,7 @@ msgstr ""
 
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:169
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:473
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:174
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:175
 msgid "Load"
 msgstr ""
 
@@ -41649,7 +41649,7 @@ msgstr ""
 #. translators: 1: minutes, 2: intensity band
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:329
 #: src/Modules/Vct/Frontend/FrontendVctSessionPrintView.php:90
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:223
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:224
 #, php-format
 msgid "%1$d min · band %2$d"
 msgstr ""
@@ -41967,9 +41967,9 @@ msgid "Archive failed."
 msgstr ""
 
 #: src/Modules/Vct/Frontend/FrontendVctSessionPrintView.php:28
-#: src/Modules/Vct/Rest/VctTrainingsRestController.php:154
-#: src/Modules/Vct/Rest/VctTrainingsRestController.php:198
-#: src/Modules/Vct/Rest/VctTrainingsRestController.php:234
+#: src/Modules/Vct/Rest/VctTrainingsRestController.php:155
+#: src/Modules/Vct/Rest/VctTrainingsRestController.php:199
+#: src/Modules/Vct/Rest/VctTrainingsRestController.php:235
 msgid "VCT training not found."
 msgstr ""
 
@@ -41980,7 +41980,7 @@ msgstr ""
 #. translators: 1: age group, 2: md context label, 3: localised date
 #. translators: 1: age group, 2: localised MD context label, 3: localised date
 #: src/Modules/Vct/Frontend/FrontendVctSessionPrintView.php:48
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:81
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:82
 #, php-format
 msgid "VCT training — %1$s · %2$s · %3$s"
 msgstr ""
@@ -41995,99 +41995,99 @@ msgstr ""
 msgid "TalentTrack — VCT planner"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:53
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:54
 msgid "VCT planner"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:56
 #: src/Modules/Vct/Frontend/FrontendVctSessionView.php:57
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:58
 msgid "VCT training not found"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:58
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:59
 msgid "This VCT training does not exist or you do not have access."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:66
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:67
 msgid "VCT training"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:67
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:68
 msgid "You do not have access to this VCT training."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:93
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:94
 msgid "Print A4"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:154
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:155
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:589
 msgid "PHV"
 msgstr ""
 
 #. translators: %d = number of active PHV-flagged players
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:160
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:161
 #, php-format
 msgid "PHV exclusion — %d player"
 msgid_plural "PHV exclusions — %d players"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:172
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:173
 #: src/Modules/Vct/Wizard/ReviewStep.php:58
 msgid "MD"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:194
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:195
 msgid ""
 "No blocks in this VCT training yet — the planner couldn't find suitable "
 "exercises for this age group, theme, and duration. Try a different theme or "
 "duration, or add matching exercises to the library."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:245
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:246
 msgid ""
 "Publishing links this training to a team activity. If an activity already "
 "exists at this date and time, you'll be asked whether to reuse it or create "
 "a new one."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:248
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:249
 msgid "Publish VCT training"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:256
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:257
 msgid "This VCT training is published and bound to a team Activity."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:270
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:271
 msgid ""
 "Publish action failed: session expired. Please reload the page and try again."
 msgstr ""
 
 #. translators: 1: existing activity id, 2: existing activity title
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:283
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:284
 #, php-format
 msgid ""
 "An Activity already exists at this slot (#%1$d: %2$s). Bind this VCT "
 "training to it?"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:289
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:290
 msgid "Bind activity"
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:296
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:297
 msgid "Could not create or bind the Activity. Try again."
 msgstr ""
 
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:302
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:303
 msgid "Published. Bound Activity created."
 msgstr ""
 
 #. translators: 1: age group, 2: md context label
-#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:342
-#: src/Modules/Vct/Rest/VctTrainingsRestController.php:363
+#: src/Modules/Vct/Frontend/FrontendVctSessionView.php:343
+#: src/Modules/Vct/Rest/VctTrainingsRestController.php:364
 #, php-format
 msgid "VCT training — %1$s (%2$s)"
 msgstr ""
@@ -42141,11 +42141,11 @@ msgstr ""
 msgid "The schedule could not be saved."
 msgstr ""
 
-#: src/Modules/Vct/Rest/VctTrainingsRestController.php:237
+#: src/Modules/Vct/Rest/VctTrainingsRestController.php:238
 msgid "Only draft trainings can be published."
 msgstr ""
 
-#: src/Modules/Vct/Rest/VctTrainingsRestController.php:255
+#: src/Modules/Vct/Rest/VctTrainingsRestController.php:256
 msgid "Could not create the bound Activity."
 msgstr ""
 
