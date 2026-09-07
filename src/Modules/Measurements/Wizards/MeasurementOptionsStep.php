@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 use TT\Modules\Measurements\Units\Dimensions;
 use TT\Modules\Measurements\Units\UnitRegistry;
+use TT\Modules\Measurements\Repositories\MeasurementDefinitionsRepository;
 use TT\Shared\Wizards\WizardStepInterface;
 
 /**
@@ -50,13 +51,17 @@ final class MeasurementOptionsStep implements WizardStepInterface {
             }
             echo '</select></label>';
 
-            echo '<label><span>' . esc_html__( 'Custom unit (overrides the list)', 'talenttrack' ) . '</span>'
-                . '<input type="text" name="unit_custom" maxlength="50" value="' . esc_attr( ! $is_listed ? $unit : '' ) . '" '
-                . 'placeholder="' . esc_attr__( 'e.g. watt/kg', 'talenttrack' ) . '" /></label>';
-
+            // #3275 — directly under the unit picker, above the custom-unit
+            // escape hatch. It modifies the unit just chosen, and below a
+            // field most operators skip past it is never seen. Same order as
+            // the edit form.
             echo '<label><input type="checkbox" name="numeric_format" value="duration" '
                 . checked( (string) ( $state['numeric_format'] ?? '' ), 'duration', false ) . ' /> '
                 . '<span>' . esc_html__( 'Enter and show as mm:ss', 'talenttrack' ) . '</span></label>';
+
+            echo '<label><span>' . esc_html__( 'Custom unit (overrides the list)', 'talenttrack' ) . '</span>'
+                . '<input type="text" name="unit_custom" maxlength="50" value="' . esc_attr( ! $is_listed ? $unit : '' ) . '" '
+                . 'placeholder="' . esc_attr__( 'e.g. watt/kg', 'talenttrack' ) . '" /></label>';
 
             $dirs = [
                 'higher'  => __( 'Higher is better', 'talenttrack' ),
@@ -101,7 +106,20 @@ final class MeasurementOptionsStep implements WizardStepInterface {
         // will be created with, and mm:ss only survives on a time unit.
         $unit_row  = $value_type === 'numeric' ? ( new UnitRegistry() )->bySymbol( $unit ) : null;
         $dimension = $unit_row ? (string) $unit_row->dimension : Dimensions::DIMENSIONLESS;
-        $format    = ( ! empty( $post['numeric_format'] ) && $dimension === Dimensions::TIME ) ? 'duration' : 'plain';
+        // #3275 — an unticked box on a NEW test is not a decision.
+        //
+        // The operator has just said "this is measured in minutes", which is
+        // the same statement as "these are mm:ss readings"; they had no
+        // reason to go looking for a checkbox to confirm it. So the unit
+        // decides when nothing was ticked, and ticking still forces mm:ss on
+        // any time unit. This is a create path — there is no earlier choice
+        // here to override.
+        $format = ( ! empty( $post['numeric_format'] ) && $dimension === Dimensions::TIME )
+            ? 'duration'
+            : MeasurementDefinitionsRepository::defaultNumericFormatFor( [
+                'dimension' => $dimension,
+                'unit'      => $unit,
+            ] );
 
         return [
             'unit'           => $value_type === 'numeric' ? $unit : '',

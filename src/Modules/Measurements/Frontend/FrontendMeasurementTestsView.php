@@ -313,20 +313,27 @@ final class FrontendMeasurementTestsView extends FrontendViewBase {
                 <p class="tt-field-hint"><?php esc_html_e( 'A unit from the list carries its dimension, so values are stored in a canonical base and can be compared and converted.', 'talenttrack' ); ?></p>
             </div>
 
+            <?php
+            // #3275 — directly under the unit picker, above the custom-unit
+            // escape hatch. It modifies the unit the operator just chose, and
+            // it used to render after a field most operators skip past — the
+            // coach who reported this had the unit on `min — Tijd` and never
+            // saw a toggle sitting below "Custom unit".
+            ?>
+            <div class="tt-field tt-field--check">
+                <label class="tt-mt-check" for="tt-mt-duration">
+                    <input type="checkbox" id="tt-mt-duration" name="numeric_format" value="duration"<?php checked( $is_duration ); ?> />
+                    <span><?php esc_html_e( 'Enter and show as mm:ss', 'talenttrack' ); ?></span>
+                </label>
+                <p class="tt-field-hint"><?php esc_html_e( 'For a time test. A result is typed as 5:30 and reads back as 5:30; it is stored in seconds. Tests measured in minutes get this by default.', 'talenttrack' ); ?></p>
+            </div>
+
             <div class="tt-field">
                 <label class="tt-field-label" for="tt-mt-unit-custom"><?php esc_html_e( 'Custom unit (overrides the list)', 'talenttrack' ); ?></label>
                 <input type="text" id="tt-mt-unit-custom" class="tt-input" name="unit_custom" maxlength="50"
                        value="<?php echo esc_attr( ! $unit_listed ? $unit : '' ); ?>"
                        placeholder="<?php esc_attr_e( 'e.g. watt/kg', 'talenttrack' ); ?>" />
                 <p class="tt-field-hint"><?php esc_html_e( 'A custom unit has no dimension: its values are stored exactly as typed, and are never converted or compared across units.', 'talenttrack' ); ?></p>
-            </div>
-
-            <div class="tt-field tt-field--check">
-                <label class="tt-mt-check" for="tt-mt-duration">
-                    <input type="checkbox" id="tt-mt-duration" name="numeric_format" value="duration"<?php checked( $is_duration ); ?> />
-                    <span><?php esc_html_e( 'Enter and show as mm:ss', 'talenttrack' ); ?></span>
-                </label>
-                <p class="tt-field-hint"><?php esc_html_e( 'For a time test. A result is typed as 5:30 and reads back as 5:30; it is stored in seconds.', 'talenttrack' ); ?></p>
             </div>
 
             <div class="tt-grid tt-grid-2">
@@ -594,7 +601,30 @@ final class FrontendMeasurementTestsView extends FrontendViewBase {
         // any non-numeric test whatever was typed in the unit box.
         $unit_row  = $value_type === 'numeric' ? ( new UnitRegistry() )->bySymbol( $unit ) : null;
         $dimension = $unit_row ? (string) $unit_row->dimension : Dimensions::DIMENSIONLESS;
-        $format    = ( ! empty( $_POST['numeric_format'] ) && $dimension === Dimensions::TIME ) ? 'duration' : 'plain';
+
+        // #3275 — on EDIT the checkbox is the operator's word, with one
+        // exception: they just changed the unit.
+        //
+        // The box reflects the stored state on this form, so an unticked one
+        // normally IS a decision and flipping it would be the silent override
+        // the issue warns against. But switching a test to minutes is the
+        // same statement as choosing minutes on a new test, and the operator
+        // has no more reason to hunt for the toggle here than there. So the
+        // default applies only when the unit actually changed.
+        $existing     = $repo->find( $id );
+        $unit_changed = $existing === null
+            || (string) ( $existing->unit ?? '' ) !== $unit;
+
+        if ( ! empty( $_POST['numeric_format'] ) && $dimension === Dimensions::TIME ) {
+            $format = 'duration';
+        } elseif ( $unit_changed ) {
+            $format = MeasurementDefinitionsRepository::defaultNumericFormatFor( [
+                'dimension' => $dimension,
+                'unit'      => $unit,
+            ] );
+        } else {
+            $format = 'plain';
+        }
 
         $data = [
             'category_id' => isset( $_POST['category_id'] ) ? absint( $_POST['category_id'] ) : 0,
