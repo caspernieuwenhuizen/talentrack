@@ -884,14 +884,11 @@ body.tt-docs-drawer-open { overflow: hidden; }
     border-left-color: var(--tt-info, #2271b1);
 }
 
-.tt-tabs { display: flex; flex-wrap: wrap; margin-bottom: 1.5rem; border-bottom: 1px solid var(--tt-line); }
-.tt-tab { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.9rem 1.25rem; background: transparent; border: none; border-bottom: 3px solid transparent; cursor: pointer; color: var(--tt-muted); transition: all .15s; }
-.tt-tab:hover { color: var(--tt-primary, #0b3d2e); }
-.tt-tab.tt-tab-active { color: var(--tt-primary, #0b3d2e); border-bottom-color: var(--tt-secondary, #e8b624); }
-
-.tt-tab-content { display: none; animation: tt-fade .3s ease; }
-.tt-tab-content.tt-tab-content-active { display: block; }
-@keyframes tt-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+/* #3341 — `.tt-tabs` / `.tt-tab` / `.tt-tab-content` removed with the two
+   legacy dashboard views that were their only consumers. Record-scoped
+   tabs come from `RecordSpine` (CLAUDE.md §5c), which emits its own
+   `role="tablist"` markup and `tt-tab-<panel>` ids — a different thing
+   that shares a prefix. */
 
 .tt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin: 1rem 0; }
 /* #2585 — `.tt-card` is the generic panel: padding, surface, border. It is
@@ -1135,7 +1132,7 @@ body.tt-docs-drawer-open { overflow: hidden; }
 
 /* #0056 — site-wide `touch-action: manipulation` for the most-tapped
    classes. Kills the 300ms tap delay + accidental double-tap zoom. */
-.tt-btn, .tt-btn-sm, .tt-tab, .tt-tile, .tt-pager-link,
+.tt-btn, .tt-btn-sm, .tt-tile, .tt-pager-link,
 input[type="checkbox"], input[type="radio"] {
     touch-action: manipulation;
 }
@@ -1145,7 +1142,6 @@ input[type="checkbox"], input[type="radio"] {
 @media (pointer: coarse) {
     .tt-btn { min-height: 48px; }
     .tt-btn-sm { min-height: 48px; padding-inline: 14px; }
-    .tt-tab { min-height: 48px; }
     .tt-pager-link { min-width: 48px; min-height: 48px; }
     .tt-list-row-action { min-height: 48px; min-width: 48px; }
 
@@ -1217,8 +1213,6 @@ input[type="checkbox"], input[type="radio"] {
     .tt-dash-title { font-size: 1.15rem; }
     .tt-dash-actions { gap: .35rem; }
     .tt-dash-help { width: 28px; height: 28px; }
-    .tt-tabs { overflow-x: auto; flex-wrap: nowrap; }
-    .tt-tab { flex: 0 0 auto; padding: .7rem .9rem; font-size: 0.7rem; }
     .tt-grid { grid-template-columns: 1fr; }
     .tt-form-row { flex-direction: column; align-items: stretch; gap: 4px; }
     .tt-form-row label { flex: none; }
