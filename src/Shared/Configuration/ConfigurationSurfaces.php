@@ -272,6 +272,14 @@ final class ConfigurationSurfaces {
             'url'   => $sub( 'pdp-blocks' ),
             'icon'  => 'calendar',
         ] ];
+        // #3305 (epic #3301) — the prompts a coach prepares each PDP
+        // conversation against, per conversation template.
+        $out[] = [ 'TT\\Modules\\Pdp\\PdpModule', [
+            'title' => __( 'PDP preparation questions', 'talenttrack' ),
+            'desc'  => __( 'What a coach thinks about before each conversation in the cycle. A different set per conversation, private to the coach and the head of academy.', 'talenttrack' ),
+            'url'   => $sub( 'pdp-prep-questions' ),
+            'icon'  => 'note',
+        ] ];
         // #3044 — how many a side each age category plays. A Teams setting:
         // it pre-fills the team record's own football form, which is where a
         // club that runs one team differently says so.

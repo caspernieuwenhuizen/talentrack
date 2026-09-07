@@ -1,0 +1,145 @@
+/*
+ * frontend-pdp-prep-questions.css (#3305, epic #3301)
+ *
+ * The PDP preparation question sets in Configuration — one section per
+ * conversation template, each a reorderable list of questions.
+ *
+ * Authoring rule (CLAUDE.md § 2): mobile-first. Base is the 360px
+ * viewport; every breakpoint scales UP via `min-width`. Colours read the
+ * `tokens.css` custom properties, never raw hex.
+ *
+ * Class contract — owned by FrontendConfigurationView::renderPdpPrepQuestionsForm()
+ * and assets/js/frontend-pdp-prep-questions.js:
+ *
+ *   .tt-pdp-prep-config                  wrapper around every template
+ *   .tt-pdp-prep-config__intro           explanatory paragraphs above it
+ *   .tt-pdp-prep-config__template        one conversation template
+ *   .tt-pdp-prep-config__heading         its name ("Start of season")
+ *   .tt-pdp-prep-config__list            the ordered question list
+ *   .tt-pdp-prep-config__item            one question row
+ *   .tt-pdp-prep-config__item-head       label + meta + help column
+ *   .tt-pdp-prep-config__item-label      the question itself
+ *   .tt-pdp-prep-config__item-meta       answer type / required chip line
+ *   .tt-pdp-prep-config__item-help       the coach-facing help text
+ *   .tt-pdp-prep-config__item-actions    reorder / edit / remove buttons
+ *   .tt-pdp-prep-config__editor          the inline add / edit form
+ *   .tt-pdp-prep-config__empty           "no questions yet" row
+ */
+
+.tt-pdp-prep-config__intro {
+    margin: 0 0 var(--tt-sp-3, 12px);
+    color: var(--tt-ink-soft, #6a6d66);
+    max-width: 62ch;
+}
+
+.tt-pdp-prep-config {
+    display: grid;
+    gap: var(--tt-sp-5, 20px);
+}
+
+.tt-pdp-prep-config__template {
+    border: 1px solid var(--tt-line, #e3e6e1);
+    border-radius: var(--tt-radius, 8px);
+    background: var(--tt-paper, #fff);
+    padding: var(--tt-sp-4, 16px);
+}
+
+.tt-pdp-prep-config__heading {
+    margin: 0 0 var(--tt-sp-3, 12px);
+    font-size: var(--tt-fs-lg, 1.125rem);
+}
+
+.tt-pdp-prep-config__list {
+    list-style: none;
+    margin: 0 0 var(--tt-sp-3, 12px);
+    padding: 0;
+    display: grid;
+    gap: var(--tt-sp-2, 8px);
+}
+
+.tt-pdp-prep-config__item {
+    display: grid;
+    gap: var(--tt-sp-2, 8px);
+    padding: var(--tt-sp-3, 12px);
+    border: 1px solid var(--tt-line-soft, #eef0ec);
+    border-radius: var(--tt-radius, 8px);
+    background: var(--tt-bg-soft, #f4f6f3);
+}
+
+.tt-pdp-prep-config__item-head {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+}
+
+.tt-pdp-prep-config__item-label {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.tt-pdp-prep-config__item-meta,
+.tt-pdp-prep-config__item-help {
+    color: var(--tt-ink-soft, #6a6d66);
+    font-size: var(--tt-fs-sm, 0.85rem);
+}
+
+/* Reorder / edit / remove. Wrapping is deliberate at 360px — four 48px
+   targets do not fit one line on a phone, and shrinking them below the
+   touch minimum is not the trade to make. */
+.tt-pdp-prep-config__item-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tt-sp-2, 8px);
+}
+
+.tt-pdp-prep-config__item-actions .tt-btn {
+    min-height: 48px;
+    min-width: 48px;
+    touch-action: manipulation;
+}
+
+.tt-pdp-prep-config__editor {
+    display: grid;
+    gap: var(--tt-sp-2, 8px);
+}
+
+.tt-pdp-prep-config__editor .tt-form-actions {
+    display: flex;
+    gap: var(--tt-sp-2, 8px);
+    flex-wrap: wrap;
+}
+
+.tt-pdp-prep-config__editor .tt-btn {
+    min-height: 48px;
+    touch-action: manipulation;
+}
+
+.tt-pdp-prep-config__new {
+    padding: var(--tt-sp-3, 12px);
+    border: 1px dashed var(--tt-line, #e3e6e1);
+    border-radius: var(--tt-radius, 8px);
+    margin-bottom: var(--tt-sp-3, 12px);
+}
+
+.tt-pdp-prep-config__empty {
+    color: var(--tt-ink-soft, #6a6d66);
+    font-style: italic;
+    padding: var(--tt-sp-2, 8px) 0;
+}
+
+.tt-pdp-prep-config .tt-form-msg.is-error {
+    color: var(--tt-danger, #d8453b);
+}
+
+/* Tablet and up: the question and its controls sit side by side, which
+   is the density a settings screen wants once there is room for it. */
+@media (min-width: 768px) {
+    .tt-pdp-prep-config__item {
+        grid-template-columns: 1fr auto;
+        align-items: start;
+    }
+
+    .tt-pdp-prep-config__item-actions {
+        flex-wrap: nowrap;
+    }
+}
