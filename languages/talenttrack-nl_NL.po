@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TalentTrack 3.19.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/talenttrack\n"
-"POT-Creation-Date: 2026-09-07T15:19:21+00:00\n"
+"POT-Creation-Date: 2026-09-07T17:30:36+00:00\n"
 "PO-Revision-Date: 2026-06-10 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Nederlands\n"
@@ -192,10 +192,6 @@ msgstr "Team Manager"
 #: src/Modules/Wizards/Evaluation/AttendanceStep.php:369
 #: src/Modules/Wizards/Evaluation/PlayerPickerStep.php:20
 #: src/Modules/Wizards/Goal/PlayerStep.php:36
-#: src/Shared/Frontend/CoachDashboardView.php:203
-#: src/Shared/Frontend/CoachDashboardView.php:271
-#: src/Shared/Frontend/CoachDashboardView.php:307
-#: src/Shared/Frontend/CoachDashboardView.php:325
 #: src/Shared/Frontend/CoachForms.php:214
 #: src/Shared/Frontend/CoachForms.php:580
 #: src/Shared/Frontend/CoachForms.php:627
@@ -227,7 +223,7 @@ msgstr "Team Manager"
 #: src/Shared/Frontend/FrontendMediaRetentionView.php:94
 #: src/Shared/Frontend/FrontendMediaRetentionView.php:152
 #: src/Shared/Frontend/FrontendMyEvaluationsView.php:83
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:545
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:573
 #: src/Shared/Frontend/FrontendPlayersCsvImportView.php:116
 #: src/Shared/Frontend/FrontendRateCardView.php:177
 #: src/Shared/Frontend/FrontendRolesView.php:87
@@ -271,7 +267,6 @@ msgstr "Speler"
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:303
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:651
 #: src/Shared/Frontend/FrontendUsageStatsView.php:372
-#: src/Shared/Frontend/PlayerDashboardView.php:108
 msgid "Coach"
 msgstr "Trainer"
 
@@ -336,7 +331,6 @@ msgstr "Staf"
 #: src/Modules/Players/Admin/PlayersPage.php:231
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:181
 #: src/Modules/Teams/Admin/TeamsPage.php:131
-#: src/Shared/Frontend/CoachDashboardView.php:337
 #: src/Shared/Frontend/CoachForms.php:667
 #: src/Shared/Frontend/Components/FrontendThreadView.php:172
 #: src/Shared/Frontend/Components/SavedViews.php:488
@@ -1256,7 +1250,7 @@ msgstr "Vrouw"
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditView.php:198
 #: src/Modules/Analytics/Frontend/FrontendMinutesAuditView.php:343
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1712
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1300
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1333
 msgid "Not recorded"
 msgstr "Niet geregistreerd"
 
@@ -1376,7 +1370,7 @@ msgstr "Detail"
 #: src/Shared/Frontend/FrontendHolidaysView.php:108
 #: src/Shared/Frontend/FrontendHolidaysView.php:259
 #: src/Shared/Frontend/FrontendPersonDetailView.php:77
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:642
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:675
 #: src/Shared/Frontend/FrontendSeasonsView.php:102
 #: src/Shared/Frontend/FrontendTeamDetailView.php:357
 #: src/Shared/Frontend/FrontendTournamentsManageView.php:201
@@ -1988,7 +1982,7 @@ msgstr "Hoog"
 #: src/Shared/Frontend/FrontendHolidaysView.php:97
 #: src/Shared/Frontend/FrontendMyGoalsView.php:61
 #: src/Shared/Frontend/FrontendPeopleManageView.php:130
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2680
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2713
 #: src/Shared/Frontend/FrontendPlayersManageView.php:262
 #: src/Shared/Frontend/FrontendTeamDetailView.php:266
 #: src/Shared/Frontend/FrontendTeamsManageView.php:197
@@ -2690,7 +2684,6 @@ msgstr "Radarkaarten"
 #: src/Modules/Wizards/Player/RosterDetailsStep.php:34
 #: src/Modules/Wizards/TeamBlueprint/ReviewStep.php:28
 #: src/Modules/Wizards/TeamBlueprint/SetupStep.php:50
-#: src/Shared/Frontend/CoachDashboardView.php:265
 #: src/Shared/Frontend/CoachForms.php:569
 #: src/Shared/Frontend/Components/TeamPickerComponent.php:36
 #: src/Shared/Frontend/DashboardShortcode.php:283
@@ -2720,9 +2713,9 @@ msgstr "Radarkaarten"
 #: src/Shared/Frontend/FrontendPeopleManageView.php:256
 #: src/Shared/Frontend/FrontendPersonDetailView.php:184
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:514
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1349
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1352
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1637
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1382
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1385
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1670
 #: src/Shared/Frontend/FrontendPlayersCsvImportView.php:118
 #: src/Shared/Frontend/FrontendPlayersManageView.php:229
 #: src/Shared/Frontend/FrontendPlayersManageView.php:236
@@ -2746,7 +2739,7 @@ msgstr "Team"
 #: src/Modules/DataBrowser/SemanticRegistry.php:89
 #: src/Modules/Evaluations/Admin/EvaluationsPage.php:813
 #: src/Modules/PersonaDashboard/Widgets/TodayUpNextHeroWidget.php:73
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1848
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1881
 msgid "Evaluation"
 msgstr "Evaluatie"
 
@@ -2773,7 +2766,6 @@ msgstr "Evaluatie"
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1091
 #: src/Shared/Frontend/FrontendMyActivitiesView.php:162
 #: src/Shared/Frontend/FrontendSpondMonitorView.php:199
-#: src/Shared/Frontend/PlayerDashboardView.php:177
 msgid "Activity"
 msgstr "Activiteit"
 
@@ -2785,7 +2777,6 @@ msgstr "Activiteit"
 #: src/Modules/Methodology/VocabularyCatalog.php:154
 #: src/Modules/Threads/Adapters/GoalThreadAdapter.php:97
 #: src/Modules/Workflow/Forms/GoalSettingForm.php:47
-#: src/Shared/Frontend/CoachDashboardView.php:325
 #: src/Shared/Frontend/CoachForms.php:652
 #: src/Shared/Frontend/FrontendGoalsManageView.php:259
 #: src/Shared/Frontend/FrontendGoalsManageView.php:355
@@ -2846,7 +2837,7 @@ msgstr "Aangepaste widget"
 
 #: src/Infrastructure/RecycleBin/RecycleBinEntities.php:56
 #: src/Modules/Journey/Frontend/FrontendInjuriesView.php:160
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2416
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2449
 msgid "Injury"
 msgstr "Blessure"
 
@@ -4018,8 +4009,6 @@ msgstr "Niet gevonden."
 #: src/Modules/Workflow/Frontend/FrontendMyTasksView.php:276
 #: src/Modules/Workflow/Frontend/FrontendTaskDetailView.php:247
 #: src/Modules/Workflow/Frontend/FrontendWorkflowConfigView.php:291
-#: src/Shared/Frontend/CoachDashboardView.php:271
-#: src/Shared/Frontend/CoachDashboardView.php:326
 #: src/Shared/Frontend/CoachForms.php:580
 #: src/Shared/Frontend/CoachForms.php:653
 #: src/Shared/Frontend/DashboardShortcode.php:314
@@ -4041,8 +4030,8 @@ msgstr "Niet gevonden."
 #: src/Shared/Frontend/FrontendMigrationsView.php:73
 #: src/Shared/Frontend/FrontendPersonDetailView.php:158
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:510
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1313
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2679
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1346
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2712
 #: src/Shared/Frontend/FrontendPlayersCsvImportView.php:115
 #: src/Shared/Frontend/FrontendSpondView.php:217
 #: src/Shared/Frontend/FrontendTeamDetailView.php:626
@@ -4054,7 +4043,6 @@ msgstr "Niet gevonden."
 #: src/Shared/Frontend/FrontendTrialsManageView.php:292
 #: src/Shared/Frontend/FrontendTrialsManageView.php:388
 #: src/Shared/Frontend/FrontendTrialTracksEditorView.php:90
-#: src/Shared/Frontend/PlayerDashboardView.php:178
 msgid "Status"
 msgstr "Status"
 
@@ -4068,7 +4056,7 @@ msgstr "Status"
 #: src/Modules/Methodology/Frontend/Manage/FormationsManageTab.php:330
 #: src/Modules/Wizards/Player/ReviewStep.php:40
 #: src/Modules/Wizards/Player/RosterDetailsStep.php:43
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1279
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1312
 #: src/Shared/Frontend/FrontendPlayersManageView.php:421
 msgid "Jersey number"
 msgstr "Rugnummer"
@@ -4093,7 +4081,7 @@ msgstr "Rugnummer"
 #: src/Modules/Workflow/Forms/LogProspectForm.php:66
 #: src/Shared/Frontend/FrontendMyProfileView.php:122
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:501
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1268
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1301
 #: src/Shared/Frontend/FrontendPlayersCsvImportView.php:117
 #: src/Shared/Frontend/FrontendPlayersManageView.php:377
 #: src/Shared/Frontend/FrontendTrialsManageView.php:433
@@ -4209,8 +4197,6 @@ msgstr "Seizoen"
 #: src/Modules/Wizards/Activity/DetailsStep.php:37
 #: src/Modules/Wizards/Activity/ReviewStep.php:70
 #: src/Modules/Wizards/Evaluation/HybridDeepRateStep.php:151
-#: src/Shared/Frontend/CoachDashboardView.php:215
-#: src/Shared/Frontend/CoachDashboardView.php:264
 #: src/Shared/Frontend/CoachForms.php:256
 #: src/Shared/Frontend/CoachForms.php:568
 #: src/Shared/Frontend/Components/DateInputComponent.php:30
@@ -4230,8 +4216,6 @@ msgstr "Seizoen"
 #: src/Shared/Frontend/FrontendTestTrainingsView.php:72
 #: src/Shared/Frontend/FrontendTrialCaseView.php:523
 #: src/Shared/Frontend/FrontendTrialCaseView.php:545
-#: src/Shared/Frontend/PlayerDashboardView.php:106
-#: src/Shared/Frontend/PlayerDashboardView.php:176
 msgid "Date"
 msgstr "Datum"
 
@@ -4267,7 +4251,6 @@ msgstr "Datum"
 #: src/Modules/Wizards/Evaluation/HybridDeepRateStep.php:155
 #: src/Modules/Wizards/Player/ReviewStep.php:34
 #: src/Modules/Wizards/TeamBlueprint/ReviewStep.php:29
-#: src/Shared/Frontend/CoachDashboardView.php:209
 #: src/Shared/Frontend/CoachForms.php:250
 #: src/Shared/Frontend/Components/MinutesBreakdown.php:60
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1185
@@ -4287,7 +4270,6 @@ msgstr "Datum"
 #: src/Shared/Frontend/FrontendTeamDetailView.php:862
 #: src/Shared/Frontend/FrontendTrialCaseView.php:523
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:302
-#: src/Shared/Frontend/PlayerDashboardView.php:107
 msgid "Type"
 msgstr "Type"
 
@@ -4926,15 +4908,15 @@ msgid "Overall"
 msgstr "Totaal"
 
 #: src/Infrastructure/Teams/TeamDetailSections.php:58
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:775
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:808
 #: src/Shared/Frontend/FrontendTeamDetailView.php:498
 #: src/Shared/Frontend/FrontendTrialCaseView.php:370
 msgid "Key facts"
 msgstr "Kerngegevens"
 
 #: src/Infrastructure/Teams/TeamDetailSections.php:59
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:810
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:811
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:843
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:844
 #: src/Shared/Frontend/FrontendTeamDetailView.php:539
 #: src/Shared/Frontend/FrontendTeamDetailView.php:540
 msgid "At a glance"
@@ -5133,8 +5115,6 @@ msgstr "Filteren"
 #: src/Modules/Training/Frontend/FrontendTrainingPhotoView.php:293
 #: src/Modules/Wizards/Activity/DetailsStep.php:58
 #: src/Modules/Wizards/Activity/ReviewStep.php:69
-#: src/Shared/Frontend/CoachDashboardView.php:263
-#: src/Shared/Frontend/CoachDashboardView.php:311
 #: src/Shared/Frontend/CoachForms.php:567
 #: src/Shared/Frontend/CoachForms.php:633
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:2979
@@ -5198,7 +5178,7 @@ msgstr "Bron"
 #: src/Shared/Frontend/Components/FrontendListTable.php:231
 #: src/Shared/Frontend/FrontendBackupsView.php:274
 #: src/Shared/Frontend/FrontendBackupsView.php:292
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:623
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:656
 #: src/Shared/Frontend/FrontendSeasonsView.php:81
 #: src/Shared/Frontend/FrontendTeamDetailView.php:305
 #: src/Shared/Frontend/FrontendTrialCaseView.php:308
@@ -5250,7 +5230,6 @@ msgstr "Activiteit bewerken"
 
 #: src/Modules/Activities/Admin/ActivitiesPage.php:269
 #: src/Shared/Admin/BackNavigator.php:123
-#: src/Shared/Frontend/CoachDashboardView.php:42
 msgid "New Activity"
 msgstr "Nieuwe activiteit"
 
@@ -5318,7 +5297,6 @@ msgstr ""
 #: src/Modules/Wizards/Activity/DetailsStep.php:77
 #: src/Modules/Wizards/Activity/ReviewStep.php:78
 #: src/Modules/Workflow/Forms/InviteToTestTrainingForm.php:78
-#: src/Shared/Frontend/CoachDashboardView.php:268
 #: src/Shared/Frontend/CoachForms.php:574
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:3061
 #: src/Shared/Frontend/FrontendMyActivitiesView.php:100
@@ -5367,9 +5345,6 @@ msgstr "— Alle —"
 #: src/Modules/Wizards/Team/BasicsStep.php:40
 #: src/Modules/Workflow/Forms/AwaitTeamOfferDecisionForm.php:62
 #: src/Modules/Workflow/Forms/ConfirmTestTrainingForm.php:66
-#: src/Shared/Frontend/CoachDashboardView.php:237
-#: src/Shared/Frontend/CoachDashboardView.php:269
-#: src/Shared/Frontend/CoachDashboardView.php:271
 #: src/Shared/Frontend/CoachForms.php:575
 #: src/Shared/Frontend/CoachForms.php:580
 #: src/Shared/Frontend/DashboardShortcode.php:318
@@ -5382,7 +5357,7 @@ msgstr "— Alle —"
 #: src/Shared/Frontend/FrontendEvaluationsView.php:544
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:167
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:249
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2690
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2723
 #: src/Shared/Frontend/FrontendPlayersCsvImportView.php:119
 #: src/Shared/Frontend/FrontendPlayerStatusCaptureView.php:234
 #: src/Shared/Frontend/FrontendPlayerStatusCaptureView.php:332
@@ -5394,7 +5369,6 @@ msgstr "— Alle —"
 #: src/Shared/Frontend/FrontendTrialCaseView.php:634
 #: src/Shared/Frontend/FrontendTrialCaseView.php:670
 #: src/Shared/Frontend/FrontendTrialsManageView.php:462
-#: src/Shared/Frontend/PlayerDashboardView.php:179
 msgid "Notes"
 msgstr "Notities"
 
@@ -5428,15 +5402,13 @@ msgstr "Optioneel. Houd Ctrl/Cmd ingedrukt om meerdere te selecteren."
 #: src/Modules/Reports/AudienceDefaults.php:109
 #: src/Modules/Reports/PlayerReportRenderer.php:396
 #: src/Modules/Wizards/Evaluation/AttendanceStep.php:22
-#: src/Shared/Frontend/CoachDashboardView.php:270
 #: src/Shared/Frontend/CoachForms.php:576
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1564
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:3367
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:834
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:867
 #: src/Shared/Frontend/FrontendReportsLauncherView.php:320
 #: src/Shared/Frontend/FrontendTeamDetailView.php:548
 #: src/Shared/Frontend/FrontendTrialCaseView.php:523
-#: src/Shared/Frontend/PlayerDashboardView.php:49
 msgid "Attendance"
 msgstr "Aanwezigheid"
 
@@ -5515,8 +5487,6 @@ msgstr "Bijwerken"
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:356
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:534
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:374
-#: src/Shared/Frontend/CoachDashboardView.php:238
-#: src/Shared/Frontend/CoachDashboardView.php:280
 #: src/Shared/Frontend/CoachForms.php:127
 #: src/Shared/Frontend/CoachForms.php:592
 #: src/Shared/Frontend/Components/FormSaveButton.php:52
@@ -5541,7 +5511,7 @@ msgstr "Bijwerken"
 #: src/Shared/Frontend/FrontendModulesView.php:425
 #: src/Shared/Frontend/FrontendMyTeamSpondView.php:93
 #: src/Shared/Frontend/FrontendMyTeamSpondView.php:147
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2672
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2705
 #: src/Shared/Frontend/FrontendPlayerStatusCaptureView.php:337
 #: src/Shared/Frontend/FrontendSpondView.php:162
 #: src/Shared/Frontend/FrontendSpondView.php:309
@@ -6187,7 +6157,7 @@ msgstr "Min"
 #: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:347
 #: src/Modules/Activities/Frontend/FrontendMinutesGridView.php:388
 #: src/Modules/Analytics/Frontend/FrontendMinutesTeamReportView.php:237
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:859
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:892
 msgctxt "goals scored in matches"
 msgid "Goals scored"
 msgstr "Doelpunten gemaakt"
@@ -6887,7 +6857,7 @@ msgid "For information"
 msgstr "Ter informatie"
 
 #: src/Modules/Alerts/Domain/Severity.php:55
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:748
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:781
 msgid "Needs attention"
 msgstr "Vraagt aandacht"
 
@@ -7073,7 +7043,7 @@ msgid "Alert"
 msgstr "Melding"
 
 #: src/Modules/Alerts/Frontend/FrontendAlertPolicyView.php:211
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2680
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2713
 msgid "Cleared"
 msgstr "Vrijgegeven"
 
@@ -7211,7 +7181,7 @@ msgstr "Berichten"
 #: src/Shared/Frontend/FrontendMySettingsView.php:485
 #: src/Shared/Frontend/FrontendOverviewView.php:236
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:205
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1237
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1270
 #: src/Shared/Frontend/FrontendReportDetailView.php:104
 #: src/Shared/Frontend/FrontendReportDetailView.php:198
 #: src/Shared/Frontend/FrontendStandardReportsView.php:1152
@@ -7220,7 +7190,6 @@ msgstr "Berichten"
 #: src/Shared/Frontend/FrontendStandardReportsView.php:1681
 #: src/Shared/Frontend/FrontendTrialCaseView.php:540
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:676
-#: src/Shared/Frontend/PlayerDashboardView.php:47
 #: src/Shared/Modules/ModuleMetadata.php:197
 msgid "Evaluations"
 msgstr "Evaluaties"
@@ -7258,10 +7227,9 @@ msgstr "Evaluaties"
 #: src/Shared/Frontend/FrontendGoalsManageView.php:163
 #: src/Shared/Frontend/FrontendMySettingsView.php:486
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:202
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:846
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:879
 #: src/Shared/Frontend/FrontendTrialCaseView.php:568
 #: src/Shared/Frontend/FrontendUsageStatsDetailsView.php:678
-#: src/Shared/Frontend/PlayerDashboardView.php:48
 #: src/Shared/Modules/ModuleMetadata.php:203
 msgid "Goals"
 msgstr "Doelen"
@@ -7382,7 +7350,7 @@ msgstr ""
 #: src/Shared/Frontend/DashboardShortcode.php:934
 #: src/Shared/Frontend/FrontendMySettingsView.php:488
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:209
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:874
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:907
 msgid "Measurements"
 msgstr "Metingen"
 
@@ -7505,8 +7473,6 @@ msgstr "Beoordelaar"
 #: src/Modules/Pdp/Print/PdpPrintRouter.php:195
 #: src/Modules/StaffDevelopment/Frontend/FrontendMyStaffGoalsView.php:115
 #: src/Modules/Wizards/Goal/DetailsStep.php:22
-#: src/Shared/Frontend/CoachDashboardView.php:313
-#: src/Shared/Frontend/CoachDashboardView.php:326
 #: src/Shared/Frontend/CoachForms.php:635
 #: src/Shared/Frontend/CoachForms.php:653
 #: src/Shared/Frontend/FrontendGoalsManageView.php:278
@@ -7679,7 +7645,7 @@ msgstr "Geannuleerd"
 #: src/Modules/Prospects/Frontend/FrontendScoutingPlanView.php:389
 #: src/Modules/Prospects/Repositories/ScoutingVisitsRepository.php:35
 #: src/Modules/Training/Frontend/FrontendTrainingPlansView.php:588
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2033
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2066
 msgid "Planned"
 msgstr "Gepland"
 
@@ -8300,7 +8266,7 @@ msgstr "Eindoordeel"
 
 #: src/Modules/Analytics/Frontend/FrontendCohortBoardView.php:172
 #: src/Modules/Pdp/Frontend/FrontendPdpManageView.php:734
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2141
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2174
 msgid "Open file"
 msgstr "Open dossier"
 
@@ -8486,8 +8452,8 @@ msgid "Gaps by coach"
 msgstr "Gaten per coach"
 
 #: src/Modules/Analytics/Frontend/FrontendEvalCoverageView.php:193
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:572
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1353
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:600
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1386
 msgid "Unassigned"
 msgstr "Niet toegewezen"
 
@@ -9206,7 +9172,7 @@ msgstr ""
 #: src/Shared/Frontend/FrontendHolidaysView.php:113
 #: src/Shared/Frontend/FrontendPeopleManageView.php:128
 #: src/Shared/Frontend/FrontendPersonDetailView.php:83
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:722
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:755
 #: src/Shared/Frontend/FrontendPlayersManageView.php:257
 #: src/Shared/Frontend/FrontendTeamDetailView.php:419
 #: src/Shared/Frontend/FrontendTeamsManageView.php:193
@@ -9421,10 +9387,6 @@ msgstr "Gebruiker:"
 #: src/Modules/People/Admin/TeamStaffPanel.php:133
 #: src/Modules/Players/Admin/PlayersPage.php:429
 #: src/Modules/Teams/Admin/TeamsPage.php:161
-#: src/Shared/Frontend/CoachDashboardView.php:204
-#: src/Shared/Frontend/CoachDashboardView.php:210
-#: src/Shared/Frontend/CoachDashboardView.php:221
-#: src/Shared/Frontend/CoachDashboardView.php:308
 #: src/Shared/Frontend/CoachForms.php:251
 #: src/Shared/Frontend/CoachForms.php:262
 #: src/Shared/Frontend/CoachForms.php:628
@@ -9908,7 +9870,6 @@ msgstr "Sleutel"
 #: src/Modules/StaffDevelopment/Frontend/FrontendMyStaffGoalsView.php:134
 #: src/Modules/Wizards/Goal/DetailsStep.php:20
 #: src/Modules/Workflow/Frontend/FrontendWorkflowConfigView.php:251
-#: src/Shared/Frontend/CoachDashboardView.php:312
 #: src/Shared/Frontend/CoachForms.php:634
 #: src/Shared/Frontend/FrontendConfigurationView.php:934
 #: src/Shared/Frontend/FrontendConfigurationView.php:1071
@@ -10080,7 +10041,7 @@ msgstr ""
 
 #: src/Modules/Authorization/Admin/ImpersonationPage.php:67
 #: src/Shared/Frontend/FrontendMediaRetentionView.php:153
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2682
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2715
 msgid "Reason"
 msgstr "Reden"
 
@@ -16436,7 +16397,7 @@ msgstr "Gewicht (kg)"
 #: src/Shared/Frontend/FrontendConfigurationView.php:190
 #: src/Shared/Frontend/FrontendConfigurationView.php:321
 #: src/Shared/Frontend/FrontendMyProfileView.php:108
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1276
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1309
 #: src/Shared/Frontend/FrontendPlayersManageView.php:425
 #: src/Shared/Frontend/FrontendTeammateView.php:109
 msgid "Preferred foot"
@@ -16455,7 +16416,7 @@ msgstr "Voorkeursposities"
 #: src/Modules/Configuration/Admin/FormSlugContract.php:65
 #: src/Modules/Export/Exporters/PlayersListCsvExporter.php:51
 #: src/Modules/Export/Exporters/PlayersListCsvExporter.php:110
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1363
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1396
 msgid "Date joined"
 msgstr "Toegetreden op"
 
@@ -16558,7 +16519,6 @@ msgstr "Evaluatiedatum"
 #: src/Modules/MatchExecution/Frontend/FrontendMatchExecutionsListView.php:88
 #: src/Modules/Tournaments/Frontend/FrontendTournamentMatchAddView.php:119
 #: src/Modules/Tournaments/Wizard/MatchesStep.php:163
-#: src/Shared/Frontend/CoachDashboardView.php:217
 #: src/Shared/Frontend/CoachForms.php:258
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1166
 #: src/Shared/Frontend/FrontendEvaluationsView.php:303
@@ -16571,7 +16531,6 @@ msgstr "Tegenstander"
 #: src/Modules/Export/Exporters/EvaluationsXlsxExporter.php:242
 #: src/Modules/Export/Exporters/PlayerEvaluationsCsvExporter.php:54
 #: src/Modules/Export/Exporters/PlayerEvaluationsCsvExporter.php:156
-#: src/Shared/Frontend/CoachDashboardView.php:219
 #: src/Shared/Frontend/CoachForms.php:260
 msgid "Competition"
 msgstr "Competitie"
@@ -16582,7 +16541,6 @@ msgstr "Wedstrijdresultaat"
 
 #: src/Modules/Configuration/Admin/FormSlugContract.php:132
 #: src/Modules/Evaluations/Admin/EvaluationsPage.php:471
-#: src/Shared/Frontend/CoachDashboardView.php:228
 #: src/Shared/Frontend/CoachForms.php:269
 msgid "Home/Away"
 msgstr "Thuis/Uit"
@@ -18273,7 +18231,7 @@ msgstr "Het soort overgang."
 #: src/Modules/Journey/Frontend/FrontendInjuriesView.php:32
 #: src/Modules/Journey/JourneyModule.php:70
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:240
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2398
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2431
 msgid "Injuries"
 msgstr "Blessures"
 
@@ -20149,10 +20107,8 @@ msgstr "Geen passende onderwerpen."
 #: src/Modules/Documentation/Admin/DocumentationPage.php:215
 #: src/Shared/CoreSurfaceRegistration.php:1861
 #: src/Shared/CoreSurfaceRegistration.php:2327
-#: src/Shared/Frontend/CoachDashboardView.php:45
 #: src/Shared/Frontend/DashboardShortcode.php:2367
 #: src/Shared/Frontend/FrontendDocsView.php:97
-#: src/Shared/Frontend/PlayerDashboardView.php:51
 msgid "Help"
 msgstr "Hulp"
 
@@ -20525,7 +20481,6 @@ msgstr "Evaluatie bewerken"
 
 #: src/Modules/Evaluations/Admin/EvaluationsPage.php:416
 #: src/Shared/Admin/BackNavigator.php:119
-#: src/Shared/Frontend/CoachDashboardView.php:41
 msgid "New Evaluation"
 msgstr "Nieuwe evaluatie"
 
@@ -20550,7 +20505,6 @@ msgstr ""
 #: src/Modules/Measurements/Frontend/FrontendTestResultsView.php:230
 #: src/Modules/Measurements/Frontend/FrontendTestResultsView.php:251
 #: src/Modules/Workflow/Frontend/FrontendWorkflowConfigView.php:293
-#: src/Shared/Frontend/CoachDashboardView.php:227
 #: src/Shared/Frontend/CoachForms.php:268
 #: src/Shared/Frontend/FrontendEvaluationsView.php:482
 msgid "Result"
@@ -20562,7 +20516,6 @@ msgstr "Uitslag"
 #: src/Modules/MatchPrep/Frontend/FrontendMatchPrepView.php:1037
 #: src/Modules/Planning/Frontend/FrontendTeamPlannerView.php:1089
 #: src/Modules/Planning/Print/TeamPlannerWeeklyPrintable.php:325
-#: src/Shared/Frontend/CoachDashboardView.php:228
 #: src/Shared/Frontend/CoachForms.php:269
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1170
 #: src/Shared/Frontend/FrontendMyTeamView.php:114
@@ -20574,7 +20527,6 @@ msgstr "Thuis"
 #: src/Modules/MatchPrep/Frontend/FrontendMatchPrepView.php:1037
 #: src/Modules/Planning/Frontend/FrontendTeamPlannerView.php:1090
 #: src/Modules/Planning/Print/TeamPlannerWeeklyPrintable.php:326
-#: src/Shared/Frontend/CoachDashboardView.php:228
 #: src/Shared/Frontend/CoachForms.php:269
 #: src/Shared/Frontend/FrontendActivitiesManageView.php:1172
 #: src/Shared/Frontend/FrontendMyTeamView.php:114
@@ -20590,11 +20542,9 @@ msgstr "Gespeelde minuten"
 #: src/Modules/Evaluations/Admin/EvaluationsPage.php:477
 #: src/Modules/Evaluations/Admin/EvaluationsPage.php:822
 #: src/Modules/Reports/AudienceDefaults.php:106
-#: src/Shared/Frontend/CoachDashboardView.php:231
 #: src/Shared/Frontend/CoachForms.php:272
 #: src/Shared/Frontend/FrontendEvaluationsView.php:497
 #: src/Shared/Frontend/FrontendStandardReportsView.php:1682
-#: src/Shared/Frontend/PlayerDashboardView.php:109
 msgid "Ratings"
 msgstr "Beoordelingen"
 
@@ -21140,7 +21090,6 @@ msgstr "URL van diagramafbeelding (optioneel)"
 #: src/Shared/CoreSurfaceRegistration.php:516
 #: src/Shared/Frontend/FrontendMyTeamView.php:38
 #: src/Shared/Frontend/FrontendMyTeamView.php:39
-#: src/Shared/Frontend/PlayerDashboardView.php:46
 msgid "My team"
 msgstr "Mijn team"
 
@@ -22392,8 +22341,6 @@ msgstr "Doel bewerken"
 #: src/Modules/Methodology/Frontend/Manage/LearningGoalsManageTab.php:75
 #: src/Modules/PersonaDashboard/Widgets/ActionCardWidget.php:99
 #: src/Modules/StaffDevelopment/Frontend/FrontendMyStaffGoalsView.php:145
-#: src/Shared/Frontend/CoachDashboardView.php:305
-#: src/Shared/Frontend/CoachDashboardView.php:318
 #: src/Shared/Frontend/CoachForms.php:625
 #: src/Shared/Frontend/CoachForms.php:644
 #: src/Shared/Frontend/DashboardShortcode.php:296
@@ -22401,7 +22348,7 @@ msgstr "Doel bewerken"
 #: src/Shared/Frontend/FrontendGoalsManageView.php:60
 #: src/Shared/Frontend/FrontendGoalsManageView.php:157
 #: src/Shared/Frontend/FrontendGoalsManageView.php:649
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1712
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1745
 msgid "Add goal"
 msgstr "Doel toevoegen"
 
@@ -22418,7 +22365,6 @@ msgid "The database rejected the save. No goal was created."
 msgstr "De database heeft het opslaan afgewezen. Er is geen doel aangemaakt."
 
 #: src/Modules/Goals/Admin/GoalsPage.php:188
-#: src/Shared/Frontend/CoachDashboardView.php:316
 #: src/Shared/Frontend/CoachForms.php:640
 msgid "Due Date"
 msgstr "Deadline"
@@ -22473,14 +22419,12 @@ msgstr "Seizoens-intakes — %1$s — %2$s"
 #: src/Modules/Reports/ScoutLinkRouter.php:97
 #: src/Modules/Stats/PrintRouter.php:201
 #: src/Modules/Training/Frontend/FrontendTrainingPlansView.php:426
-#: src/Shared/Frontend/CoachDashboardView.php:110
 #: src/Shared/Frontend/FrontendOverviewView.php:76
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1163
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1169
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1196
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1202
 #: src/Shared/Frontend/FrontendPlayersManageView.php:675
 #: src/Shared/Frontend/FrontendReportDetailView.php:69
 #: src/Shared/Frontend/FrontendReportWizardView.php:344
-#: src/Shared/Frontend/PlayerDashboardView.php:77
 msgid "Print"
 msgstr "Printen"
 
@@ -23841,8 +23785,8 @@ msgstr "Je hebt geen rechten om blessures te bekijken."
 #: src/Modules/Journey/Frontend/FrontendInjuriesView.php:57
 #: src/Modules/Journey/Frontend/FrontendInjuriesView.php:145
 #: src/Modules/Journey/Wizards/NewInjuryWizard.php:31
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2388
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2401
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2421
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2434
 msgid "Record injury"
 msgstr "Blessure vastleggen"
 
@@ -23858,7 +23802,7 @@ msgstr "Nu uit"
 
 #: src/Modules/Journey/Frontend/FrontendInjuriesView.php:119
 #: src/Modules/Journey/Frontend/FrontendInjuriesView.php:201
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2427
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2460
 msgid "Recovered"
 msgstr "Hersteld"
 
@@ -23904,7 +23848,7 @@ msgstr "Dagen uit"
 #: src/Modules/Workflow/Frontend/FrontendMyTasksView.php:176
 #: src/Modules/Workflow/Frontend/FrontendMyTasksView.php:281
 #: src/Modules/Workflow/TaskStatus.php:67
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2433
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2466
 msgid "Overdue"
 msgstr "Te laat"
 
@@ -24084,7 +24028,7 @@ msgid "Unsure — flag for medical review"
 msgstr "Onzeker — markeer voor medische review"
 
 #: src/Modules/Journey/Workflow/InjuryRecoveryConfirmForm.php:62
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2665
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2698
 msgid "Notes (optional)"
 msgstr "Notities (optioneel)"
 
@@ -24728,7 +24672,6 @@ msgstr "Cursus"
 #: src/Modules/Pdp/Frontend/FrontendPdpManageView.php:1677
 #: src/Shared/Frontend/Components/GoalDetailFields.php:38
 #: src/Shared/Frontend/Components/GoalDetailFields.php:52
-#: src/Shared/Frontend/PlayerDashboardView.php:50
 msgid "Progress"
 msgstr "Voortgang"
 
@@ -24736,13 +24679,12 @@ msgstr "Voortgang"
 #: src/Modules/Pdp/Print/PdpPrintRouter.php:197
 #: src/Modules/StaffDevelopment/Frontend/FrontendMyStaffGoalsView.php:97
 #: src/Modules/Workflow/Frontend/FrontendTaskDetailView.php:249
-#: src/Shared/Frontend/CoachDashboardView.php:327
 #: src/Shared/Frontend/CoachForms.php:654
 #: src/Shared/Frontend/FrontendGoalsManageView.php:284
 #: src/Shared/Frontend/FrontendGoalsManageView.php:369
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2548
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2552
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2559
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2581
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2585
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2592
 msgid "Due"
 msgstr "Deadline"
 
@@ -28965,14 +28907,14 @@ msgstr ""
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:302
 #: src/Shared/Frontend/FrontendComparisonView.php:373
 #: src/Shared/Frontend/FrontendMyProfileView.php:116
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1424
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1457
 msgid "Height"
 msgstr "Lengte"
 
 #: src/Modules/Measurements/Frontend/FrontendPlayerBmiView.php:213
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:305
 #: src/Shared/Frontend/FrontendMyProfileView.php:119
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1425
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1458
 msgid "Weight"
 msgstr "Gewicht"
 
@@ -29768,7 +29710,7 @@ msgstr "Terug naar raamwerk"
 #: src/Modules/Wizards/Prospect/IdentityStep.php:21
 #: src/Modules/Workflow/Forms/LogProspectForm.php:45
 #: src/Shared/Frontend/FrontendConfigurationView.php:1659
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1375
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1408
 msgid "Identity"
 msgstr "Identiteit"
 
@@ -34520,7 +34462,7 @@ msgstr "Eindoordeel opslaan"
 #. translators: %s is a date.
 #: src/Modules/Pdp/Frontend/FrontendPdpManageView.php:1442
 #: src/Modules/PersonaDashboard/Widgets/HodWeekRecapWidget.php:61
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2424
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2457
 #, php-format
 msgid "Since %s"
 msgstr "Sinds %s"
@@ -34779,7 +34721,6 @@ msgid "No evaluations on record."
 msgstr "Geen evaluaties geregistreerd."
 
 #: src/Modules/Pdp/Print/PdpPrintRouter.php:308
-#: src/Shared/Frontend/PlayerDashboardView.php:173
 msgid "No attendance records."
 msgstr "Geen aanwezigheidsregistraties."
 
@@ -36093,7 +36034,7 @@ msgstr "Op stage"
 #: src/Modules/Prospects/Frontend/FrontendScoutingVisitDetailView.php:264
 #: src/Modules/Prospects/Rest/ProspectsRestController.php:207
 #: src/Modules/Wizards/Prospect/IdentityStep.php:121
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:791
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:824
 msgid "Joined"
 msgstr "Aangesloten"
 
@@ -36669,7 +36610,6 @@ msgstr "Stijgers · deze maand"
 
 #: src/Modules/PersonaDashboard/Widgets/MiniPlayerListWidget.php:77
 #: src/Modules/Players/Admin/PlayersPage.php:517
-#: src/Shared/Frontend/PlayerDashboardView.php:103
 msgid "No evaluations yet."
 msgstr "Nog geen evaluaties."
 
@@ -37380,7 +37320,7 @@ msgstr ""
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:292
 #: src/Shared/Frontend/FrontendComparisonView.php:370
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:507
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1273
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1306
 msgid "Position(s)"
 msgstr "Positie(s)"
 
@@ -37389,7 +37329,7 @@ msgstr "Positie(s)"
 #: src/Modules/Stats/Admin/PlayerComparisonPage.php:296
 #: src/Modules/Teams/Admin/TeamPlayersPanel.php:63
 #: src/Shared/Frontend/FrontendComparisonView.php:371
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:784
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:817
 #: src/Shared/Frontend/FrontendPlayersManageView.php:231
 #: src/Shared/Frontend/FrontendPlayersManageView.php:246
 #: src/Shared/Frontend/FrontendTeamsManageView.php:411
@@ -37399,12 +37339,11 @@ msgstr "Voet"
 #: src/Modules/Players/Admin/PlayersPage.php:176
 #: src/Modules/Players/Admin/PlayersPage.php:509
 #: src/Shared/Frontend/DashboardShortcode.php:316
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:777
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:810
 msgid "DOB"
 msgstr "Geboortedatum"
 
 #: src/Modules/Players/Admin/PlayersPage.php:178
-#: src/Shared/Frontend/CoachDashboardView.php:77
 msgid "No players."
 msgstr "Geen spelers."
 
@@ -38112,19 +38051,19 @@ msgstr "Breedtesport"
 
 # v3.92.6 — #0082 player file UX redesign
 #: src/Modules/Players/Services/ProfileCardsConfig.php:58
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1377
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1410
 msgid "Academy"
 msgstr "Academie"
 
 #: src/Modules/Players/Services/ProfileCardsConfig.php:59
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1551
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1584
 msgid "Parents · Guardians"
 msgstr "Ouders · Voogden"
 
 #: src/Modules/Players/Services/ProfileCardsConfig.php:60
 #: src/Modules/Wizards/Prospect/DiscoveryStep.php:19
 #: src/Modules/Workflow/Forms/LogProspectForm.php:83
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1588
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1621
 msgid "Discovery"
 msgstr "Ontdekking"
 
@@ -38986,7 +38925,7 @@ msgstr[1] "Gebaseerd op %d evaluaties"
 #: src/Shared/Frontend/FrontendComparisonView.php:389
 #: src/Shared/Frontend/FrontendOverviewView.php:143
 #: src/Shared/Frontend/FrontendOverviewView.php:232
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1233
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1266
 msgid "All-time"
 msgstr "Totaal"
 
@@ -40809,7 +40748,7 @@ msgid "Attack"
 msgstr "Aanval"
 
 #: src/Modules/TeamDevelopment/Frontend/FrontendPlayerAttributesView.php:34
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:686
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:719
 msgid "Chemistry attributes"
 msgstr "Chemie-attributen"
 
@@ -41126,7 +41065,7 @@ msgid "Hide chemistry"
 msgstr "Chemie verbergen"
 
 #: src/Modules/TeamDevelopment/Frontend/FrontendTeamBlueprintsView.php:564
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:660
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:693
 #: src/Shared/Frontend/FrontendTeamDetailView.php:386
 #: src/Shared/Frontend/FrontendTrialCaseView.php:339
 #: src/Shared/Frontend/FrontendViewBase.php:439
@@ -43047,7 +42986,6 @@ msgstr "Teamplan"
 
 #: src/Modules/Training/Frontend/FrontendTrainingPlansView.php:386
 #: src/Shared/Frontend/FrontendTrialCaseView.php:227
-#: src/Shared/Frontend/PlayerDashboardView.php:45
 msgid "Overview"
 msgstr "Overzicht"
 
@@ -44295,7 +44233,7 @@ msgid "Threshold hit at"
 msgstr "Threshold bereikt op"
 
 #: src/Modules/Translations/Admin/TranslationsConfigTab.php:202
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1538
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1571
 #: src/Shared/Frontend/FrontendTranslationsView.php:234
 msgid "primary"
 msgstr "primary"
@@ -44656,7 +44594,7 @@ msgid "Trial group %s"
 msgstr "Stagegroep %s"
 
 #: src/Modules/Trials/Wizards/NewTrialCaseWizard.php:38
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2267
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2300
 msgid "Open trial case"
 msgstr "Stagedossier openen"
 
@@ -45180,7 +45118,7 @@ msgstr "Leeftijdsprofiel bijgewerkt."
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:595
 #: src/Modules/Vct/Frontend/FrontendVctConfigView.php:669
 #: src/Modules/Vct/Frontend/FrontendVctLibraryView.php:460
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2753
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2786
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1110
 msgid "Save failed: database error."
 msgstr "Opslaan mislukt: databasefout."
@@ -45409,7 +45347,7 @@ msgid "Print A4"
 msgstr "A4 printen"
 
 #: src/Modules/Vct/Frontend/FrontendVctSessionView.php:154
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:561
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:589
 msgid "PHV"
 msgstr "PHV"
 
@@ -46344,7 +46282,7 @@ msgstr "— kies een type —"
 #: src/Shared/Frontend/FrontendEvaluationsView.php:58
 #: src/Shared/Frontend/FrontendEvaluationsView.php:61
 #: src/Shared/Frontend/FrontendEvaluationsView.php:118
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1825
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1858
 msgid "New evaluation"
 msgstr "Nieuwe evaluatie"
 
@@ -49004,90 +48942,15 @@ msgstr "(Systeemstandaard)"
 msgid "(Inherit from theme)"
 msgstr "(Overnemen van thema)"
 
-#: src/Shared/Frontend/CoachDashboardView.php:40
-msgid "My Team"
-msgstr "Mijn team"
-
-#: src/Shared/Frontend/CoachDashboardView.php:43
-msgid "Manage Goals"
-msgstr "Doelen beheren"
-
-#: src/Shared/Frontend/CoachDashboardView.php:44
-msgid "Player Detail"
-msgstr "Spelerdetail"
-
-#: src/Shared/Frontend/CoachDashboardView.php:56
-#: src/Shared/Frontend/FrontendPodiumView.php:40
-msgid "No teams assigned."
-msgstr "Geen teams toegewezen."
-
-#: src/Shared/Frontend/CoachDashboardView.php:127
-msgid "Select a player from the roster."
-msgstr "Selecteer een speler uit de selectie."
-
-#: src/Shared/Frontend/CoachDashboardView.php:133
-msgid "Coach Quick Guide"
-msgstr "Snelstartgids trainer"
-
-#: src/Shared/Frontend/CoachDashboardView.php:134
-msgid ""
-"My Team shows your players. New Evaluation submits training or match "
-"evaluations. New Activity records attendance. Manage Goals assigns and "
-"tracks goals."
-msgstr ""
-"Mijn team toont uw spelers. Nieuwe evaluatie verstuurt training- of "
-"wedstrijdevaluaties. Nieuwe activiteit registreert aanwezigheid. Doelen "
-"beheren wijst doelen toe en volgt deze."
-
-#: src/Shared/Frontend/CoachDashboardView.php:151
-#: src/Shared/Frontend/FrontendMyActivitiesView.php:194
-#: src/Shared/Frontend/FrontendPlayersManageView.php:728
-#: src/Shared/Frontend/PlayerDashboardView.php:300
-msgid "Team:"
-msgstr "Team:"
-
-#: src/Shared/Frontend/CoachDashboardView.php:152
-#: src/Shared/Frontend/FrontendPlayersManageView.php:731
-#: src/Shared/Frontend/PlayerDashboardView.php:301
-msgid "Pos:"
-msgstr "Pos:"
-
-#: src/Shared/Frontend/CoachDashboardView.php:153
-#: src/Shared/Frontend/FrontendPlayersManageView.php:734
-#: src/Shared/Frontend/PlayerDashboardView.php:302
-msgid "Foot:"
-msgstr "Voet:"
-
-#: src/Shared/Frontend/CoachDashboardView.php:171
-#: src/Shared/Frontend/PlayerDashboardView.php:321
-msgid "Additional Information"
-msgstr "Aanvullende informatie"
-
-#: src/Shared/Frontend/CoachDashboardView.php:201
-#: src/Shared/Frontend/CoachForms.php:126
-msgid "Submit Evaluation"
-msgstr "Evaluatie verzenden"
-
-#: src/Shared/Frontend/CoachDashboardView.php:261
-#: src/Shared/Frontend/CoachForms.php:565
-msgid "Record Training Activity"
-msgstr "Training vastleggen"
-
-#: src/Shared/Frontend/CoachDashboardView.php:321
-#: src/Shared/Frontend/CoachForms.php:647
-msgid "Current Goals"
-msgstr "Huidige doelen"
-
-#: src/Shared/Frontend/CoachDashboardView.php:322
-#: src/Shared/Frontend/CoachForms.php:649
-msgid "No goals yet."
-msgstr "Nog geen doelen."
-
 #: src/Shared/Frontend/CoachForms.php:126
 #: src/Shared/Frontend/FrontendEvaluationsView.php:85
 #: src/Shared/Frontend/FrontendEvaluationsView.php:88
 msgid "Edit evaluation"
 msgstr "Evaluatie bewerken"
+
+#: src/Shared/Frontend/CoachForms.php:126
+msgid "Submit Evaluation"
+msgstr "Evaluatie verzenden"
 
 #: src/Shared/Frontend/CoachForms.php:186
 #, php-format
@@ -49110,9 +48973,21 @@ msgstr ""
 "Een of meer beoordelingen zijn %s of lager — voeg een opmerking toe die de "
 "lage score toelicht."
 
+#: src/Shared/Frontend/CoachForms.php:565
+msgid "Record Training Activity"
+msgstr "Training vastleggen"
+
 #: src/Shared/Frontend/CoachForms.php:578
 msgid "No players on your teams yet."
 msgstr "Nog geen spelers in je teams."
+
+#: src/Shared/Frontend/CoachForms.php:647
+msgid "Current Goals"
+msgstr "Huidige doelen"
+
+#: src/Shared/Frontend/CoachForms.php:649
+msgid "No goals yet."
+msgstr "Nog geen doelen."
 
 #. translators: 1: number of open alerts, 2: severity label, e.g. "Needs attention"
 #: src/Shared/Frontend/Components/AlertChip.php:189
@@ -49601,7 +49476,7 @@ msgstr ""
 "bij deze activiteit geregistreerd."
 
 #: src/Shared/Frontend/Components/MediaGallery.php:97
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2357
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2390
 msgid "No photos or video yet"
 msgstr "Nog geen foto's of video"
 
@@ -52698,7 +52573,7 @@ msgstr ""
 "wedstrijd. Leg de eerste vast na je volgende activiteit."
 
 #: src/Shared/Frontend/FrontendEvaluationsView.php:239
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1796
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1829
 msgid "Record first evaluation"
 msgstr "Eerste evaluatie vastleggen"
 
@@ -53154,7 +53029,7 @@ msgid "That goal no longer exists."
 msgstr "Dat doel bestaat niet meer."
 
 #: src/Shared/Frontend/FrontendGoalsManageView.php:121
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1710
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1743
 msgid "Print doelenintake"
 msgstr "Doelenintake printen"
 
@@ -53165,7 +53040,6 @@ msgstr "Dit doel archiveren? Het wordt verborgen maar de data blijft bewaard."
 #: src/Shared/Frontend/FrontendGoalsManageView.php:203
 #: src/Shared/Frontend/FrontendMyGoalsView.php:102
 #: src/Shared/Frontend/FrontendMyGoalsView.php:222
-#: src/Shared/Frontend/PlayerDashboardView.php:147
 msgid "Due:"
 msgstr "Deadline:"
 
@@ -53208,7 +53082,7 @@ msgstr ""
 "in om de training richting te geven."
 
 #: src/Shared/Frontend/FrontendGoalsManageView.php:433
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1675
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1708
 msgid "Add first goal"
 msgstr "Eerste doel toevoegen"
 
@@ -54127,6 +54001,11 @@ msgstr ""
 msgid "That activity is no longer available."
 msgstr "Deze activiteit is niet meer beschikbaar."
 
+#: src/Shared/Frontend/FrontendMyActivitiesView.php:194
+#: src/Shared/Frontend/FrontendPlayersManageView.php:728
+msgid "Team:"
+msgstr "Team:"
+
 # v3.92.5 — Activity detail polish (PR 3 of pilot batch)
 #: src/Shared/Frontend/FrontendMyActivitiesView.php:197
 msgid "Opponent:"
@@ -54879,12 +54758,10 @@ msgstr ""
 "die gebruiken."
 
 #: src/Shared/Frontend/FrontendMyTeamView.php:43
-#: src/Shared/Frontend/PlayerDashboardView.php:231
 msgid "You are not on a team yet."
 msgstr "Je zit nog niet in een team."
 
 #: src/Shared/Frontend/FrontendMyTeamView.php:75
-#: src/Shared/Frontend/PlayerDashboardView.php:246
 msgid "Top players on the team"
 msgstr "Topspelers in het team"
 
@@ -54939,7 +54816,6 @@ msgstr "rang verschijnt na je eerste evaluatie"
 
 #. translators: %s is the team name.
 #: src/Shared/Frontend/FrontendMyTeamView.php:182
-#: src/Shared/Frontend/PlayerDashboardView.php:258
 #, php-format
 msgid "Teammates on %s"
 msgstr "Teamgenoten in %s"
@@ -54984,7 +54860,7 @@ msgstr "Vaardigheidsprofiel"
 
 #: src/Shared/Frontend/FrontendOverviewView.php:143
 #: src/Shared/Frontend/FrontendOverviewView.php:226
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1227
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1260
 msgid "Last 5"
 msgstr "Laatste 5"
 
@@ -54999,7 +54875,7 @@ msgid "First evaluation coming soon"
 msgstr "Eerste evaluatie volgt binnenkort"
 
 #: src/Shared/Frontend/FrontendOverviewView.php:222
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1223
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1256
 msgid "Latest"
 msgstr "Laatste"
 
@@ -55080,12 +54956,12 @@ msgid "Set on %s"
 msgstr "Ingesteld op %s"
 
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:161
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:626
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:659
 msgid "Log behaviour"
 msgstr "Gedrag vastleggen"
 
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:162
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:631
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:664
 #: src/Shared/Frontend/FrontendPlayerStatusCaptureView.php:295
 #: src/Shared/Frontend/FrontendPlayerStatusCaptureView.php:307
 msgid "Set potential"
@@ -55150,7 +55026,7 @@ msgid "Network error. Try again."
 msgstr "Netwerkfout. Probeer het opnieuw."
 
 #: src/Shared/Frontend/FrontendPlayerDetailView.php:254
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1159
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1192
 msgid "Player card"
 msgstr "Spelerskaart"
 
@@ -55163,40 +55039,40 @@ msgid "Player sections"
 msgstr "Spelersecties"
 
 # #1089 — VCT-14 PHV flag panel
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:561
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:589
 msgid "Physical / Health / Vitality flag — workload adjusted"
 msgstr "Fysiek / health / vitality vlag — belasting aangepast"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:667
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1644
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:700
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1677
 msgid "Assign to team"
 msgstr "Toewijzen aan team"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:709
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:742
 msgid "Messages sent"
 msgstr "Verstuurde berichten"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:720
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:753
 msgid "Archive this player? They can be restored later by a site admin."
 msgstr "Deze speler archiveren? Een site-admin kan de speler later herstellen."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:747
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:780
 msgid "Open alerts"
 msgstr "Open meldingen"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:821
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:854
 #: src/Shared/Frontend/FrontendStandardReportsView.php:1152
 msgid "Avg rating"
 msgstr "Gem. beoordeling"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:943
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:945
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:976
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:978
 #: src/Shared/Frontend/FrontendTeamDetailView.php:552
 msgid "last 30 d"
 msgstr "afgelopen 30 d"
 
 #. translators: %d: number of goals due in the next 7 days
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:958
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:991
 #, php-format
 msgid "%d due soon"
 msgid_plural "%d due soon"
@@ -55204,33 +55080,33 @@ msgstr[0] "%d binnenkort verwacht"
 msgstr[1] "%d binnenkort verwacht"
 
 #. translators: %d: number of tests below the age-group target band
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:977
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1010
 #, php-format
 msgid "%d below target"
 msgid_plural "%d below target"
 msgstr[0] "%d onder de norm"
 msgstr[1] "%d onder de norm"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:980
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1013
 msgid "on target"
 msgstr "op schema"
 
 #. translators: %d: number of assists the player has been credited with
 #. translators: %d: number of assists the player made in this match
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:999
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2075
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1032
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2108
 #, php-format
 msgid "%d assist"
 msgid_plural "%d assists"
 msgstr[0] "%d assist"
 msgstr[1] "%d assists"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1056
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1089
 msgid "Joined recently"
 msgstr "Recent toegetreden"
 
 #. translators: %d: number of years
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1062
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1095
 #, php-format
 msgid "%d yr in academy"
 msgid_plural "%d yrs in academy"
@@ -55238,32 +55114,32 @@ msgstr[0] "%d jaar in academie"
 msgstr[1] "%d jaar in academie"
 
 #. translators: %d: number of days
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1065
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1098
 #, php-format
 msgid "%d day in academy"
 msgid_plural "%d days in academy"
 msgstr[0] "%d dag in de academie"
 msgstr[1] "%d dagen in de academie"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1070
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1103
 #, php-format
 msgid "Joined %s"
 msgstr "Toegetreden %s"
 
 #. translators: %d: number of years
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1105
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1138
 #, php-format
 msgid "%d yr"
 msgid_plural "%d yrs"
 msgstr[0] "%d jaar"
 msgstr[1] "%d jaar"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1114
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1147
 msgid "new"
 msgstr "nieuw"
 
 #. translators: %d: number of years
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1118
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1151
 #, php-format
 msgid "%d yr in"
 msgid_plural "%d yrs in"
@@ -55271,66 +55147,66 @@ msgstr[0] "%d jaar in"
 msgstr[1] "%d jaar in"
 
 #. translators: %d: number of months
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1122
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1155
 #, php-format
 msgid "%d mo in"
 msgid_plural "%d mos in"
 msgstr[0] "%d mnd in"
 msgstr[1] "%d mnd in"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1296
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1329
 msgid "Photo & video consent"
 msgstr "Toestemming foto & video"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1299
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1332
 msgid "On record"
 msgstr "Vastgelegd"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1311
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1326
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1344
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1359
 msgid "history"
 msgstr "geschiedenis"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1332
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1365
 msgctxt "player profile row label — the recorded potential band"
 msgid "Potential"
 msgstr "Potentieel"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1357
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1390
 msgid "Age tier"
 msgstr "Leeftijdscategorie"
 
 #. translators: %s: the date a measurement was taken, e.g. "18 Aug".
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1455
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1488
 #, php-format
 msgid "measured %s"
 msgstr "gemeten %s"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1555
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1588
 msgid "No linked parent or guardian yet."
 msgstr "Nog geen gekoppelde ouder of voogd."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1593
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1626
 msgid "unknown"
 msgstr "onbekend"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1600
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1633
 msgid "Logged by"
 msgstr "Vastgelegd door"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1605
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1638
 msgid "At"
 msgstr "Om"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1610
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1643
 msgid "No discovery record for this player."
 msgstr "Geen ontdekkingsgegevens voor deze speler."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1632
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1665
 msgid "Assign this player to a team"
 msgstr "Wijs deze speler toe aan een team"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1633
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1666
 msgid ""
 "This player has no team yet — typical after a trial admission. Pick a team "
 "to place them on the roster."
@@ -55338,48 +55214,48 @@ msgstr ""
 "Deze speler heeft nog geen team — typisch na toelating uit een stage. Kies "
 "een team om hem in de selectie te plaatsen."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1673
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1706
 msgid "No goals yet for this player"
 msgstr "Nog geen doelen voor deze speler"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1674
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1707
 msgid ""
 "Goals capture what the player is working on this season — start with one."
 msgstr ""
 "Doelen leggen vast waar de speler dit seizoen aan werkt — begin er een."
 
 #. translators: %d: number of active goals
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1693
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1726
 #, php-format
 msgid "Active goals · %d"
 msgstr "Actieve doelen · %d"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1699
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1821
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1732
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1854
 #: src/Shared/Frontend/FrontendStandardReportsView.php:276
 #: src/Shared/Frontend/FrontendTeamDetailView.php:852
 msgid "Explorer →"
 msgstr "Explorer →"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1717
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1750
 msgid "No active goals — every goal on this player is finished."
 msgstr "Geen actieve doelen — elk doel van deze speler is afgerond."
 
 #. translators: %d: number of completed or cancelled goals
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1728
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1761
 #, php-format
 msgid "Completed goals · %d"
 msgstr "Afgeronde doelen · %d"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1780
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1813
 msgid "You do not have permission to view evaluations for this player."
 msgstr "Je hebt geen rechten om evaluaties van deze speler te bekijken."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1794
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1827
 msgid "No evaluations yet for this player"
 msgstr "Nog geen evaluaties voor deze speler"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1795
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1828
 msgid ""
 "Evaluations track how the player is developing across your rating "
 "categories. Record one after a training or match."
@@ -55389,26 +55265,26 @@ msgstr ""
 
 #. translators: %d: number of recent evaluations
 #. translators: %d: number of recent activities
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1815
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2017
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1848
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2050
 #, php-format
 msgid "Recent · %d"
 msgstr "Recent · %d"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1879
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1912
 msgid "You do not have permission to view measurements for this player."
 msgstr "Je hebt geen toestemming om de metingen van deze speler te bekijken."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1939
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:1972
 msgid "BMI-for-age"
 msgstr "BMI naar leeftijd"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1982
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1994
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2015
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2027
 msgid "No attended activities yet"
 msgstr "Nog geen bijgewoonde activiteiten"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1983
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2016
 msgid ""
 "Activities are recorded at the team level. Schedule one for the player's "
 "team and the player will appear in the roster."
@@ -55416,11 +55292,11 @@ msgstr ""
 "Activiteiten worden op teamniveau vastgelegd. Plan er een voor het team van "
 "de speler en de speler verschijnt automatisch in de selectie."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1984
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2017
 msgid "Plan a team activity"
 msgstr "Plan een teamactiviteit"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:1995
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2028
 msgid ""
 "Activities are recorded at the team level. Assign this player to a team "
 "first; activities planned for that team will then surface here."
@@ -55428,27 +55304,27 @@ msgstr ""
 "Activiteiten worden op teamniveau vastgelegd. Wijs deze speler eerst toe aan "
 "een team; activiteiten van dat team verschijnen daarna hier."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2020
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2053
 msgid "View all"
 msgstr "Bekijk alle"
 
 #. translators: %d: number of goals the player scored in this match
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2064
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2097
 #, php-format
 msgid "%d goal scored"
 msgid_plural "%d goals scored"
 msgstr[0] "%d doelpunt gemaakt"
 msgstr[1] "%d doelpunten gemaakt"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2102
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2135
 msgid "You do not have permission to view PDP files for this player."
 msgstr "Je hebt geen rechten om de POP-dossiers van deze speler te bekijken."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2111
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2144
 msgid "No PDP cycle yet for this player"
 msgstr "Nog geen POP-cyclus voor deze speler"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2112
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2145
 msgid ""
 "A Personal Development Plan documents what the player is focusing on, agreed "
 "with parents and the coach. Open one to start the cycle."
@@ -55456,39 +55332,39 @@ msgstr ""
 "Een Persoonlijk Ontwikkelingsplan documenteert waar de speler op focust, in "
 "afstemming met ouders en de coach. Open er een om de cyclus te starten."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2113
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2146
 msgid "Start PDP cycle"
 msgstr "POP-cyclus starten"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2139
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2172
 msgid "Active cycle"
 msgstr "Actieve cyclus"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2147
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2180
 msgid "PDP progress"
 msgstr "POP-voortgang"
 
 #. translators: %s: date the PDP cycle was created
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2156
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2189
 #, php-format
 msgid "Created %s"
 msgstr "Aangemaakt %s"
 
 #. translators: %d: number of past PDP cycles
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2169
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2202
 #, php-format
 msgid "Past cycles · %d"
 msgstr "Eerdere cycli · %d"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2252
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2285
 msgid "You do not have permission to view trial cases for this player."
 msgstr "Je hebt geen rechten om stagedossiers van deze speler te bekijken."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2261
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2294
 msgid "No trial history for this player"
 msgstr "Nog geen stagegeschiedenis voor deze speler"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2263
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2296
 msgid ""
 "A trial case tracks the prospect from first training through to the academy "
 "decision. Open one when you want to evaluate this player formally."
@@ -55497,7 +55373,7 @@ msgstr ""
 "Open er een wanneer je deze speler formeel wilt beoordelen."
 
 # v3.104.2 — pilot batch new copy
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2264
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2297
 msgid ""
 "This player is not currently on trial, so there is no trial history to show."
 msgstr ""
@@ -55505,12 +55381,12 @@ msgstr ""
 "om te tonen."
 
 #. translators: %d: number of trial cases
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2283
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2316
 #, php-format
 msgid "Trial cases · %d"
 msgstr "Stagedossiers · %d"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2358
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2391
 msgid ""
 "A clip of a moment in training says more about how a player is developing "
 "than a score does. Anything added here sits on their timeline under the day "
@@ -55520,11 +55396,11 @@ msgstr ""
 "van een speler dan een cijfer. Wat je hier toevoegt, staat op de tijdlijn "
 "onder de dag waarop het gemaakt is."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2365
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2398
 msgid "Injuries are not in your scope"
 msgstr "Blessures vallen buiten jouw bereik"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2366
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2399
 msgid ""
 "Injury records are medical data and stay with the coaching staff responsible "
 "for this player. Talk to your academy admin if you should have access."
@@ -55533,11 +55409,11 @@ msgstr ""
 "speler verantwoordelijk is. Overleg met je academiebeheerder als je toegang "
 "hoort te hebben."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2386
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2419
 msgid "No injuries recorded"
 msgstr "Geen blessures vastgelegd"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2387
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2420
 msgid ""
 "Recording an injury puts it on this player's journey, so a coach reading the "
 "file next season can see what they came back from."
@@ -55547,36 +55423,36 @@ msgstr ""
 "teruggekomen."
 
 #. translators: %s is a date.
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2431
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2464
 #, php-format
 msgid "Expected back %s"
 msgstr "Verwacht terug %s"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2436
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2469
 msgid "Return date not set"
 msgstr "Terugkeerdatum niet ingesteld"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2449
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2482
 msgid "Record return"
 msgstr "Terugkeer vastleggen"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2470
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2503
 msgid "Date the player returned to play (yyyy-mm-dd):"
 msgstr "Datum waarop de speler weer meedeed (jjjj-mm-dd):"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2471
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2504
 msgid "Could not save the return date. Try again."
 msgstr "De terugkeerdatum kon niet worden opgeslagen. Probeer opnieuw."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2472
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2505
 msgid "Enter the date as yyyy-mm-dd."
 msgstr "Voer de datum in als jjjj-mm-dd."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2492
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2525
 msgid "Notes are staff-only"
 msgstr "Notities zijn alleen voor staf"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2493
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2526
 msgid ""
 "A running log of staff observations about this player. You don't have access "
 "— talk to your academy admin if you should."
@@ -55584,11 +55460,11 @@ msgstr ""
 "Een doorlopend logboek van staf-observaties over deze speler. Je hebt geen "
 "toegang — vraag je academy admin als dat anders moet."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2501
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2534
 msgid "Not in scope for this player"
 msgstr "Geen toegang voor deze speler"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2502
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2535
 msgid ""
 "You have notes access in general, but not for this player's team. Talk to "
 "your academy admin if you should."
@@ -55596,11 +55472,11 @@ msgstr ""
 "Je hebt in het algemeen toegang tot notities, maar niet voor het team van "
 "deze speler. Vraag je academy admin als dat anders moet."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2509
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2542
 msgid "Staff notes"
 msgstr "Stafnotities"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2513
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2546
 msgid ""
 "A running log staff use to share observations about this player. Notes are "
 "visible to staff only — never to the player or their parents."
@@ -55608,59 +55484,59 @@ msgstr ""
 "Een doorlopend logboek waarin staf observaties over deze speler delen. "
 "Notities zijn alleen zichtbaar voor staf — nooit voor de speler of de ouders."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2593
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2626
 msgid "— Pick a reason —"
 msgstr "— Kies een reden —"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2594
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2627
 msgid "Injury — knee"
 msgstr "Blessure — knie"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2595
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2628
 msgid "Injury — ankle"
 msgstr "Blessure — enkel"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2596
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2629
 msgid "Asthma"
 msgstr "Astma"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2597
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2630
 msgid "Cardiac condition"
 msgstr "Hartconditie"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2598
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2631
 msgid "Other medical reason"
 msgstr "Andere medische reden"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2599
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2632
 msgid "Temporary fatigue"
 msgstr "Tijdelijke vermoeidheid"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2602
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2635
 msgid "1 — recovery only"
 msgstr "1 — alleen recovery"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2603
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2636
 msgid "2 — low"
 msgstr "2 — laag"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2604
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2637
 msgid "3 — medium"
 msgstr "3 — gemiddeld"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2605
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2638
 msgid "4 — high"
 msgstr "4 — hoog"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2619
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2652
 msgid "PHV — Physical / Health / Vitality"
 msgstr "PHV — Fysiek / health / vitality"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2630
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2663
 msgid "Player has a PHV flag"
 msgstr "Speler heeft een PHV-vlag"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2632
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2665
 msgid ""
 "Automatically excluded from VCT blocks above the configured intensity "
 "ceiling."
@@ -55668,36 +55544,36 @@ msgstr ""
 "Wordt automatisch uitgesloten van VCT-blokken boven het ingestelde "
 "intensiteitsplafond."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2639
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2672
 msgid "Reason (short, for the coach)"
 msgstr "Reden (kort, voor de trainer)"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2647
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2680
 msgid "Visible to staff on the coach view; not visible to other parents."
 msgstr ""
 "Zichtbaar voor staf op de coach-view; niet zichtbaar voor andere ouders."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2653
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2686
 msgid "Intensity ceiling (max intensity band)"
 msgstr "Intensiteitsplafond (max intensity-band)"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2656
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2689
 msgid "— None set —"
 msgstr "— Niet ingesteld —"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2667
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2700
 msgid "e.g. Cleared for level 4 from 1 July — physio checked."
 msgstr "bijv. Mag vanaf 1 juli weer op niveau 4 — fysio gecheckt."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2686
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2719
 msgid "Intensity ceiling"
 msgstr "Intensiteitsplafond"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2696
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2729
 msgid "Where the PHV flag appears:"
 msgstr "Waar de PHV-vlag verschijnt:"
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2697
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2730
 msgid ""
 "Hero pill next to the name · VCT session wizard workload check · coach-view "
 "sideline banner · match prep per-player attention."
@@ -55705,16 +55581,16 @@ msgstr ""
 "Hero-pill naast de naam · belastingscheck in de VCT-sessie-wizard · sideline-"
 "banner op de coach-view · per-speler aandachtspunt in matchprep."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2725
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2758
 msgid "You do not have permission to edit PHV flags."
 msgstr "Je hebt geen rechten om PHV-vlaggen te wijzigen."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2729
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2762
 #: src/Shared/Frontend/FrontendTeamDetailView.php:1087
 msgid "Save failed: session expired. Reload and try again."
 msgstr "Opslaan mislukt: sessie verlopen. Herlaad en probeer opnieuw."
 
-#: src/Shared/Frontend/FrontendPlayerDetailView.php:2752
+#: src/Shared/Frontend/FrontendPlayerDetailView.php:2785
 msgid "PHV flag saved."
 msgstr "PHV-vlag opgeslagen."
 
@@ -55928,6 +55804,14 @@ msgstr "Speler bewerken"
 #: src/Shared/Frontend/FrontendPlayersManageView.php:677
 msgid "Generate report…"
 msgstr "Rapport genereren…"
+
+#: src/Shared/Frontend/FrontendPlayersManageView.php:731
+msgid "Pos:"
+msgstr "Pos:"
+
+#: src/Shared/Frontend/FrontendPlayersManageView.php:734
+msgid "Foot:"
+msgstr "Voet:"
 
 #: src/Shared/Frontend/FrontendPlayersManageView.php:793
 msgid ""
@@ -56148,6 +56032,10 @@ msgstr "opnieuw bevestigd"
 #: src/Shared/Frontend/FrontendPodiumView.php:71
 msgid "Top performers"
 msgstr "Top-spelers"
+
+#: src/Shared/Frontend/FrontendPodiumView.php:40
+msgid "No teams assigned."
+msgstr "Geen teams toegewezen."
 
 #: src/Shared/Frontend/FrontendPodiumView.php:60
 msgid ""
@@ -59055,42 +58943,6 @@ msgstr "Dit veld is verplicht."
 msgid "Fill in every required field to continue."
 msgstr "Vul elk verplicht veld in om door te gaan."
 
-#: src/Shared/Frontend/PlayerDashboardView.php:121
-#, php-format
-msgid "vs %s (%s)"
-msgstr "tegen %s (%s)"
-
-#: src/Shared/Frontend/PlayerDashboardView.php:140
-msgid "No goals assigned."
-msgstr "Geen doelen toegewezen."
-
-#: src/Shared/Frontend/PlayerDashboardView.php:190
-msgid "(as guest)"
-msgstr "(als gast)"
-
-#: src/Shared/Frontend/PlayerDashboardView.php:207
-msgid "Development Over Time"
-msgstr "Ontwikkeling in de tijd"
-
-#: src/Shared/Frontend/PlayerDashboardView.php:210
-msgid "Not enough data yet."
-msgstr "Nog niet genoeg gegevens."
-
-#: src/Shared/Frontend/PlayerDashboardView.php:216
-msgid "How to use your dashboard"
-msgstr "Hoe u uw dashboard gebruikt"
-
-#: src/Shared/Frontend/PlayerDashboardView.php:217
-msgid ""
-"Overview shows your profile and latest radar chart. Evaluations lists every "
-"evaluation your coaches have recorded. Goals shows your development goals. "
-"Attendance tracks your activities. Progress shows your trajectory."
-msgstr ""
-"Overzicht toont uw profiel en de nieuwste radargrafiek. Evaluaties lijst "
-"elke evaluatie op die uw trainers hebben vastgelegd. Doelen toont uw "
-"ontwikkelingsdoelen. Aanwezigheid volgt uw activiteiten. Voortgang toont uw "
-"ontwikkeling."
-
 #: src/Shared/Frontend/ShellPreference.php:150
 msgid "Classic — tile hub, no sidebar"
 msgstr "Klassiek — tegeloverzicht, geen zijbalk"
@@ -59691,6 +59543,62 @@ msgstr "Het veld \"%s\" moet een geldig telefoonnummer zijn."
 #, php-format
 msgid "Unknown field type: %s"
 msgstr "Onbekend veldtype: %s"
+
+#~ msgid "My Team"
+#~ msgstr "Mijn team"
+
+#~ msgid "Manage Goals"
+#~ msgstr "Doelen beheren"
+
+#~ msgid "Player Detail"
+#~ msgstr "Spelerdetail"
+
+#~ msgid "Select a player from the roster."
+#~ msgstr "Selecteer een speler uit de selectie."
+
+#~ msgid "Coach Quick Guide"
+#~ msgstr "Snelstartgids trainer"
+
+#~ msgid ""
+#~ "My Team shows your players. New Evaluation submits training or match "
+#~ "evaluations. New Activity records attendance. Manage Goals assigns and "
+#~ "tracks goals."
+#~ msgstr ""
+#~ "Mijn team toont uw spelers. Nieuwe evaluatie verstuurt training- of "
+#~ "wedstrijdevaluaties. Nieuwe activiteit registreert aanwezigheid. Doelen "
+#~ "beheren wijst doelen toe en volgt deze."
+
+#~ msgid "Additional Information"
+#~ msgstr "Aanvullende informatie"
+
+#, php-format
+#~ msgid "vs %s (%s)"
+#~ msgstr "tegen %s (%s)"
+
+#~ msgid "No goals assigned."
+#~ msgstr "Geen doelen toegewezen."
+
+#~ msgid "(as guest)"
+#~ msgstr "(als gast)"
+
+#~ msgid "Development Over Time"
+#~ msgstr "Ontwikkeling in de tijd"
+
+#~ msgid "Not enough data yet."
+#~ msgstr "Nog niet genoeg gegevens."
+
+#~ msgid "How to use your dashboard"
+#~ msgstr "Hoe u uw dashboard gebruikt"
+
+#~ msgid ""
+#~ "Overview shows your profile and latest radar chart. Evaluations lists "
+#~ "every evaluation your coaches have recorded. Goals shows your development "
+#~ "goals. Attendance tracks your activities. Progress shows your trajectory."
+#~ msgstr ""
+#~ "Overzicht toont uw profiel en de nieuwste radargrafiek. Evaluaties lijst "
+#~ "elke evaluatie op die uw trainers hebben vastgelegd. Doelen toont uw "
+#~ "ontwikkelingsdoelen. Aanwezigheid volgt uw activiteiten. Voortgang toont "
+#~ "uw ontwikkeling."
 
 #, php-format
 #~ msgid "Edit or delete saved view %s"
